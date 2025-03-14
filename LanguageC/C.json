@@ -1,0 +1,96 @@
+{
+
+	"First code C": {
+		"prefix": "include",
+		"body": [
+			"#include <stdio.h>",
+			"",
+			"int main() {",
+			"	$2",
+			"	return 0;",
+			"}"
+		],
+		"description": "Affiche un message dans la console"
+	},
+	"Print to console": {
+		"prefix": "print",
+		"body": [
+			"printf(\"$1\\n\");",
+			"$2"
+		],
+		"description": "Affiche un message dans la console"
+	},
+	"Variable declaration": {
+		"prefix": "var",
+		"body": [
+			"$1 $2 = $3;"
+		],
+		"description": "Déclare une variable en C"
+	},
+	"If condition": {
+		"prefix": "if",
+		"body": [
+			"if ($1) {",
+			"    $2",
+			"}"
+		],
+		"description": "Structure conditionnelle if"
+	},
+	"Switch case": {
+		"prefix": "switch",
+		"body": [
+			"switch ($1) {",
+			"    case $2:",
+			"        $3",
+			"        break;",
+			"    default:",
+			"        $4",
+			"}"
+		],
+		"description": "Structure conditionnelle switch"
+	},
+	"While loop": {
+		"prefix": "while",
+		"body": [
+			"while ($1) {",
+			"    $2",
+			"}"
+		],
+		"description": "Boucle while"
+	},
+	"For loop": {
+		"prefix": "for",
+		"body": [
+			"for ($1; $2; $3) {",
+			"    $4",
+			"}"
+		],
+		"description": "Boucle for"
+	},
+	"User input": {
+		"prefix": "input",
+		"body": [
+			"scanf(\"$1\", &$2);"
+		],
+		"description": "Lecture d'une entrée utilisateur"
+	},
+	"Function": {
+		"prefix": "function",
+		"body": [
+			"$1 $2($3) {",
+			"    $4",
+			"}"
+		],
+		"description": "Définition d'une fonction"
+	},
+	"Struct": {
+		"prefix": "struct",
+		"body": [
+			"struct $1 {",
+			"    $2 $3;",
+			"    $4 $5;",
+			"};"
+		],
+		"description": "Définition d'une structure"
+	}
+}

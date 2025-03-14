@@ -1,0 +1,732 @@
+{
+  "verification_presence": {
+    "prefix": ".srt in ",
+    "body": ["strpos($1, \"$2\") !== false;"],
+    "description": "Vérifier si une sous-chaîne est présente"
+  },
+
+  "verification_absence": {
+    "prefix": ".srt notin ",
+    "body": ["strpos($1, \"$2\") === false;"],
+    "description": "Vérifier si une sous-chaîne est absente"
+  },
+
+  "remplacement_mot": {
+    "prefix": ".srt replace ",
+    "body": ["str_replace(\"$2\", \"$3\", $1);"],
+    "description": "Remplacement d'un mot dans une chaîne"
+  },
+
+  "remplacement_tout": {
+    "prefix": ".srt replaceAll ",
+    "body": ["str_replace(\"$2\", \"$3\", $1);"],
+    "description": "Remplacer toutes les occurrences d'une sous-chaîne"
+  },
+
+  "majuscule": {
+    "prefix": ".srt upper ",
+    "body": ["strtoupper($1);"],
+    "description": "Convertir en majuscules"
+  },
+
+  "minuscule": {
+    "prefix": ".srt lower ",
+    "body": ["strtolower($1);"],
+    "description": "Convertir en minuscules"
+  },
+
+  "capitaliser": {
+    "prefix": ".srt capitalize ",
+    "body": ["ucfirst(strtolower($1));"],
+    "description": "Mettre la première lettre en majuscule"
+  },
+
+  "capitaliser_mots": {
+    "prefix": ".srt title ",
+    "body": ["ucwords(strtolower($1));"],
+    "description": "Mettre la première lettre de chaque mot en majuscule"
+  },
+
+  "suppression_espaces": {
+    "prefix": ".srt trim ",
+    "body": ["trim($1);"],
+    "description": "Supprimer les espaces autour de la chaîne"
+  },
+
+  "suppression_espaces_gauche": {
+    "prefix": ".srt ltrim ",
+    "body": ["ltrim($1);"],
+    "description": "Supprimer les espaces à gauche"
+  },
+
+  "suppression_espaces_droite": {
+    "prefix": ".srt rtrim ",
+    "body": ["rtrim($1);"],
+    "description": "Supprimer les espaces à droite"
+  },
+
+  "decoupage": {
+    "prefix": ".srt split ",
+    "body": ["explode(\"$2\", $1);"],
+    "description": "Découper une chaîne en tableau"
+  },
+
+  "concatenation": {
+    "prefix": ".srt join ",
+    "body": ["implode(\"$2\", $1);"],
+    "description": "Concaténer un tableau en chaîne"
+  },
+
+  "extraction": {
+    "prefix": ".srt slice ",
+    "body": ["substr($1, $2, $3);"],
+    "description": "Extraire une partie d'une chaîne"
+  },
+
+  "longueur_chaine": {
+    "prefix": ".srt length ",
+    "body": ["strlen($1);"],
+    "description": "Obtenir la longueur d'une chaîne"
+  },
+
+  "caractere_index": {
+    "prefix": ".srt charAt ",
+    "body": ["$1[$2];"],
+    "description": "Obtenir un caractère à un index donné"
+  },
+
+  "index_sous_chaine": {
+    "prefix": ".srt indexOf ",
+    "body": ["strpos($1, \"$2\");"],
+    "description": "Obtenir l'index d'une sous-chaîne"
+  },
+
+  "dernier_index_sous_chaine": {
+    "prefix": ".srt lastIndexOf ",
+    "body": ["strrpos($1, \"$2\");"],
+    "description": "Obtenir le dernier index d'une sous-chaîne"
+  },
+
+  "repetition": {
+    "prefix": ".srt repeat ",
+    "body": ["str_repeat($1, $2);"],
+    "description": "Répéter une chaîne un certain nombre de fois"
+  },
+
+  "ajout_debut": {
+    "prefix": ".srt padStart ",
+    "body": ["str_pad($1, $2, \"$3\", STR_PAD_LEFT);"],
+    "description": "Ajouter des caractères au début de la chaîne"
+  },
+
+  "ajout_fin": {
+    "prefix": ".srt padEnd ",
+    "body": ["str_pad($1, $2, \"$3\", STR_PAD_RIGHT);"],
+    "description": "Ajouter des caractères à la fin de la chaîne"
+  },
+
+  "verification_chiffres": {
+    "prefix": ".srt isdigit ",
+    "body": ["ctype_digit($1);"],
+    "description": "Vérifier si la chaîne contient uniquement des chiffres"
+  },
+
+  "verification_lettres": {
+    "prefix": ".srt isalpha ",
+    "body": ["ctype_alpha($1);"],
+    "description": "Vérifier si la chaîne contient uniquement des lettres"
+  },
+
+  "verification_alphanumerique": {
+    "prefix": ".srt isalnum ",
+    "body": ["ctype_alnum($1);"],
+    "description": "Vérifier si la chaîne est alphanumérique"
+  },
+
+  "verification_palindrome": {
+    "prefix": ".srt palindrome ",
+    "body": ["$1 === strrev($1);"],
+    "description": "Vérifier si une chaîne est un palindrome"
+  },
+
+  "echappement_regex": {
+    "prefix": ".srt escape ",
+    "body": ["preg_quote($1, '/');"],
+    "description": "Échapper les caractères spéciaux pour une regex"
+  },
+
+  "remplacement_regex": {
+    "prefix": ".srt regex_replace ",
+    "body": ["preg_replace('/$2/', \"$3\", $1);"],
+    "description": "Remplacer une sous-chaîne avec une regex"
+  },
+
+  "separation_regex": {
+    "prefix": ".srt regex_split ",
+    "body": ["preg_split('/$2/', $1);"],
+    "description": "Séparer une chaîne avec une regex"
+  },
+
+  "verification Absence": {
+    "prefix": ".array notin ",
+    "body": ["!in_array(\"$2\", $1);"],
+    "description": "Vérifier si un élément est absent dans un tableau"
+  },
+
+  "ajouter_element": {
+    "prefix": ".array push ",
+    "body": ["array_push($1, \"$2\");"],
+    "description": "Ajouter un élément à la fin du tableau"
+  },
+
+  "supprimer_element": {
+    "prefix": ".array pop ",
+    "body": ["array_pop($1);"],
+    "description": "Supprimer le dernier élément du tableau"
+  },
+
+  "supprimer_premier_element": {
+    "prefix": ".array shift ",
+    "body": ["array_shift($1);"],
+    "description": "Supprimer le premier élément du tableau"
+  },
+
+  "ajouter_premier_element": {
+    "prefix": ".array unshift ",
+    "body": ["array_unshift($1, \"$2\");"],
+    "description": "Ajouter un élément au début du tableau"
+  },
+
+  "trier": {
+    "prefix": ".array sort ",
+    "body": ["sort($1);"],
+    "description": "Trier les éléments d'un tableau"
+  },
+
+  "trier_inverse": {
+    "prefix": ".array reverse ",
+    "body": ["rsort($1);"],
+    "description": "Inverser l'ordre des éléments dans un tableau"
+  },
+
+  "trier_personnalise": {
+    "prefix": ".array custom_sort ",
+    "body": ["usort($1, function($a, $b) { return $a - $b; });"],
+    "description": "Trier un tableau de manière personnalisée"
+  },
+
+  "chercher_element": {
+    "prefix": ".array find ",
+    "body": ["array_search(\"$2\", $1);"],
+    "description": "Trouver un élément dans un tableau"
+  },
+
+  "chercher_index": {
+    "prefix": ".array indexOf ",
+    "body": ["array_search(\"$2\", $1);"],
+    "description": "Obtenir l'index d'un élément dans un tableau"
+  },
+
+  "filtrer": {
+    "prefix": ".array filter ",
+    "body": ["array_filter($1, function($e) { return $e === \"$2\"; });"],
+    "description": "Filtrer les éléments d'un tableau selon une condition"
+  },
+
+  "mapper": {
+    "prefix": ".array map ",
+    "body": ["array_map(function($e) { return $e * 2; }, $1);"],
+    "description": "Appliquer une fonction à chaque élément d'un tableau"
+  },
+
+  "reduire": {
+    "prefix": ".array reduce ",
+    "body": ["array_reduce($1, function($acc, $e) { return $acc + $e; }, 0);"],
+    "description": "Réduire les éléments d'un tableau à une seule valeur"
+  },
+
+  "verifier_vide": {
+    "prefix": ".array isEmpty ",
+    "body": ["empty($1);"],
+    "description": "Vérifier si un tableau est vide"
+  },
+
+  "concatener": {
+    "prefix": ".array concat ",
+    "body": ["array_merge($1, $2);"],
+    "description": "Concaténer deux tableaux"
+  },
+
+  "supprimer_element_index": {
+    "prefix": ".array splice ",
+    "body": ["unset($1[$2]); $1 = array_values($1);"],
+    "description": "Supprimer un élément d'un tableau à un index donné"
+  },
+
+  "obtenir_sous_tableau": {
+    "prefix": ".array slice ",
+    "body": ["array_slice($1, $2, $3);"],
+    "description": "Extraire une partie d'un tableau"
+  },
+
+  "longueur_tableau": {
+    "prefix": ".array length ",
+    "body": ["count($1);"],
+    "description": "Obtenir la longueur d'un tableau"
+  },
+
+  "remplacer_element": {
+    "prefix": ".array replace ",
+    "body": ["$1[$2] = \"$3\";"],
+    "description": "Remplacer un élément dans un tableau par un autre"
+  },
+
+  "racine_carre": {
+    "prefix": ".math sqrt ",
+    "body": ["sqrt($1);"],
+    "description": "Calculer la racine carrée d'un nombre"
+  },
+  "addition": {
+    "prefix": ".math add ",
+    "body": ["$1 + $2;"],
+    "description": "Additionner deux nombres"
+  },
+  "soustraction": {
+    "prefix": ".math subtract ",
+    "body": ["$1 - $2;"],
+    "description": "Soustraire deux nombres"
+  },
+  "multiplication": {
+    "prefix": ".math multiply ",
+    "body": ["$1 * $2;"],
+    "description": "Multiplier deux nombres"
+  },
+  "division": {
+    "prefix": ".math divide ",
+    "body": ["$1 / $2;"],
+    "description": "Diviser deux nombres"
+  },
+  "puissance": {
+    "prefix": ".math power ",
+    "body": ["pow($1, $2);"],
+    "description": "Élever un nombre à une puissance"
+  },
+  "valeur_absolue": {
+    "prefix": ".math abs ",
+    "body": ["abs($1);"],
+    "description": "Calculer la valeur absolue d'un nombre"
+  },
+  "arrondi": {
+    "prefix": ".math round ",
+    "body": ["round($1, $2);"],
+    "description": "Arrondir un nombre à un certain nombre de décimales"
+  },
+  "arrondi_inférieur": {
+    "prefix": ".math floor ",
+    "body": ["floor($1);"],
+    "description": "Arrondir un nombre à l'entier inférieur le plus proche"
+  },
+  "arrondi_supérieur": {
+    "prefix": ".math ceil ",
+    "body": ["ceil($1);"],
+    "description": "Arrondir un nombre à l'entier supérieur le plus proche"
+  },
+  "maximum": {
+    "prefix": ".math max ",
+    "body": ["max($1, $2);"],
+    "description": "Trouver la valeur maximale parmi plusieurs nombres"
+  },
+  "minimum": {
+    "prefix": ".math min ",
+    "body": ["min($1, $2);"],
+    "description": "Trouver la valeur minimale parmi plusieurs nombres"
+  },
+  "somme": {
+    "prefix": ".math sum ",
+    "body": ["array_sum($1);"],
+    "description": "Calculer la somme d'une liste de nombres"
+  },
+  "moyenne": {
+    "prefix": ".math average ",
+    "body": ["array_sum($1) / count($1);"],
+    "description": "Calculer la moyenne d'une liste de nombres"
+  },
+  "modulo": {
+    "prefix": ".math mod ",
+    "body": ["$1 % $2;"],
+    "description": "Calculer le reste de la division entre deux nombres"
+  },
+  "pi": {
+    "prefix": ".math pi ",
+    "body": ["pi();"],
+    "description": "Obtenir la valeur de Pi"
+  },
+  "sinus": {
+    "prefix": ".math sin ",
+    "body": ["sin($1);"],
+    "description": "Calculer le sinus d'un angle (en radians)"
+  },
+  "cosinus": {
+    "prefix": ".math cos ",
+    "body": ["cos($1);"],
+    "description": "Calculer le cosinus d'un angle (en radians)"
+  },
+  "tangente": {
+    "prefix": ".math tan ",
+    "body": ["tan($1);"],
+    "description": "Calculer la tangente d'un angle (en radians)"
+  },
+  "radians": {
+    "prefix": ".math radians ",
+    "body": ["deg2rad($1);"],
+    "description": "Convertir un angle en degrés en radians"
+  },
+  "degres": {
+    "prefix": ".math degrees ",
+    "body": ["rad2deg($1);"],
+    "description": "Convertir un angle en radians en degrés"
+  },
+  "logarithme": {
+    "prefix": ".math log ",
+    "body": ["log($1, $2);"],
+    "description": "Calculer le logarithme d'un nombre"
+  },
+  "fetch_get": {
+    "prefix": ".fetch get ",
+    "body": [
+      "file_get_contents('$1');",
+      "  // Traitement de la réponse ici",
+      "  // Exemple : json_decode($response);",
+      "  // Gérer les erreurs ici"
+    ],
+    "description": "Effectuer une requête GET avec PHP"
+  },
+
+  "fetch_post": {
+    "prefix": ".fetch post ",
+    "body": [
+      "$data = json_encode($2);",
+      "$options = [",
+      "  'http' => [",
+      "    'method' => 'POST',",
+      "    'header' => 'Content-Type: application/json',",
+      "    'content' => $data",
+      "  ]",
+      "];",
+      "$context = stream_context_create($options);",
+      "$response = file_get_contents('$1', false, $context);",
+      "  // Traitement de la réponse ici",
+      "  // Exemple : json_decode($response);",
+      "  // Gérer les erreurs ici"
+    ],
+    "description": "Effectuer une requête POST avec PHP"
+  },
+
+  "fetch_put": {
+    "prefix": ".fetch put ",
+    "body": [
+      "$data = json_encode($2);",
+      "$options = [",
+      "  'http' => [",
+      "    'method' => 'PUT',",
+      "    'header' => 'Content-Type: application/json',",
+      "    'content' => $data",
+      "  ]",
+      "];",
+      "$context = stream_context_create($options);",
+      "$response = file_get_contents('$1', false, $context);",
+      "  // Traitement de la réponse ici",
+      "  // Exemple : json_decode($response);",
+      "  // Gérer les erreurs ici"
+    ],
+    "description": "Effectuer une requête PUT avec PHP"
+  },
+
+  "fetch_delete": {
+    "prefix": ".fetch delete ",
+    "body": [
+      "$options = [",
+      "  'http' => [",
+      "    'method' => 'DELETE'",
+      "  ]",
+      "];",
+      "$context = stream_context_create($options);",
+      "$response = file_get_contents('$1', false, $context);",
+      "  // Traitement de la réponse ici",
+      "  // Exemple : json_decode($response);",
+      "  // Gérer les erreurs ici"
+    ],
+    "description": "Effectuer une requête DELETE avec PHP"
+  },
+
+  "axios_get": {
+    "prefix": ".axios get ",
+    "body": [
+      "$ch = curl_init('$1');",
+      "curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);",
+      "$response = curl_exec($ch);",
+      "curl_close($ch);",
+      "  // Traitement de la réponse ici",
+      "  // Exemple : json_decode($response);",
+      "  // Gérer les erreurs ici"
+    ],
+    "description": "Effectuer une requête GET avec cURL en PHP"
+  },
+
+  "axios_post": {
+    "prefix": ".axios post ",
+    "body": [
+      "$ch = curl_init('$1');",
+      "$data = json_encode($2);",
+      "curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);",
+      "curl_setopt($ch, CURLOPT_POST, true);",
+      "curl_setopt($ch, CURLOPT_POSTFIELDS, $data);",
+      "curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);",
+      "$response = curl_exec($ch);",
+      "curl_close($ch);",
+      "  // Traitement de la réponse ici",
+      "  // Exemple : json_decode($response);",
+      "  // Gérer les erreurs ici"
+    ],
+    "description": "Effectuer une requête POST avec cURL en PHP"
+  },
+
+  "axios_put": {
+    "prefix": ".axios put ",
+    "body": [
+      "$ch = curl_init('$1');",
+      "$data = json_encode($2);",
+      "curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);",
+      "curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');",
+      "curl_setopt($ch, CURLOPT_POSTFIELDS, $data);",
+      "curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);",
+      "$response = curl_exec($ch);",
+      "curl_close($ch);",
+      "  // Traitement de la réponse ici",
+      "  // Exemple : json_decode($response);",
+      "  // Gérer les erreurs ici"
+    ],
+    "description": "Effectuer une requête PUT avec cURL en PHP"
+  },
+
+  "axios_delete": {
+    "prefix": ".axios delete ",
+    "body": [
+      "$ch = curl_init('$1');",
+      "curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);",
+      "curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'DELETE');",
+      "$response = curl_exec($ch);",
+      "curl_close($ch);",
+      "  // Traitement de la réponse ici",
+      "  // Exemple : json_decode($response);",
+      "  // Gérer les erreurs ici"
+    ],
+    "description": "Effectuer une requête DELETE avec cURL en PHP"
+  },
+
+  "json_parse": {
+    "prefix": ".json parse ",
+    "body": ["json_decode($1);"],
+    "description": "Convertir une chaîne JSON en objet en PHP"
+  },
+
+  "json_stringify": {
+    "prefix": ".json stringify ",
+    "body": ["json_encode($1, JSON_PRETTY_PRINT);"],
+    "description": "Convertir un objet en chaîne JSON en PHP"
+  },
+
+  "json_stringify_compact": {
+    "prefix": ".json stringifyCompact ",
+    "body": ["json_encode($1);"],
+    "description": "Convertir un objet en chaîne JSON compacte en PHP"
+  },
+
+  "json_access_property": {
+    "prefix": ".json access ",
+    "body": ["$1->$2;"],
+    "description": "Accéder à une propriété d'un objet JSON en PHP"
+  },
+
+  "json_set_property": {
+    "prefix": ".json set ",
+    "body": ["$1->$2 = $3;"],
+    "description": "Définir une propriété d'un objet JSON en PHP"
+  },
+
+  "json_delete_property": {
+    "prefix": ".json delete ",
+    "body": ["unset($1->$2);"],
+    "description": "Supprimer une propriété d'un objet JSON en PHP"
+  },
+
+  "mysql_connect": {
+    "prefix": ".mysql connect ",
+    "body": [
+      "$connection = new mysqli('$1', '$2', '$3', '$4');",
+      "if ($connection->connect_error) {",
+      "  die('Connection failed: ' . $connection->connect_error);",
+      "}",
+      "echo 'Connected successfully';"
+    ],
+    "description": "Se connecter à une base de données MySQL"
+  },
+
+  "mysql_create_database": {
+    "prefix": ".mysql createDB ",
+    "body": [
+      "$sql = 'CREATE DATABASE $4';",
+      "if ($connection->query($sql) === TRUE) {",
+      "  echo 'Database created successfully';",
+      "} else {",
+      "  echo 'Error creating database: ' . $connection->error;",
+      "}"
+    ],
+    "description": "Créer une base de données MySQL"
+  },
+
+  "mysql_create_table": {
+    "prefix": ".mysql createTable ",
+    "body": [
+      "$sql = 'CREATE TABLE $5 ($6)';",
+      "if ($connection->query($sql) === TRUE) {",
+      "  echo 'Table created successfully';",
+      "} else {",
+      "  echo 'Error creating table: ' . $connection->error;",
+      "}"
+    ],
+    "description": "Créer une table dans une base de données MySQL"
+  },
+
+  "mysql_insert_into": {
+    "prefix": ".mysql insert ",
+    "body": [
+      "$sql = 'INSERT INTO $5 ($6) VALUES ($7)';",
+      "if ($connection->query($sql) === TRUE) {",
+      "  echo 'Record inserted successfully';",
+      "} else {",
+      "  echo 'Error inserting record: ' . $connection->error;",
+      "}"
+    ],
+    "description": "Insérer des données dans une table MySQL"
+  },
+
+  "mysql_select_from": {
+    "prefix": ".mysql select ",
+    "body": [
+      "$sql = 'SELECT $5 FROM $6';",
+      "$result = $connection->query($sql);",
+      "if ($result->num_rows > 0) {",
+      "  while($row = $result->fetch_assoc()) {",
+      "    print_r($row);",
+      "  }",
+      "} else {",
+      "  echo 'No results found';",
+      "}"
+    ],
+    "description": "Sélectionner des données d'une table MySQL"
+  },
+
+  "mysql_where": {
+    "prefix": ".mysql where ",
+    "body": [
+      "$sql = 'SELECT $5 FROM $6 WHERE $7';",
+      "$result = $connection->query($sql);",
+      "if ($result->num_rows > 0) {",
+      "  while($row = $result->fetch_assoc()) {",
+      "    print_r($row);",
+      "  }",
+      "} else {",
+      "  echo 'No results found';",
+      "}"
+    ],
+    "description": "Sélectionner des données avec une condition WHERE dans MySQL"
+  },
+
+  "mysql_order_by": {
+    "prefix": ".mysql orderBy ",
+    "body": [
+      "$sql = 'SELECT $5 FROM $6 ORDER BY $7';",
+      "$result = $connection->query($sql);",
+      "if ($result->num_rows > 0) {",
+      "  while($row = $result->fetch_assoc()) {",
+      "    print_r($row);",
+      "  }",
+      "} else {",
+      "  echo 'No results found';",
+      "}"
+    ],
+    "description": "Sélectionner des données avec un ORDER BY dans MySQL"
+  },
+
+  "mysql_delete": {
+    "prefix": ".mysql delete ",
+    "body": [
+      "$sql = 'DELETE FROM $5 WHERE $6';",
+      "if ($connection->query($sql) === TRUE) {",
+      "  echo 'Record deleted successfully';",
+      "} else {",
+      "  echo 'Error deleting record: ' . $connection->error;",
+      "}"
+    ],
+    "description": "Supprimer des données d'une table MySQL"
+  },
+
+  "mysql_drop_table": {
+    "prefix": ".mysql dropTable ",
+    "body": [
+      "$sql = 'DROP TABLE $5';",
+      "if ($connection->query($sql) === TRUE) {",
+      "  echo 'Table dropped successfully';",
+      "} else {",
+      "  echo 'Error dropping table: ' . $connection->error;",
+      "}"
+    ],
+    "description": "Supprimer une table MySQL"
+  },
+
+  "mysql_update": {
+    "prefix": ".mysql update ",
+    "body": [
+      "$sql = 'UPDATE $5 SET $6 WHERE $7';",
+      "if ($connection->query($sql) === TRUE) {",
+      "  echo 'Record updated successfully';",
+      "} else {",
+      "  echo 'Error updating record: ' . $connection->error;",
+      "}"
+    ],
+    "description": "Mettre à jour des données dans une table MySQL"
+  },
+
+  "mysql_limit": {
+    "prefix": ".mysql limit ",
+    "body": [
+      "$sql = 'SELECT $5 FROM $6 LIMIT $7';",
+      "$result = $connection->query($sql);",
+      "if ($result->num_rows > 0) {",
+      "  while($row = $result->fetch_assoc()) {",
+      "    print_r($row);",
+      "  }",
+      "} else {",
+      "  echo 'No results found';",
+      "}"
+    ],
+    "description": "Sélectionner des données avec une limite dans MySQL"
+  },
+
+  "mysql_join": {
+    "prefix": ".mysql join ",
+    "body": [
+      "$sql = 'SELECT $5 FROM $6 JOIN $7 ON $8';",
+      "$result = $connection->query($sql);",
+      "if ($result->num_rows > 0) {",
+      "  while($row = $result->fetch_assoc()) {",
+      "    print_r($row);",
+      "  }",
+      "} else {",
+      "  echo 'No results found';",
+      "}"
+    ],
+    "description": "Joindre des tables dans MySQL"
+  }
+}

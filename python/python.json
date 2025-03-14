@@ -1,0 +1,434 @@
+{
+  "verification_presence": {
+    "prefix": ".srt in ",
+    "body": ["\"$1\" in s"],
+    "description": "Vérifier si une sous-chaîne est présente"
+  },
+
+  "verification_absence": {
+    "prefix": ".srt notin ",
+    "body": ["\"$1\" not in s"],
+    "description": "Vérifier si une sous-chaîne est absente"
+  },
+
+  "remplacement_mot": {
+    "prefix": ".srt replace ",
+    "body": ["s = s.replace(\"$1\", \"$2\");", "print(s);"],
+    "description": "Remplacement d'un mot dans une chaîne"
+  },
+
+  "majuscule": {
+    "prefix": ".srt upper ",
+    "body": ["s.upper();"],
+    "description": "Convertir en majuscules"
+  },
+
+  "minuscule": {
+    "prefix": ".srt lower ",
+    "body": ["s.lower();"],
+    "description": "Convertir en minuscules"
+  },
+
+  "premiere_lettre_majuscule": {
+    "prefix": ".srt capitalize ",
+    "body": ["s.capitalize();"],
+    "description": "Mettre la première lettre en majuscule"
+  },
+
+  "titre": {
+    "prefix": ".srt title ",
+    "body": ["s.title();"],
+    "description": "Mettre la première lettre de chaque mot en majuscule"
+  },
+
+  "suppression_espaces": {
+    "prefix": ".srt strip ",
+    "body": ["s.strip();"],
+    "description": "Supprimer les espaces autour d'une chaîne"
+  },
+
+  "suppression_espaces_gauche": {
+    "prefix": ".srt lstrip ",
+    "body": ["s.lstrip();"],
+    "description": "Supprimer les espaces à gauche"
+  },
+
+  "suppression_espaces_droite": {
+    "prefix": ".srt rstrip ",
+    "body": ["s.rstrip();"],
+    "description": "Supprimer les espaces à droite"
+  },
+
+  "separation_chaine": {
+    "prefix": ".srt split ",
+    "body": ["s.split(\"$1\");"],
+    "description": "Séparer une chaîne en liste"
+  },
+
+  "jointure_chaines": {
+    "prefix": ".srt join ",
+    "body": ["\"$1\".join($2);"],
+    "description": "Joindre une liste en une chaîne"
+  },
+
+  "trouver_sous_chaine": {
+    "prefix": ".srt find ",
+    "body": ["s.find(\"$1\");"],
+    "description": "Trouver une sous-chaîne"
+  },
+
+  "compter_occurrences": {
+    "prefix": ".srt count ",
+    "body": ["s.count(\"$1\");"],
+    "description": "Compter les occurrences d'une sous-chaîne"
+  },
+
+  "verifier_debut": {
+    "prefix": ".srt startswith ",
+    "body": ["s.startswith(\"$1\");"],
+    "description": "Vérifier si une chaîne commence par un mot"
+  },
+
+  "verifier_fin": {
+    "prefix": ".srt endswith ",
+    "body": ["s.endswith(\"$1\");"],
+    "description": "Vérifier si une chaîne se termine par un mot"
+  },
+
+  "formatage_chaines": {
+    "prefix": ".srt format ",
+    "body": ["f\"{s} {variable}\""],
+    "description": "Formatage de chaîne"
+  },
+
+  "inversion_chaine": {
+    "prefix": ".srt reverse ",
+    "body": ["s[::-1];"],
+    "description": "Inverser une chaîne"
+  },
+
+  "verifier_chiffre": {
+    "prefix": ".srt isdigit ",
+    "body": ["s.isdigit();"],
+    "description": "Vérifier si la chaîne ne contient que des chiffres"
+  },
+
+  "verifier_alpha": {
+    "prefix": ".srt isalpha ",
+    "body": ["s.isalpha();"],
+    "description": "Vérifier si la chaîne ne contient que des lettres"
+  },
+
+  "verifier_alphanum": {
+    "prefix": ".srt isalnum ",
+    "body": ["s.isalnum();"],
+    "description": "Vérifier si la chaîne contient des lettres et/ou chiffres"
+  },
+
+  "verifier_espace": {
+    "prefix": ".srt isspace ",
+    "body": ["s.isspace();"],
+    "description": "Vérifier si la chaîne ne contient que des espaces"
+  },
+
+  "alignement_centre": {
+    "prefix": ".srt center ",
+    "body": ["s.center($1, \"$2\");"],
+    "description": "Aligner le texte au centre"
+  },
+
+  "alignement_gauche": {
+    "prefix": ".srt ljust ",
+    "body": ["s.ljust($1, \"$2\");"],
+    "description": "Aligner le texte à gauche"
+  },
+
+  "alignement_droite": {
+    "prefix": ".srt rjust ",
+    "body": ["s.rjust($1, \"$2\");"],
+    "description": "Aligner le texte à droite"
+  },
+
+  "suppression_caracteres_specifiques": {
+    "prefix": ".srt trim ",
+    "body": ["s.strip(\"$1\");"],
+    "description": "Supprimer un caractère spécifique d'une chaîne"
+  },
+
+  "conversion_liste_chaine": {
+    "prefix": ".srt list_to_str ",
+    "body": ["\"\".join($1);"],
+    "description": "Convertir une liste en chaîne"
+  },
+
+  "conversion_ascii": {
+    "prefix": ".srt ord ",
+    "body": ["ord(\"$1\");"],
+    "description": "Obtenir le code ASCII d'un caractère"
+  },
+
+  "conversion_unicode": {
+    "prefix": ".srt chr ",
+    "body": ["chr($1);"],
+    "description": "Convertir un code ASCII en caractère"
+  },
+
+  "ajout_zeroes": {
+    "prefix": ".srt zfill ",
+    "body": ["s.zfill($1);"],
+    "description": "Ajouter des zéros devant une chaîne"
+  },
+
+  "expression_reguliere": {
+    "prefix": ".srt regex ",
+    "body": [
+      "import re",
+      "match = re.search(r\"$1\", s)",
+      "if match:",
+      "    print(match.group())"
+    ],
+    "description": "Recherche avec une expression régulière"
+  },
+
+  "remplacement_regex": {
+    "prefix": ".srt regex_replace ",
+    "body": ["s = re.sub(r\"$1\", \"$2\", s);"],
+    "description": "Remplacement avec une regex"
+  },
+
+  "fractionnement_regex": {
+    "prefix": ".srt regex_split ",
+    "body": ["re.split(r\"$1\", s);"],
+    "description": "Fractionner une chaîne avec une regex"
+  },
+
+  "verifier_palindrome": {
+    "prefix": ".srt palindrome ",
+    "body": ["s == s[::-1];"],
+    "description": "Vérifier si une chaîne est un palindrome"
+  },
+
+  "echapper_caracteres": {
+    "prefix": ".srt escape ",
+    "body": ["s = s.replace(\"\\\"\", \"\\\\\\\"\")"],
+    "description": "Échapper des caractères spéciaux"
+  },
+
+  
+  "Ajout d'un élément au tableau": {
+    "prefix": ".array append",
+    "body": ["array.append('$1')"],
+    "description": "Ajoute un élément à la fin de la liste"
+  },
+  "Insertion dans un tableau": {
+    "prefix": ".array insert",
+    "body": ["array.insert($1, '$2')"],
+    "description": "Insère un élément à une position spécifique de la liste"
+  },
+  "Suppression d'un élément": {
+    "prefix": ".array remove",
+    "body": ["array.remove('$1')"],
+    "description": "Supprime la première occurrence d'un élément de la liste"
+  },
+  "Suppression par index": {
+    "prefix": ".array pop",
+    "body": ["array.pop($1)"],
+    "description": "Supprime et renvoie un élément à une position spécifique"
+  },
+  "Fusion de listes": {
+    "prefix": ".array extend",
+    "body": ["array.extend($1)"],
+    "description": "Ajoute tous les éléments d'un autre tableau à la fin"
+  },
+  "Recherche d'index": {
+    "prefix": ".array index",
+    "body": ["array.index('$1')"],
+    "description": "Trouve l'index de la première occurrence d'un élément"
+  },
+  "Comptage d'éléments": {
+    "prefix": ".array count",
+    "body": ["array.count('$1')"],
+    "description": "Compte le nombre d'occurrences d'un élément dans la liste"
+  },
+  "Tri d'une liste": {
+    "prefix": ".array sort",
+    "body": ["array.sort()"],
+    "description": "Trie la liste en ordre croissant"
+  },
+  "Inversion d'une liste": {
+    "prefix": ".array reverse",
+    "body": ["array.reverse()"],
+    "description": "Inverse l'ordre des éléments dans la liste"
+  },
+  "Longueur d'une liste": {
+    "prefix": ".array len",
+    "body": ["len(array)"],
+    "description": "Renvoie la longueur de la liste"
+  },
+  "Suppression de tous les éléments": {
+    "prefix": ".array clear",
+    "body": ["array.clear()"],
+    "description": "Supprime tous les éléments de la liste"
+  },
+  "Copie d'une liste": {
+    "prefix": ".array copy",
+    "body": ["array.copy()"],
+    "description": "Crée une copie de la liste"
+  },
+  "Valeur minimale": {
+    "prefix": ".array min",
+    "body": ["min(array)"],
+    "description": "Trouve la valeur minimale dans la liste"
+  },
+  "Valeur maximale": {
+    "prefix": ".array max",
+    "body": ["max(array)"],
+    "description": "Trouve la valeur maximale dans la liste"
+  },
+  "Somme des éléments": {
+    "prefix": ".array sum",
+    "body": ["sum(array)"],
+    "description": "Calcule la somme des éléments de la liste"
+  },
+  "Extraction d'une portion": {
+    "prefix": ".array slice",
+    "body": ["array[$1:$2]"],
+    "description": "Extrait une portion de la liste (slicing)"
+  },
+  "Vérification 'tous les éléments'": {
+    "prefix": ".array all",
+    "body": ["all(array)"],
+    "description": "Vérifie si tous les éléments satisfont une condition"
+  },
+  "Vérification 'au moins un élément'": {
+    "prefix": ".array any",
+    "body": ["any(array)"],
+    "description": "Vérifie si au moins un élément satisfait une condition"
+  },
+  "Association de deux listes": {
+    "prefix": ".array zip",
+    "body": ["list(zip(array1, array2))"],
+    "description": "Combine deux listes élément par élément"
+  },
+  "Application d'une fonction": {
+    "prefix": ".array map",
+    "body": ["list(map($1, array))"],
+    "description": "Applique une fonction à chaque élément de la liste"
+  },
+  "Filtrage d'une liste": {
+    "prefix": ".array filter",
+    "body": ["list(filter($1, array))"],
+    "description": "Filtre les éléments de la liste selon une condition"
+  }
+  ,
+    "racine_carre": {
+      "prefix": ".math sqrt ",
+      "body": ["math.sqrt($1)"],
+      "description": "Calculer la racine carrée d'un nombre"
+    },
+    "addition": {
+      "prefix": ".math add ",
+      "body": ["$1 + $2"],
+      "description": "Additionner deux nombres"
+    },
+    "soustraction": {
+      "prefix": ".math subtract ",
+      "body": ["$1 - $2"],
+      "description": "Soustraire deux nombres"
+    },
+    "multiplication": {
+      "prefix": ".math multiply ",
+      "body": ["$1 * $2"],
+      "description": "Multiplier deux nombres"
+    },
+    "division": {
+      "prefix": ".math divide ",
+      "body": ["$1 / $2"],
+      "description": "Diviser deux nombres"
+    },
+    "puissance": {
+      "prefix": ".math power ",
+      "body": ["$1 ** $2"],
+      "description": "Élever un nombre à une puissance"
+    },
+    "valeur_absolue": {
+      "prefix": ".math abs ",
+      "body": ["abs($1)"],
+      "description": "Calculer la valeur absolue d'un nombre"
+    },
+    "arrondi": {
+      "prefix": ".math round ",
+      "body": ["round($1, $2)"],
+      "description": "Arrondir un nombre à un certain nombre de décimales"
+    },
+    "arrondi_inférieur": {
+      "prefix": ".math floor ",
+      "body": ["math.floor($1)"],
+      "description": "Arrondir un nombre à l'entier inférieur le plus proche"
+    },
+    "arrondi_supérieur": {
+      "prefix": ".math ceil ",
+      "body": ["math.ceil($1)"],
+      "description": "Arrondir un nombre à l'entier supérieur le plus proche"
+    },
+    "maximum": {
+      "prefix": ".math max ",
+      "body": ["max($1, $2)"],
+      "description": "Trouver la valeur maximale parmi plusieurs nombres"
+    },
+    "minimum": {
+      "prefix": ".math min ",
+      "body": ["min($1, $2)"],
+      "description": "Trouver la valeur minimale parmi plusieurs nombres"
+    },
+    "somme": {
+      "prefix": ".math sum ",
+      "body": ["sum($1)"],
+      "description": "Calculer la somme d'une liste de nombres"
+    },
+    "moyenne": {
+      "prefix": ".math average ",
+      "body": ["sum($1) / len($1)"],
+      "description": "Calculer la moyenne d'une liste de nombres"
+    },
+    "modulo": {
+      "prefix": ".math mod ",
+      "body": ["$1 % $2"],
+      "description": "Calculer le reste de la division entre deux nombres"
+    },
+    "pi": {
+      "prefix": ".math pi ",
+      "body": ["math.pi"],
+      "description": "Obtenir la valeur de Pi"
+    },
+    "sinus": {
+      "prefix": ".math sin ",
+      "body": ["math.sin($1)"],
+      "description": "Calculer le sinus d'un angle (en radians)"
+    },
+    "cosinus": {
+      "prefix": ".math cos ",
+      "body": ["math.cos($1)"],
+      "description": "Calculer le cosinus d'un angle (en radians)"
+    },
+    "tangente": {
+      "prefix": ".math tan ",
+      "body": ["math.tan($1)"],
+      "description": "Calculer la tangente d'un angle (en radians)"
+    },
+    "radians": {
+      "prefix": ".math radians ",
+      "body": ["math.radians($1)"],
+      "description": "Convertir un angle en degrés en radians"
+    },
+    "degres": {
+      "prefix": ".math degrees ",
+      "body": ["math.degrees($1)"],
+      "description": "Convertir un angle en radians en degrés"
+    },
+    "logarithme": {
+      "prefix": ".math log ",
+      "body": ["math.log($1, $2)"],
+      "description": "Calculer le logarithme d'un nombre"
+    }
+}

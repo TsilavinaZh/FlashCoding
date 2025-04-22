@@ -1,7 +1,25 @@
+# Prefix Dispo
+- `.math`
+- `.Axios`
+- `.array`
+- `.srt`
+- `.fetch`
+- `.json`
+- `.date`
+- `.Map`
+- `.DOM`
+- `.Mysql`
+- `.scrap`
+- `.jquery`
+- `.express`
+- `.fs`
+- `.os`
+- `.http`
+- `.path`
+- `.class`
+- `.input`
+
 # Manipulation de Tableaux en JavaScript - Snippets
-
-Ce fichier contient des snippets pour effectuer diverses opérations de manipulation de tableaux en JavaScript. Il vous permet de gérer des tableaux avec des actions courantes comme l'ajout, la suppression, le tri, la recherche et bien plus.
-
 ## Liste des Préfixes et Descriptions
 
 | Préfixe               | Description |
@@ -166,7 +184,8 @@ Voici les données formatées dans un tableau :
 | `.dom values`      | Retourner un itérateur avec les valeurs de la liste |
 
 
- 
+ # MySQL
+
 
 | Préfixe | Description |
 |---------|------------|
@@ -182,3 +201,48 @@ Voici les données formatées dans un tableau :
 | `.mysql update` | Mettre à jour des données dans une table MySQL |
 | `.mysql limit` | Sélectionner des données avec une `LIMIT` |
 | `.mysql join` | Joindre des tables dans MySQL |
+
+
+
+
+# Liste des Snippets Puppeteer
+
+| **Prefix**         | **Description** |
+|----------------------|----------------|
+| `.scrap init`       | Initialiser Puppeteer et naviguer vers une URL |
+| `.scrap open`       | Ouvrir le navigateur |
+| `.scrap close`      | Fermer le navigateur |
+| `.scrap getcss`     | Recupere un elements par son selecteur CSS |
+| `.scrap getid`      | Recupere un elements par son ID |
+| `.scrap screenshot` | Capturer une capture d ecran |
+| `.scrap pdf`        | Exporter la page en PDF |
+| `.scrap gettext`    | Extraire du texte d une elements |
+| `.scrap gethtml`    | Recupere le code HTML d une elements |
+| `.scrap getattr`    | Obtenir un attribut d une elements |
+| `.scrap click`      | Cliquer sur un elements |
+| `.scrap type`       | Remplir un champ texte |
+| `.scrap wait`       | Attendre qu'un elements soit present |
+| `.scrap scroll`     | Faire defiler la page |
+| `.scrap links`      | Extraire tous les liens de la page |
+
+
+
+# Snippets jQuery
+
+## Liste des Snippets
+
+| Préfixe           | Description |
+|------------------|-------------|
+| `.jquery select`     | Sélectionner un élément avec jQuery |
+| `.jquery text`       | Modifier le texte d'un élément |
+| `.jquery html`       | Modifier le HTML d'un élément |
+| `.jquery val`        | Modifier la valeur d'un champ |
+| `.jquery addClass`   | Ajouter une classe à un élément |
+| `.jquery removeClass`| Supprimer une classe d'un élément |
+| `.jquery toggleClass`| Basculer une classe sur un élément |
+| `.jquery append`     | Ajouter un élément à la fin d'un autre |
+| `.jquery remove`     | Supprimer un élément du DOM |
+| `.jquery click`      | Gérer un événement de clic |
+| `.jquery hover`      | Gérer un événement de survol |
+| `.jquery ajax`       | Effectuer une requête AJAX |
+| `.jquery load`       | Charger du contenu dans un élément |

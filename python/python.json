@@ -1,715 +1,825 @@
-{"python_print": {
-  "prefix": "print",
-  "body": [
-    "print(\"$1\")"
-  ],
-  "description": "Afficher du texte"
-},
-"python_input": {
-  "prefix": "input",
-  "body": [
-    "$1 = input(\"$2\")"
-  ],
-  "description": "Lire une entrée utilisateur"
-},
-"python_if": {
-  "prefix": "if",
-  "body": [
-    "if $1:",
-    "    $2"
-  ],
-  "description": "Condition if"
-},
-"python_if_else": {
-  "prefix": "if else",
-  "body": [
-    "if $1:",
-    "    $2",
-    "else:",
-    "    $3"
-  ],
-  "description": "Condition if/else"
-},
-"python_elif": {
-  "prefix": "elif",
-  "body": [
-    "if $1:",
-    "    $2",
-    "elif $3:",
-    "    $4",
-    "else:",
-    "    $5"
-  ],
-  "description": "Condition if/elif/else"
-},
-"python_for_loop": {
-  "prefix": "for",
-  "body": [
-    "for $1 in $2:",
-    "    $3"
-  ],
-  "description": "Boucle for"
-},
-"python_while_loop": {
-  "prefix": "while",
-  "body": [
-    "while $1:",
-    "    $2"
-  ],
-  "description": "Boucle while"
-},
-"python_function": {
-  "prefix": "def",
-  "body": [
-    "def $1($2):",
-    "    $3"
-  ],
-  "description": "Définir une fonction"
-},
-"python_class": {
-  "prefix": "class",
-  "body": [
-    "class $1:",
-    "    def __init__(self, $2):",
-    "        $3"
-  ],
-  "description": "Définir une classe"
-},
-"python_list": {
-  "prefix": "list",
-  "body": [
-    "$1 = [$2]"
-  ],
-  "description": "Créer une liste"
-},
-"python_dict": {
-  "prefix": "dict",
-  "body": [
-    "$1 = {\"$2\": $3}"
-  ],
-  "description": "Créer un dictionnaire"
-},
-"python_try_except": {
-  "prefix": "try",
-  "body": [
-    "try:",
-    "    $1",
-    "except $2 as e:",
-    "    print(e)"
-  ],
-  "description": "Bloc try/except"
-},
-"verification_presence": {
-  "prefix": ".srt in ",
-  "body": ["\"$1\" in s"],
-  "description": "Vérifier si une sous-chaîne est présente"
-},
-
-"verification_absence": {
-  "prefix": ".srt notin ",
-  "body": ["\"$1\" not in s"],
-  "description": "Vérifier si une sous-chaîne est absente"
-},
-
-"remplacement_mot": {
-  "prefix": ".srt replace ",
-  "body": ["s = .replace(\"$1\", \"$2\") ", "print(s) "],
-  "description": "Remplacement d'un mot dans une chaîne"
-},
-
-"majuscule": {
-  "prefix": ".srt upper ",
-  "body": [".upper() "],
-  "description": "Convertir en majuscules"
-},
-
-"minuscule": {
-  "prefix": ".srt lower ",
-  "body": [".lower() "],
-  "description": "Convertir en minuscules"
-},
-
-"premiere_lettre_majuscule": {
-  "prefix": ".srt capitalize ",
-  "body": [".capitalize() "],
-  "description": "Mettre la première lettre en majuscule"
-},
-
-"titre": {
-  "prefix": ".srt title ",
-  "body": [".title() "],
-  "description": "Mettre la première lettre de chaque mot en majuscule"
-},
-
-"suppression_espaces": {
-  "prefix": ".srt strip ",
-  "body": [".strip() "],
-  "description": "Supprimer les espaces autour d'une chaîne"
-},
-
-"suppression_espaces_gauche": {
-  "prefix": ".srt lstrip ",
-  "body": [".lstrip() "],
-  "description": "Supprimer les espaces à gauche"
-},
-
-"suppression_espaces_droite": {
-  "prefix": ".srt rstrip ",
-  "body": [".rstrip() "],
-  "description": "Supprimer les espaces à droite"
-},
-
-"separation_chaine": {
-  "prefix": ".srt split ",
-  "body": [".split(\"$1\") "],
-  "description": "Séparer une chaîne en liste"
-},
-
-"jointure_chaines": {
-  "prefix": ".srt join ",
-  "body": ["\"$1\".join($2) "],
-  "description": "Joindre une liste en une chaîne"
-},
-
-"trouver_sous_chaine": {
-  "prefix": ".srt find ",
-  "body": [".find(\"$1\") "],
-  "description": "Trouver une sous-chaîne"
-},
-
-"compter_occurrences": {
-  "prefix": ".srt count ",
-  "body": [".count(\"$1\") "],
-  "description": "Compter les occurrences d'une sous-chaîne"
-},
-
-"verifier_debut": {
-  "prefix": ".srt startswith ",
-  "body": [".startswith(\"$1\") "],
-  "description": "Vérifier si une chaîne commence par un mot"
-},
-
-"verifier_fin": {
-  "prefix": ".srt endswith ",
-  "body": [".endswith(\"$1\") "],
-  "description": "Vérifier si une chaîne se termine par un mot"
-},
-
-"formatage_chaines": {
-  "prefix": ".srt format ",
-  "body": ["f\"{s} {variable}\""],
-  "description": "Formatage de chaîne"
-},
-
-"inversion_chaine": {
-  "prefix": ".srt reverse ",
-  "body": ["s[::-1] "],
-  "description": "Inverser une chaîne"
-},
-
-"verifier_chiffre": {
-  "prefix": ".srt isdigit ",
-  "body": [".isdigit() "],
-  "description": "Vérifier si la chaîne ne contient que des chiffres"
-},
-
-"verifier_alpha": {
-  "prefix": ".srt isalpha ",
-  "body": [".isalpha() "],
-  "description": "Vérifier si la chaîne ne contient que des lettres"
-},
-
-"verifier_alphanum": {
-  "prefix": ".srt isalnum ",
-  "body": [".isalnum() "],
-  "description": "Vérifier si la chaîne contient des lettres et/ou chiffres"
-},
-
-"verifier_espace": {
-  "prefix": ".srt isspace ",
-  "body": [".isspace() "],
-  "description": "Vérifier si la chaîne ne contient que des espaces"
-},
-
-"alignement_centre": {
-  "prefix": ".srt center ",
-  "body": [".center($1, \"$2\") "],
-  "description": "Aligner le texte au centre"
-},
-
-"alignement_gauche": {
-  "prefix": ".srt ljust ",
-  "body": [".ljust($1, \"$2\") "],
-  "description": "Aligner le texte à gauche"
-},
-
-"alignement_droite": {
-  "prefix": ".srt rjust ",
-  "body": [".rjust($1, \"$2\") "],
-  "description": "Aligner le texte à droite"
-},
-
-"suppression_caracteres_specifiques": {
-  "prefix": ".srt trim ",
-  "body": [".strip(\"$1\") "],
-  "description": "Supprimer un caractère spécifique d'une chaîne"
-},
-
-"conversion_liste_chaine": {
-  "prefix": ".srt list_to_str ",
-  "body": ["\"\".join($1) "],
-  "description": "Convertir une liste en chaîne"
-},
-
-"conversion_ascii": {
-  "prefix": ".srt ord ",
-  "body": ["ord(\"$1\") "],
-  "description": "Obtenir le code ASCII d'un caractère"
-},
-
-"conversion_unicode": {
-  "prefix": ".srt chr ",
-  "body": ["chr($1) "],
-  "description": "Convertir un code ASCII en caractère"
-},
-
-"ajout_zeroes": {
-  "prefix": ".srt zfill ",
-  "body": [".zfill($1) "],
-  "description": "Ajouter des zéros devant une chaîne"
-},
-
-"expression_reguliere": {
-  "prefix": ".srt regex ",
-  "body": [
-    "import re",
-    "match = re.search(r\"$1\", s)",
-    "if match:",
-    "    print(match.group())"
-  ],
-  "description": "Recherche avec une expression régulière"
-},
-
-"remplacement_regex": {
-  "prefix": ".srt regex_replace ",
-  "body": ["s = re.sub(r\"$1\", \"$2\", s) "],
-  "description": "Remplacement avec une regex"
-},
-
-"fractionnement_regex": {
-  "prefix": ".srt regex_split ",
-  "body": ["re.split(r\"$1\", s) "],
-  "description": "Fractionner une chaîne avec une regex"
-},
-
-"verifier_palindrome": {
-  "prefix": ".srt palindrome ",
-  "body": ["s == s[::-1] "],
-  "description": "Vérifier si une chaîne est un palindrome"
-},
-
-"echapper_caracteres": {
-  "prefix": ".srt escape ",
-  "body": ["s = .replace(\"\\\"\", \"\\\\\\\"\")"],
-  "description": "Échapper des caractères spéciaux"
-},
-
-
-"Ajout d'un élément au tableau": {
-  "prefix": ".array append",
-  "body": [".append('$1')"],
-  "description": "Ajoute un élément à la fin de la liste"
-},
-"Insertion dans un tableau": {
-  "prefix": ".array insert",
-  "body": [".insert($1, '$2')"],
-  "description": "Insère un élément à une position spécifique de la liste"
-},
-"Suppression d'un élément": {
-  "prefix": ".array remove",
-  "body": [".remove('$1')"],
-  "description": "Supprime la première occurrence d'un élément de la liste"
-},
-"Suppression par index": {
-  "prefix": ".array pop",
-  "body": [".pop($1)"],
-  "description": "Supprime et renvoie un élément à une position spécifique"
-},
-"Fusion de listes": {
-  "prefix": ".array extend",
-  "body": [".extend($1)"],
-  "description": "Ajoute tous les éléments d'un autre tableau à la fin"
-},
-"Recherche d'index": {
-  "prefix": ".array index",
-  "body": [".index('$1')"],
-  "description": "Trouve l'index de la première occurrence d'un élément"
-},
-"Comptage d'éléments": {
-  "prefix": ".array count",
-  "body": [".count('$1')"],
-  "description": "Compte le nombre d'occurrences d'un élément dans la liste"
-},
-"Tri d'une liste": {
-  "prefix": ".array sort",
-  "body": [".sort()"],
-  "description": "Trie la liste en ordre croissant"
-},
-"Inversion d'une liste": {
-  "prefix": ".array reverse",
-  "body": [".reverse()"],
-  "description": "Inverse l'ordre des éléments dans la liste"
-},
-"Longueur d'une liste": {
-  "prefix": ".array len",
-  "body": ["len()"],
-  "description": "Renvoie la longueur de la liste"
-},
-"Suppression de tous les éléments": {
-  "prefix": ".array clear",
-  "body": [".clear()"],
-  "description": "Supprime tous les éléments de la liste"
-},
-"Copie d'une liste": {
-  "prefix": ".array copy",
-  "body": [".copy()"],
-  "description": "Crée une copie de la liste"
-},
-"Valeur minimale": {
-  "prefix": ".array min",
-  "body": ["min()"],
-  "description": "Trouve la valeur minimale dans la liste"
-},
-"Valeur maximale": {
-  "prefix": ".array max",
-  "body": ["max()"],
-  "description": "Trouve la valeur maximale dans la liste"
-},
-"Somme des éléments": {
-  "prefix": ".array sum",
-  "body": ["sum()"],
-  "description": "Calcule la somme des éléments de la liste"
-},
-"Extraction d'une portion": {
-  "prefix": ".array slice",
-  "body": ["array[$1:$2]"],
-  "description": "Extrait une portion de la liste (slicing)"
-},
-"Vérification 'tous les éléments'": {
-  "prefix": ".array all",
-  "body": ["all()"],
-  "description": "Vérifie si tous les éléments satisfont une condition"
-},
-"Vérification 'au moins un élément'": {
-  "prefix": ".array any",
-  "body": ["any()"],
-  "description": "Vérifie si au moins un élément satisfait une condition"
-},
-"Association de deux listes": {
-  "prefix": ".array zip",
-  "body": ["list(zip($1, $2))"],
-  "description": "Combine deux listes élément par élément"
-},
-"Application d'une fonction": {
-  "prefix": ".array map",
-  "body": ["list(map($1,$2 ))"],
-  "description": "Applique une fonction à chaque élément de la liste"
-},
-"Filtrage d'une liste": {
-  "prefix": ".array filter",
-  "body": ["list(filter($1, $2))"],
-  "description": "Filtre les éléments de la liste selon une condition"
-}
-
-,
+{
+  "python_print": {
+    "prefix": "print",
+    "body": [
+      "print(\"$1\")"
+    ],
+    "description": "Afficher du texte"
+  },
+  "python_input": {
+    "prefix": "input",
+    "body": [
+      "$1 = input(\"$2\")"
+    ],
+    "description": "Lire une entrée utilisateur"
+  },
+  "python_if": {
+    "prefix": "if",
+    "body": [
+      "if $1:",
+      "    $2"
+    ],
+    "description": "Condition if"
+  },
+  "python_if_else": {
+    "prefix": "if else",
+    "body": [
+      "if $1:",
+      "    $2",
+      "else:",
+      "    $3"
+    ],
+    "description": "Condition if/else"
+  },
+  "python_elif": {
+    "prefix": "elif",
+    "body": [
+      "if $1:",
+      "    $2",
+      "elif $3:",
+      "    $4",
+      "else:",
+      "    $5"
+    ],
+    "description": "Condition if/elif/else"
+  },
+  "python_for_loop": {
+    "prefix": "for",
+    "body": [
+      "for $1 in $2:",
+      "    $3"
+    ],
+    "description": "Boucle for"
+  },
+  "python_while_loop": {
+    "prefix": "while",
+    "body": [
+      "while $1:",
+      "    $2"
+    ],
+    "description": "Boucle while"
+  },
+  "python_function": {
+    "prefix": "def",
+    "body": [
+      "def $1($2):",
+      "    $3"
+    ],
+    "description": "Définir une fonction"
+  },
+  "python_class": {
+    "prefix": "class",
+    "body": [
+      "class $1:",
+      "    def __init__(self, $2):",
+      "        $3"
+    ],
+    "description": "Définir une classe"
+  },
+  "python_list": {
+    "prefix": "list",
+    "body": [
+      "$1 = [$2]"
+    ],
+    "description": "Créer une liste"
+  },
+  "python_dict": {
+    "prefix": "dict",
+    "body": [
+      "$1 = {\"$2\": $3}"
+    ],
+    "description": "Créer un dictionnaire"
+  },
+  "python_try_except": {
+    "prefix": "try",
+    "body": [
+      "try:",
+      "    $1",
+      "except $2 as e:",
+      "    print(e)"
+    ],
+    "description": "Bloc try/except"
+  },
+  "verification_presence": {
+    "prefix": ".srt in ",
+    "body": [
+      "\"$1\" in s"
+    ],
+    "description": "Vérifier si une sous-chaîne est présente"
+  },
+  "verification_absence": {
+    "prefix": ".srt notin ",
+    "body": [
+      "\"$1\" not in s"
+    ],
+    "description": "Vérifier si une sous-chaîne est absente"
+  },
+  "remplacement_mot": {
+    "prefix": ".srt replace ",
+    "body": [
+      "s = .replace(\"$1\", \"$2\") ",
+      "print(s) "
+    ],
+    "description": "Remplacement d'un mot dans une chaîne"
+  },
+  "majuscule": {
+    "prefix": ".srt upper ",
+    "body": [
+      ".upper() "
+    ],
+    "description": "Convertir en majuscules"
+  },
+  "minuscule": {
+    "prefix": ".srt lower ",
+    "body": [
+      ".lower() "
+    ],
+    "description": "Convertir en minuscules"
+  },
+  "premiere_lettre_majuscule": {
+    "prefix": ".srt capitalize ",
+    "body": [
+      ".capitalize() "
+    ],
+    "description": "Mettre la première lettre en majuscule"
+  },
+  "titre": {
+    "prefix": ".srt title ",
+    "body": [
+      ".title() "
+    ],
+    "description": "Mettre la première lettre de chaque mot en majuscule"
+  },
+  "suppression_espaces": {
+    "prefix": ".srt strip ",
+    "body": [
+      ".strip() "
+    ],
+    "description": "Supprimer les espaces autour d'une chaîne"
+  },
+  "suppression_espaces_gauche": {
+    "prefix": ".srt lstrip ",
+    "body": [
+      ".lstrip() "
+    ],
+    "description": "Supprimer les espaces à gauche"
+  },
+  "suppression_espaces_droite": {
+    "prefix": ".srt rstrip ",
+    "body": [
+      ".rstrip() "
+    ],
+    "description": "Supprimer les espaces à droite"
+  },
+  "separation_chaine": {
+    "prefix": ".srt split ",
+    "body": [
+      ".split(\"$1\") "
+    ],
+    "description": "Séparer une chaîne en liste"
+  },
+  "jointure_chaines": {
+    "prefix": ".srt join ",
+    "body": [
+      "\"$1\".join($2) "
+    ],
+    "description": "Joindre une liste en une chaîne"
+  },
+  "trouver_sous_chaine": {
+    "prefix": ".srt find ",
+    "body": [
+      ".find(\"$1\") "
+    ],
+    "description": "Trouver une sous-chaîne"
+  },
+  "compter_occurrences": {
+    "prefix": ".srt count ",
+    "body": [
+      ".count(\"$1\") "
+    ],
+    "description": "Compter les occurrences d'une sous-chaîne"
+  },
+  "verifier_debut": {
+    "prefix": ".srt startswith ",
+    "body": [
+      ".startswith(\"$1\") "
+    ],
+    "description": "Vérifier si une chaîne commence par un mot"
+  },
+  "verifier_fin": {
+    "prefix": ".srt endswith ",
+    "body": [
+      ".endswith(\"$1\") "
+    ],
+    "description": "Vérifier si une chaîne se termine par un mot"
+  },
+  "formatage_chaines": {
+    "prefix": ".srt format ",
+    "body": [
+      "f\"{s} {variable}\""
+    ],
+    "description": "Formatage de chaîne"
+  },
+  "inversion_chaine": {
+    "prefix": ".srt reverse ",
+    "body": [
+      "s[::-1] "
+    ],
+    "description": "Inverser une chaîne"
+  },
+  "verifier_chiffre": {
+    "prefix": ".srt isdigit ",
+    "body": [
+      ".isdigit() "
+    ],
+    "description": "Vérifier si la chaîne ne contient que des chiffres"
+  },
+  "verifier_alpha": {
+    "prefix": ".srt isalpha ",
+    "body": [
+      ".isalpha() "
+    ],
+    "description": "Vérifier si la chaîne ne contient que des lettres"
+  },
+  "verifier_alphanum": {
+    "prefix": ".srt isalnum ",
+    "body": [
+      ".isalnum() "
+    ],
+    "description": "Vérifier si la chaîne contient des lettres et/ou chiffres"
+  },
+  "verifier_espace": {
+    "prefix": ".srt isspace ",
+    "body": [
+      ".isspace() "
+    ],
+    "description": "Vérifier si la chaîne ne contient que des espaces"
+  },
+  "alignement_centre": {
+    "prefix": ".srt center ",
+    "body": [
+      ".center($1, \"$2\") "
+    ],
+    "description": "Aligner le texte au centre"
+  },
+  "alignement_gauche": {
+    "prefix": ".srt ljust ",
+    "body": [
+      ".ljust($1, \"$2\") "
+    ],
+    "description": "Aligner le texte à gauche"
+  },
+  "alignement_droite": {
+    "prefix": ".srt rjust ",
+    "body": [
+      ".rjust($1, \"$2\") "
+    ],
+    "description": "Aligner le texte à droite"
+  },
+  "suppression_caracteres_specifiques": {
+    "prefix": ".srt trim ",
+    "body": [
+      ".strip(\"$1\") "
+    ],
+    "description": "Supprimer un caractère spécifique d'une chaîne"
+  },
+  "conversion_liste_chaine": {
+    "prefix": ".srt list_to_str ",
+    "body": [
+      "\"\".join($1) "
+    ],
+    "description": "Convertir une liste en chaîne"
+  },
+  "conversion_ascii": {
+    "prefix": ".srt ord ",
+    "body": [
+      "ord(\"$1\") "
+    ],
+    "description": "Obtenir le code ASCII d'un caractère"
+  },
+  "conversion_unicode": {
+    "prefix": ".srt chr ",
+    "body": [
+      "chr($1) "
+    ],
+    "description": "Convertir un code ASCII en caractère"
+  },
+  "ajout_zeroes": {
+    "prefix": ".srt zfill ",
+    "body": [
+      ".zfill($1) "
+    ],
+    "description": "Ajouter des zéros devant une chaîne"
+  },
+  "expression_reguliere": {
+    "prefix": ".srt regex ",
+    "body": [
+      "import re",
+      "match = re.search(r\"$1\", s)",
+      "if match:",
+      "    print(match.group())"
+    ],
+    "description": "Recherche avec une expression régulière"
+  },
+  "remplacement_regex": {
+    "prefix": ".srt regex_replace ",
+    "body": [
+      "s = re.sub(r\"$1\", \"$2\", s) "
+    ],
+    "description": "Remplacement avec une regex"
+  },
+  "fractionnement_regex": {
+    "prefix": ".srt regex_split ",
+    "body": [
+      "re.split(r\"$1\", s) "
+    ],
+    "description": "Fractionner une chaîne avec une regex"
+  },
+  "verifier_palindrome": {
+    "prefix": ".srt palindrome ",
+    "body": [
+      "s == s[::-1] "
+    ],
+    "description": "Vérifier si une chaîne est un palindrome"
+  },
+  "echapper_caracteres": {
+    "prefix": ".srt escape ",
+    "body": [
+      "s = .replace(\"\\\"\", \"\\\\\\\"\")"
+    ],
+    "description": "Échapper des caractères spéciaux"
+  },
+  "Ajout d'un élément au tableau": {
+    "prefix": ".array append",
+    "body": [
+      ".append('$1')"
+    ],
+    "description": "Ajoute un élément à la fin de la liste"
+  },
+  "Insertion dans un tableau": {
+    "prefix": ".array insert",
+    "body": [
+      ".insert($1, '$2')"
+    ],
+    "description": "Insère un élément à une position spécifique de la liste"
+  },
+  "Suppression d'un élément": {
+    "prefix": ".array remove",
+    "body": [
+      ".remove('$1')"
+    ],
+    "description": "Supprime la première occurrence d'un élément de la liste"
+  },
+  "Suppression par index": {
+    "prefix": ".array pop",
+    "body": [
+      ".pop($1)"
+    ],
+    "description": "Supprime et renvoie un élément à une position spécifique"
+  },
+  "Fusion de listes": {
+    "prefix": ".array extend",
+    "body": [
+      ".extend($1)"
+    ],
+    "description": "Ajoute tous les éléments d'un autre tableau à la fin"
+  },
+  "Recherche d'index": {
+    "prefix": ".array index",
+    "body": [
+      ".index('$1')"
+    ],
+    "description": "Trouve l'index de la première occurrence d'un élément"
+  },
+  "Comptage d'éléments": {
+    "prefix": ".array count",
+    "body": [
+      ".count('$1')"
+    ],
+    "description": "Compte le nombre d'occurrences d'un élément dans la liste"
+  },
+  "Tri d'une liste": {
+    "prefix": ".array sort",
+    "body": [
+      ".sort()"
+    ],
+    "description": "Trie la liste en ordre croissant"
+  },
+  "Inversion d'une liste": {
+    "prefix": ".array reverse",
+    "body": [
+      ".reverse()"
+    ],
+    "description": "Inverse l'ordre des éléments dans la liste"
+  },
+  "Longueur d'une liste": {
+    "prefix": ".array len",
+    "body": [
+      "len()"
+    ],
+    "description": "Renvoie la longueur de la liste"
+  },
+  "Suppression de tous les éléments": {
+    "prefix": ".array clear",
+    "body": [
+      ".clear()"
+    ],
+    "description": "Supprime tous les éléments de la liste"
+  },
+  "Copie d'une liste": {
+    "prefix": ".array copy",
+    "body": [
+      ".copy()"
+    ],
+    "description": "Crée une copie de la liste"
+  },
+  "Valeur minimale": {
+    "prefix": ".array min",
+    "body": [
+      "min()"
+    ],
+    "description": "Trouve la valeur minimale dans la liste"
+  },
+  "Valeur maximale": {
+    "prefix": ".array max",
+    "body": [
+      "max()"
+    ],
+    "description": "Trouve la valeur maximale dans la liste"
+  },
+  "Somme des éléments": {
+    "prefix": ".array sum",
+    "body": [
+      "sum()"
+    ],
+    "description": "Calcule la somme des éléments de la liste"
+  },
+  "Extraction d'une portion": {
+    "prefix": ".array slice",
+    "body": [
+      "array[$1:$2]"
+    ],
+    "description": "Extrait une portion de la liste (slicing)"
+  },
+  "Vérification 'tous les éléments'": {
+    "prefix": ".array all",
+    "body": [
+      "all()"
+    ],
+    "description": "Vérifie si tous les éléments satisfont une condition"
+  },
+  "Vérification 'au moins un élément'": {
+    "prefix": ".array any",
+    "body": [
+      "any()"
+    ],
+    "description": "Vérifie si au moins un élément satisfait une condition"
+  },
+  "Association de deux listes": {
+    "prefix": ".array zip",
+    "body": [
+      "list(zip($1, $2))"
+    ],
+    "description": "Combine deux listes élément par élément"
+  },
+  "Application d'une fonction": {
+    "prefix": ".array map",
+    "body": [
+      "list(map($1,$2 ))"
+    ],
+    "description": "Applique une fonction à chaque élément de la liste"
+  },
+  "Filtrage d'une liste": {
+    "prefix": ".array filter",
+    "body": [
+      "list(filter($1, $2))"
+    ],
+    "description": "Filtre les éléments de la liste selon une condition"
+  },
   "racine_carre": {
     "prefix": ".math sqrt ",
-    "body": ["math.sqrt($1)"],
+    "body": [
+      "math.sqrt($1)"
+    ],
     "description": "Calculer la racine carrée d'un nombre"
   },
   "addition": {
     "prefix": ".math add ",
-    "body": ["$1 + $2"],
+    "body": [
+      "$1 + $2"
+    ],
     "description": "Additionner deux nombres"
   },
   "soustraction": {
     "prefix": ".math subtract ",
-    "body": ["$1 - $2"],
+    "body": [
+      "$1 - $2"
+    ],
     "description": "Soustraire deux nombres"
   },
   "multiplication": {
     "prefix": ".math multiply ",
-    "body": ["$1 * $2"],
+    "body": [
+      "$1 * $2"
+    ],
     "description": "Multiplier deux nombres"
   },
   "division": {
     "prefix": ".math divide ",
-    "body": ["$1 / $2"],
+    "body": [
+      "$1 / $2"
+    ],
     "description": "Diviser deux nombres"
   },
   "puissance": {
     "prefix": ".math power ",
-    "body": ["$1 ** $2"],
+    "body": [
+      "$1 ** $2"
+    ],
     "description": "Élever un nombre à une puissance"
   },
   "valeur_absolue": {
     "prefix": ".math abs ",
-    "body": ["abs($1)"],
+    "body": [
+      "abs($1)"
+    ],
     "description": "Calculer la valeur absolue d'un nombre"
   },
   "arrondi": {
     "prefix": ".math round ",
-    "body": ["round($1, $2)"],
+    "body": [
+      "round($1, $2)"
+    ],
     "description": "Arrondir un nombre à un certain nombre de décimales"
   },
   "arrondi_inférieur": {
     "prefix": ".math floor ",
-    "body": ["math.floor($1)"],
+    "body": [
+      "math.floor($1)"
+    ],
     "description": "Arrondir un nombre à l'entier inférieur le plus proche"
   },
   "arrondi_supérieur": {
     "prefix": ".math ceil ",
-    "body": ["math.ceil($1)"],
+    "body": [
+      "math.ceil($1)"
+    ],
     "description": "Arrondir un nombre à l'entier supérieur le plus proche"
   },
   "maximum": {
     "prefix": ".math max ",
-    "body": ["max($1, $2)"],
+    "body": [
+      "max($1, $2)"
+    ],
     "description": "Trouver la valeur maximale parmi plusieurs nombres"
   },
   "minimum": {
     "prefix": ".math min ",
-    "body": ["min($1, $2)"],
+    "body": [
+      "min($1, $2)"
+    ],
     "description": "Trouver la valeur minimale parmi plusieurs nombres"
   },
   "somme": {
     "prefix": ".math sum ",
-    "body": ["sum($1)"],
+    "body": [
+      "sum($1)"
+    ],
     "description": "Calculer la somme d'une liste de nombres"
   },
   "moyenne": {
     "prefix": ".math average ",
-    "body": ["sum($1) / len($1)"],
+    "body": [
+      "sum($1) / len($1)"
+    ],
     "description": "Calculer la moyenne d'une liste de nombres"
   },
   "modulo": {
     "prefix": ".math mod ",
-    "body": ["$1 % $2"],
+    "body": [
+      "$1 % $2"
+    ],
     "description": "Calculer le reste de la division entre deux nombres"
   },
   "pi": {
     "prefix": ".math pi ",
-    "body": ["math.pi"],
+    "body": [
+      "math.pi"
+    ],
     "description": "Obtenir la valeur de Pi"
   },
   "sinus": {
     "prefix": ".math sin ",
-    "body": ["math.sin($1)"],
+    "body": [
+      "math.sin($1)"
+    ],
     "description": "Calculer le sinus d'un angle (en radians)"
   },
   "cosinus": {
     "prefix": ".math cos ",
-    "body": ["math.cos($1)"],
+    "body": [
+      "math.cos($1)"
+    ],
     "description": "Calculer le cosinus d'un angle (en radians)"
   },
   "tangente": {
     "prefix": ".math tan ",
-    "body": ["math.tan($1)"],
+    "body": [
+      "math.tan($1)"
+    ],
     "description": "Calculer la tangente d'un angle (en radians)"
   },
   "radians": {
     "prefix": ".math radians ",
-    "body": ["math.radians($1)"],
+    "body": [
+      "math.radians($1)"
+    ],
     "description": "Convertir un angle en degrés en radians"
   },
   "degres": {
     "prefix": ".math degrees ",
-    "body": ["math.degrees($1)"],
+    "body": [
+      "math.degrees($1)"
+    ],
     "description": "Convertir un angle en radians en degrés"
   },
   "logarithme": {
     "prefix": ".math log ",
-    "body": ["math.log($1, $2)"],
+    "body": [
+      "math.log($1, $2)"
+    ],
     "description": "Calculer le logarithme d'un nombre"
-  }
-
-,
-
-
-
-"tkinter_setup": {
-  "prefix": ".tk setup",
-  "body": [
-    "import tkinter as tk",
-    "root = tk.Tk()",
-    "root.title('$1')",
-    "root.geometry('$2')",
-    "root.mainloop()"
-  ],
-  "description": "Initialiser une application Tkinter"
-},
-"tkinter_button": {
-  "prefix": ".tk btn",
-  "body": [
-    "btn = tk.Button(root, text='$1', command=$2)",
-    "btn.pack()"
-  ],
-  "description": "Créer un bouton Tkinter"
-},
-"tkinter_label": {
-  "prefix": ".tk label",
-  "body": [
-    "label = tk.Label(root, text='$1')",
-    "label.pack()"
-  ],
-  "description": "Créer une étiquette Tkinter"
-},
-"tkinter_entry": {
-  "prefix": ".tk entry",
-  "body": [
-    "entry = tk.Entry(root)",
-    "entry.pack()"
-  ],
-  "description": "Créer un champ de saisie Tkinter"
-},
-"tkinter_scale": {
-  "prefix": ".tk scale",
-  "body": [
-    "scale = tk.Scale(root, from_=$1, to=$2, orient='$3')",
-    "scale.pack()"
-  ],
-  "description": "Créer une échelle Tkinter"
-},
-"tkinter_checkbox": {
-  "prefix": ".tk checkbox",
-  "body": [
-    "var = tk.IntVar()",
-    "checkbox = tk.Checkbutton(root, text='$1', variable=var)",
-    "checkbox.pack()"
-  ],
-  "description": "Créer une case à cocher Tkinter"
-},
-"tkinter_radiobutton": {
-  "prefix": ".tk radiobutton",
-  "body": [
-    "var = tk.StringVar()",
-    "radiobutton = tk.Radiobutton(root, text='$1', variable=var, value='$2')",
-    "radiobutton.pack()"
-  ],
-  "description": "Créer un bouton radio Tkinter"
-},
-"tkinter_listbox": {
-  "prefix": ".tk listbox",
-  "body": [
-    "listbox = tk.Listbox(root)",
-    "listbox.pack()"
-  ],
-  "description": "Créer une liste Tkinter"
-},
-"tkinter_canvas": {
-  "prefix": ".tk canvas",
-  "body": [
-    "canvas = tk.Canvas(root, width=$1, height=$2)",
-    "canvas.pack()"
-  ],
-  "description": "Créer un canevas Tkinter"
-},
-"tkinter_menu": {
-  "prefix": ".tk menu",
-  "body": [
-    "menu = tk.Menu(root)",
-    "root.config(menu=menu)",
-    "submenu = tk.Menu(menu)",
-    "menu.add_cascade(label='$1', menu=submenu)",
-    "submenu.add_command(label='$2', command=$3)"
-  ],
-  "description": "Créer un menu Tkinter"
-},
-
-
-
-"flet_setup": {
-  "prefix": ".flet setup",
-  "body": [
-    "import flet as ft",
-    "def main(page: ft.Page):",
-    "    page.title = '$1'",
-    "    page.update()",
-    "ft.app(target=main)"
-  ],
-  "description": "Initialiser une application Flet"
+  },
+  "tkinter_setup": {
+    "prefix": ".tk setup",
+    "body": [
+      "import tkinter as tk",
+      "root = tk.Tk()",
+      "root.title('$1')",
+      "root.geometry('$2')",
+      "root.mainloop()"
+    ],
+    "description": "Initialiser une application Tkinter"
+  },
+  "tkinter_button": {
+    "prefix": ".tk btn",
+    "body": [
+      "btn = tk.Button(root, text='$1', command=$2)",
+      "btn.pack()"
+    ],
+    "description": "Créer un bouton Tkinter"
+  },
+  "tkinter_label": {
+    "prefix": ".tk label",
+    "body": [
+      "label = tk.Label(root, text='$1')",
+      "label.pack()"
+    ],
+    "description": "Créer une étiquette Tkinter"
+  },
+  "tkinter_entry": {
+    "prefix": ".tk entry",
+    "body": [
+      "entry = tk.Entry(root)",
+      "entry.pack()"
+    ],
+    "description": "Créer un champ de saisie Tkinter"
+  },
+  "tkinter_scale": {
+    "prefix": ".tk scale",
+    "body": [
+      "scale = tk.Scale(root, from_=$1, to=$2, orient='$3')",
+      "scale.pack()"
+    ],
+    "description": "Créer une échelle Tkinter"
+  },
+  "tkinter_checkbox": {
+    "prefix": ".tk checkbox",
+    "body": [
+      "var = tk.IntVar()",
+      "checkbox = tk.Checkbutton(root, text='$1', variable=var)",
+      "checkbox.pack()"
+    ],
+    "description": "Créer une case à cocher Tkinter"
+  },
+  "tkinter_radiobutton": {
+    "prefix": ".tk radiobutton",
+    "body": [
+      "var = tk.StringVar()",
+      "radiobutton = tk.Radiobutton(root, text='$1', variable=var, value='$2')",
+      "radiobutton.pack()"
+    ],
+    "description": "Créer un bouton radio Tkinter"
+  },
+  "tkinter_listbox": {
+    "prefix": ".tk listbox",
+    "body": [
+      "listbox = tk.Listbox(root)",
+      "listbox.pack()"
+    ],
+    "description": "Créer une liste Tkinter"
+  },
+  "tkinter_canvas": {
+    "prefix": ".tk canvas",
+    "body": [
+      "canvas = tk.Canvas(root, width=$1, height=$2)",
+      "canvas.pack()"
+    ],
+    "description": "Créer un canevas Tkinter"
+  },
+  "tkinter_menu": {
+    "prefix": ".tk menu",
+    "body": [
+      "menu = tk.Menu(root)",
+      "root.config(menu=menu)",
+      "submenu = tk.Menu(menu)",
+      "menu.add_cascade(label='$1', menu=submenu)",
+      "submenu.add_command(label='$2', command=$3)"
+    ],
+    "description": "Créer un menu Tkinter"
+  },
+  "flet_setup": {
+    "prefix": ".flet setup",
+    "body": [
+      "import flet as ft",
+      "def main(page: ft.Page):",
+      "    page.title = '$1'",
+      "    page.update()",
+      "ft.app(target=main)"
+    ],
+    "description": "Initialiser une application Flet"
   },
   "flet_button": {
-  "prefix": ".flet btn",
-  "body": [
-    "btn = ft.ElevatedButton(text='$1', on_click=$2)",
-    "page.add(btn)"
-  ],
-  "description": "Créer un bouton Flet"
+    "prefix": ".flet btn",
+    "body": [
+      "btn = ft.ElevatedButton(text='$1', on_click=$2)",
+      "page.add(btn)"
+    ],
+    "description": "Créer un bouton Flet"
   },
   "flet_text": {
-  "prefix": ".flet text",
-  "body": [
-    "text = ft.Text('$1')",
-    "page.add(text)"
-  ],
-  "description": "Créer un texte Flet"
+    "prefix": ".flet text",
+    "body": [
+      "text = ft.Text('$1')",
+      "page.add(text)"
+    ],
+    "description": "Créer un texte Flet"
   },
   "flet_textfield": {
-  "prefix": ".flet textfield",
-  "body": [
-    "textfield = ft.TextField(label='$1')",
-    "page.add(textfield)"
-  ],
-  "description": "Créer un champ de texte Flet"
+    "prefix": ".flet textfield",
+    "body": [
+      "textfield = ft.TextField(label='$1')",
+      "page.add(textfield)"
+    ],
+    "description": "Créer un champ de texte Flet"
   },
   "flet_checkbox": {
-  "prefix": ".flet checkbox",
-  "body": [
-    "checkbox = ft.Checkbox(label='$1')",
-    "page.add(checkbox)"
-  ],
-  "description": "Créer une case à cocher Flet"
+    "prefix": ".flet checkbox",
+    "body": [
+      "checkbox = ft.Checkbox(label='$1')",
+      "page.add(checkbox)"
+    ],
+    "description": "Créer une case à cocher Flet"
   },
   "flet_radiobutton": {
-  "prefix": ".flet radiobutton",
-  "body": [
-    "radiobutton = ft.RadioButton(label='$1', value='$2')",
-    "page.add(radiobutton)"
-  ],
-  "description": "Créer un bouton radio Flet"
+    "prefix": ".flet radiobutton",
+    "body": [
+      "radiobutton = ft.RadioButton(label='$1', value='$2')",
+      "page.add(radiobutton)"
+    ],
+    "description": "Créer un bouton radio Flet"
   },
   "flet_dropdown": {
-  "prefix": ".flet dropdown",
-  "body": [
-    "dropdown = ft.Dropdown(options=[ft.dropdown.Option('$1'), ft.dropdown.Option('$2')])",
-    "page.add(dropdown)"
-  ],
-  "description": "Créer un menu déroulant Flet"
+    "prefix": ".flet dropdown",
+    "body": [
+      "dropdown = ft.Dropdown(options=[ft.dropdown.Option('$1'), ft.dropdown.Option('$2')])",
+      "page.add(dropdown)"
+    ],
+    "description": "Créer un menu déroulant Flet"
   },
   "flet_slider": {
-  "prefix": ".flet slider",
-  "body": [
-    "slider = ft.Slider(min=$1, max=$2, divisions=$3, label='$4')",
-    "page.add(slider)"
-  ],
-  "description": "Créer un curseur Flet"
+    "prefix": ".flet slider",
+    "body": [
+      "slider = ft.Slider(min=$1, max=$2, divisions=$3, label='$4')",
+      "page.add(slider)"
+    ],
+    "description": "Créer un curseur Flet"
   },
   "flet_listview": {
-  "prefix": ".flet listview",
-  "body": [
-    "listview = ft.ListView()",
-    "page.add(listview)"
-  ],
-  "description": "Créer une vue de liste Flet"
+    "prefix": ".flet listview",
+    "body": [
+      "listview = ft.ListView()",
+      "page.add(listview)"
+    ],
+    "description": "Créer une vue de liste Flet"
   },
   "flet_image": {
-  "prefix": ".flet image",
-  "body": [
-    "image = ft.Image(src='$1')",
-    "page.add(image)"
-  ],
-  "description": "Ajouter une image Flet"
+    "prefix": ".flet image",
+    "body": [
+      "image = ft.Image(src='$1')",
+      "page.add(image)"
+    ],
+    "description": "Ajouter une image Flet"
   },
   "flet_row": {
     "prefix": ".flet row",
@@ -801,184 +911,411 @@
       "page.update()"
     ],
     "description": "Afficher une barre de notification Flet"
-  }
-
-  
-,
+  },
+  "flet_textbutton": {
+    "prefix": ".flet textbutton",
+    "body": [
+      "textbutton = ft.TextButton(text='$1', on_click=$2)",
+      "page.add(textbutton)"
+    ],
+    "description": "Créer un bouton texte Flet"
+  },
+  "flet_iconbutton": {
+    "prefix": ".flet iconbutton",
+    "body": [
+      "iconbutton = ft.IconButton(icon=ft.icons.$1, on_click=$2)",
+      "page.add(iconbutton)"
+    ],
+    "description": "Créer un bouton icône Flet"
+  },
+  "flet_checkbox_group": {
+    "prefix": ".flet checkbox group",
+    "body": [
+      "checkbox_group = ft.CheckboxGroup(options=[",
+      "    ft.Checkbox(label='$1'),",
+      "    ft.Checkbox(label='$2')",
+      "])",
+      "page.add(checkbox_group)"
+    ],
+    "description": "Créer un groupe de cases à cocher Flet"
+  },
+  "flet_radio_group": {
+    "prefix": ".flet radio group",
+    "body": [
+      "radio_group = ft.RadioGroup(options=[",
+      "    ft.Radio(label='$1', value='$2'),",
+      "    ft.Radio(label='$3', value='$4')",
+      "])",
+      "page.add(radio_group)"
+    ],
+    "description": "Créer un groupe de boutons radio Flet"
+  },
+  "flet_textfield_password": {
+    "prefix": ".flet textfield password",
+    "body": [
+      "password_field = ft.TextField(label='$1', password=True)",
+      "page.add(password_field)"
+    ],
+    "description": "Créer un champ de texte pour mot de passe Flet"
+  },
+  "flet_snackbar_action": {
+    "prefix": ".flet snackbar action",
+    "body": [
+      "snackbar = ft.SnackBar(",
+      "    content=ft.Text('$1'),",
+      "    action=ft.TextButton('$2', on_click=$3)",
+      ")",
+      "page.snack_bar = snackbar",
+      "snackbar.open = True",
+      "page.update()"
+    ],
+    "description": "Afficher une barre de notification avec action Flet"
+  },
+  "flet_navigation_rail": {
+    "prefix": ".flet navigation rail",
+    "body": [
+      "nav_rail = ft.NavigationRail(",
+      "    selected_index=0,",
+      "    destinations=[",
+      "        ft.NavigationRailDestination(icon=ft.icons.$1, label='$2'),",
+      "        ft.NavigationRailDestination(icon=ft.icons.$3, label='$4')",
+      "    ]",
+      ")",
+      "page.add(nav_rail)"
+    ],
+    "description": "Créer une barre de navigation latérale Flet"
+  },
+  "flet_responsive_row": {
+    "prefix": ".flet responsive row",
+    "body": [
+      "responsive_row = ft.ResponsiveRow(controls=[",
+      "    ft.Text('$1'),",
+      "    ft.ElevatedButton(text='$2', on_click=$3)",
+      "])",
+      "page.add(responsive_row)"
+    ],
+    "description": "Créer une rangée responsive Flet"
+  },
+  "flet_progress_ring": {
+    "prefix": ".flet progress ring",
+    "body": [
+      "progress_ring = ft.ProgressRing(value=$1)",
+      "page.add(progress_ring)"
+    ],
+    "description": "Créer un anneau de progression Flet"
+  },
+  "flet_slider_with_label": {
+    "prefix": ".flet slider label",
+    "body": [
+      "slider = ft.Slider(min=$1, max=$2, divisions=$3, label='$4')",
+      "page.add(slider)"
+    ],
+    "description": "Créer un curseur avec étiquette Flet"
+  },
+  "flet_textfield_multiline": {
+    "prefix": ".flet textfield multiline",
+    "body": [
+      "textfield = ft.TextField(label='$1', multiline=True, max_lines=$2)",
+      "page.add(textfield)"
+    ],
+    "description": "Créer un champ de texte multiligne Flet"
+  },
+  "flet_icon": {
+    "prefix": ".flet icon",
+    "body": [
+      "icon = ft.Icon(name=ft.icons.$1, color='$2', size=$3)",
+      "page.add(icon)"
+    ],
+    "description": "Ajouter une icône Flet"
+  },
+  "flet_divider": {
+    "prefix": ".flet divider",
+    "body": [
+      "divider = ft.Divider(height=$1, thickness=$2, color='$3')",
+      "page.add(divider)"
+    ],
+    "description": "Ajouter un séparateur Flet"
+  },
+  "flet_switch": {
+    "prefix": ".flet switch",
+    "body": [
+      "switch = ft.Switch(label='$1', value=$2, on_change=$3)",
+      "page.add(switch)"
+    ],
+    "description": "Créer un interrupteur Flet"
+  },
+  "flet_checkbox_with_value": {
+    "prefix": ".flet checkbox value",
+    "body": [
+      "checkbox = ft.Checkbox(label='$1', value=$2, on_change=$3)",
+      "page.add(checkbox)"
+    ],
+    "description": "Créer une case à cocher avec valeur Flet"
+  },
+  "flet_slider_with_onchange": {
+    "prefix": ".flet slider onchange",
+    "body": [
+      "slider = ft.Slider(min=$1, max=$2, divisions=$3, label='$4', on_change=$5)",
+      "page.add(slider)"
+    ],
+    "description": "Créer un curseur avec événement de changement Flet"
+  },
+  "flet_text_with_style": {
+    "prefix": ".flet text style",
+    "body": [
+      "text = ft.Text('$1', size=$2, weight=ft.FontWeight.$3, color='$4')",
+      "page.add(text)"
+    ],
+    "description": "Créer un texte avec style Flet"
+  },
+  "flet_gridview": {
+    "prefix": ".flet gridview",
+    "body": [
+      "gridview = ft.GridView(expand=True, runs_count=$1, child_aspect_ratio=$2, spacing=$3, controls=[",
+      "    ft.Text('$4'),",
+      "    ft.ElevatedButton(text='$5', on_click=$6)",
+      "])",
+      "page.add(gridview)"
+    ],
+    "description": "Créer une vue en grille Flet"
+  },
+  "flet_responsive_column": {
+    "prefix": ".flet responsive column",
+    "body": [
+      "responsive_column = ft.ResponsiveColumn(controls=[",
+      "    ft.Text('$1'),",
+      "    ft.ElevatedButton(text='$2', on_click=$3)",
+      "])",
+      "page.add(responsive_column)"
+    ],
+    "description": "Créer une colonne responsive Flet"
+  },
+  "flet_navigation_bar": {
+    "prefix": ".flet navigation bar",
+    "body": [
+      "nav_bar = ft.NavigationBar(destinations=[",
+      "    ft.NavigationDestination(icon=ft.icons.$1, label='$2'),",
+      "    ft.NavigationDestination(icon=ft.icons.$3, label='$4')",
+      "], on_change=$5)",
+      "page.add(nav_bar)"
+    ],
+    "description": "Créer une barre de navigation Flet"
+  },
   "numpy_import": {
     "prefix": ".numpy import",
-    "body": ["import numpy as np"],
+    "body": [
+      "import numpy as np"
+    ],
     "description": "Importer la bibliothèque NumPy"
   },
   "numpy_array": {
     "prefix": ".numpy array",
-    "body": ["np.array([$1])"],
+    "body": [
+      "np.array([$1])"
+    ],
     "description": "Créer un tableau NumPy"
   },
   "numpy_zeros": {
     "prefix": ".numpy zeros",
-    "body": ["np.zeros(($1, $2))"],
+    "body": [
+      "np.zeros(($1, $2))"
+    ],
     "description": "Créer un tableau de zéros NumPy"
   },
   "numpy_ones": {
     "prefix": ".numpy ones",
-    "body": ["np.ones(($1, $2))"],
+    "body": [
+      "np.ones(($1, $2))"
+    ],
     "description": "Créer un tableau de uns NumPy"
   },
   "numpy_arange": {
     "prefix": ".numpy arange",
-    "body": ["np.arange($1, $2, $3)"],
+    "body": [
+      "np.arange($1, $2, $3)"
+    ],
     "description": "Créer un tableau avec une plage de valeurs NumPy"
   },
   "numpy_linspace": {
     "prefix": ".numpy linspace",
-    "body": ["np.linspace($1, $2, $3)"],
+    "body": [
+      "np.linspace($1, $2, $3)"
+    ],
     "description": "Créer un tableau avec des valeurs espacées linéairement NumPy"
   },
   "numpy_reshape": {
     "prefix": ".numpy reshape",
-    "body": ["np.reshape($1, ($2, $3))"],
+    "body": [
+      "np.reshape($1, ($2, $3))"
+    ],
     "description": "Redimensionner un tableau NumPy"
   },
   "numpy_transpose": {
     "prefix": ".numpy transpose",
-    "body": ["np.transpose($1)"],
+    "body": [
+      "np.transpose($1)"
+    ],
     "description": "Transposer un tableau NumPy"
   },
   "numpy_dot": {
     "prefix": ".numpy dot",
-    "body": ["np.dot($1, $2)"],
+    "body": [
+      "np.dot($1, $2)"
+    ],
     "description": "Produit matriciel de deux tableaux NumPy"
   },
   "numpy_sum": {
     "prefix": ".numpy sum",
-    "body": ["np.sum($1)"],
+    "body": [
+      "np.sum($1)"
+    ],
     "description": "Calculer la somme des éléments d'un tableau NumPy"
   },
   "numpy_mean": {
     "prefix": ".numpy mean",
-    "body": ["np.mean($1)"],
+    "body": [
+      "np.mean($1)"
+    ],
     "description": "Calculer la moyenne des éléments d'un tableau NumPy"
   },
   "numpy_median": {
     "prefix": ".numpy median",
-    "body": ["np.median($1)"],
+    "body": [
+      "np.median($1)"
+    ],
     "description": "Calculer la médiane des éléments d'un tableau NumPy"
   },
   "numpy_std": {
     "prefix": ".numpy std",
-    "body": ["np.std($1)"],
+    "body": [
+      "np.std($1)"
+    ],
     "description": "Calculer l'écart type des éléments d'un tableau NumPy"
   },
   "numpy_var": {
     "prefix": ".numpy var",
-    "body": ["np.var($1)"],
+    "body": [
+      "np.var($1)"
+    ],
     "description": "Calculer la variance des éléments d'un tableau NumPy"
   },
   "numpy_min": {
     "prefix": ".numpy min",
-    "body": ["np.min($1)"],
+    "body": [
+      "np.min($1)"
+    ],
     "description": "Trouver la valeur minimale dans un tableau NumPy"
   },
   "numpy_max": {
     "prefix": ".numpy max",
-    "body": ["np.max($1)"],
+    "body": [
+      "np.max($1)"
+    ],
     "description": "Trouver la valeur maximale dans un tableau NumPy"
   },
   "numpy_argmin": {
     "prefix": ".numpy argmin",
-    "body": ["np.argmin($1)"],
+    "body": [
+      "np.argmin($1)"
+    ],
     "description": "Trouver l'indice de la valeur minimale dans un tableau NumPy"
   },
   "numpy_argmax": {
     "prefix": ".numpy argmax",
-    "body": ["np.argmax($1)"],
+    "body": [
+      "np.argmax($1)"
+    ],
     "description": "Trouver l'indice de la valeur maximale dans un tableau NumPy"
   },
   "numpy_unique": {
     "prefix": ".numpy unique",
-    "body": ["np.unique($1)"],
+    "body": [
+      "np.unique($1)"
+    ],
     "description": "Trouver les éléments uniques dans un tableau NumPy"
   },
   "numpy_sort": {
     "prefix": ".numpy sort",
-    "body": ["np.sort($1)"],
+    "body": [
+      "np.sort($1)"
+    ],
     "description": "Trier un tableau NumPy"
   },
   "numpy_concatenate": {
     "prefix": ".numpy concatenate",
-    "body": ["np.concatenate(($1, $2), axis=$3)"],
+    "body": [
+      "np.concatenate(($1, $2), axis=$3)"
+    ],
     "description": "Concaténer deux tableaux NumPy"
   },
   "numpy_stack": {
     "prefix": ".numpy stack",
-    "body": ["np.stack(($1, $2), axis=$3)"],
+    "body": [
+      "np.stack(($1, $2), axis=$3)"
+    ],
     "description": "Empiler des tableaux NumPy le long d'un nouvel axe"
-  }
-  ,
+  },
   "flask_setup": {
     "prefix": ".flask setup",
     "body": [
-    "from flask import Flask",
-    "app = Flask(__name__)",
-    "",
-    "@app.route('/')",
-    "def home():",
-    "    return 'Hello, Flask!'",
-    "",
-    "if __name__ == '__main__':",
-    "    app.run(debug=True)"
+      "from flask import Flask",
+      "app = Flask(__name__)",
+      "",
+      "@app.route('/')",
+      "def home():",
+      "    return 'Hello, Flask!'",
+      "",
+      "if __name__ == '__main__':",
+      "    app.run(debug=True)"
     ],
     "description": "Initialiser une application Flask"
   },
   "flask_route": {
     "prefix": ".flask route",
     "body": [
-    "@app.route('$1')",
-    "def $2():",
-    "    return '$3'"
+      "@app.route('$1')",
+      "def $2():",
+      "    return '$3'"
     ],
     "description": "Créer une route Flask"
   },
   "flask_render_template": {
     "prefix": ".flask render_template",
     "body": [
-    "from flask import render_template",
-    "",
-    "@app.route('$1')",
-    "def $2():",
-    "    return render_template('$3')"
+      "from flask import render_template",
+      "",
+      "@app.route('$1')",
+      "def $2():",
+      "    return render_template('$3')"
     ],
     "description": "Rendre un template avec Flask"
   },
   "flask_request": {
     "prefix": ".flask request",
     "body": [
-    "from flask import request",
-    "",
-    "@app.route('$1', methods=['GET', 'POST'])",
-    "def $2():",
-    "    if request.method == 'POST':",
-    "        $3 = request.form['$3']",
-    "        return '$4'",
-    "    return '$5'"
+      "from flask import request",
+      "",
+      "@app.route('$1', methods=['GET', 'POST'])",
+      "def $2():",
+      "    if request.method == 'POST':",
+      "        $3 = request.form['$3']",
+      "        return '$4'",
+      "    return '$5'"
     ],
     "description": "Gérer les requêtes GET et POST avec Flask"
   },
   "flask_redirect": {
     "prefix": ".flask redirect",
     "body": [
-    "from flask import redirect, url_for",
-    "",
-    "@app.route('$1')",
-    "def $2():",
-    "    return redirect(url_for('$3'))"
+      "from flask import redirect, url_for",
+      "",
+      "@app.route('$1')",
+      "def $2():",
+      "    return redirect(url_for('$3'))"
     ],
     "description": "Rediriger une route avec Flask"
   },
-
-"recherche_sequentielle":  {
-
+  "recherche_sequentielle": {
     "prefix": ".algo",
     "body": [
       "def recherche_sequentielle(liste, valeur):",
@@ -989,7 +1326,7 @@
     ],
     "description": "Recherche séquentielle d'une valeur dans une liste."
   },
-  "recherche_dichotomique":{
+  "recherche_dichotomique": {
     "prefix": ".algo",
     "body": [
       "def recherche_dichotomique(liste, valeur):",
@@ -1006,7 +1343,7 @@
     ],
     "description": "Recherche dichotomique d'une valeur dans une liste triée."
   },
-  "tri_bulle":{
+  "tri_bulle": {
     "prefix": ".algo",
     "body": [
       "def tri_bulle(liste):",
@@ -1018,7 +1355,7 @@
     ],
     "description": "Tri à bulles pour trier une liste."
   },
-  "tri_insertion":{
+  "tri_insertion": {
     "prefix": ".algo",
     "body": [
       "def tri_insertion(liste):",
@@ -1032,7 +1369,7 @@
     ],
     "description": "Tri par insertion pour trier une liste."
   },
-  "tri_selection":{
+  "tri_selection": {
     "prefix": ".algo",
     "body": [
       "def tri_selection(liste):",
@@ -1045,7 +1382,7 @@
     ],
     "description": "Tri par sélection pour trier une liste."
   },
-  "tri_rapide":{
+  "tri_rapide": {
     "prefix": ".algo",
     "body": [
       "def tri_rapide(liste):",
@@ -1059,7 +1396,7 @@
     ],
     "description": "Tri rapide pour trier une liste."
   },
-  "ri_fusion":{
+  "ri_fusion": {
     "prefix": ".algo",
     "body": [
       "def tri_fusion(liste):",
@@ -1086,1461 +1423,1454 @@
     ],
     "description": "Tri fusion pour trier une liste."
   },
-"pygame_init": {
-  "prefix": ".pg setup",
-  "body": [
-    "import pygame",
-    "pygame.init()",
-    "screen = pygame.display.set_mode((500, 500))",
-    "pygame.display.set_caption('')",
-    "clock = pygame.time.Clock()",
-    "running = True",
-    "while running:",
-    "    for event in pygame.event.get():",
-    "        if event.type == pygame.QUIT:",
-    "            running = False",
-    "    screen.fill((0, 0, 0))",
-    "    pygame.display.flip()",
-    "    clock.tick(60)",
-    "pygame.quit()"
-  
-  ],
-  "description": "Initialiser Pygame et créer une fenêtre"
-},
-"pygame_color": {
-  "prefix": ".pg color",
-  "body": [
-    "color = pygame.Color('$1')"
-  ],
-  "description": "Créer une couleur Pygame"
-},
-"pygame_display": {
-  "prefix": ".pg display",
-  "body": [
-    "pygame.display.set_caption('$1')",
-    "screen = pygame.display.set_mode(($2, $3))",
-    "pygame.display.flip()"
-  ],
-  "description": "Configurer l'affichage Pygame"
-},
-"pygame_draw": {
-  "prefix": ".pg draw",
-  "body": [
-    "pygame.draw.rect(screen, $1, ($2, $3, $4, $5))"
-  ],
-  "description": "Dessiner un rectangle"
-},
-"pygame_event": {
-  "prefix": ".pg event",
-  "body": [
-    "for event in pygame.event.get():",
-    "    if event.type == pygame.QUIT:",
-    "        running = False"
-  ],
-  "description": "Gérer les événements"
-},
-"pygame_font": {
-  "prefix": ".pg font",
-  "body": [
-    "font = pygame.font.SysFont('$1', $2)",
-    "text = font.render('$3', True, $4)",
-    "screen.blit(text, ($5, $6))"
-  ],
-  "description": "Afficher du texte avec une police"
-},
-"pygame_image": {
-  "prefix": ".pg image",
-  "body": [
-    "image = pygame.image.load('$1')",
-    "screen.blit(image, ($2, $3))"
-  ],
-  "description": "Charger et afficher une image"
-},
-"pygame_key": {
-  "prefix": ".pg key",
-  "body": [
-    "keys = pygame.key.get_pressed()",
-    "if keys[pygame.K_$1]:",
-    "    print('$1 pressed')"
-  ],
-  "description": "Détecter une touche pressée"
-},
-"pygame_locals": {
-  "prefix": ".pg locals",
-  "body": [
-    "from pygame.locals import *"
-  ],
-  "description": "Importer les constantes locales de Pygame"
-},
-"pygame_mixer": {
-  "prefix": ".pg mixer",
-  "body": [
-    "pygame.mixer.init()",
-    "sound = pygame.mixer.Sound('$1.wav')",
-    "sound.play()"
-  ],
-  "description": "Utiliser le module audio"
-},
-"pygame_mouse": {
-  "prefix": ".pg mouse",
-  "body": [
-    "x, y = pygame.mouse.get_pos()",
-    "if pygame.mouse.get_pressed()[0]:",
-    "    print('Left click at', x, y)"
-  ],
-  "description": "Gérer la souris"
-},
-"pygame_rect": {
-  "prefix": ".pg rect",
-  "body": [
-    "rect = pygame.Rect($1, $2, $3, $4)"
-  ],
-  "description": "Créer un rectangle"
-},
-"pygame_surface": {
-  "prefix": ".pg surface",
-  "body": [
-    "surface = pygame.Surface(($1, $2))",
-    "surface.fill($3)",
-    "screen.blit(surface, ($4, $5))"
-  ],
-  "description": "Créer et afficher une surface"
-},
-"pygame_time": {
-  "prefix": ".pg time",
-  "body": [
-    "clock = pygame.time.Clock()",
-    "clock.tick($1)"
-  ],
-  "description": "Contrôler le temps"
-},
-"pygame_music": {
-  "prefix": ".pg music",
-  "body": [
-    "pygame.mixer.music.load('$1.mp3')",
-    "pygame.mixer.music.play(-1)"
-  ],
-  "description": "Jouer de la musique en fond"
-},
-"pygame_cursors": {
-  "prefix": ".pg cursors",
-  "body": [
-    "pygame.mouse.set_cursor(*pygame.cursors.arrow)"
-  ],
-  "description": "Changer le curseur"
-},
-"pygame_joystick": {
-  "prefix": ".pg joystick",
-  "body": [
-    "pygame.joystick.init()",
-    "joystick = pygame.joystick.Joystick(0)",
-    "joystick.init()"
-  ],
-  "description": "Initialiser une manette"
-},
-"pygame_mask": {
-  "prefix": ".pg mask",
-  "body": [
-    "mask = pygame.mask.from_surface($1)",
-    "overlap = mask.overlap($2, ($3, $4))"
-  ],
-  "description": "Détection de collision avec masque"
-},
-"pygame_sprite": {
-  "prefix": ".pg sprite",
-  "body": [
-    "class MySprite(pygame.sprite.Sprite):",
-    "    def __init__(self):",
-    "        super().__init__()",
-    "        self.image = pygame.Surface(($1, $2))",
-    "        self.rect = self.image.get_rect()"
-  ],
-  "description": "Créer une classe de sprite"
-},
-"pygame_transform": {
-  "prefix": ".pg transform",
-  "body": [
-    "rotated = pygame.transform.rotate($1, $2)",
-    "scaled = pygame.transform.scale($1, ($3, $4))"
-  ],
-  "description": "Transformer une image"
-},
-"pygame_bufferproxy": {
-  "prefix": ".pg bufferproxy",
-  "body": [
-    "proxy = screen.get_buffer()"
-  ],
-  "description": "Utiliser BufferProxy"
-},
-"pygame_freetype": {
-  "prefix": ".pg freetype",
-  "body": [
-    "import pygame.freetype",
-    "ft_font = pygame.freetype.SysFont('$1', $2)",
-    "ft_font.render_to(screen, ($3, $4), '$5', $6)"
-  ],
-  "description": "Texte avec pygame.freetype"
-},
-"pygame_gfxdraw": {
-  "prefix": ".pg gfxdraw",
-  "body": [
-    "pygame.gfxdraw.aacircle(screen, $1, $2, $3, $4)"
-  ],
-  "description": "Dessiner avec gfxdraw"
-},
-"pygame_midi": {
-  "prefix": ".pg midi",
-  "body": [
-    "pygame.midi.init()",
-    "device = pygame.midi.Output(0)",
-    "device.note_on(60, 127)"
-  ],
-  "description": "Utiliser le MIDI"
-},
-"pygame_pixelarray": {
-  "prefix": ".pg pixelarray",
-  "body": [
-    "px = pygame.PixelArray($1)",
-    "px[$2][$3] = $4"
-  ],
-  "description": "Manipuler les pixels"
-},
-"pygame_pixelcopy": {
-  "prefix": ".pg pixelcopy",
-  "body": [
-    "pygame.pixelcopy.surface_to_array($1, $2)"
-  ],
-  "description": "Copier des pixels"
-},
-"pygame_sndarray": {
-  "prefix": ".pg sndarray",
-  "body": [
-    "array = pygame.sndarray.array($1)",
-    "pygame.sndarray.make_sound(array).play()"
-  ],
-  "description": "Manipuler les sons comme tableaux"
-},
-"pygame_surfarray": {
-  "prefix": ".pg surfarray",
-  "body": [
-    "array = pygame.surfarray.array3d($1)"
-  ],
-  "description": "Manipuler les surfaces comme tableaux"
-},
-"pygame_math": {
-  "prefix": ".pg math",
-  "body": [
-    "vec = pygame.math.Vector2($1, $2)",
-    "vec.normalize_ip()"
-  ],
-  "description": "Utiliser Vector2 avec pygame.math"
-},
-"pygame_camera": {
-  "prefix": ".pg camera",
-  "body": [
-    "pygame.camera.init()",
-    "cam = pygame.camera.Camera(pygame.camera.list_cameras()[0])",
-    "cam.start()",
-    "img = cam.get_image()"
-  ],
-  "description": "Utiliser une caméra"
-},
-"pygame_controller": {
-  "prefix": ".pg controller",
-  "body": [
-    "pygame.joystick.init()",
-    "controller = pygame.joystick.Joystick(0)",
-    "controller.init()"
-  ],
-  "description": "Initialiser une manette (controller)"
-},
-"pygame_fastevent": {
-  "prefix": ".pg fastevent",
-  "body": [
-    "pygame.fastevent.init()",
-    "for event in pygame.fastevent.get():",
-    "    if event.type == pygame.QUIT:",
-    "        running = False"
-  ],
-  "description": "Utiliser fastevent"
-},
-"pygame_scrap": {
-  "prefix": ".pg scrap",
-  "body": [
-    "pygame.scrap.init()",
-    "pygame.scrap.put(pygame.SCRAP_TEXT, b'$1')"
-  ],
-  "description": "Utiliser le presse-papier"
-},
-"pygame_tests": {
-  "prefix": ".pg tests",
-  "body": [
-    "# Aucun test inclus par défaut, utiliser unittest ou pytest"
-  ],
-  "description": "Tests unitaires avec Pygame (manuel)"
-},
-"pygame_touch": {
-  "prefix": ".pg touch",
-  "body": [
-    "if event.type == pygame.FINGERDOWN:",
-    "    print(event.x, event.y)"
-  ],
-  "description": "Gérer les événements tactiles"
-},
-"mtlib_pyplot": {
-  "prefix": ".mtlib Pyplot",
-  "body": [
-    "import matplotlib.pyplot as plt"
-  ],
-  "description": "Importer matplotlib.pyplot"
-},
-"mtlib_plotting": {
-  "prefix": ".mtlib Plotting",
-  "body": [
-    "plt.plot($1, $2)",
-    "plt.show()"
-  ],
-  "description": "Tracer un graphique simple"
-},
-"mtlib_markers": {
-  "prefix": ".mtlib",
-  "body": [
-    "plt.plot($1, $2, marker='$3')",
-    "plt.show()"
-  ],
-  "description": "Utiliser des marqueurs dans un graphique"
-},
-"mtlib_line": {
-  "prefix": ".mtlib Line",
-  "body": [
-    "plt.plot($1, $2, linestyle='$3')",
-    "plt.show()"
-  ],
-  "description": "Changer le style de ligne"
-},
-"mtlib_labels": {
-  "prefix": ".mtlib Labels",
-  "body": [
-    "plt.xlabel('$1')",
-    "plt.ylabel('$2')",
-    "plt.title('$3')"
-  ],
-  "description": "Ajouter des étiquettes et un titre"
-},
-"mtlib_grid": {
-  "prefix": ".mtlib Grid",
-  "body": [
-    "plt.grid(True)"
-  ],
-  "description": "Afficher la grille"
-},
-"mtlib_subplot": {
-  "prefix": ".mtlib Subplot",
-  "body": [
-    "plt.subplot($1, $2, $3)",
-    "plt.plot($4, $5)",
-    "plt.title('$6')"
-  ],
-  "description": "Créer un subplot"
-},
-"mtlib_scatter": {
-  "prefix": ".mtlib Scatter",
-  "body": [
-    "plt.scatter($1, $2)",
-    "plt.show()"
-  ],
-  "description": "Créer un graphique de dispersion"
-},
-"mtlib_bars": {
-  "prefix": ".mtlib Bars",
-  "body": [
-    "plt.bar($1, $2)",
-    "plt.show()"
-  ],
-  "description": "Créer un graphique à barres"
-},
-"mtlib_histograms": {
-  "prefix": ".mtlib Histograms",
-  "body": [
-    "plt.hist($1, bins=$2)",
-    "plt.show()"
-  ],
-  "description": "Créer un histogramme"
-},
-"mtlib_piecharts": {
-  "prefix": ".mtlib Pie Charts",
-  "body": [
-    "plt.pie($1, labels=$2, autopct='%1.1f%%')",
-    "plt.show()"
-  ],
-  "description": "Créer un graphique en secteurs (camembert)"
-},
-"files_read": {
-  "prefix": ".files read",
-  "body": [
-    "with open('$1', 'r') as file:",
-    "    content = file.read()",
-    "    print(content)"
-  ],
-  "description": "Lire un fichier"
-},
-"files_write": {
-  "prefix": ".files write",
-  "body": [
-    "with open('$1', 'w') as file:",
-    "    file.write('$2')"
-  ],
-  "description": "Écrire dans un fichier (écrase le contenu existant)"
-},
-"files_append": {
-  "prefix": ".files append",
-  "body": [
-    "with open('$1', 'a') as file:",
-    "    file.write('$2')"
-  ],
-  "description": "Ajouter à un fichier (sans effacer l'ancien contenu)"
-},
-"files_create": {
-  "prefix": ".files create",
-  "body": [
-    "with open('$1', 'x') as file:",
-    "    file.write('$2')"
-  ],
-  "description": "Créer un fichier (échoue si le fichier existe déjà)"
-},
-"files_delete": {
-  "prefix": ".files delete",
-  "body": [
-    "import os",
-    "if os.path.exists('$1'):",
-    "    os.remove('$1')",
-    "else:",
-    "    print(\"Le fichier n'existe pas\")"
-  ],
-  "description": "Supprimer un fichier"
-},
-"files_modes_doc": {
-  "prefix": ".files modes",
-  "body": [
-    "# Modes d'ouverture de fichier :",
-    "# 'r' : lecture (par défaut)",
-    "# 'w' : écriture (écrase)",
-    "# 'x' : création (échoue si existe)",
-    "# 'a' : ajout",
-    "# 'b' : binaire",
-    "# 't' : texte (par défaut)",
-    "# '+' : lecture et écriture"
-  ],
-  "description": "Documentation rapide sur les modes d'ouverture"
-},
-
-
-
-"django_views": {
-  "prefix": ".Django Views",
-  "body": [
-    "from django.shortcuts import render",
-    "",
-    "def $1(request):",
-    "    return render(request, '$2.html', {'$3': $4})"
-  ],
-  "description": "Créer une vue Django"
-},
-"django_templates": {
-  "prefix": ".Django Templates",
-  "body": [
-    "{% extends '$1/base.html' %}",
-    "{% block content %}",
-    "<h1>$2</h1>",
-    "{% endblock %}"
-  ],
-  "description": "Structure d'un template Django"
-},
-"django_models": {
-  "prefix": ".Django Models",
-  "body": [
-    "from django.db import models",
-    "",
-    "class $1(models.Model):",
-    "    $2 = models.$3Field($4)",
-    "",
-    "    def __str__(self):",
-    "        return self.$2"
-  ],
-  "description": "Créer un modèle Django"
-},
-"django_add_members": {
-  "prefix": ".Django Add Members",
-  "body": [
-    "from .models import $1",
-    "$1.objects.create($2='$3', $4='$5')"
-  ],
-  "description": "Ajouter un enregistrement à un modèle"
-},
-"django_add_template": {
-  "prefix": ".Django Add Template",
-  "body": [
-    "from django.shortcuts import render",
-    "",
-    "def $1(request):",
-    "    return render(request, '$2.html')"
-  ],
-  "description": "Rendre un template depuis une vue"
-},
-"django_add_record": {
-  "prefix": ".Django Add Record",
-  "body": [
-    "instance = $1($2='$3', $4='$5')",
-    "instance.save()"
-  ],
-  "description": "Créer et sauvegarder un nouvel enregistrement"
-},
-"django_delete_record": {
-  "prefix": ".Django Delete Record",
-  "body": [
-    "$1.objects.filter($2='$3').delete()"
-  ],
-  "description": "Supprimer un enregistrement"
-},
-"django_update_record": {
-  "prefix": ".Django Update Record",
-  "body": [
-    "record = $1.objects.get($2='$3')",
-    "record.$4 = '$5'",
-    "record.save()"
-  ],
-  "description": "Mettre à jour un enregistrement"
-},
-"django_variables": {
-  "prefix": ".Django Variables",
-  "body": [
-    "{{ $1 }}"
-  ],
-  "description": "Afficher une variable dans un template"
-},
-"django_tags": {
-  "prefix": ".Django Tags",
-  "body": [
-    "{% $1 %}"
-  ],
-  "description": "Balise Django générique"
-},
-"django_if_else": {
-  "prefix": ".Django If Else",
-  "body": [
-    "{% if $1 %}",
-    "  $2",
-    "{% else %}",
-    "  $3",
-    "{% endif %}"
-  ],
-  "description": "Condition if/else dans un template"
-},
-"django_for_loop": {
-  "prefix": ".Django For Loop",
-  "body": [
-    "{% for $1 in $2 %}",
-    "  $3",
-    "{% endfor %}"
-  ],
-  "description": "Boucle for dans un template"
-},
-"django_comment": {
-  "prefix": ".Django Comment",
-  "body": [
-    "{# $1 #}"
-  ],
-  "description": "Commentaire Django dans un template"
-},
-"django_cycle": {
-  "prefix": ".Django Cycle",
-  "body": [
-    "{% cycle '$1' '$2' %}"
-  ],
-  "description": "Cycle entre deux valeurs"
-},
-"django_extends": {
-  "prefix": ".Django Extends",
-  "body": [
-    "{% extends '$1/base.html' %}"
-  ],
-  "description": "Hériter d’un template parent"
-},
-"django_include": {
-  "prefix": ".Django Include",
-  "body": [
-    "{% include '$1.html' %}"
-  ],
-  "description": "Inclure un autre template"
-},
-"django_filter": {
-  "prefix": ".Django Filter",
-  "body": [
-    "{{ $1|$2 }}"
-  ],
-  "description": "Utiliser un filtre Django"
-},
-"django_404_template": {
-  "prefix": ".Django 404 Template",
-  "body": [
-    "from django.http import Http404",
-    "",
-    "def $1(request):",
-    "    raise Http404(\"$2\")"
-  ],
-  "description": "Lever une erreur 404"
-},
-"django_add_static": {
-  "prefix": ".Django Add Static Files",
-  "body": [
-    "{% load static %}"
-  ],
-  "description": "Charger les fichiers statiques"
-},
-"django_add_css": {
-  "prefix": ".Django Add CSS File",
-  "body": [
-    "<link rel=\"stylesheet\" href=\"{% static '$1.css' %}\">"
-  ],
-  "description": "Ajouter un fichier CSS"
-},
-"django_add_js": {
-  "prefix": ".Django Add JS File",
-  "body": [
-    "<script src=\"{% static '$1.js' %}\"></script>"
-  ],
-  "description": "Ajouter un fichier JS"
-},
-"django_add_image": {
-  "prefix": ".Django Add Image",
-  "body": [
-    "<img src=\"{% static '$1.jpg' %}\" alt=\"$2\">"
-  ],
-  "description": "Ajouter une image statique"
-},
-"django_queryset_get": {
-  "prefix": ".Django QuerySet Get",
-  "body": [
-    "$1.objects.get($2='$3')"
-  ],
-  "description": "Récupérer un seul objet avec get()"
-},
-"django_queryset_filter": {
-  "prefix": ".Django QuerySet Filter",
-  "body": [
-    "$1.objects.filter($2='$3')"
-  ],
-  "description": "Filtrer des objets avec filter()"
-},
-"django_queryset_order": {
-  "prefix": ".Django QuerySet Order By",
-  "body": [
-    "$1.objects.all().order_by('$2')"
-  ],
-  "description": "Trier des objets avec order_by()"
-}, "ml_mean_median_mode": {
-  "prefix": ".ML Mean Median Mode",
-  "body": [
-    "import statistics",
-    "",
-    "data = $1",
-    "mean = statistics.mean(data)",
-    "median = statistics.median(data)",
-    "mode = statistics.mode(data)"
-  ],
-  "description": "Calculer la moyenne, la médiane et le mode"
-},
-"ml_standard_deviation": {
-  "prefix": ".ML Standard Deviation",
-  "body": [
-    "import statistics",
-    "",
-    "data = $1",
-    "stdev = statistics.stdev(data)"
-  ],
-  "description": "Calcul de l'écart-type"
-},
-"ml_percentile": {
-  "prefix": ".ML Percentile",
-  "body": [
-    "import numpy as np",
-    "",
-    "data = $1",
-    "percentile_90 = np.percentile(data, 90)"
-  ],
-  "description": "Calcul du percentile"
-},
-"ml_data_distribution": {
-  "prefix": ".ML Data Distribution",
-  "body": [
-    "import matplotlib.pyplot as plt",
-    "",
-    "plt.hist($1, bins=10)",
-    "plt.title('Distribution des données')",
-    "plt.show()"
-  ],
-  "description": "Afficher la distribution des données"
-},
-"ml_normal_distribution": {
-  "prefix": ".ML Normal Data Distribution",
-  "body": [
-    "import numpy as np",
-    "import matplotlib.pyplot as plt",
-    "",
-    "data = np.random.normal(loc=$1, scale=$2, size=1000)",
-    "plt.hist(data, bins=30)",
-    "plt.show()"
-  ],
-  "description": "Distribution normale"
-},
-"ml_scatter_plot": {
-  "prefix": ".ML Scatter Plot",
-  "body": [
-    "import matplotlib.pyplot as plt",
-    "",
-    "plt.scatter($1, $2)",
-    "plt.xlabel('$3')",
-    "plt.ylabel('$4')",
-    "plt.title('Nuage de points')",
-    "plt.show()"
-  ],
-  "description": "Tracer un nuage de points"
-},
-"ml_linear_regression": {
-  "prefix": ".ML Linear Regression",
-  "body": [
-    "from sklearn.linear_model import LinearRegression",
-    "",
-    "model = LinearRegression()",
-    "model.fit($1, $2)",
-    "predictions = model.predict($3)"
-  ],
-  "description": "Régression linéaire"
-},
-"ml_polynomial_regression": {
-  "prefix": ".ML Polynomial Regression",
-  "body": [
-    "from sklearn.preprocessing import PolynomialFeatures",
-    "from sklearn.linear_model import LinearRegression",
-    "from sklearn.pipeline import make_pipeline",
-    "",
-    "model = make_pipeline(PolynomialFeatures(degree=$1), LinearRegression())",
-    "model.fit($2, $3)",
-    "predictions = model.predict($4)"
-  ],
-  "description": "Régression polynomiale"
-},
-"ml_multiple_regression": {
-  "prefix": ".ML Multiple Regression",
-  "body": [
-    "from sklearn.linear_model import LinearRegression",
-    "",
-    "model = LinearRegression()",
-    "model.fit($1, $2)",
-    "predictions = model.predict($3)"
-  ],
-  "description": "Régression multiple"
-},
-"ml_scale": {
-  "prefix": ".ML Scale",
-  "body": [
-    "from sklearn.preprocessing import StandardScaler",
-    "",
-    "scaler = StandardScaler()",
-    "$1_scaled = scaler.fit_transform($1)"
-  ],
-  "description": "Mise à l’échelle des données"
-},
-"ml_train_test": {
-  "prefix": ".ML Train/Test",
-  "body": [
-    "from sklearn.model_selection import train_test_split",
-    "",
-    "X_train, X_test, y_train, y_test = train_test_split($1, $2, test_size=0.2, random_state=42)"
-  ],
-  "description": "Séparer les données en train/test"
-},
-"ml_decision_tree": {
-  "prefix": ".ML Decision Tree",
-  "body": [
-    "from sklearn.tree import DecisionTreeClassifier",
-    "",
-    "model = DecisionTreeClassifier()",
-    "model.fit($1, $2)",
-    "predictions = model.predict($3)"
-  ],
-  "description": "Arbre de décision"
-},
-"ml_confusion_matrix": {
-  "prefix": ".ML Confusion Matrix",
-  "body": [
-    "from sklearn.metrics import confusion_matrix",
-    "",
-    "conf_matrix = confusion_matrix($1, $2)"
-  ],
-  "description": "Matrice de confusion"
-},
-"ml_hierarchical_clustering": {
-  "prefix": ".ML Hierarchical Clustering",
-  "body": [
-    "import scipy.cluster.hierarchy as sch",
-    "import matplotlib.pyplot as plt",
-    "",
-    "dendrogram = sch.dendrogram(sch.linkage($1, method='ward'))",
-    "plt.show()"
-  ],
-  "description": "Clustering hiérarchique"
-},
-"ml_logistic_regression": {
-  "prefix": ".ML Logistic Regression",
-  "body": [
-    "from sklearn.linear_model import LogisticRegression",
-    "",
-    "model = LogisticRegression()",
-    "model.fit($1, $2)",
-    "predictions = model.predict($3)"
-  ],
-  "description": "Régression logistique"
-},
-"ml_grid_search": {
-  "prefix": ".ML Grid Search",
-  "body": [
-    "from sklearn.model_selection import GridSearchCV",
-    "",
-    "param_grid = $1",
-    "grid = GridSearchCV(estimator=$2, param_grid=param_grid, cv=5)",
-    "grid.fit($3, $4)"
-  ],
-  "description": "Recherche de grille pour hyperparamètres"
-},
-"ml_categorical_data": {
-  "prefix": ".ML Categorical Data",
-  "body": [
-    "import pandas as pd",
-    "",
-    "df['$1'] = pd.factorize(df['$1'])[0]"
-  ],
-  "description": "Encodage des données catégoriques"
-},
-"ml_kmeans": {
-  "prefix": ".ML K-means",
-  "body": [
-    "from sklearn.cluster import KMeans",
-    "",
-    "model = KMeans(n_clusters=$1)",
-    "model.fit($2)"
-  ],
-  "description": "Clustering K-means"
-},
-"ml_bootstrap_agg": {
-  "prefix": ".ML Bootstrap Aggregation",
-  "body": [
-    "from sklearn.ensemble import BaggingClassifier",
-    "",
-    "model = BaggingClassifier(base_estimator=$1, n_estimators=10)",
-    "model.fit($2, $3)"
-  ],
-  "description": "Bootstrap Aggregation (Bagging)"
-},
-"ml_cross_validation": {
-  "prefix": ".ML Cross Validation",
-  "body": [
-    "from sklearn.model_selection import cross_val_score",
-    "",
-    "scores = cross_val_score($1, $2, $3, cv=5)"
-  ],
-  "description": "Validation croisée"
-},
-"ml_auc_roc": {
-  "prefix": ".ML AUC - ROC Curve",
-  "body": [
-    "from sklearn.metrics import roc_auc_score, roc_curve",
-    "",
-    "fpr, tpr, thresholds = roc_curve($1, $2)",
-    "auc = roc_auc_score($1, $2)"
-  ],
-  "description": "Courbe AUC - ROC"
-},
-"ml_knn": {
-  "prefix": ".ML K-nearest neighbors",
-  "body": [
-    "from sklearn.neighbors import KNeighborsClassifier",
-    "",
-    "model = KNeighborsClassifier(n_neighbors=$1)",
-    "model.fit($2, $3)",
-    "predictions = model.predict($4)"
-  ],
-  "description": "K plus proches voisins"
-},
-"pds_import": {
-  "prefix": ".pds import",
-  "body": [
-    "import pandas as pd"
-  ],
-  "description": "Importer la bibliothèque pandas"
-},
-"pds_read_csv": {
-  "prefix": ".pds read csv",
-  "body": [
-    "df = pd.read_csv('$1.csv')"
-  ],
-  "description": "Lire un fichier CSV"
-},
-"pds_read_excel": {
-  "prefix": ".pds read excel",
-  "body": [
-    "df = pd.read_excel('$1.xlsx')"
-  ],
-  "description": "Lire un fichier Excel"
-},
-"pds_head": {
-  "prefix": ".pds head",
-  "body": [
-    "df.head($1)"
-  ],
-  "description": "Afficher les premières lignes"
-},
-"pds_tail": {
-  "prefix": ".pds tail",
-  "body": [
-    "df.tail($1)"
-  ],
-  "description": "Afficher les dernières lignes"
-},
-"pds_info": {
-  "prefix": ".pds info",
-  "body": [
-    "df.info()"
-  ],
-  "description": "Afficher les informations du DataFrame"
-},
-"pds_describe": {
-  "prefix": ".pds describe",
-  "body": [
-    "df.describe()"
-  ],
-  "description": "Statistiques descriptives"
-},
-"pds_shape": {
-  "prefix": ".pds shape",
-  "body": [
-    "df.shape"
-  ],
-  "description": "Afficher les dimensions du DataFrame"
-},
-"pds_columns": {
-  "prefix": ".pds columns",
-  "body": [
-    "df.columns"
-  ],
-  "description": "Afficher les colonnes"
-},
-"pds_select_column": {
-  "prefix": ".pds select column",
-  "body": [
-    "df['$1']"
-  ],
-  "description": "Sélectionner une colonne"
-},
-"pds_select_multiple_columns": {
-  "prefix": ".pds select columns",
-  "body": [
-    "df[['$1', '$2']]"
-  ],
-  "description": "Sélectionner plusieurs colonnes"
-},
-"pds_filter_rows": {
-  "prefix": ".pds filter rows",
-  "body": [
-    "df[df['$1'] == '$2']"
-  ],
-  "description": "Filtrer les lignes selon une condition"
-},
-"pds_sort_values": {
-  "prefix": ".pds sort",
-  "body": [
-    "df.sort_values(by='$1', ascending=$2)"
-  ],
-  "description": "Trier les valeurs"
-},
-"pds_groupby": {
-  "prefix": ".pds groupby",
-  "body": [
-    "df.groupby('$1')['$2'].$3()"
-  ],
-  "description": "Grouper par et appliquer une fonction"
-},
-"pds_drop_column": {
-  "prefix": ".pds drop column",
-  "body": [
-    "df.drop('$1', axis=1, inplace=True)"
-  ],
-  "description": "Supprimer une colonne"
-},
-"pds_dropna": {
-  "prefix": ".pds dropna",
-  "body": [
-    "df.dropna(inplace=True)"
-  ],
-  "description": "Supprimer les valeurs manquantes"
-},
-"pds_fillna": {
-  "prefix": ".pds fillna",
-  "body": [
-    "df.fillna($1, inplace=True)"
-  ],
-  "description": "Remplir les valeurs manquantes"
-},
-"pds_to_csv": {
-  "prefix": ".pds to csv",
-  "body": [
-    "df.to_csv('$1.csv', index=False)"
-  ],
-  "description": "Exporter le DataFrame au format CSV"
+  "pygame_init": {
+    "prefix": ".pg setup",
+    "body": [
+      "import pygame",
+      "pygame.init()",
+      "screen = pygame.display.set_mode((500, 500))",
+      "pygame.display.set_caption('')",
+      "clock = pygame.time.Clock()",
+      "running = True",
+      "while running:",
+      "    for event in pygame.event.get():",
+      "        if event.type == pygame.QUIT:",
+      "            running = False",
+      "    screen.fill((0, 0, 0))",
+      "    pygame.display.flip()",
+      "    clock.tick(60)",
+      "pygame.quit()"
+    ],
+    "description": "Initialiser Pygame et créer une fenêtre"
+  },
+  "pygame_color": {
+    "prefix": ".pg color",
+    "body": [
+      "color = pygame.Color('$1')"
+    ],
+    "description": "Créer une couleur Pygame"
+  },
+  "pygame_display": {
+    "prefix": ".pg display",
+    "body": [
+      "pygame.display.set_caption('$1')",
+      "screen = pygame.display.set_mode(($2, $3))",
+      "pygame.display.flip()"
+    ],
+    "description": "Configurer l'affichage Pygame"
+  },
+  "pygame_draw": {
+    "prefix": ".pg draw",
+    "body": [
+      "pygame.draw.rect(screen, $1, ($2, $3, $4, $5))"
+    ],
+    "description": "Dessiner un rectangle"
+  },
+  "pygame_event": {
+    "prefix": ".pg event",
+    "body": [
+      "for event in pygame.event.get():",
+      "    if event.type == pygame.QUIT:",
+      "        running = False"
+    ],
+    "description": "Gérer les événements"
+  },
+  "pygame_font": {
+    "prefix": ".pg font",
+    "body": [
+      "font = pygame.font.SysFont('$1', $2)",
+      "text = font.render('$3', True, $4)",
+      "screen.blit(text, ($5, $6))"
+    ],
+    "description": "Afficher du texte avec une police"
+  },
+  "pygame_image": {
+    "prefix": ".pg image",
+    "body": [
+      "image = pygame.image.load('$1')",
+      "screen.blit(image, ($2, $3))"
+    ],
+    "description": "Charger et afficher une image"
+  },
+  "pygame_key": {
+    "prefix": ".pg key",
+    "body": [
+      "keys = pygame.key.get_pressed()",
+      "if keys[pygame.K_$1]:",
+      "    print('$1 pressed')"
+    ],
+    "description": "Détecter une touche pressée"
+  },
+  "pygame_locals": {
+    "prefix": ".pg locals",
+    "body": [
+      "from pygame.locals import *"
+    ],
+    "description": "Importer les constantes locales de Pygame"
+  },
+  "pygame_mixer": {
+    "prefix": ".pg mixer",
+    "body": [
+      "pygame.mixer.init()",
+      "sound = pygame.mixer.Sound('$1.wav')",
+      "sound.play()"
+    ],
+    "description": "Utiliser le module audio"
+  },
+  "pygame_mouse": {
+    "prefix": ".pg mouse",
+    "body": [
+      "x, y = pygame.mouse.get_pos()",
+      "if pygame.mouse.get_pressed()[0]:",
+      "    print('Left click at', x, y)"
+    ],
+    "description": "Gérer la souris"
+  },
+  "pygame_rect": {
+    "prefix": ".pg rect",
+    "body": [
+      "rect = pygame.Rect($1, $2, $3, $4)"
+    ],
+    "description": "Créer un rectangle"
+  },
+  "pygame_surface": {
+    "prefix": ".pg surface",
+    "body": [
+      "surface = pygame.Surface(($1, $2))",
+      "surface.fill($3)",
+      "screen.blit(surface, ($4, $5))"
+    ],
+    "description": "Créer et afficher une surface"
+  },
+  "pygame_time": {
+    "prefix": ".pg time",
+    "body": [
+      "clock = pygame.time.Clock()",
+      "clock.tick($1)"
+    ],
+    "description": "Contrôler le temps"
+  },
+  "pygame_music": {
+    "prefix": ".pg music",
+    "body": [
+      "pygame.mixer.music.load('$1.mp3')",
+      "pygame.mixer.music.play(-1)"
+    ],
+    "description": "Jouer de la musique en fond"
+  },
+  "pygame_cursors": {
+    "prefix": ".pg cursors",
+    "body": [
+      "pygame.mouse.set_cursor(*pygame.cursors.arrow)"
+    ],
+    "description": "Changer le curseur"
+  },
+  "pygame_joystick": {
+    "prefix": ".pg joystick",
+    "body": [
+      "pygame.joystick.init()",
+      "joystick = pygame.joystick.Joystick(0)",
+      "joystick.init()"
+    ],
+    "description": "Initialiser une manette"
+  },
+  "pygame_mask": {
+    "prefix": ".pg mask",
+    "body": [
+      "mask = pygame.mask.from_surface($1)",
+      "overlap = mask.overlap($2, ($3, $4))"
+    ],
+    "description": "Détection de collision avec masque"
+  },
+  "pygame_sprite": {
+    "prefix": ".pg sprite",
+    "body": [
+      "class MySprite(pygame.sprite.Sprite):",
+      "    def __init__(self):",
+      "        super().__init__()",
+      "        self.image = pygame.Surface(($1, $2))",
+      "        self.rect = self.image.get_rect()"
+    ],
+    "description": "Créer une classe de sprite"
+  },
+  "pygame_transform": {
+    "prefix": ".pg transform",
+    "body": [
+      "rotated = pygame.transform.rotate($1, $2)",
+      "scaled = pygame.transform.scale($1, ($3, $4))"
+    ],
+    "description": "Transformer une image"
+  },
+  "pygame_bufferproxy": {
+    "prefix": ".pg bufferproxy",
+    "body": [
+      "proxy = screen.get_buffer()"
+    ],
+    "description": "Utiliser BufferProxy"
+  },
+  "pygame_freetype": {
+    "prefix": ".pg freetype",
+    "body": [
+      "import pygame.freetype",
+      "ft_font = pygame.freetype.SysFont('$1', $2)",
+      "ft_font.render_to(screen, ($3, $4), '$5', $6)"
+    ],
+    "description": "Texte avec pygame.freetype"
+  },
+  "pygame_gfxdraw": {
+    "prefix": ".pg gfxdraw",
+    "body": [
+      "pygame.gfxdraw.aacircle(screen, $1, $2, $3, $4)"
+    ],
+    "description": "Dessiner avec gfxdraw"
+  },
+  "pygame_midi": {
+    "prefix": ".pg midi",
+    "body": [
+      "pygame.midi.init()",
+      "device = pygame.midi.Output(0)",
+      "device.note_on(60, 127)"
+    ],
+    "description": "Utiliser le MIDI"
+  },
+  "pygame_pixelarray": {
+    "prefix": ".pg pixelarray",
+    "body": [
+      "px = pygame.PixelArray($1)",
+      "px[$2][$3] = $4"
+    ],
+    "description": "Manipuler les pixels"
+  },
+  "pygame_pixelcopy": {
+    "prefix": ".pg pixelcopy",
+    "body": [
+      "pygame.pixelcopy.surface_to_array($1, $2)"
+    ],
+    "description": "Copier des pixels"
+  },
+  "pygame_sndarray": {
+    "prefix": ".pg sndarray",
+    "body": [
+      "array = pygame.sndarray.array($1)",
+      "pygame.sndarray.make_sound(array).play()"
+    ],
+    "description": "Manipuler les sons comme tableaux"
+  },
+  "pygame_surfarray": {
+    "prefix": ".pg surfarray",
+    "body": [
+      "array = pygame.surfarray.array3d($1)"
+    ],
+    "description": "Manipuler les surfaces comme tableaux"
+  },
+  "pygame_math": {
+    "prefix": ".pg math",
+    "body": [
+      "vec = pygame.math.Vector2($1, $2)",
+      "vec.normalize_ip()"
+    ],
+    "description": "Utiliser Vector2 avec pygame.math"
+  },
+  "pygame_camera": {
+    "prefix": ".pg camera",
+    "body": [
+      "pygame.camera.init()",
+      "cam = pygame.camera.Camera(pygame.camera.list_cameras()[0])",
+      "cam.start()",
+      "img = cam.get_image()"
+    ],
+    "description": "Utiliser une caméra"
+  },
+  "pygame_controller": {
+    "prefix": ".pg controller",
+    "body": [
+      "pygame.joystick.init()",
+      "controller = pygame.joystick.Joystick(0)",
+      "controller.init()"
+    ],
+    "description": "Initialiser une manette (controller)"
+  },
+  "pygame_fastevent": {
+    "prefix": ".pg fastevent",
+    "body": [
+      "pygame.fastevent.init()",
+      "for event in pygame.fastevent.get():",
+      "    if event.type == pygame.QUIT:",
+      "        running = False"
+    ],
+    "description": "Utiliser fastevent"
+  },
+  "pygame_scrap": {
+    "prefix": ".pg scrap",
+    "body": [
+      "pygame.scrap.init()",
+      "pygame.scrap.put(pygame.SCRAP_TEXT, b'$1')"
+    ],
+    "description": "Utiliser le presse-papier"
+  },
+  "pygame_tests": {
+    "prefix": ".pg tests",
+    "body": [
+      "# Aucun test inclus par défaut, utiliser unittest ou pytest"
+    ],
+    "description": "Tests unitaires avec Pygame (manuel)"
+  },
+  "pygame_touch": {
+    "prefix": ".pg touch",
+    "body": [
+      "if event.type == pygame.FINGERDOWN:",
+      "    print(event.x, event.y)"
+    ],
+    "description": "Gérer les événements tactiles"
+  },
+  "mtlib_pyplot": {
+    "prefix": ".mtlib Pyplot",
+    "body": [
+      "import matplotlib.pyplot as plt"
+    ],
+    "description": "Importer matplotlib.pyplot"
+  },
+  "mtlib_plotting": {
+    "prefix": ".mtlib Plotting",
+    "body": [
+      "plt.plot($1, $2)",
+      "plt.show()"
+    ],
+    "description": "Tracer un graphique simple"
+  },
+  "mtlib_markers": {
+    "prefix": ".mtlib",
+    "body": [
+      "plt.plot($1, $2, marker='$3')",
+      "plt.show()"
+    ],
+    "description": "Utiliser des marqueurs dans un graphique"
+  },
+  "mtlib_line": {
+    "prefix": ".mtlib Line",
+    "body": [
+      "plt.plot($1, $2, linestyle='$3')",
+      "plt.show()"
+    ],
+    "description": "Changer le style de ligne"
+  },
+  "mtlib_labels": {
+    "prefix": ".mtlib Labels",
+    "body": [
+      "plt.xlabel('$1')",
+      "plt.ylabel('$2')",
+      "plt.title('$3')"
+    ],
+    "description": "Ajouter des étiquettes et un titre"
+  },
+  "mtlib_grid": {
+    "prefix": ".mtlib Grid",
+    "body": [
+      "plt.grid(True)"
+    ],
+    "description": "Afficher la grille"
+  },
+  "mtlib_subplot": {
+    "prefix": ".mtlib Subplot",
+    "body": [
+      "plt.subplot($1, $2, $3)",
+      "plt.plot($4, $5)",
+      "plt.title('$6')"
+    ],
+    "description": "Créer un subplot"
+  },
+  "mtlib_scatter": {
+    "prefix": ".mtlib Scatter",
+    "body": [
+      "plt.scatter($1, $2)",
+      "plt.show()"
+    ],
+    "description": "Créer un graphique de dispersion"
+  },
+  "mtlib_bars": {
+    "prefix": ".mtlib Bars",
+    "body": [
+      "plt.bar($1, $2)",
+      "plt.show()"
+    ],
+    "description": "Créer un graphique à barres"
+  },
+  "mtlib_histograms": {
+    "prefix": ".mtlib Histograms",
+    "body": [
+      "plt.hist($1, bins=$2)",
+      "plt.show()"
+    ],
+    "description": "Créer un histogramme"
+  },
+  "mtlib_piecharts": {
+    "prefix": ".mtlib Pie Charts",
+    "body": [
+      "plt.pie($1, labels=$2, autopct='%1.1f%%')",
+      "plt.show()"
+    ],
+    "description": "Créer un graphique en secteurs (camembert)"
+  },
+  "files_read": {
+    "prefix": ".files read",
+    "body": [
+      "with open('$1', 'r') as file:",
+      "    content = file.read()",
+      "    print(content)"
+    ],
+    "description": "Lire un fichier"
+  },
+  "files_write": {
+    "prefix": ".files write",
+    "body": [
+      "with open('$1', 'w') as file:",
+      "    file.write('$2')"
+    ],
+    "description": "Écrire dans un fichier (écrase le contenu existant)"
+  },
+  "files_append": {
+    "prefix": ".files append",
+    "body": [
+      "with open('$1', 'a') as file:",
+      "    file.write('$2')"
+    ],
+    "description": "Ajouter à un fichier (sans effacer l'ancien contenu)"
+  },
+  "files_create": {
+    "prefix": ".files create",
+    "body": [
+      "with open('$1', 'x') as file:",
+      "    file.write('$2')"
+    ],
+    "description": "Créer un fichier (échoue si le fichier existe déjà)"
+  },
+  "files_delete": {
+    "prefix": ".files delete",
+    "body": [
+      "import os",
+      "if os.path.exists('$1'):",
+      "    os.remove('$1')",
+      "else:",
+      "    print(\"Le fichier n'existe pas\")"
+    ],
+    "description": "Supprimer un fichier"
+  },
+  "files_modes_doc": {
+    "prefix": ".files modes",
+    "body": [
+      "# Modes d'ouverture de fichier :",
+      "# 'r' : lecture (par défaut)",
+      "# 'w' : écriture (écrase)",
+      "# 'x' : création (échoue si existe)",
+      "# 'a' : ajout",
+      "# 'b' : binaire",
+      "# 't' : texte (par défaut)",
+      "# '+' : lecture et écriture"
+    ],
+    "description": "Documentation rapide sur les modes d'ouverture"
+  },
+  "django_views": {
+    "prefix": ".Django Views",
+    "body": [
+      "from django.shortcuts import render",
+      "",
+      "def $1(request):",
+      "    return render(request, '$2.html', {'$3': $4})"
+    ],
+    "description": "Créer une vue Django"
+  },
+  "django_templates": {
+    "prefix": ".Django Templates",
+    "body": [
+      "{% extends '$1/base.html' %}",
+      "{% block content %}",
+      "<h1>$2</h1>",
+      "{% endblock %}"
+    ],
+    "description": "Structure d'un template Django"
+  },
+  "django_models": {
+    "prefix": ".Django Models",
+    "body": [
+      "from django.db import models",
+      "",
+      "class $1(models.Model):",
+      "    $2 = models.$3Field($4)",
+      "",
+      "    def __str__(self):",
+      "        return self.$2"
+    ],
+    "description": "Créer un modèle Django"
+  },
+  "django_add_members": {
+    "prefix": ".Django Add Members",
+    "body": [
+      "from .models import $1",
+      "$1.objects.create($2='$3', $4='$5')"
+    ],
+    "description": "Ajouter un enregistrement à un modèle"
+  },
+  "django_add_template": {
+    "prefix": ".Django Add Template",
+    "body": [
+      "from django.shortcuts import render",
+      "",
+      "def $1(request):",
+      "    return render(request, '$2.html')"
+    ],
+    "description": "Rendre un template depuis une vue"
+  },
+  "django_add_record": {
+    "prefix": ".Django Add Record",
+    "body": [
+      "instance = $1($2='$3', $4='$5')",
+      "instance.save()"
+    ],
+    "description": "Créer et sauvegarder un nouvel enregistrement"
+  },
+  "django_delete_record": {
+    "prefix": ".Django Delete Record",
+    "body": [
+      "$1.objects.filter($2='$3').delete()"
+    ],
+    "description": "Supprimer un enregistrement"
+  },
+  "django_update_record": {
+    "prefix": ".Django Update Record",
+    "body": [
+      "record = $1.objects.get($2='$3')",
+      "record.$4 = '$5'",
+      "record.save()"
+    ],
+    "description": "Mettre à jour un enregistrement"
+  },
+  "django_variables": {
+    "prefix": ".Django Variables",
+    "body": [
+      "{{ $1 }}"
+    ],
+    "description": "Afficher une variable dans un template"
+  },
+  "django_tags": {
+    "prefix": ".Django Tags",
+    "body": [
+      "{% $1 %}"
+    ],
+    "description": "Balise Django générique"
+  },
+  "django_if_else": {
+    "prefix": ".Django If Else",
+    "body": [
+      "{% if $1 %}",
+      "  $2",
+      "{% else %}",
+      "  $3",
+      "{% endif %}"
+    ],
+    "description": "Condition if/else dans un template"
+  },
+  "django_for_loop": {
+    "prefix": ".Django For Loop",
+    "body": [
+      "{% for $1 in $2 %}",
+      "  $3",
+      "{% endfor %}"
+    ],
+    "description": "Boucle for dans un template"
+  },
+  "django_comment": {
+    "prefix": ".Django Comment",
+    "body": [
+      "{# $1 #}"
+    ],
+    "description": "Commentaire Django dans un template"
+  },
+  "django_cycle": {
+    "prefix": ".Django Cycle",
+    "body": [
+      "{% cycle '$1' '$2' %}"
+    ],
+    "description": "Cycle entre deux valeurs"
+  },
+  "django_extends": {
+    "prefix": ".Django Extends",
+    "body": [
+      "{% extends '$1/base.html' %}"
+    ],
+    "description": "Hériter d’un template parent"
+  },
+  "django_include": {
+    "prefix": ".Django Include",
+    "body": [
+      "{% include '$1.html' %}"
+    ],
+    "description": "Inclure un autre template"
+  },
+  "django_filter": {
+    "prefix": ".Django Filter",
+    "body": [
+      "{{ $1|$2 }}"
+    ],
+    "description": "Utiliser un filtre Django"
+  },
+  "django_404_template": {
+    "prefix": ".Django 404 Template",
+    "body": [
+      "from django.http import Http404",
+      "",
+      "def $1(request):",
+      "    raise Http404(\"$2\")"
+    ],
+    "description": "Lever une erreur 404"
+  },
+  "django_add_static": {
+    "prefix": ".Django Add Static Files",
+    "body": [
+      "{% load static %}"
+    ],
+    "description": "Charger les fichiers statiques"
+  },
+  "django_add_css": {
+    "prefix": ".Django Add CSS File",
+    "body": [
+      "<link rel=\"stylesheet\" href=\"{% static '$1.css' %}\">"
+    ],
+    "description": "Ajouter un fichier CSS"
+  },
+  "django_add_js": {
+    "prefix": ".Django Add JS File",
+    "body": [
+      "<script src=\"{% static '$1.js' %}\"></script>"
+    ],
+    "description": "Ajouter un fichier JS"
+  },
+  "django_add_image": {
+    "prefix": ".Django Add Image",
+    "body": [
+      "<img src=\"{% static '$1.jpg' %}\" alt=\"$2\">"
+    ],
+    "description": "Ajouter une image statique"
+  },
+  "django_queryset_get": {
+    "prefix": ".Django QuerySet Get",
+    "body": [
+      "$1.objects.get($2='$3')"
+    ],
+    "description": "Récupérer un seul objet avec get()"
+  },
+  "django_queryset_filter": {
+    "prefix": ".Django QuerySet Filter",
+    "body": [
+      "$1.objects.filter($2='$3')"
+    ],
+    "description": "Filtrer des objets avec filter()"
+  },
+  "django_queryset_order": {
+    "prefix": ".Django QuerySet Order By",
+    "body": [
+      "$1.objects.all().order_by('$2')"
+    ],
+    "description": "Trier des objets avec order_by()"
+  },
+  "ml_mean_median_mode": {
+    "prefix": ".ML Mean Median Mode",
+    "body": [
+      "import statistics",
+      "",
+      "data = $1",
+      "mean = statistics.mean(data)",
+      "median = statistics.median(data)",
+      "mode = statistics.mode(data)"
+    ],
+    "description": "Calculer la moyenne, la médiane et le mode"
+  },
+  "ml_standard_deviation": {
+    "prefix": ".ML Standard Deviation",
+    "body": [
+      "import statistics",
+      "",
+      "data = $1",
+      "stdev = statistics.stdev(data)"
+    ],
+    "description": "Calcul de l'écart-type"
+  },
+  "ml_percentile": {
+    "prefix": ".ML Percentile",
+    "body": [
+      "import numpy as np",
+      "",
+      "data = $1",
+      "percentile_90 = np.percentile(data, 90)"
+    ],
+    "description": "Calcul du percentile"
+  },
+  "ml_data_distribution": {
+    "prefix": ".ML Data Distribution",
+    "body": [
+      "import matplotlib.pyplot as plt",
+      "",
+      "plt.hist($1, bins=10)",
+      "plt.title('Distribution des données')",
+      "plt.show()"
+    ],
+    "description": "Afficher la distribution des données"
+  },
+  "ml_normal_distribution": {
+    "prefix": ".ML Normal Data Distribution",
+    "body": [
+      "import numpy as np",
+      "import matplotlib.pyplot as plt",
+      "",
+      "data = np.random.normal(loc=$1, scale=$2, size=1000)",
+      "plt.hist(data, bins=30)",
+      "plt.show()"
+    ],
+    "description": "Distribution normale"
+  },
+  "ml_scatter_plot": {
+    "prefix": ".ML Scatter Plot",
+    "body": [
+      "import matplotlib.pyplot as plt",
+      "",
+      "plt.scatter($1, $2)",
+      "plt.xlabel('$3')",
+      "plt.ylabel('$4')",
+      "plt.title('Nuage de points')",
+      "plt.show()"
+    ],
+    "description": "Tracer un nuage de points"
+  },
+  "ml_linear_regression": {
+    "prefix": ".ML Linear Regression",
+    "body": [
+      "from sklearn.linear_model import LinearRegression",
+      "",
+      "model = LinearRegression()",
+      "model.fit($1, $2)",
+      "predictions = model.predict($3)"
+    ],
+    "description": "Régression linéaire"
+  },
+  "ml_polynomial_regression": {
+    "prefix": ".ML Polynomial Regression",
+    "body": [
+      "from sklearn.preprocessing import PolynomialFeatures",
+      "from sklearn.linear_model import LinearRegression",
+      "from sklearn.pipeline import make_pipeline",
+      "",
+      "model = make_pipeline(PolynomialFeatures(degree=$1), LinearRegression())",
+      "model.fit($2, $3)",
+      "predictions = model.predict($4)"
+    ],
+    "description": "Régression polynomiale"
+  },
+  "ml_multiple_regression": {
+    "prefix": ".ML Multiple Regression",
+    "body": [
+      "from sklearn.linear_model import LinearRegression",
+      "",
+      "model = LinearRegression()",
+      "model.fit($1, $2)",
+      "predictions = model.predict($3)"
+    ],
+    "description": "Régression multiple"
+  },
+  "ml_scale": {
+    "prefix": ".ML Scale",
+    "body": [
+      "from sklearn.preprocessing import StandardScaler",
+      "",
+      "scaler = StandardScaler()",
+      "$1_scaled = scaler.fit_transform($1)"
+    ],
+    "description": "Mise à l’échelle des données"
+  },
+  "ml_train_test": {
+    "prefix": ".ML Train/Test",
+    "body": [
+      "from sklearn.model_selection import train_test_split",
+      "",
+      "X_train, X_test, y_train, y_test = train_test_split($1, $2, test_size=0.2, random_state=42)"
+    ],
+    "description": "Séparer les données en train/test"
+  },
+  "ml_decision_tree": {
+    "prefix": ".ML Decision Tree",
+    "body": [
+      "from sklearn.tree import DecisionTreeClassifier",
+      "",
+      "model = DecisionTreeClassifier()",
+      "model.fit($1, $2)",
+      "predictions = model.predict($3)"
+    ],
+    "description": "Arbre de décision"
+  },
+  "ml_confusion_matrix": {
+    "prefix": ".ML Confusion Matrix",
+    "body": [
+      "from sklearn.metrics import confusion_matrix",
+      "",
+      "conf_matrix = confusion_matrix($1, $2)"
+    ],
+    "description": "Matrice de confusion"
+  },
+  "ml_hierarchical_clustering": {
+    "prefix": ".ML Hierarchical Clustering",
+    "body": [
+      "import scipy.cluster.hierarchy as sch",
+      "import matplotlib.pyplot as plt",
+      "",
+      "dendrogram = sch.dendrogram(sch.linkage($1, method='ward'))",
+      "plt.show()"
+    ],
+    "description": "Clustering hiérarchique"
+  },
+  "ml_logistic_regression": {
+    "prefix": ".ML Logistic Regression",
+    "body": [
+      "from sklearn.linear_model import LogisticRegression",
+      "",
+      "model = LogisticRegression()",
+      "model.fit($1, $2)",
+      "predictions = model.predict($3)"
+    ],
+    "description": "Régression logistique"
+  },
+  "ml_grid_search": {
+    "prefix": ".ML Grid Search",
+    "body": [
+      "from sklearn.model_selection import GridSearchCV",
+      "",
+      "param_grid = $1",
+      "grid = GridSearchCV(estimator=$2, param_grid=param_grid, cv=5)",
+      "grid.fit($3, $4)"
+    ],
+    "description": "Recherche de grille pour hyperparamètres"
+  },
+  "ml_categorical_data": {
+    "prefix": ".ML Categorical Data",
+    "body": [
+      "import pandas as pd",
+      "",
+      "df['$1'] = pd.factorize(df['$1'])[0]"
+    ],
+    "description": "Encodage des données catégoriques"
+  },
+  "ml_kmeans": {
+    "prefix": ".ML K-means",
+    "body": [
+      "from sklearn.cluster import KMeans",
+      "",
+      "model = KMeans(n_clusters=$1)",
+      "model.fit($2)"
+    ],
+    "description": "Clustering K-means"
+  },
+  "ml_bootstrap_agg": {
+    "prefix": ".ML Bootstrap Aggregation",
+    "body": [
+      "from sklearn.ensemble import BaggingClassifier",
+      "",
+      "model = BaggingClassifier(base_estimator=$1, n_estimators=10)",
+      "model.fit($2, $3)"
+    ],
+    "description": "Bootstrap Aggregation (Bagging)"
+  },
+  "ml_cross_validation": {
+    "prefix": ".ML Cross Validation",
+    "body": [
+      "from sklearn.model_selection import cross_val_score",
+      "",
+      "scores = cross_val_score($1, $2, $3, cv=5)"
+    ],
+    "description": "Validation croisée"
+  },
+  "ml_auc_roc": {
+    "prefix": ".ML AUC - ROC Curve",
+    "body": [
+      "from sklearn.metrics import roc_auc_score, roc_curve",
+      "",
+      "fpr, tpr, thresholds = roc_curve($1, $2)",
+      "auc = roc_auc_score($1, $2)"
+    ],
+    "description": "Courbe AUC - ROC"
+  },
+  "ml_knn": {
+    "prefix": ".ML K-nearest neighbors",
+    "body": [
+      "from sklearn.neighbors import KNeighborsClassifier",
+      "",
+      "model = KNeighborsClassifier(n_neighbors=$1)",
+      "model.fit($2, $3)",
+      "predictions = model.predict($4)"
+    ],
+    "description": "K plus proches voisins"
+  },
+  "pds_import": {
+    "prefix": ".pds import",
+    "body": [
+      "import pandas as pd"
+    ],
+    "description": "Importer la bibliothèque pandas"
+  },
+  "pds_read_csv": {
+    "prefix": ".pds read csv",
+    "body": [
+      "df = pd.read_csv('$1.csv')"
+    ],
+    "description": "Lire un fichier CSV"
+  },
+  "pds_read_excel": {
+    "prefix": ".pds read excel",
+    "body": [
+      "df = pd.read_excel('$1.xlsx')"
+    ],
+    "description": "Lire un fichier Excel"
+  },
+  "pds_head": {
+    "prefix": ".pds head",
+    "body": [
+      "df.head($1)"
+    ],
+    "description": "Afficher les premières lignes"
+  },
+  "pds_tail": {
+    "prefix": ".pds tail",
+    "body": [
+      "df.tail($1)"
+    ],
+    "description": "Afficher les dernières lignes"
+  },
+  "pds_info": {
+    "prefix": ".pds info",
+    "body": [
+      "df.info()"
+    ],
+    "description": "Afficher les informations du DataFrame"
+  },
+  "pds_describe": {
+    "prefix": ".pds describe",
+    "body": [
+      "df.describe()"
+    ],
+    "description": "Statistiques descriptives"
+  },
+  "pds_shape": {
+    "prefix": ".pds shape",
+    "body": [
+      "df.shape"
+    ],
+    "description": "Afficher les dimensions du DataFrame"
+  },
+  "pds_columns": {
+    "prefix": ".pds columns",
+    "body": [
+      "df.columns"
+    ],
+    "description": "Afficher les colonnes"
+  },
+  "pds_select_column": {
+    "prefix": ".pds select column",
+    "body": [
+      "df['$1']"
+    ],
+    "description": "Sélectionner une colonne"
+  },
+  "pds_select_multiple_columns": {
+    "prefix": ".pds select columns",
+    "body": [
+      "df[['$1', '$2']]"
+    ],
+    "description": "Sélectionner plusieurs colonnes"
+  },
+  "pds_filter_rows": {
+    "prefix": ".pds filter rows",
+    "body": [
+      "df[df['$1'] == '$2']"
+    ],
+    "description": "Filtrer les lignes selon une condition"
+  },
+  "pds_sort_values": {
+    "prefix": ".pds sort",
+    "body": [
+      "df.sort_values(by='$1', ascending=$2)"
+    ],
+    "description": "Trier les valeurs"
+  },
+  "pds_groupby": {
+    "prefix": ".pds groupby",
+    "body": [
+      "df.groupby('$1')['$2'].$3()"
+    ],
+    "description": "Grouper par et appliquer une fonction"
+  },
+  "pds_drop_column": {
+    "prefix": ".pds drop column",
+    "body": [
+      "df.drop('$1', axis=1, inplace=True)"
+    ],
+    "description": "Supprimer une colonne"
+  },
+  "pds_dropna": {
+    "prefix": ".pds dropna",
+    "body": [
+      "df.dropna(inplace=True)"
+    ],
+    "description": "Supprimer les valeurs manquantes"
+  },
+  "pds_fillna": {
+    "prefix": ".pds fillna",
+    "body": [
+      "df.fillna($1, inplace=True)"
+    ],
+    "description": "Remplir les valeurs manquantes"
+  },
+  "pds_to_csv": {
+    "prefix": ".pds to csv",
+    "body": [
+      "df.to_csv('$1.csv', index=False)"
+    ],
+    "description": "Exporter le DataFrame au format CSV"
+  },
+  "cv_import": {
+    "prefix": ".cv import",
+    "body": [
+      "import cv2"
+    ],
+    "description": "Importer OpenCV"
+  },
+  "cv_read_image": {
+    "prefix": ".cv read",
+    "body": [
+      "img = cv2.imread('$1')"
+    ],
+    "description": "Lire une image"
+  },
+  "cv_show_image": {
+    "prefix": ".cv show",
+    "body": [
+      "cv2.imshow('$1', img)",
+      "cv2.waitKey(0)",
+      "cv2.destroyAllWindows()"
+    ],
+    "description": "Afficher une image"
+  },
+  "cv_write_image": {
+    "prefix": ".cv write",
+    "body": [
+      "cv2.imwrite('$1', img)"
+    ],
+    "description": "Enregistrer une image"
+  },
+  "cv_resize": {
+    "prefix": ".cv resize",
+    "body": [
+      "resized = cv2.resize(img, ($1, $2))"
+    ],
+    "description": "Redimensionner une image"
+  },
+  "cv_gray": {
+    "prefix": ".cv gray",
+    "body": [
+      "gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)"
+    ],
+    "description": "Convertir une image en niveaux de gris"
+  },
+  "cv_blur": {
+    "prefix": ".cv blur",
+    "body": [
+      "blurred = cv2.GaussianBlur(img, ($1, $2), 0)"
+    ],
+    "description": "Appliquer un flou gaussien"
+  },
+  "cv_canny": {
+    "prefix": ".cv canny",
+    "body": [
+      "edges = cv2.Canny(img, $1, $2)"
+    ],
+    "description": "Détection de contours (Canny)"
+  },
+  "cv_draw_rectangle": {
+    "prefix": ".cv rect",
+    "body": [
+      "cv2.rectangle(img, ($1, $2), ($3, $4), ($5, $6, $7), $8)"
+    ],
+    "description": "Dessiner un rectangle"
+  },
+  "cv_draw_circle": {
+    "prefix": ".cv circle",
+    "body": [
+      "cv2.circle(img, ($1, $2), $3, ($4, $5, $6), $7)"
+    ],
+    "description": "Dessiner un cercle"
+  },
+  "cv_draw_text": {
+    "prefix": ".cv text",
+    "body": [
+      "cv2.putText(img, '$1', ($2, $3), cv2.FONT_HERSHEY_SIMPLEX, $4, ($5, $6, $7), $8)"
+    ],
+    "description": "Afficher du texte sur une image"
+  },
+  "cv_video_capture": {
+    "prefix": ".cv video",
+    "body": [
+      "cap = cv2.VideoCapture(0)",
+      "while True:",
+      "    ret, frame = cap.read()",
+      "    if not ret:",
+      "        break",
+      "    cv2.imshow('Video', frame)",
+      "    if cv2.waitKey(1) & 0xFF == ord('q'):",
+      "        break",
+      "cap.release()",
+      "cv2.destroyAllWindows()"
+    ],
+    "description": "Capture vidéo avec webcam"
+  },
+  "tsf_import": {
+    "prefix": ".tsf import",
+    "body": [
+      "import tensorflow as tf"
+    ],
+    "description": "Importer TensorFlow"
+  },
+  "tsf_constant": {
+    "prefix": ".tsf constant",
+    "body": [
+      "const = tf.constant([$1])"
+    ],
+    "description": "Créer une constante TensorFlow"
+  },
+  "tsf_variable": {
+    "prefix": ".tsf variable",
+    "body": [
+      "var = tf.Variable([$1])"
+    ],
+    "description": "Créer une variable TensorFlow"
+  },
+  "tsf_placeholder": {
+    "prefix": ".tsf placeholder",
+    "body": [
+      "# tf.placeholder is only for TF1.x",
+      "x = tf.compat.v1.placeholder(tf.float32, shape=[$1])"
+    ],
+    "description": "Créer un placeholder (TF1.x)"
+  },
+  "tsf_model_sequential": {
+    "prefix": ".tsf model seq",
+    "body": [
+      "model = tf.keras.Sequential([",
+      "    tf.keras.layers.Dense($1, activation='$2'),",
+      "    tf.keras.layers.Dense($3)",
+      "])"
+    ],
+    "description": "Créer un modèle séquentiel simple"
+  },
+  "tsf_compile_model": {
+    "prefix": ".tsf compile",
+    "body": [
+      "model.compile(optimizer='$1',",
+      "              loss='$2',",
+      "              metrics=['$3'])"
+    ],
+    "description": "Compiler un modèle"
+  },
+  "tsf_fit_model": {
+    "prefix": ".tsf fit",
+    "body": [
+      "model.fit(x_train, y_train, epochs=$1, batch_size=$2)"
+    ],
+    "description": "Entraîner le modèle"
+  },
+  "tsf_evaluate": {
+    "prefix": ".tsf eval",
+    "body": [
+      "loss, accuracy = model.evaluate(x_test, y_test)"
+    ],
+    "description": "Évaluer le modèle"
+  },
+  "tsf_predict": {
+    "prefix": ".tsf predict",
+    "body": [
+      "predictions = model.predict($1)"
+    ],
+    "description": "Faire des prédictions"
+  },
+  "tsf_tensorboard": {
+    "prefix": ".tsf tensorboard",
+    "body": [
+      "tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir='$1')"
+    ],
+    "description": "Créer un callback TensorBoard"
+  },
+  "tsf_save_model": {
+    "prefix": ".tsf save",
+    "body": [
+      "model.save('$1_model.h5')"
+    ],
+    "description": "Sauvegarder le modèle"
+  },
+  "tsf_load_model": {
+    "prefix": ".tsf load",
+    "body": [
+      "model = tf.keras.models.load_model('$1_model.h5')"
+    ],
+    "description": "Charger un modèle"
+  },
+  "tsf_dataset_from_tensor": {
+    "prefix": ".tsf dataset",
+    "body": [
+      "dataset = tf.data.Dataset.from_tensor_slices(($1, $2))"
+    ],
+    "description": "Créer un dataset depuis des tensors"
+  },
+  "tsf_reshape": {
+    "prefix": ".tsf reshape",
+    "body": [
+      "reshaped = tf.reshape($1, [$2])"
+    ],
+    "description": "Redimensionner un tenseur"
+  },
+  "nltk_import": {
+    "prefix": ".nltk import",
+    "body": [
+      "import nltk"
+    ],
+    "description": "Importer NLTK"
+  },
+  "nltk_download": {
+    "prefix": ".nltk download",
+    "body": [
+      "nltk.download('$1')"
+    ],
+    "description": "Télécharger un dataset ou modèle NLTK"
+  },
+  "nltk_tokenize": {
+    "prefix": ".nltk tokenize",
+    "body": [
+      "from nltk.tokenize import word_tokenize",
+      "tokens = word_tokenize('$1')"
+    ],
+    "description": "Tokenisation des mots"
+  },
+  "nltk_sent_tokenize": {
+    "prefix": ".nltk sent tokenize",
+    "body": [
+      "from nltk.tokenize import sent_tokenize",
+      "sentences = sent_tokenize('$1')"
+    ],
+    "description": "Tokenisation des phrases"
+  },
+  "nltk_stopwords": {
+    "prefix": ".nltk stopwords",
+    "body": [
+      "from nltk.corpus import stopwords",
+      "stop_words = set(stopwords.words('english'))",
+      "filtered = [w for w in tokens if not w.lower() in stop_words]"
+    ],
+    "description": "Supprimer les mots vides"
+  },
+  "nltk_pos_tag": {
+    "prefix": ".nltk pos tag",
+    "body": [
+      "from nltk import pos_tag",
+      "tags = pos_tag(tokens)"
+    ],
+    "description": "Étiquetage grammatical"
+  },
+  "nltk_stemmer": {
+    "prefix": ".nltk stem",
+    "body": [
+      "from nltk.stem import PorterStemmer",
+      "stemmer = PorterStemmer()",
+      "stemmed = [stemmer.stem(word) for word in tokens]"
+    ],
+    "description": "Racines des mots (Stemming)"
+  },
+  "nltk_lemmatizer": {
+    "prefix": ".nltk lemmatize",
+    "body": [
+      "from nltk.stem import WordNetLemmatizer",
+      "lemmatizer = WordNetLemmatizer()",
+      "lemmatized = [lemmatizer.lemmatize(word) for word in tokens]"
+    ],
+    "description": "Lemmatisation"
+  },
+  "nltk_freq_dist": {
+    "prefix": ".nltk freqdist",
+    "body": [
+      "from nltk.probability import FreqDist",
+      "freq = FreqDist(tokens)",
+      "freq.plot($1)"
+    ],
+    "description": "Distribution de fréquence"
+  },
+  "nltk_ngrams": {
+    "prefix": ".nltk ngrams",
+    "body": [
+      "from nltk.util import ngrams",
+      "bigrams = list(ngrams(tokens, 2))"
+    ],
+    "description": "Extraire des n-grams"
+  },
+  "nltk_named_entity": {
+    "prefix": ".nltk ner",
+    "body": [
+      "from nltk import ne_chunk",
+      "from nltk.tree import Tree",
+      "chunked = ne_chunk(pos_tag(tokens))"
+    ],
+    "description": "Reconnaissance d'entités nommées"
+  },
+  "nltk_word_tokenize": {
+    "prefix": ".nltk word tokenize",
+    "body": [
+      "from nltk.tokenize import word_tokenize",
+      "text = \"$1\"",
+      "tokens = word_tokenize(text)"
+    ],
+    "description": "Tokenisation des mots"
+  },
+  "nltk_sentence_tokenize": {
+    "prefix": ".nltk sentence tokenize",
+    "body": [
+      "from nltk.tokenize import sent_tokenize",
+      "text = \"$1\"",
+      "sentences = sent_tokenize(text)"
+    ],
+    "description": "Tokenisation des phrases"
+  },
+  "nltk_stopword_filtering": {
+    "prefix": ".nltk stopword filter",
+    "body": [
+      "from nltk.corpus import stopwords",
+      "stop_words = set(stopwords.words('english'))",
+      "filtered = [word for word in tokens if word.lower() not in stop_words]"
+    ],
+    "description": "Filtrer les mots vides"
+  },
+  "nltk_punkt_download": {
+    "prefix": ".nltk punkt",
+    "body": [
+      "import nltk",
+      "nltk.download('punkt')"
+    ],
+    "description": "Télécharger le tokenizer Punkt"
+  },
+  "nltk_pos_tagging": {
+    "prefix": ".nltk pos",
+    "body": [
+      "from nltk import pos_tag",
+      "pos_tags = pos_tag(tokens)"
+    ],
+    "description": "Étiquetage grammatical (POS tagging)"
+  },
+  "nltk_wordnet_download": {
+    "prefix": ".nltk wordnet",
+    "body": [
+      "import nltk",
+      "nltk.download('wordnet')"
+    ],
+    "description": "Télécharger WordNet"
+  },
+  "nltk_lemmatizer_wordnet": {
+    "prefix": ".nltk lemmatizer",
+    "body": [
+      "from nltk.stem import WordNetLemmatizer",
+      "lemmatizer = WordNetLemmatizer()",
+      "lemmatized_words = [lemmatizer.lemmatize(word) for word in tokens]"
+    ],
+    "description": "Lemmatisation avec WordNet"
+  },
+  "nltk_porter_stemmer": {
+    "prefix": ".nltk porter stemmer",
+    "body": [
+      "from nltk.stem import PorterStemmer",
+      "stemmer = PorterStemmer()",
+      "stemmed_words = [stemmer.stem(word) for word in tokens]"
+    ],
+    "description": "Racines des mots avec Porter"
+  },
+  "nltk_snowball_stemmer": {
+    "prefix": ".nltk snowball stemmer",
+    "body": [
+      "from nltk.stem import SnowballStemmer",
+      "stemmer = SnowballStemmer('english')",
+      "stemmed = [stemmer.stem(word) for word in tokens]"
+    ],
+    "description": "Stemming avec Snowball"
+  },
+  "nltk_freq_dist_plot": {
+    "prefix": ".nltk freq plot",
+    "body": [
+      "from nltk.probability import FreqDist",
+      "fdist = FreqDist(tokens)",
+      "fdist.plot($1)"
+    ],
+    "description": "Tracer la distribution de fréquence"
+  },
+  "nltk_bigram_trigram": {
+    "prefix": ".nltk ngram",
+    "body": [
+      "from nltk.util import ngrams",
+      "bigrams = list(ngrams(tokens, 2))",
+      "trigrams = list(ngrams(tokens, 3))"
+    ],
+    "description": "Extraire les bigrams et trigrams"
+  },
+  "nltk_chunking": {
+    "prefix": ".nltk chunk",
+    "body": [
+      "from nltk.chunk import RegexpParser",
+      "grammar = 'NP: {<DT>?<JJ>*<NN>}'",
+      "parser = RegexpParser(grammar)",
+      "tree = parser.parse(pos_tag(tokens))"
+    ],
+    "description": "Chunking avec une expression régulière"
+  },
+  "nltk_ner": {
+    "prefix": ".nltk named entity",
+    "body": [
+      "from nltk import ne_chunk",
+      "ner_tree = ne_chunk(pos_tag(tokens))"
+    ],
+    "description": "Reconnaissance des entités nommées"
+  },
+  "nltk_corpus_brown": {
+    "prefix": ".nltk brown corpus",
+    "body": [
+      "from nltk.corpus import brown",
+      "print(brown.categories())",
+      "print(brown.words(categories='news'))"
+    ],
+    "description": "Utiliser le corpus Brown"
+  },
+  "nltk_text_classification": {
+    "prefix": ".nltk classifier",
+    "body": [
+      "from nltk.classify import NaiveBayesClassifier",
+      "train_set = [({$1}, 'label1'), ({$2}, 'label2')]",
+      "classifier = NaiveBayesClassifier.train(train_set)",
+      "classifier.show_most_informative_features()"
+    ],
+    "description": "Classifier Bayesien naïf"
+  },
+  "nltk_save_classifier": {
+    "prefix": ".nltk save classifier",
+    "body": [
+      "import pickle",
+      "with open('classifier.pkl', 'wb') as f:",
+      "    pickle.dump(classifier, f)"
+    ],
+    "description": "Sauvegarder un classifieur"
+  },
+  "nltk_load_classifier": {
+    "prefix": ".nltk load classifier",
+    "body": [
+      "import pickle",
+      "with open('classifier.pkl', 'rb') as f:",
+      "    classifier = pickle.load(f)"
+    ],
+    "description": "Charger un classifieur"
+  }
 }
-
-,
-
-"cv_import": {
-  "prefix": ".cv import",
-  "body": [
-    "import cv2"
-  ],
-  "description": "Importer OpenCV"
-},
-"cv_read_image": {
-  "prefix": ".cv read",
-  "body": [
-    "img = cv2.imread('$1')"
-  ],
-  "description": "Lire une image"
-},
-"cv_show_image": {
-  "prefix": ".cv show",
-  "body": [
-    "cv2.imshow('$1', img)",
-    "cv2.waitKey(0)",
-    "cv2.destroyAllWindows()"
-  ],
-  "description": "Afficher une image"
-},
-"cv_write_image": {
-  "prefix": ".cv write",
-  "body": [
-    "cv2.imwrite('$1', img)"
-  ],
-  "description": "Enregistrer une image"
-},
-"cv_resize": {
-  "prefix": ".cv resize",
-  "body": [
-    "resized = cv2.resize(img, ($1, $2))"
-  ],
-  "description": "Redimensionner une image"
-},
-"cv_gray": {
-  "prefix": ".cv gray",
-  "body": [
-    "gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)"
-  ],
-  "description": "Convertir une image en niveaux de gris"
-},
-"cv_blur": {
-  "prefix": ".cv blur",
-  "body": [
-    "blurred = cv2.GaussianBlur(img, ($1, $2), 0)"
-  ],
-  "description": "Appliquer un flou gaussien"
-},
-"cv_canny": {
-  "prefix": ".cv canny",
-  "body": [
-    "edges = cv2.Canny(img, $1, $2)"
-  ],
-  "description": "Détection de contours (Canny)"
-},
-"cv_draw_rectangle": {
-  "prefix": ".cv rect",
-  "body": [
-    "cv2.rectangle(img, ($1, $2), ($3, $4), ($5, $6, $7), $8)"
-  ],
-  "description": "Dessiner un rectangle"
-},
-"cv_draw_circle": {
-  "prefix": ".cv circle",
-  "body": [
-    "cv2.circle(img, ($1, $2), $3, ($4, $5, $6), $7)"
-  ],
-  "description": "Dessiner un cercle"
-},
-"cv_draw_text": {
-  "prefix": ".cv text",
-  "body": [
-    "cv2.putText(img, '$1', ($2, $3), cv2.FONT_HERSHEY_SIMPLEX, $4, ($5, $6, $7), $8)"
-  ],
-  "description": "Afficher du texte sur une image"
-},
-"cv_video_capture": {
-  "prefix": ".cv video",
-  "body": [
-    "cap = cv2.VideoCapture(0)",
-    "while True:",
-    "    ret, frame = cap.read()",
-    "    if not ret:",
-    "        break",
-    "    cv2.imshow('Video', frame)",
-    "    if cv2.waitKey(1) & 0xFF == ord('q'):",
-    "        break",
-    "cap.release()",
-    "cv2.destroyAllWindows()"
-  ],
-  "description": "Capture vidéo avec webcam"
-},
-"tsf_import": {
-  "prefix": ".tsf import",
-  "body": [
-    "import tensorflow as tf"
-  ],
-  "description": "Importer TensorFlow"
-},
-"tsf_constant": {
-  "prefix": ".tsf constant",
-  "body": [
-    "const = tf.constant([$1])"
-  ],
-  "description": "Créer une constante TensorFlow"
-},
-"tsf_variable": {
-  "prefix": ".tsf variable",
-  "body": [
-    "var = tf.Variable([$1])"
-  ],
-  "description": "Créer une variable TensorFlow"
-},
-"tsf_placeholder": {
-  "prefix": ".tsf placeholder",
-  "body": [
-    "# tf.placeholder is only for TF1.x",
-    "x = tf.compat.v1.placeholder(tf.float32, shape=[$1])"
-  ],
-  "description": "Créer un placeholder (TF1.x)"
-},
-"tsf_model_sequential": {
-  "prefix": ".tsf model seq",
-  "body": [
-    "model = tf.keras.Sequential([",
-    "    tf.keras.layers.Dense($1, activation='$2'),",
-    "    tf.keras.layers.Dense($3)",
-    "])"
-  ],
-  "description": "Créer un modèle séquentiel simple"
-},
-"tsf_compile_model": {
-  "prefix": ".tsf compile",
-  "body": [
-    "model.compile(optimizer='$1',",
-    "              loss='$2',",
-    "              metrics=['$3'])"
-  ],
-  "description": "Compiler un modèle"
-},
-"tsf_fit_model": {
-  "prefix": ".tsf fit",
-  "body": [
-    "model.fit(x_train, y_train, epochs=$1, batch_size=$2)"
-  ],
-  "description": "Entraîner le modèle"
-},
-"tsf_evaluate": {
-  "prefix": ".tsf eval",
-  "body": [
-    "loss, accuracy = model.evaluate(x_test, y_test)"
-  ],
-  "description": "Évaluer le modèle"
-},
-"tsf_predict": {
-  "prefix": ".tsf predict",
-  "body": [
-    "predictions = model.predict($1)"
-  ],
-  "description": "Faire des prédictions"
-},
-"tsf_tensorboard": {
-  "prefix": ".tsf tensorboard",
-  "body": [
-    "tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir='$1')"
-  ],
-  "description": "Créer un callback TensorBoard"
-},
-"tsf_save_model": {
-  "prefix": ".tsf save",
-  "body": [
-    "model.save('$1_model.h5')"
-  ],
-  "description": "Sauvegarder le modèle"
-},
-"tsf_load_model": {
-  "prefix": ".tsf load",
-  "body": [
-    "model = tf.keras.models.load_model('$1_model.h5')"
-  ],
-  "description": "Charger un modèle"
-},
-"tsf_dataset_from_tensor": {
-  "prefix": ".tsf dataset",
-  "body": [
-    "dataset = tf.data.Dataset.from_tensor_slices(($1, $2))"
-  ],
-  "description": "Créer un dataset depuis des tensors"
-},
-"tsf_reshape": {
-  "prefix": ".tsf reshape",
-  "body": [
-    "reshaped = tf.reshape($1, [$2])"
-  ],
-  "description": "Redimensionner un tenseur"
-},
-"nltk_import": {
-  "prefix": ".nltk import",
-  "body": [
-    "import nltk"
-  ],
-  "description": "Importer NLTK"
-},
-"nltk_download": {
-  "prefix": ".nltk download",
-  "body": [
-    "nltk.download('$1')"
-  ],
-  "description": "Télécharger un dataset ou modèle NLTK"
-},
-"nltk_tokenize": {
-  "prefix": ".nltk tokenize",
-  "body": [
-    "from nltk.tokenize import word_tokenize",
-    "tokens = word_tokenize('$1')"
-  ],
-  "description": "Tokenisation des mots"
-},
-"nltk_sent_tokenize": {
-  "prefix": ".nltk sent tokenize",
-  "body": [
-    "from nltk.tokenize import sent_tokenize",
-    "sentences = sent_tokenize('$1')"
-  ],
-  "description": "Tokenisation des phrases"
-},
-"nltk_stopwords": {
-  "prefix": ".nltk stopwords",
-  "body": [
-    "from nltk.corpus import stopwords",
-    "stop_words = set(stopwords.words('english'))",
-    "filtered = [w for w in tokens if not w.lower() in stop_words]"
-  ],
-  "description": "Supprimer les mots vides"
-},
-"nltk_pos_tag": {
-  "prefix": ".nltk pos tag",
-  "body": [
-    "from nltk import pos_tag",
-    "tags = pos_tag(tokens)"
-  ],
-  "description": "Étiquetage grammatical"
-},
-"nltk_stemmer": {
-  "prefix": ".nltk stem",
-  "body": [
-    "from nltk.stem import PorterStemmer",
-    "stemmer = PorterStemmer()",
-    "stemmed = [stemmer.stem(word) for word in tokens]"
-  ],
-  "description": "Racines des mots (Stemming)"
-},
-"nltk_lemmatizer": {
-  "prefix": ".nltk lemmatize",
-  "body": [
-    "from nltk.stem import WordNetLemmatizer",
-    "lemmatizer = WordNetLemmatizer()",
-    "lemmatized = [lemmatizer.lemmatize(word) for word in tokens]"
-  ],
-  "description": "Lemmatisation"
-},
-"nltk_freq_dist": {
-  "prefix": ".nltk freqdist",
-  "body": [
-    "from nltk.probability import FreqDist",
-    "freq = FreqDist(tokens)",
-    "freq.plot($1)"
-  ],
-  "description": "Distribution de fréquence"
-},
-"nltk_ngrams": {
-  "prefix": ".nltk ngrams",
-  "body": [
-    "from nltk.util import ngrams",
-    "bigrams = list(ngrams(tokens, 2))"
-  ],
-  "description": "Extraire des n-grams"
-},
-"nltk_named_entity": {
-  "prefix": ".nltk ner",
-  "body": [
-    "from nltk import ne_chunk",
-    "from nltk.tree import Tree",
-    "chunked = ne_chunk(pos_tag(tokens))"
-  ],
-  "description": "Reconnaissance d'entités nommées"
-},
-"nltk_word_tokenize": {
-  "prefix": ".nltk word tokenize",
-  "body": [
-    "from nltk.tokenize import word_tokenize",
-    "text = \"$1\"",
-    "tokens = word_tokenize(text)"
-  ],
-  "description": "Tokenisation des mots"
-},
-"nltk_sentence_tokenize": {
-  "prefix": ".nltk sentence tokenize",
-  "body": [
-    "from nltk.tokenize import sent_tokenize",
-    "text = \"$1\"",
-    "sentences = sent_tokenize(text)"
-  ],
-  "description": "Tokenisation des phrases"
-},
-"nltk_stopword_filtering": {
-  "prefix": ".nltk stopword filter",
-  "body": [
-    "from nltk.corpus import stopwords",
-    "stop_words = set(stopwords.words('english'))",
-    "filtered = [word for word in tokens if word.lower() not in stop_words]"
-  ],
-  "description": "Filtrer les mots vides"
-},
-"nltk_punkt_download": {
-  "prefix": ".nltk punkt",
-  "body": [
-    "import nltk",
-    "nltk.download('punkt')"
-  ],
-  "description": "Télécharger le tokenizer Punkt"
-},
-"nltk_pos_tagging": {
-  "prefix": ".nltk pos",
-  "body": [
-    "from nltk import pos_tag",
-    "pos_tags = pos_tag(tokens)"
-  ],
-  "description": "Étiquetage grammatical (POS tagging)"
-},
-"nltk_wordnet_download": {
-  "prefix": ".nltk wordnet",
-  "body": [
-    "import nltk",
-    "nltk.download('wordnet')"
-  ],
-  "description": "Télécharger WordNet"
-},
-"nltk_lemmatizer_wordnet": {
-  "prefix": ".nltk lemmatizer",
-  "body": [
-    "from nltk.stem import WordNetLemmatizer",
-    "lemmatizer = WordNetLemmatizer()",
-    "lemmatized_words = [lemmatizer.lemmatize(word) for word in tokens]"
-  ],
-  "description": "Lemmatisation avec WordNet"
-},
-"nltk_porter_stemmer": {
-  "prefix": ".nltk porter stemmer",
-  "body": [
-    "from nltk.stem import PorterStemmer",
-    "stemmer = PorterStemmer()",
-    "stemmed_words = [stemmer.stem(word) for word in tokens]"
-  ],
-  "description": "Racines des mots avec Porter"
-},
-"nltk_snowball_stemmer": {
-  "prefix": ".nltk snowball stemmer",
-  "body": [
-    "from nltk.stem import SnowballStemmer",
-    "stemmer = SnowballStemmer('english')",
-    "stemmed = [stemmer.stem(word) for word in tokens]"
-  ],
-  "description": "Stemming avec Snowball"
-},
-"nltk_freq_dist_plot": {
-  "prefix": ".nltk freq plot",
-  "body": [
-    "from nltk.probability import FreqDist",
-    "fdist = FreqDist(tokens)",
-    "fdist.plot($1)"
-  ],
-  "description": "Tracer la distribution de fréquence"
-},
-"nltk_bigram_trigram": {
-  "prefix": ".nltk ngram",
-  "body": [
-    "from nltk.util import ngrams",
-    "bigrams = list(ngrams(tokens, 2))",
-    "trigrams = list(ngrams(tokens, 3))"
-  ],
-  "description": "Extraire les bigrams et trigrams"
-},
-"nltk_chunking": {
-  "prefix": ".nltk chunk",
-  "body": [
-    "from nltk.chunk import RegexpParser",
-    "grammar = 'NP: {<DT>?<JJ>*<NN>}'",
-    "parser = RegexpParser(grammar)",
-    "tree = parser.parse(pos_tag(tokens))"
-  ],
-  "description": "Chunking avec une expression régulière"
-},
-"nltk_ner": {
-  "prefix": ".nltk named entity",
-  "body": [
-    "from nltk import ne_chunk",
-    "ner_tree = ne_chunk(pos_tag(tokens))"
-  ],
-  "description": "Reconnaissance des entités nommées"
-},
-"nltk_corpus_brown": {
-  "prefix": ".nltk brown corpus",
-  "body": [
-    "from nltk.corpus import brown",
-    "print(brown.categories())",
-    "print(brown.words(categories='news'))"
-  ],
-  "description": "Utiliser le corpus Brown"
-},
-"nltk_text_classification": {
-  "prefix": ".nltk classifier",
-  "body": [
-    "from nltk.classify import NaiveBayesClassifier",
-    "train_set = [({$1}, 'label1'), ({$2}, 'label2')]",
-    "classifier = NaiveBayesClassifier.train(train_set)",
-    "classifier.show_most_informative_features()"
-  ],
-  "description": "Classifier Bayesien naïf"
-},
-"nltk_save_classifier": {
-  "prefix": ".nltk save classifier",
-  "body": [
-    "import pickle",
-    "with open('classifier.pkl', 'wb') as f:",
-    "    pickle.dump(classifier, f)"
-  ],
-  "description": "Sauvegarder un classifieur"
-},
-"nltk_load_classifier": {
-  "prefix": ".nltk load classifier",
-  "body": [
-    "import pickle",
-    "with open('classifier.pkl', 'rb') as f:",
-    "    classifier = pickle.load(f)"
-  ],
-  "description": "Charger un classifieur"
-}
-}
-

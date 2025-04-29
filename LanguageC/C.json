@@ -1,13 +1,13 @@
 {
-
+	
 	"First code C": {
 		"prefix": "include",
 		"body": [
 			"#include <stdio.h>",
 			"",
 			"int main() {",
-			"	$2",
-			"	return 0;",
+			"$2",
+			"return 0;",
 			"}"
 		],
 		"description": "Affiche un message dans la console"
@@ -92,5 +92,60 @@
 			"};"
 		],
 		"description": "Définition d'une structure"
+	},
+	"Array declaration": {
+		"prefix": "array",
+		"body": [
+			"$1 $2[$3];"
+		],
+		"description": "Déclare un tableau en C"
+	},
+	"Pointer declaration": {
+		"prefix": "pointer",
+		"body": [
+			"$1 *$2;"
+		],
+		"description": "Déclare un pointeur en C"
+	},
+	"Comment": {
+		"prefix": "comment",
+		"body": [
+			"// $1"
+		],
+		"description": "Ajoute un commentaire"
+	},
+	"Multiline comment": {
+		"prefix": "multicomment",
+		"body": [
+			"/*",
+			" * $1",
+			" */"
+		],
+		"description": "Ajoute un commentaire multi-lignes"
+	},
+	"Define constant": {
+		"prefix": "define",
+		"body": [
+			"#define $1 $2"
+		],
+		"description": "Définit une constante en C"
+	},
+	"Include header": {
+		"prefix": "header",
+		"body": [
+			"#include <$1>"
+		],
+		"description": "Inclut un fichier d'en-tête"
+	},
+	"Do-while loop": {
+		"prefix": "dowhile",
+		"body": [
+			"do {",
+			"    $1",
+			"} while ($2);"
+		],
+		"description": "Boucle do-while"
 	}
 }
+
+

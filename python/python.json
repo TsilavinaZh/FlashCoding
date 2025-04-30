@@ -824,6 +824,89 @@
     ],
     "description": "Utiliser un gestionnaire de placement Tkinter"
   },
+  "tkinter_frame": {
+    "prefix": ".tk frame",
+    "body": [
+      "frame = tk.Frame(root, width=$1, height=$2, bg='$3')",
+      "frame.pack()"
+    ],
+    "description": "Créer un cadre Tkinter"
+  },
+  "tkinter_radio_group": {
+    "prefix": ".tk radio group",
+    "body": [
+      "var = tk.StringVar()",
+      "radio1 = tk.Radiobutton(root, text='$1', variable=var, value='$2')",
+      "radio2 = tk.Radiobutton(root, text='$3', variable=var, value='$4')",
+      "radio1.pack()",
+      "radio2.pack()"
+    ],
+    "description": "Créer un groupe de boutons radio Tkinter"
+  },
+  "tkinter_progressbar": {
+    "prefix": ".tk progressbar",
+    "body": [
+      "from tkinter.ttk import Progressbar",
+      "progress = Progressbar(root, orient='$1', length=$2, mode='$3')",
+      "progress.pack()"
+    ],
+    "description": "Créer une barre de progression Tkinter"
+  },
+  "tkinter_spinbox": {
+    "prefix": ".tk spinbox",
+    "body": [
+      "spinbox = tk.Spinbox(root, from_=$1, to=$2)",
+      "spinbox.pack()"
+    ],
+    "description": "Créer une boîte de sélection Tkinter"
+  },
+  "tkinter_scrollable_text": {
+    "prefix": ".tk scrollable text",
+    "body": [
+      "from tkinter import scrolledtext",
+      "scroll_text = scrolledtext.ScrolledText(root, width=$1, height=$2)",
+      "scroll_text.pack()"
+    ],
+    "description": "Créer un widget de texte défilable Tkinter"
+  },
+  "tkinter_canvas_line": {
+    "prefix": ".tk canvas line",
+    "body": [
+      "canvas.create_line($1, $2, $3, $4, fill='$5', width=$6)"
+    ],
+    "description": "Dessiner une ligne sur un canevas Tkinter"
+  },
+  "tkinter_canvas_oval": {
+    "prefix": ".tk canvas oval",
+    "body": [
+      "canvas.create_oval($1, $2, $3, $4, fill='$5')"
+    ],
+    "description": "Dessiner un ovale sur un canevas Tkinter"
+  },
+  "tkinter_canvas_polygon": {
+    "prefix": ".tk canvas polygon",
+    "body": [
+      "canvas.create_polygon($1, $2, $3, $4, $5, $6, fill='$7')"
+    ],
+    "description": "Dessiner un polygone sur un canevas Tkinter"
+  },
+  "tkinter_canvas_text": {
+    "prefix": ".tk canvas text",
+    "body": [
+      "canvas.create_text($1, $2, text='$3', fill='$4', font=('$5', $6))"
+    ],
+    "description": "Ajouter du texte sur un canevas Tkinter"
+  },
+  "tkinter_bind_event": {
+    "prefix": ".tk bind",
+    "body": [
+      "def $1(event):",
+      "    $2",
+      "root.bind('$3', $1)"
+    ],
+    "description": "Lier un événement à une fonction Tkinter"
+  },
+
 
   "flet_setup": {
     "prefix": ".flet setup",
@@ -1188,6 +1271,7 @@
     ],
     "description": "Créer une barre de navigation Flet"
   },
+  
   "numpy_import": {
     "prefix": ".numpy import",
     "body": [

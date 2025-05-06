@@ -1,1737 +1,2006 @@
 {
-  "verification_presence": {
-    "prefix": ".srt in ",
-    "body": ["$1.includes(\"$2\");"],
-    "description": "Vérifier si une sous-chaîne est présente"
-  },
-
-  "verification_absence": {
-    "prefix": ".srt notin ",
-    "body": ["!$1.includes(\"$2\");"],
-    "description": "Vérifier si une sous-chaîne est absente"
-  },
-
-  "remplacement_mot": {
-    "prefix": ".srt replace ",
-    "body": ["$1.replace(\"$2\", \"$3\");"],
-    "description": "Remplacement d'un mot dans une chaîne"
-  },
-
-  "remplacement_tout": {
-    "prefix": ".srt replaceAll ",
-    "body": ["$1.replaceAll(\"$2\", \"$3\");"],
-    "description": "Remplacer toutes les occurrences d'une sous-chaîne"
-  },
-
-  "majuscule": {
-    "prefix": ".srt upper ",
-    "body": ["$1.toUpperCase();"],
-    "description": "Convertir en majuscules"
-  },
-
-  "minuscule": {
-    "prefix": ".srt lower ",
-    "body": ["$1.toLowerCase();"],
-    "description": "Convertir en minuscules"
-  },
-
-  "capitaliser": {
-    "prefix": ".srt capitalize ",
-    "body": ["$1.charAt(0).toUpperCase() + $1.slice(1).toLowerCase();"],
-    "description": "Mettre la première lettre en majuscule"
-  },
-
-  "capitaliser_mots": {
-    "prefix": ".srt title ",
-    "body": [
-      "$1.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');"
-    ],
-    "description": "Mettre la première lettre de chaque mot en majuscule"
-  },
-
-  "suppression_espaces": {
-    "prefix": ".srt trim ",
-    "body": ["$1.trim();"],
-    "description": "Supprimer les espaces autour de la chaîne"
-  },
-
-  "suppression_espaces_gauche": {
-    "prefix": ".srt ltrim ",
-    "body": ["$1.trimStart();"],
-    "description": "Supprimer les espaces à gauche"
-  },
-
-  "suppression_espaces_droite": {
-    "prefix": ".srt rtrim ",
-    "body": ["$1.trimEnd();"],
-    "description": "Supprimer les espaces à droite"
-  },
-
-  "decoupage": {
-    "prefix": ".srt split ",
-    "body": ["$1.split(\"$2\");"],
-    "description": "Découper une chaîne en tableau"
-  },
-
-  "concatenation": {
-    "prefix": ".srt join ",
-    "body": ["$1.join(\"$2\");"],
-    "description": "Concaténer un tableau en chaîne"
-  },
-
-  "extraction": {
-    "prefix": ".srt slice ",
-    "body": ["$1.slice($2, $3);"],
-    "description": "Extraire une partie d'une chaîne"
-  },
-
-  "longueur_chaine": {
-    "prefix": ".srt length ",
-    "body": ["$1.length;"],
-    "description": "Obtenir la longueur d'une chaîne"
-  },
-
-  "caractere_index": {
-    "prefix": ".srt charAt ",
-    "body": ["$1.charAt($2);"],
-    "description": "Obtenir un caractère à un index donné"
-  },
-
-  "index_sous_chaine": {
-    "prefix": ".srt indexOf ",
-    "body": ["$1.indexOf(\"$2\");"],
-    "description": "Obtenir l'index d'une sous-chaîne"
-  },
-
-  "dernier_index_sous_chaine": {
-    "prefix": ".srt lastIndexOf ",
-    "body": ["$1.lastIndexOf(\"$2\");"],
-    "description": "Obtenir le dernier index d'une sous-chaîne"
-  },
-
-  "repetition": {
-    "prefix": ".srt repeat ",
-    "body": ["$1.repeat($2);"],
-    "description": "Répéter une chaîne un certain nombre de fois"
-  },
-
-  "ajout_debut": {
-    "prefix": ".srt padStart ",
-    "body": ["$1.padStart($2, \"$3\");"],
-    "description": "Ajouter des caractères au début de la chaîne"
-  },
-
-  "ajout_fin": {
-    "prefix": ".srt padEnd ",
-    "body": ["$1.padEnd($2, \"$3\");"],
-    "description": "Ajouter des caractères à la fin de la chaîne"
-  },
-
-  "verification_chiffres": {
-    "prefix": ".srt isdigit ",
-    "body": ["/^[0-9]+$/.test($1);"],
-    "description": "Vérifier si la chaîne contient uniquement des chiffres"
-  },
-
-  "verification_lettres": {
-    "prefix": ".srt isalpha ",
-    "body": ["/^[A-Za-z]+$/.test($1);"],
-    "description": "Vérifier si la chaîne contient uniquement des lettres"
-  },
-
-  "verification_alphanumerique": {
-    "prefix": ".srt isalnum ",
-    "body": ["/^[A-Za-z0-9]+$/.test($1);"],
-    "description": "Vérifier si la chaîne est alphanumérique"
-  },
-
-  "verification_palindrome": {
-    "prefix": ".srt palindrome ",
-    "body": ["$1 === $1.split('').reverse().join('');"],
-    "description": "Vérifier si une chaîne est un palindrome"
-  },
-
-  "echappement_regex": {
-    "prefix": ".srt escape ",
-    "body": ["$1.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\\\$&');"],
-    "description": "Échapper les caractères spéciaux pour une regex"
-  },
-
-  "remplacement_regex": {
-    "prefix": ".srt regex_replace ",
-    "body": ["$1.replace(/$2/g, \"$3\");"],
-    "description": "Remplacer une sous-chaîne avec une regex"
-  },
-
-  "separation_regex": {
-    "prefix": ".srt regex_split ",
-    "body": ["$1.split(/$2/);"],
-    "description": "Séparer une chaîne avec une regex"
-  },
-
-
-
-  
-  "verification Absence": {
-    "prefix": ".array notin ",
-    "body": ["!$1.includes(\"$2\");"],
-    "description": "Vérifier si un élément est absent dans un tableau"
-  },
-
-  "ajouter_element": {
-    "prefix": ".array push ",
-    "body": ["$1.push(\"$2\");"],
-    "description": "Ajouter un élément à la fin du tableau"
-  },
-
-  "supprimer_element": {
-    "prefix": ".array pop ",
-    "body": ["$1.pop();"],
-    "description": "Supprimer le dernier élément du tableau"
-  },
-
-  "supprimer_premier_element": {
-    "prefix": ".array shift ",
-    "body": ["$1.shift();"],
-    "description": "Supprimer le premier élément du tableau"
-  },
-
-  "ajouter_premier_element": {
-    "prefix": ".array unshift ",
-    "body": ["$1.unshift(\"$2\");"],
-    "description": "Ajouter un élément au début du tableau"
-  },
-
-  "trier": {
-    "prefix": ".array sort ",
-    "body": ["$1.sort();"],
-    "description": "Trier les éléments d'un tableau"
-  },
-
-  "trier_inverse": {
-    "prefix": ".array reverse ",
-    "body": ["$1.reverse();"],
-    "description": "Inverser l'ordre des éléments dans un tableau"
-  },
-
-  "trier_personnalise": {
-    "prefix": ".array custom_sort ",
-    "body": ["$1.sort((a, b) => a - b);"],
-    "description": "Trier un tableau de manière personnalisée"
-  },
-
-  "chercher_element": {
-    "prefix": ".array find ",
-    "body": ["$1.find(e => e === \"$2\");"],
-    "description": "Trouver un élément dans un tableau"
-  },
-
-  "chercher_index": {
-    "prefix": ".array indexOf ",
-    "body": ["$1.indexOf(\"$2\");"],
-    "description": "Obtenir l'index d'un élément dans un tableau"
-  },
-
-  "filtrer": {
-    "prefix": ".array filter ",
-    "body": ["$1.filter(e => e === \"$2\");"],
-    "description": "Filtrer les éléments d'un tableau selon une condition"
-  },
-
-  "mapper": {
-    "prefix": ".array map ",
-    "body": ["$1.map(e => e * 2);"],
-    "description": "Appliquer une fonction à chaque élément d'un tableau"
-  },
-
-  "reduire": {
-    "prefix": ".array reduce ",
-    "body": ["$1.reduce((acc, e) => acc + e, 0);"],
-    "description": "Réduire les éléments d'un tableau à une seule valeur"
-  },
-
-  "verifier_vide": {
-    "prefix": ".array isEmpty ",
-    "body": ["$1.length === 0;"],
-    "description": "Vérifier si un tableau est vide"
-  },
-
-  "concatener": {
-    "prefix": ".array concat ",
-    "body": ["$1.concat($2);"],
-    "description": "Concaténer deux tableaux"
-  },
-
-  "supprimer_element_index": {
-    "prefix": ".array splice ",
-    "body": ["$1.splice($2, 1);"],
-    "description": "Supprimer un élément d'un tableau à un index donné"
-  },
-
-  "obtenir_sous_tableau": {
-    "prefix": ".array slice ",
-    "body": ["$1.slice($2, $3);"],
-    "description": "Extraire une partie d'un tableau"
-  },
-
-  "longueur_tableau": {
-    "prefix": ".array length ",
-    "body": ["$1.length;"],
-    "description": "Obtenir la longueur d'un tableau"
-  },
-
-  "remplacer_element": {
-    "prefix": ".array replace ",
-    "body": ["$1[$2] = \"$3\";"],
-    "description": "Remplacer un élément dans un tableau par un autre"
-  },
-
-
-
-
-
-
-  "racine_carre": {
-    "prefix": ".math sqrt ",
-    "body": ["Math.sqrt($1)"],
-    "description": "Calculer la racine carrée d'un nombre"
-  },
-  "addition": {
-    "prefix": ".math add ",
-    "body": ["$1 + $2"],
-    "description": "Additionner deux nombres"
-  },
-  "soustraction": {
-    "prefix": ".math subtract ",
-    "body": ["$1 - $2"],
-    "description": "Soustraire deux nombres"
-  },
-  "multiplication": {
-    "prefix": ".math multiply ",
-    "body": ["$1 * $2"],
-    "description": "Multiplier deux nombres"
-  },
-  "division": {
-    "prefix": ".math divide ",
-    "body": ["$1 / $2"],
-    "description": "Diviser deux nombres"
-  },
-  "puissance": {
-    "prefix": ".math power ",
-    "body": ["$1 ** $2"],
-    "description": "Élever un nombre à une puissance"
-  },
-  "valeur_absolue": {
-    "prefix": ".math abs ",
-    "body": ["abs($1)"],
-    "description": "Calculer la valeur absolue d'un nombre"
-  },
-  "arrondi": {
-    "prefix": ".math round ",
-    "body": ["round($1, $2)"],
-    "description": "Arrondir un nombre à un certain nombre de décimales"
-  },
-  "arrondi_inférieur": {
-    "prefix": ".math floor ",
-    "body": ["Math.floor($1)"],
-    "description": "Arrondir un nombre à l'entier inférieur le plus proche"
-  },
-  "arrondi_supérieur": {
-    "prefix": ".math ceil ",
-    "body": ["Math.ceil($1)"],
-    "description": "Arrondir un nombre à l'entier supérieur le plus proche"
-  },
-  "maximum": {
-    "prefix": ".math max ",
-    "body": ["max($1, $2)"],
-    "description": "Trouver la valeur maximale parmi plusieurs nombres"
-  },
-  "minimum": {
-    "prefix": ".math min ",
-    "body": ["min($1, $2)"],
-    "description": "Trouver la valeur minimale parmi plusieurs nombres"
-  },
-  "somme": {
-    "prefix": ".math sum ",
-    "body": ["sum($1)"],
-    "description": "Calculer la somme d'une liste de nombres"
-  },
-  "moyenne": {
-    "prefix": ".math average ",
-    "body": ["sum($1) / len($1)"],
-    "description": "Calculer la moyenne d'une liste de nombres"
-  },
-  "modulo": {
-    "prefix": ".math mod ",
-    "body": ["$1 % $2"],
-    "description": "Calculer le reste de la division entre deux nombres"
-  },
-  "pi": {
-    "prefix": ".math pi ",
-    "body": ["Math.pi"],
-    "description": "Obtenir la valeur de Pi"
-  },
-  "sinus": {
-    "prefix": ".math sin ",
-    "body": ["Math.sin($1)"],
-    "description": "Calculer le sinus d'un angle (en radians)"
-  },
-  "cosinus": {
-    "prefix": ".math cos ",
-    "body": ["Math.cos($1)"],
-    "description": "Calculer le cosinus d'un angle (en radians)"
-  },
-  "tangente": {
-    "prefix": ".math tan ",
-    "body": ["Math.tan($1)"],
-    "description": "Calculer la tangente d'un angle (en radians)"
-  },
-  "radians": {
-    "prefix": ".math radians ",
-    "body": ["Math.radians($1)"],
-    "description": "Convertir un angle en degrés en radians"
-  },
-  "degres": {
-    "prefix": ".math degrees ",
-    "body": ["Math.degrees($1)"],
-    "description": "Convertir un angle en radians en degrés"
-  },
-  "logarithme": {
-    "prefix": ".math log ",
-    "body": ["Math.log($1, $2)"],
-    "description": "Calculer le logarithme d'un nombre"
-  },
-
-
-
-
-
-
-
-  "fetch_get": {
-    "prefix": ".fetch get ",
-    "body": [
-      "fetch('$1')",
-      "  .then(response => response.json())",
-      "  .then(data => console.log(data))",
-      "  .catch(error => console.error('Error:', error));"
-    ],
-    "description": "Effectuer une requête GET avec fetch"
-  },
-
-  "fetch_post": {
-    "prefix": ".fetch post ",
-    "body": [
-      "fetch('$1', {",
-      "  method: 'POST',",
-      "  headers: {",
-      "    'Content-Type': 'application/json'",
-      "  },",
-      "  body: JSON.stringify($2)",
-      "})",
-      "  .then(response => response.json())",
-      "  .then(data => console.log(data))",
-      "  .catch(error => console.error('Error:', error));"
-    ],
-    "description": "Effectuer une requête POST avec fetch"
-  },
-
-  "fetch_put": {
-    "prefix": ".fetch put ",
-    "body": [
-      "fetch('$1', {",
-      "  method: 'PUT',",
-      "  headers: {",
-      "    'Content-Type': 'application/json'",
-      "  },",
-      "  body: JSON.stringify($2)",
-      "})",
-      "  .then(response => response.json())",
-      "  .then(data => console.log(data))",
-      "  .catch(error => console.error('Error:', error));"
-    ],
-    "description": "Effectuer une requête PUT avec fetch"
-  },
-
-  "fetch_delete": {
-    "prefix": ".fetch delete ",
-    "body": [
-      "fetch('$1', {",
-      "  method: 'DELETE'",
-      "})",
-      "  .then(response => response.json())",
-      "  .then(data => console.log(data))",
-      "  .catch(error => console.error('Error:', error));"
-    ],
-    "description": "Effectuer une requête DELETE avec fetch"
-  },
-
-  "axios_get": {
-    "prefix": ".axios get ",
-    "body": [
-      "axios.get('$1')",
-      "  .then(response => console.log(response.data))",
-      "  .catch(error => console.error('Error:', error));"
-    ],
-    "description": "Effectuer une requête GET avec axios"
-  },
-
-  "axios_post": {
-    "prefix": ".axios post ",
-    "body": [
-      "axios.post('$1', $2)",
-      "  .then(response => console.log(response.data))",
-      "  .catch(error => console.error('Error:', error));"
-    ],
-    "description": "Effectuer une requête POST avec axios"
-  },
-
-  "axios_put": {
-    "prefix": ".axios put ",
-    "body": [
-      "axios.put('$1', $2)",
-      "  .then(response => console.log(response.data))",
-      "  .catch(error => console.error('Error:', error));"
-    ],
-    "description": "Effectuer une requête PUT avec axios"
-  },
-
-  "axios_delete": {
-    "prefix": ".axios delete ",
-    "body": [
-      "axios.delete('$1')",
-      "  .then(response => console.log(response.data))",
-      "  .catch(error => console.error('Error:', error));"
-    ],
-    "description": "Effectuer une requête DELETE avec axios"
-  }
-,
-  "json_parse": {
-    "prefix": ".json parse ",
-    "body": ["JSON.parse($1);"],
-    "description": "Convertir une chaîne JSON en objet"
-  },
-
-  "json_stringify": {
-    "prefix": ".json stringify ",
-    "body": ["JSON.stringify($1, null, 2);"],
-    "description": "Convertir un objet en chaîne JSON"
-  },
-
-  "json_stringify_compact": {
-    "prefix": ".json stringifyCompact ",
-    "body": ["JSON.stringify($1);"],
-    "description": "Convertir un objet en chaîne JSON compacte"
-  },
-
-  "json_access_property": {
-    "prefix": ".json access ",
-    "body": ["$1.$2;"],
-    "description": "Accéder à une propriété d'un objet JSON"
-  },
-
-  "json_set_property": {
-    "prefix": ".json set ",
-    "body": ["$1.$2 = $3;"],
-    "description": "Définir une propriété d'un objet JSON"
-  },
-
-  "json_delete_property": {
-    "prefix": ".json delete ",
-    "body": ["delete $1.$2;"],
-    "description": "Supprimer une propriété d'un objet JSON"
-  },
-
-
-
-
-
-
-  "date_aujourdhui": {
-    "prefix": ".date today ",
-    "body": ["new Date();"],
-    "description": "Obtenir la date et l'heure actuelles"
-  },
-
-  "date_format_iso": {
-    "prefix": ".date toISOString ",
-    "body": ["$1.toISOString();"],
-    "description": "Convertir une date en chaîne ISO"
-  },
-
-  "date_format_locale": {
-    "prefix": ".date toLocaleString ",
-    "body": ["$1.toLocaleString();"],
-    "description": "Convertir une date en chaîne locale"
-  },
-
-  "date_ajouter_jours": {
-    "prefix": ".date addDays ",
-    "body": [
-      "let date = new Date($1);",
-      "date.setDate(date.getDate() + $2);",
-      "date;"
-    ],
-    "description": "Ajouter des jours à une date"
-  },
-
-  "date_difference_jours": {
-    "prefix": ".date diffDays ",
-    "body": [
-      "let date1 = new Date($1);",
-      "let date2 = new Date($2);",
-      "Math.floor((date2 - date1) / (1000 * 60 * 60 * 24));"
-    ],
-    "description": "Calculer la différence en jours entre deux dates"
-  },
-
-  "date_get_year": {
-    "prefix": ".date getFullYear ",
-    "body": ["$1.getFullYear();"],
-    "description": "Obtenir l'année d'une date"
-  },
-
-  "date_get_month": {
-    "prefix": ".date getMonth ",
-    "body": ["$1.getMonth();"],
-    "description": "Obtenir le mois d'une date"
-  },
-
-  "date_get_date": {
-    "prefix": ".date getDate ",
-    "body": ["$1.getDate();"],
-    "description": "Obtenir le jour d'une date"
-  },
-
-  "date_get_day": {
-    "prefix": ".date getDay ",
-    "body": ["$1.getDay();"],
-    "description": "Obtenir le jour de la semaine d'une date"
-  },
-
-  "date_get_hours": {
-    "prefix": ".date getHours ",
-    "body": ["$1.getHours();"],
-    "description": "Obtenir l'heure d'une date"
-  },
-
-  "date_get_minutes": {
-    "prefix": ".date getMinutes ",
-    "body": ["$1.getMinutes();"],
-    "description": "Obtenir les minutes d'une date"
-  },
-
-  "date_get_seconds": {
-    "prefix": ".date getSeconds ",
-    "body": ["$1.getSeconds();"],
-    "description": "Obtenir les secondes d'une date"
-  },
-
-  "date_get_milliseconds": {
-    "prefix": ".date getMilliseconds ",
-    "body": ["$1.getMilliseconds();"],
-    "description": "Obtenir les millisecondes d'une date"
-  },
-
-  "date_get_time": {
-    "prefix": ".date getTime ",
-    "body": ["$1.getTime();"],
-    "description": "Obtenir le timestamp d'une date"
-  },
-
-  "date_set_date": {
-    "prefix": ".date setDate ",
-    "body": ["$1.setDate($2);"],
-    "description": "Définir le jour d'une date"
-  },
-
-  "date_set_full_year": {
-    "prefix": ".date setFullYear ",
-    "body": ["$1.setFullYear($2);"],
-    "description": "Définir l'année d'une date"
-  },
-
-  "date_set_hours": {
-    "prefix": ".date setHours ",
-    "body": ["$1.setHours($2);"],
-    "description": "Définir l'heure d'une date"
-  },
-
-  "date_set_milliseconds": {
-    "prefix": ".date setMilliseconds ",
-    "body": ["$1.setMilliseconds($2);"],
-    "description": "Définir les millisecondes d'une date"
-  },
-
-  "date_set_minutes": {
-    "prefix": ".date setMinutes ",
-    "body": ["$1.setMinutes($2);"],
-    "description": "Définir les minutes d'une date"
-  },
-
-  "date_set_month": {
-    "prefix": ".date setMonth ",
-    "body": ["$1.setMonth($2);"],
-    "description": "Définir le mois d'une date"
-  },
-
-  "date_set_seconds": {
-    "prefix": ".date setSeconds ",
-    "body": ["$1.setSeconds($2);"],
-    "description": "Définir les secondes d'une date"
-  },
-
-  "date_set_time": {
-    "prefix": ".date setTime ",
-    "body": ["$1.setTime($2);"],
-    "description": "Définir le timestamp d'une date"
-  },
-
-
-
-  "map_creer": {
-    "prefix": ".map new ",
-    "body": ["new Map();"],
-    "description": "Créer un nouvel objet Map"
-  },
-  "map_clear": {
-    "prefix": ".map clear ",
-    "body": ["$1.clear();"],
-    "description": "Supprimer tous les éléments d'une Map"
-  },
-  "map_delete": {
-    "prefix": ".map delete ",
-    "body": ["$1.delete($2);"],
-    "description": "Supprimer un élément d'une Map spécifié par une clé"
-  },
-  "map_entries": {
-    "prefix": ".map entries ",
-    "body": ["$1.entries();"],
-    "description": "Retourner un objet itérateur avec les paires [clé, valeur] d'une Map"
-  },
-  "map_forEach": {
-    "prefix": ".map forEach ",
-    "body": ["$1.forEach(($2, $3) => { $4 });"],
-    "description": "Invoquer un callback pour chaque paire clé/valeur d'une Map"
-  },
-  "map_get": {
-    "prefix": ".map get ",
-    "body": ["$1.get($2);"],
-    "description": "Obtenir la valeur pour une clé dans une Map"
-  },
-  "map_groupBy": {
-    "prefix": ".map groupBy ",
-    "body": ["$1.reduce((acc, obj) => { const key = $2(obj); if (!acc[key]) { acc[key] = []; } acc[key].push(obj); return acc; }, {});"],
-    "description": "Grouper les éléments d'un objet selon les valeurs retournées par un callback"
-  },
-  "map_has": {
-    "prefix": ".map has ",
-    "body": ["$1.has($2);"],
-    "description": "Retourner true si une clé existe dans une Map"
-  },
-  "map_keys": {
-    "prefix": ".map keys ",
-    "body": ["$1.keys();"],
-    "description": "Retourner un objet itérateur avec les clés d'une Map"
-  },
-  "map_set": {
-    "prefix": ".map set ",
-    "body": ["$1.set($2, $3);"],
-    "description": "Définir la valeur pour une clé dans une Map"
-  },
-  "map_size": {
-    "prefix": ".map size ",
-    "body": ["$1.size;"],
-    "description": "Retourner le nombre d'éléments d'une Map"
-  },
-  "map_values": {
-    "prefix": ".map values ",
-    "body": ["$1.values();"],
-    "description": "Retourner un objet itérateur avec les valeurs d'une Map"
-  }
-
-,
-
-
-
-"add_token": {
-  "prefix": ".dom add ",
-  "body": ["$1.add('$2');"],
-  "description": "Ajouter un ou plusieurs tokens à la liste"
-},
-"contains_token": {
-  "prefix": ".dom contains ",
-  "body": ["$1.contains('$2');"],
-  "description": "Retourner true si la liste contient un token"
-},
-"entries_token": {
-  "prefix": ".dom entries ",
-  "body": ["$1.entries();"],
-  "description": "Retourner un itérateur avec les paires clé/valeur de la liste"
-},
-"forEach_token": {
-  "prefix": ".dom forEach ",
-  "body": ["$1.forEach(($2) => { $3 });"],
-  "description": "Exécuter une fonction de rappel pour chaque token dans la liste"
-},
-"item_token": {
-  "prefix": ".dom item ",
-  "body": ["$1.item($2);"],
-  "description": "Retourner le token à un index spécifié"
-},
-"keys_token": {
-  "prefix": ".dom keys ",
-  "body": ["$1.keys();"],
-  "description": "Retourner un itérateur avec les clés de la liste"
-},
-"length_token": {
-  "prefix": ".dom length ",
-  "body": ["$1.length;"],
-  "description": "Retourner le nombre de tokens dans la liste"
-},
-"remove_token": {
-  "prefix": ".dom remove ",
-  "body": ["$1.remove('$2');"],
-  "description": "Supprimer un ou plusieurs tokens de la liste"
-},
-"replace_token": {
-  "prefix": ".dom replace ",
-  "body": ["$1.replace('$2', '$3');"],
-  "description": "Remplacer un token dans la liste"
-},
-"supports_token": {
-  "prefix": ".dom supports ",
-  "body": ["$1.supports('$2');"],
-  "description": "Retourner true si un token est supporté par un attribut"
-},
-"toggle_token": {
-  "prefix": ".dom toggle ",
-  "body": ["$1.toggle('$2');"],
-  "description": "Basculer entre les tokens dans la liste"
-},
-"value_token": {
-  "prefix": ".dom value ",
-  "body": ["$1.value;"],
-  "description": "Retourner la liste des tokens sous forme de chaîne"
-},
-"values_token": {
-  "prefix": ".dom values ",
-  "body": ["$1.values();"],
-  "description": "Retourner un itérateur avec les valeurs de la liste"
-}
-
-,
-
-
-"mysql_connect": {
-  "prefix": ".mysql connect ",
-  "body": [
-    
-    "const connection = mysql.createConnection({",
-    "  host: '$1',",
-    "  user: '$2',",
-    "  password: '$3',",
-    "  database: '$4'",
-    "});",
-    "connection.connect((err) => {",
-    "  if (err) throw err;",
-    "  console.log('Connected!');",
-    "});"
-  ],
-  "description": "Se connecter à une base de données MySQL"
-},
-
-"mysql_create_database": {
-  "prefix": ".mysql createDB ",
-  "body": [
-    "connection.connect((err) => {",
-    "  if (err) throw err;",
-    "  console.log('Connected!');",
-    "  connection.query('CREATE DATABASE $4', (err, result) => {",
-    "    if (err) throw err;",
-    "    console.log('Database created');",
-    "  });",
-    "});"
-  ],
-  "description": "Créer une base de données MySQL"
-},
-
-"mysql_create_table": {
-  "prefix": ".mysql createTable ",
-  "body": [
-
-    "connection.connect((err) => {",
-    "  if (err) throw err;",
-    "  console.log('Connected!');",
-    "  const sql = 'CREATE TABLE $5 ($6)';",
-    "  connection.query(sql, (err, result) => {",
-    "    if (err) throw err;",
-    "    console.log('Table created');",
-    "  });",
-    "});"
-  ],
-  "description": "Créer une table dans une base de données MySQL"
-},
-
-"mysql_insert_into": {
-  "prefix": ".mysql insert ",
-  "body": [
-    
-    "connection.connect((err) => {",
-    "  if (err) throw err;",
-    "  console.log('Connected!');",
-    "  const sql = 'INSERT INTO $5 ($6) VALUES ($7)';",
-    "  connection.query(sql, (err, result) => {",
-    "    if (err) throw err;",
-    "    console.log('Record inserted');",
-    "  });",
-    "});"
-  ],
-  "description": "Insérer des données dans une table MySQL"
-},
-
-"mysql_select_from": {
-  "prefix": ".mysql select ",
-  "body": [
-    
-    "connection.connect((err) => {",
-    "  if (err) throw err;",
-    "  console.log('Connected!');",
-    "  const sql = 'SELECT $5 FROM $6';",
-    "  connection.query(sql, (err, result) => {",
-    "    if (err) throw err;",
-    "    console.log(result);",
-    "  });",
-    "});"
-  ],
-  "description": "Sélectionner des données d'une table MySQL"
-},
-
-"mysql_where": {
-  "prefix": ".mysql where ",
-  "body": [
-    
-
-    "connection.connect((err) => {",
-    "  if (err) throw err;",
-    "  console.log('Connected!');",
-    "  const sql = 'SELECT $5 FROM $6 WHERE $7';",
-    "  connection.query(sql, (err, result) => {",
-    "    if (err) throw err;",
-    "    console.log(result);",
-    "  });",
-    "});"
-  ],
-  "description": "Sélectionner des données avec une condition WHERE dans MySQL"
-},
-
-"mysql_order_by": {
-  "prefix": ".mysql orderBy ",
-  "body": [
-    
-
-    "connection.connect((err) => {",
-    "  if (err) throw err;",
-    "  console.log('Connected!');",
-    "  const sql = 'SELECT $5 FROM $6 ORDER BY $7';",
-    "  connection.query(sql, (err, result) => {",
-    "    if (err) throw err;",
-    "    console.log(result);",
-    "  });",
-    "});"
-  ],
-  "description": "Sélectionner des données avec un ORDER BY dans MySQL"
-},
-
-"mysql_delete": {
-  "prefix": ".mysql delete ",
-  "body": [
-
-    "connection.connect((err) => {",
-    "  if (err) throw err;",
-    "  console.log('Connected!');",
-    "  const sql = 'DELETE FROM $5 WHERE $6';",
-    "  connection.query(sql, (err, result) => {",
-    "    if (err) throw err;",
-    "    console.log('Record deleted');",
-    "  });",
-    "});"
-  ],
-  "description": "Supprimer des données d'une table MySQL"
-},
-
-"mysql_drop_table": {
-  "prefix": ".mysql dropTable ",
-  "body": [
-
-    "connection.connect((err) => {",
-    "  if (err) throw err;",
-    "  console.log('Connected!');",
-    "  const sql = 'DROP TABLE $5';",
-    "  connection.query(sql, (err, result) => {",
-    "    if (err) throw err;",
-    "    console.log('Table dropped');",
-    "  });",
-    "});"
-  ],
-  "description": "Supprimer une table MySQL"
-},
-
-"mysql_update": {
-  "prefix": ".mysql update ",
-  "body": [
-    
-
-    "connection.connect((err) => {",
-    "  if (err) throw err;",
-    "  console.log('Connected!');",
-    "  const sql = 'UPDATE $5 SET $6 WHERE $7';",
-    "  connection.query(sql, (err, result) => {",
-    "    if (err) throw err;",
-    "    console.log('Record updated');",
-    "  });",
-    "});"
-  ],
-  "description": "Mettre à jour des données dans une table MySQL"
-},
-
-"mysql_limit": {
-  "prefix": ".mysql limit ",
-  "body": [
-    
-
-    "connection.connect((err) => {",
-    "  if (err) throw err;",
-    "  console.log('Connected!');",
-    "  const sql = 'SELECT $5 FROM $6 LIMIT $7';",
-    "  connection.query(sql, (err, result) => {",
-    "    if (err) throw err;",
-    "    console.log(result);",
-    "  });",
-    "});"
-  ],
-  "description": "Sélectionner des données avec une limite dans MySQL"
-},
-
-"mysql_join": {
-  "prefix": ".mysql join ",
-  "body": [
-    
-  
-    "connection.connect((err) => {",
-    "  if (err) throw err;",
-    "  console.log('Connected!');",
-    "  const sql = 'SELECT $5 FROM $6 JOIN $7 ON $8';",
-    "  connection.query(sql, (err, result) => {",
-    "    if (err) throw err;",
-    "    console.log(result);",
-    "  });",
-    "});"
-  ],
-  "description": "Joindre des tables dans MySQL"
-},
-
-
-
-
-
-"express_setup": {
-  "prefix": ".express setup ",
-  "body": [
-    "const express = require('express');",
-    "const cors = require('cors');",
-    "const app = express();",
-    "const port = $1;",
-    "",
-    "app.use(cors());",
-    "app.use(express.json());",
-    "",
-    "app.listen(port, () => {",
-    "  console.log(`Server is running on port ${port}`);",
-    "});"
-  ],
-  "description": "Configurer un serveur Express de base avec CORS"
-},
-"express_route_post_submit": {
-  "prefix": ".express post submit ",
-  "body": [
-    "app.post('/api/submit', (req, res) => {",
-    "  const { name, email, message } = req.body;",
-    "  res.send(` ${name} ,${email} , ${message}`);",
-    "});"
-  ],
-  "description": "Définir une route POST /submit dans Express"
-},
-"express_route_get": {
-  "prefix": ".express get ",
-  "body": [
-    "app.get('$1', (req, res) => {",
-    "  res.send('$2');",
-    "});"
-  ],
-  "description": "Définir une route GET dans Express"
-},
-
-"express_route_post": {
-  "prefix": ".express post ",
-  "body": [
-    "app.post('$1', (req, res) => {",
-    "  res.send('$2');",
-    "});"
-  ],
-  "description": "Définir une route POST dans Express"
-},
-
-"express_route_put": {
-  "prefix": ".express put ",
-  "body": [
-    "app.put('$1', (req, res) => {",
-    "  res.send('$2');",
-    "});"
-  ],
-  "description": "Définir une route PUT dans Express"
-},
-
-"express_route_delete": {
-  "prefix": ".express delete ",
-  "body": [
-    "app.delete('$1', (req, res) => {",
-    "  res.send('$2');",
-    "});"
-  ],
-  "description": "Définir une route DELETE dans Express"
-},
-
-"express_middleware": {
-  "prefix": ".express middleware ",
-  "body": [
-    "app.use((req, res, next) => {",
-    "  console.log('$1');",
-    "  next();",
-    "});"
-  ],
-  "description": "Définir un middleware dans Express"
-}
-
-
-
-,
-"fs_readFile": {
-  "prefix": ".fs readFile ",
-  "body": [
-    "const fs = require('fs');",
-    "fs.readFile('$1', 'utf8', (err, data) => {",
-    "  if (err) throw err;",
-    "  console.log(data);",
-    "});"
-  ],
-  "description": "Lire un fichier avec fs"
-},
-
-"fs_writeFile": {
-  "prefix": ".fs writeFile ",
-  "body": [
-    "const fs = require('fs');",
-    "fs.writeFile('$1', '$2', 'utf8', (err) => {",
-    "  if (err) throw err;",
-    "  console.log('File has been saved!');",
-    "});"
-  ],
-  "description": "Écrire dans un fichier avec fs"
-},
-
-"fs_appendFile": {
-  "prefix": ".fs appendFile ",
-  "body": [
-    "const fs = require('fs');",
-    "fs.appendFile('$1', '$2', 'utf8', (err) => {",
-    "  if (err) throw err;",
-    "  console.log('Data has been appended!');",
-    "});"
-  ],
-  "description": "Ajouter des données à un fichier avec fs"
-},
-
-"fs_unlink": {
-  "prefix": ".fs unlink ",
-  "body": [
-    "const fs = require('fs');",
-    "fs.unlink('$1', (err) => {",
-    "  if (err) throw err;",
-    "  console.log('File has been deleted!');",
-    "});"
-  ],
-  "description": "Supprimer un fichier avec fs"
-},
-
-
-
-
-"http_createServer": {
-  "prefix": ".http createServer ",
-  "body": [
-    "const http = require('http');",
-    "const server = http.createServer((req, res) => {",
-    "  res.statusCode = 200;",
-    "  res.setHeader('Content-Type', 'text/plain');",
-    "  res.end('Hello World\\n');",
-    "});",
-    "server.listen($1, () => {",
-    "  console.log(`Server running at port $1`);",
-    "});"
-  ],
-  "description": "Créer un serveur HTTP avec http"
-},
-
-"http_get": {
-  "prefix": ".http get ",
-  "body": [
-    "const http = require('http');",
-    "http.get('$1', (res) => {",
-    "  let data = '';",
-    "  res.on('data', (chunk) => {",
-    "    data += chunk;",
-    "  });",
-    "  res.on('end', () => {",
-    "    console.log(data);",
-    "  });",
-    "}).on('error', (err) => {",
-    "  console.error('Error:', err);",
-    "});"
-  ],
-  "description": "Effectuer une requête GET avec http"
-},
-
-"path_basename": {
-  "prefix": ".path basename ",
-  "body": [
-    "const path = require('path');",
-    "const basename = path.basename('$1');",
-    "console.log(basename);"
-  ],
-  "description": "Obtenir le nom de fichier avec path"
-},
-
-"path_dirname": {
-  "prefix": ".path dirname ",
-  "body": [
-    "const path = require('path');",
-    "const dirname = path.dirname('$1');",
-    "console.log(dirname);"
-  ],
-  "description": "Obtenir le répertoire d'un chemin avec path"
-},
-
-"path_extname": {
-  "prefix": ".path extname ",
-  "body": [
-    "const path = require('path');",
-    "const extname = path.extname('$1');",
-    "console.log(extname);"
-  ],
-  "description": "Obtenir l'extension de fichier avec path"
-},
-
-
-
-
-"os_platform": {
-  "prefix": ".os platform ",
-  "body": [
-    "const os = require('os');",
-    "const platform = os.platform();",
-    "console.log(platform);"
-  ],
-  "description": "Obtenir la plateforme du système d'exploitation avec os"
-},
-
-"os_homedir": {
-  "prefix": ".os homedir ",
-  "body": [
-    "const os = require('os');",
-    "const homedir = os.homedir();",
-    "console.log(homedir);"
-  ],
-  "description": "Obtenir le répertoire personnel de l'utilisateur avec os"
-},
-
-"os_uptime": {
-  "prefix": ".os uptime ",
-  "body": [
-    "const os = require('os');",
-    "const uptime = os.uptime();",
-    "console.log(uptime);"
-  ],
-  "description": "Obtenir le temps de fonctionnement du système avec os"
-}
-,
-
-
-"class_declaration": {
-  "prefix": ".class declare ",
-  "body": [
-    "class $1 {",
-    "  constructor($2) {",
-    "    $3",
-    "  }",
-    "  $4",
-    "}"
-  ],
-  "description": "Déclarer une classe"
-},
-
-"class_method": {
-  "prefix": ".class method ",
-  "body": [
-    "$1($2) {",
-    "  $3",
-    "}"
-  ],
-  "description": "Définir une méthode de classe"
-},
-
-"class_inheritance": {
-  "prefix": ".class extends ",
-  "body": [
-    "class $1 extends $2 {",
-    "  constructor($3) {",
-    "    super($4);",
-    "    $5",
-    "  }",
-    "  $6",
-    "}"
-  ],
-  "description": "Déclarer une classe avec héritage"
-},
-
-"create_instance": {
-  "prefix": ".class instance ",
-  "body": [
-    "const $1 = new $2($3);"
-  ],
-  "description": "Créer une instance d'une classe"
-},
-
-"getter_method": {
-  "prefix": ".class getter ",
-  "body": [
-    "get $1() {",
-    "  return $2;",
-    "}"
-  ],
-  "description": "Définir une méthode getter"
-},
-
-"setter_method": {
-  "prefix": ".class setter ",
-  "body": [
-    "set $1($2) {",
-    "  this.$3 = $2;",
-    "}"
-  ],
-  "description": "Définir une méthode setter"
-}
-
-
-
-
-
-,
-  "Readline - Entrée Unique": {
-    "prefix": ".input.single",
-    "body": [
-      "const readline = require('readline');",
-      "const rl = readline.createInterface({",
-      "    input: process.stdin,",
-      "    output: process.stdout",
-      "});",
-      "",
-      "rl.question('Entrez une valeur : ', (input) => {",
-      "    console.log(`Vous avez entré : ${input}`);",
-      "    rl.close();",
-      "});"
-    ],
-    "description": "Lire une seule entrée utilisateur avec readline"
-  },
-
-  "Readline - Plusieurs Entrées (Callback)": {
-    "prefix": ".input.multi",
-    "body": [
-      "const readline = require('readline');",
-      "const rl = readline.createInterface({",
-      "    input: process.stdin,",
-      "    output: process.stdout",
-      "});",
-      "",
-      "rl.question('Quel est ton prénom ? ', (firstName) => {",
-      "    rl.question('Quel est ton âge ? ', (age) => {",
-      "        console.log(`Bonjour ${firstName}, tu as ${age} ans.`);",
-      "        rl.close();",
-      "    });",
-      "});"
-    ],
-    "description": "Lire plusieurs entrées utilisateur avec des callbacks"
-  },
-
-  "Readline - Plusieurs Entrées (Async/Await)": {
-    "prefix": ".input.async",
-    "body": [
-      "const readline = require('readline');",
-      "const rl = readline.createInterface({",
-      "    input: process.stdin,",
-      "    output: process.stdout",
-      "});",
-      "",
-      "const askQuestion = (question) => {",
-      "    return new Promise((resolve) => {",
-      "        rl.question(question, (answer) => {",
-      "            resolve(answer);",
-      "        });",
-      "    });",
-      "};",
-      "",
-      "(async () => {",
-      "    const name = await askQuestion('Quel est ton nom ? ');",
-      "    const city = await askQuestion('Où habites-tu ? ');",
-      "    console.log(`Salut ${name}, tu habites à ${city}.`);",
-      "    rl.close();",
-      "})();"
-    ],
-    "description": "Lire plusieurs entrées utilisateur avec async/await"
-  },
-  "Readline - Lecture Ligne par Ligne": {
-    "prefix": ".input.line",
-    "body": [
-      "const readline = require('readline');",
-      "const rl = readline.createInterface({",
-      "    input: process.stdin,",
-      "    output: process.stdout",
-      "});",
-      "",
-      "rl.on('line', (input) => {",
-      "    console.log(`Vous avez saisi : ${input}`);",
-      "});"
-    ],
-    "description": "Lire une entrée utilisateur ligne par ligne"
-  },
-  "Readline - Gestion Fermeture": {
-    "prefix": ".input.close",
-    "body": [
-      "const readline = require('readline');",
-      "const rl = readline.createInterface({",
-      "    input: process.stdin,",
-      "    output: process.stdout",
-      "});",
-      "",
-      "rl.on('close', () => {",
-      "    console.log('Merci');",
-      "    process.exit(0);",
-      "});"
-    ],
-    "description": "Gérer la fermeture propre de readline"
-  },
-
-  "Readline - Capture Ctrl+C (SIGINT)": {
-    "prefix": ".input.sigint",
-    "body": [
-      "const readline = require('readline');",
-      "const rl = readline.createInterface({",
-      "    input: process.stdin,",
-      "    output: process.stdout",
-      "});",
-      "",
-      "rl.on('SIGINT', () => {",
-      "    console.log('\\nInterruption détectée (Ctrl + C), fermeture...');",
-      "    rl.close();",
-      "});"
-    ],
-    "description": "Capturer l'interruption avec Ctrl + C"
-  },
-  "Readline - Calculatrice Simple": {
-    "prefix": ".input.calc",
-    "body": [
-      "const readline = require('readline');",
-      "const rl = readline.createInterface({",
-      "    input: process.stdin,",
-      "    output: process.stdout",
-      "});",
-      "",
-      "const askQuestion = (question) => {",
-      "    return new Promise((resolve) => {",
-      "        rl.question(question, (answer) => {",
-      "            resolve(answer);",
-      "        });",
-      "    });",
-      "};",
-      "",
-      "(async () => {",
-      "    const num1 = await askQuestion('Entrez le premier nombre : ');",
-      "    const num2 = await askQuestion('Entrez le deuxième nombre : ');",
-      "    console.log(`Résultat : ${parseFloat(num1) + parseFloat(num2)}`);",
-      "    rl.close();",
-      "})();"
-    ],
-    "description": "Créer une calculatrice simple avec readline"
-  }
-
-
-,
-  "Récupérer des données depuis une page": {
-		"prefix": ".scrap balise",
-		"body": [
-			"const title = await page.evaluate(() => ",
-			"document.querySelector(`$0`).innerText);",
-      "console.log(title);"
-		],
-		"description": "Récupérer des données depuis une page"
+	"verification_presence": {
+	  "prefix": ".srt in ",
+	  "body": ["$1.includes(\"$2\");"],
+	  "description": "Vérifier si une sous-chaîne est présente"
 	},
-
-"scrap_init": {
-    "prefix": ".scrap init",
-    "body": [
-      "const puppeteer = require('puppeteer');",
-      "(async () => {",
-      "  const browser = await puppeteer.launch({ headless: false });",
-      "  const page = await browser.newPage();",
-      "  await page.goto('$1');",
-      "  console.log('Navigation terminée');",
-      "  await browser.close();",
-      "})();"
-    ],
-    "description": "Initialiser Puppeteer et ouvrir une page"
-  },
-  "scrap_open_browser": {
-    "prefix": ".scrap open",
-    "body": [
-      "const browser = await puppeteer.launch({ headless: false });",
-      "const page = await browser.newPage();",
-      "console.log('Navigateur ouvert');"
-    ],
-    "description": "Ouvrir le navigateur avec Puppeteer"
-  },
-  "scrap_close_browser": {
-    "prefix": ".scrap close",
-    "body": [
-      "await browser.close();",
-      "console.log('Navigateur fermé');"
-    ],
-    "description": "Fermer le navigateur"
-  },
-  "scrap_get_by_css": {
-    "prefix": ".scrap getcss",
-    "body": [
-      "const element = await page.$('$1');",
-      "console.log('Élément récupéré:', element);"
-    ],
-    "description": "Récupérer un élément par son sélecteur CSS"
-  },
-  "scrap_get_by_id": {
-    "prefix": ".scrap getid",
-    "body": [
-      "const element = await page.$('#$1');",
-      "console.log('Élément récupéré:', element);"
-    ],
-    "description": "Récupérer un élément par son ID"
-  },
-  "scrap_screenshot": {
-    "prefix": ".scrap screenshot",
-    "body": [
-      "await page.screenshot({ path: '$1.png', fullPage: true });",
-      "console.log('Capture d’écran enregistrée');"
-    ],
-    "description": "Prendre une capture d’écran de la page"
-  },
-  "scrap_pdf": {
-    "prefix": ".scrap pdf",
-    "body": [
-      "await page.pdf({ path: '$1.pdf', format: 'A4' });",
-      "console.log('PDF enregistré');"
-    ],
-    "description": "Exporter une page en PDF"
-  },
-  "scrap_get_text": {
-    "prefix": ".scrap gettext",
-    "body": [
-      "const text = await page.$eval('$1', el => el.innerText);",
-      "console.log('Texte extrait:', text);"
-    ],
-    "description": "Extraire du texte d'un élément"
-  },
-  "scrap_get_html": {
-    "prefix": ".scrap gethtml",
-    "body": [
-      "const html = await page.$eval('$1', el => el.innerHTML);",
-      "console.log('HTML extrait:', html);"
-    ],
-    "description": "Récupérer le code HTML d’un élément"
-  },
-  "scrap_get_attr": {
-    "prefix": ".scrap getattr",
-    "body": [
-      "const attr = await page.$eval('$1', el => el.getAttribute('$2'));",
-      "console.log('Attribut extrait:', attr);"
-    ],
-    "description": "Récupérer un attribut d'un élément"
-  },
-  "scrap_click": {
-    "prefix": ".scrap click",
-    "body": [
-      "await page.click('$1');",
-      "console.log('Élément cliqué');"
-    ],
-    "description": "Cliquer sur un élément"
-  },
-  "scrap_type": {
-    "prefix": ".scrap type",
-    "body": [
-      "await page.type('$1', '$2', { delay: 100 });",
-      "console.log('Texte saisi');"
-    ],
-    "description": "Remplir un champ de texte"
-  },
-  "scrap_wait": {
-    "prefix": ".scrap wait",
-    "body": [
-      "await page.waitForSelector('$1');",
-      "console.log('Élément détecté');"
-    ],
-    "description": "Attendre qu’un élément apparaisse"
-  },
-  "scrap_scroll": {
-    "prefix": ".scrap scroll",
-    "body": [
-      "await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));",
-      "console.log('Défilement en bas de page');"
-    ],
-    "description": "Faire défiler la page"
-  },
-  "scrap_extract_links": {
-    "prefix": ".scrap links",
-    "body": [
-      "const links = await page.$$eval('a', anchors => anchors.map(a => a.href));",
-      "console.log('Liens extraits:', links);"
-    ],
-    "description": "Extraire tous les liens de la page"
-  }
-,
-"setup_jquery": {
-  "prefix": ".jq setup",
-  "body": [
-    "<script src=\"https://code.jquery.com/jquery-3.6.0.min.js\"></script>"
-  ],
-  "description": "Ajouter jQuery à votre projet"
-},
-"evenement_post": {
-  "prefix": ".jq post",
-  "body": [
-    "$.post('${1:url}', ${2:data}, function(response) {",
-    "  ${3:// action}",
-    "});"
-  ],
-  "description": "Effectuer une requête POST avec jQuery"
-},
-"evenement_get": {
-  "prefix": ".jq get",
-  "body": [
-    "$.get('${1:url}', function(response) {",
-    "  ${2:// action}",
-    "});"
-  ],
-  "description": "Effectuer une requête GET avec jQuery"
-},
-"evenement_ready": {
-  "prefix": ".jq ready",
-  "body": ["$(document).ready(function() {", "  ${1:// action}", "});"],
-  "description": "Exécuter du code lorsque le document est prêt"
-},
-"evenement_submit": {
-  "prefix": ".jq submit",
-  "body": ["$('${1:selector}').submit(function(event) {", "  event.preventDefault();", "  ${2:// action}", "});"],
-  "description": "Gérer un événement de soumission de formulaire"
-},
-"evenement_change": {
-  "prefix": ".jq change",
-  "body": ["$('${1:selector}').change(function() {", "  ${2:// action}", "});"],
-  "description": "Gérer un événement de changement de valeur"
-},
-"evenement_focus": {
-  "prefix": ".jq focus",
-  "body": ["$('${1:selector}').focus(function() {", "  ${2:// action}", "});"],
-  "description": "Gérer un événement de focus"
-},
-"evenement_blur": {
-  "prefix": ".jq blur",
-  "body": ["$('${1:selector}').blur(function() {", "  ${2:// action}", "});"],
-  "description": "Gérer un événement de perte de focus"
-},
-"selection_element": {
-    "prefix": ".jq select",
-    "body": ["$('${1:selector}')"],
-    "description": "Sélectionner un élément avec jQuery"
-  },
-  "modification_contenu": {
-    "prefix": ".jq text",
-    "body": ["$('${1:selector}').text('${2:contenu}')"],
-    "description": "Modifier le texte d'un élément"
-  },
-  "modification_html": {
-    "prefix": ".jq html",
-    "body": ["$('${1:selector}').html('${2:html}')"],
-    "description": "Modifier le HTML d'un élément"
-  },
-  "modification_valeur": {
-    "prefix": ".jq val",
-    "body": ["$('${1:selector}').val('${2:valeur}')"],
-    "description": "Modifier la valeur d'un champ"
-  },
-  "ajout_classe": {
-    "prefix": ".jq addClass",
-    "body": ["$('${1:selector}').addClass('${2:classe}')"],
-    "description": "Ajouter une classe à un élément"
-  },
-  "suppression_classe": {
-    "prefix": ".jq removeClass",
-    "body": ["$('${1:selector}').removeClass('${2:classe}')"],
-    "description": "Supprimer une classe d'un élément"
-  },
-  "toggle_classe": {
-    "prefix": ".jq toggleClass",
-    "body": ["$('${1:selector}').toggleClass('${2:classe}')"],
-    "description": "Basculer une classe sur un élément"
-  },
-  "ajout_element": {
-    "prefix": ".jq append",
-    "body": ["$('${1:selector}').append('${2:html}')"],
-    "description": "Ajouter un élément à la fin d'un autre"
-  },
-  "suppression_element": {
-    "prefix": ".jq remove",
-    "body": ["$('${1:selector}').remove()"],
-    "description": "Supprimer un élément du DOM"
-  },
-  "evenement_click": {
-    "prefix": ".jq click",
-    "body": ["$('${1:selector}').click(function() {", "  ${2:// action}", "})"],
-    "description": "Gérer un événement de clic"
-  },
-  "evenement_mouseover": {
-    "prefix": ".jq hover",
-    "body": ["$('${1:selector}').hover(function() {", "  ${2:// action au survol}", "})"],
-    "description": "Gérer un événement de survol"
-  },
-  "requete_ajax": {
-    "prefix": ".jq ajax",
-    "body": ["$.ajax({", "  url: '${1:url}',", "  method: '${2:GET}',", "  success: function(data) {", "    ${3:// traiter la réponse}", "  }", "})"],
-    "description": "Effectuer une requête AJAX"
-  },
-  "chargement_contenu": {
-    "prefix": ".jq load",
-    "body": ["$('${1:selector}').load('${2:url}')"],
-    "description": "Charger du contenu dans un élément"
-  }
-
-
-
-
   
-}
+	"verification_absence": {
+	  "prefix": ".srt notin ",
+	  "body": ["!$1.includes(\"$2\");"],
+	  "description": "Vérifier si une sous-chaîne est absente"
+	},
+  
+	"remplacement_mot": {
+	  "prefix": ".srt replace ",
+	  "body": ["$1.replace(\"$2\", \"$3\");"],
+	  "description": "Remplacement d'un mot dans une chaîne"
+	},
+  
+	"remplacement_tout": {
+	  "prefix": ".srt replaceAll ",
+	  "body": ["$1.replaceAll(\"$2\", \"$3\");"],
+	  "description": "Remplacer toutes les occurrences d'une sous-chaîne"
+	},
+  
+	"majuscule": {
+	  "prefix": ".srt upper ",
+	  "body": ["$1.toUpperCase();"],
+	  "description": "Convertir en majuscules"
+	},
+  
+	"minuscule": {
+	  "prefix": ".srt lower ",
+	  "body": ["$1.toLowerCase();"],
+	  "description": "Convertir en minuscules"
+	},
+  
+	"capitaliser": {
+	  "prefix": ".srt capitalize ",
+	  "body": ["$1.charAt(0).toUpperCase() + $1.slice(1).toLowerCase();"],
+	  "description": "Mettre la première lettre en majuscule"
+	},
+  
+	"capitaliser_mots": {
+	  "prefix": ".srt title ",
+	  "body": [
+		"$1.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');"
+	  ],
+	  "description": "Mettre la première lettre de chaque mot en majuscule"
+	},
+  
+	"suppression_espaces": {
+	  "prefix": ".srt trim ",
+	  "body": ["$1.trim();"],
+	  "description": "Supprimer les espaces autour de la chaîne"
+	},
+  
+	"suppression_espaces_gauche": {
+	  "prefix": ".srt ltrim ",
+	  "body": ["$1.trimStart();"],
+	  "description": "Supprimer les espaces à gauche"
+	},
+  
+	"suppression_espaces_droite": {
+	  "prefix": ".srt rtrim ",
+	  "body": ["$1.trimEnd();"],
+	  "description": "Supprimer les espaces à droite"
+	},
+  
+	"decoupage": {
+	  "prefix": ".srt split ",
+	  "body": ["$1.split(\"$2\");"],
+	  "description": "Découper une chaîne en tableau"
+	},
+  
+	"concatenation": {
+	  "prefix": ".srt join ",
+	  "body": ["$1.join(\"$2\");"],
+	  "description": "Concaténer un tableau en chaîne"
+	},
+  
+	"extraction": {
+	  "prefix": ".srt slice ",
+	  "body": ["$1.slice($2, $3);"],
+	  "description": "Extraire une partie d'une chaîne"
+	},
+  
+	"longueur_chaine": {
+	  "prefix": ".srt length ",
+	  "body": ["$1.length;"],
+	  "description": "Obtenir la longueur d'une chaîne"
+	},
+  
+	"caractere_index": {
+	  "prefix": ".srt charAt ",
+	  "body": ["$1.charAt($2);"],
+	  "description": "Obtenir un caractère à un index donné"
+	},
+  
+	"index_sous_chaine": {
+	  "prefix": ".srt indexOf ",
+	  "body": ["$1.indexOf(\"$2\");"],
+	  "description": "Obtenir l'index d'une sous-chaîne"
+	},
+  
+	"dernier_index_sous_chaine": {
+	  "prefix": ".srt lastIndexOf ",
+	  "body": ["$1.lastIndexOf(\"$2\");"],
+	  "description": "Obtenir le dernier index d'une sous-chaîne"
+	},
+  
+	"repetition": {
+	  "prefix": ".srt repeat ",
+	  "body": ["$1.repeat($2);"],
+	  "description": "Répéter une chaîne un certain nombre de fois"
+	},
+  
+	"ajout_debut": {
+	  "prefix": ".srt padStart ",
+	  "body": ["$1.padStart($2, \"$3\");"],
+	  "description": "Ajouter des caractères au début de la chaîne"
+	},
+  
+	"ajout_fin": {
+	  "prefix": ".srt padEnd ",
+	  "body": ["$1.padEnd($2, \"$3\");"],
+	  "description": "Ajouter des caractères à la fin de la chaîne"
+	},
+  
+	"verification_chiffres": {
+	  "prefix": ".srt isdigit ",
+	  "body": ["/^[0-9]+$/.test($1);"],
+	  "description": "Vérifier si la chaîne contient uniquement des chiffres"
+	},
+  
+	"verification_lettres": {
+	  "prefix": ".srt isalpha ",
+	  "body": ["/^[A-Za-z]+$/.test($1);"],
+	  "description": "Vérifier si la chaîne contient uniquement des lettres"
+	},
+  
+	"verification_alphanumerique": {
+	  "prefix": ".srt isalnum ",
+	  "body": ["/^[A-Za-z0-9]+$/.test($1);"],
+	  "description": "Vérifier si la chaîne est alphanumérique"
+	},
+  
+	"verification_palindrome": {
+	  "prefix": ".srt palindrome ",
+	  "body": ["$1 === $1.split('').reverse().join('');"],
+	  "description": "Vérifier si une chaîne est un palindrome"
+	},
+  
+	"echappement_regex": {
+	  "prefix": ".srt escape ",
+	  "body": ["$1.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\\\$&');"],
+	  "description": "Échapper les caractères spéciaux pour une regex"
+	},
+  
+	"remplacement_regex": {
+	  "prefix": ".srt regex_replace ",
+	  "body": ["$1.replace(/$2/g, \"$3\");"],
+	  "description": "Remplacer une sous-chaîne avec une regex"
+	},
+  
+	"separation_regex": {
+	  "prefix": ".srt regex_split ",
+	  "body": ["$1.split(/$2/);"],
+	  "description": "Séparer une chaîne avec une regex"
+	},
+  
+  
+  
+	
+	"verification Absence": {
+	  "prefix": ".array notin ",
+	  "body": ["!$1.includes(\"$2\");"],
+	  "description": "Vérifier si un élément est absent dans un tableau"
+	},
+  
+	"ajouter_element": {
+	  "prefix": ".array push ",
+	  "body": ["$1.push(\"$2\");"],
+	  "description": "Ajouter un élément à la fin du tableau"
+	},
+  
+	"supprimer_element": {
+	  "prefix": ".array pop ",
+	  "body": ["$1.pop();"],
+	  "description": "Supprimer le dernier élément du tableau"
+	},
+  
+	"supprimer_premier_element": {
+	  "prefix": ".array shift ",
+	  "body": ["$1.shift();"],
+	  "description": "Supprimer le premier élément du tableau"
+	},
+  
+	"ajouter_premier_element": {
+	  "prefix": ".array unshift ",
+	  "body": ["$1.unshift(\"$2\");"],
+	  "description": "Ajouter un élément au début du tableau"
+	},
+  
+	"trier": {
+	  "prefix": ".array sort ",
+	  "body": ["$1.sort();"],
+	  "description": "Trier les éléments d'un tableau"
+	},
+  
+	"trier_inverse": {
+	  "prefix": ".array reverse ",
+	  "body": ["$1.reverse();"],
+	  "description": "Inverser l'ordre des éléments dans un tableau"
+	},
+  
+	"trier_personnalise": {
+	  "prefix": ".array custom_sort ",
+	  "body": ["$1.sort((a, b) => a - b);"],
+	  "description": "Trier un tableau de manière personnalisée"
+	},
+  
+	"chercher_element": {
+	  "prefix": ".array find ",
+	  "body": ["$1.find(e => e === \"$2\");"],
+	  "description": "Trouver un élément dans un tableau"
+	},
+  
+	"chercher_index": {
+	  "prefix": ".array indexOf ",
+	  "body": ["$1.indexOf(\"$2\");"],
+	  "description": "Obtenir l'index d'un élément dans un tableau"
+	},
+  
+	"filtrer": {
+	  "prefix": ".array filter ",
+	  "body": ["$1.filter(e => e === \"$2\");"],
+	  "description": "Filtrer les éléments d'un tableau selon une condition"
+	},
+  
+	"mapper": {
+	  "prefix": ".array map ",
+	  "body": ["$1.map(e => e * 2);"],
+	  "description": "Appliquer une fonction à chaque élément d'un tableau"
+	},
+  
+	"reduire": {
+	  "prefix": ".array reduce ",
+	  "body": ["$1.reduce((acc, e) => acc + e, 0);"],
+	  "description": "Réduire les éléments d'un tableau à une seule valeur"
+	},
+  
+	"verifier_vide": {
+	  "prefix": ".array isEmpty ",
+	  "body": ["$1.length === 0;"],
+	  "description": "Vérifier si un tableau est vide"
+	},
+  
+	"concatener": {
+	  "prefix": ".array concat ",
+	  "body": ["$1.concat($2);"],
+	  "description": "Concaténer deux tableaux"
+	},
+  
+	"supprimer_element_index": {
+	  "prefix": ".array splice ",
+	  "body": ["$1.splice($2, 1);"],
+	  "description": "Supprimer un élément d'un tableau à un index donné"
+	},
+  
+	"obtenir_sous_tableau": {
+	  "prefix": ".array slice ",
+	  "body": ["$1.slice($2, $3);"],
+	  "description": "Extraire une partie d'un tableau"
+	},
+  
+	"longueur_tableau": {
+	  "prefix": ".array length ",
+	  "body": ["$1.length;"],
+	  "description": "Obtenir la longueur d'un tableau"
+	},
+  
+	"remplacer_element": {
+	  "prefix": ".array replace ",
+	  "body": ["$1[$2] = \"$3\";"],
+	  "description": "Remplacer un élément dans un tableau par un autre"
+	},
+  
+  
+  
+  
+  
+  
+	"racine_carre": {
+	  "prefix": ".math sqrt ",
+	  "body": ["Math.sqrt($1)"],
+	  "description": "Calculer la racine carrée d'un nombre"
+	},
+	"addition": {
+	  "prefix": ".math add ",
+	  "body": ["$1 + $2"],
+	  "description": "Additionner deux nombres"
+	},
+	"soustraction": {
+	  "prefix": ".math subtract ",
+	  "body": ["$1 - $2"],
+	  "description": "Soustraire deux nombres"
+	},
+	"multiplication": {
+	  "prefix": ".math multiply ",
+	  "body": ["$1 * $2"],
+	  "description": "Multiplier deux nombres"
+	},
+	"division": {
+	  "prefix": ".math divide ",
+	  "body": ["$1 / $2"],
+	  "description": "Diviser deux nombres"
+	},
+	"puissance": {
+	  "prefix": ".math power ",
+	  "body": ["$1 ** $2"],
+	  "description": "Élever un nombre à une puissance"
+	},
+	"valeur_absolue": {
+	  "prefix": ".math abs ",
+	  "body": ["abs($1)"],
+	  "description": "Calculer la valeur absolue d'un nombre"
+	},
+	"arrondi": {
+	  "prefix": ".math round ",
+	  "body": ["round($1, $2)"],
+	  "description": "Arrondir un nombre à un certain nombre de décimales"
+	},
+	"arrondi_inférieur": {
+	  "prefix": ".math floor ",
+	  "body": ["Math.floor($1)"],
+	  "description": "Arrondir un nombre à l'entier inférieur le plus proche"
+	},
+	"arrondi_supérieur": {
+	  "prefix": ".math ceil ",
+	  "body": ["Math.ceil($1)"],
+	  "description": "Arrondir un nombre à l'entier supérieur le plus proche"
+	},
+	"maximum": {
+	  "prefix": ".math max ",
+	  "body": ["max($1, $2)"],
+	  "description": "Trouver la valeur maximale parmi plusieurs nombres"
+	},
+	"minimum": {
+	  "prefix": ".math min ",
+	  "body": ["min($1, $2)"],
+	  "description": "Trouver la valeur minimale parmi plusieurs nombres"
+	},
+	"somme": {
+	  "prefix": ".math sum ",
+	  "body": ["sum($1)"],
+	  "description": "Calculer la somme d'une liste de nombres"
+	},
+	"moyenne": {
+	  "prefix": ".math average ",
+	  "body": ["sum($1) / len($1)"],
+	  "description": "Calculer la moyenne d'une liste de nombres"
+	},
+	"modulo": {
+	  "prefix": ".math mod ",
+	  "body": ["$1 % $2"],
+	  "description": "Calculer le reste de la division entre deux nombres"
+	},
+	"pi": {
+	  "prefix": ".math pi ",
+	  "body": ["Math.pi"],
+	  "description": "Obtenir la valeur de Pi"
+	},
+	"sinus": {
+	  "prefix": ".math sin ",
+	  "body": ["Math.sin($1)"],
+	  "description": "Calculer le sinus d'un angle (en radians)"
+	},
+	"cosinus": {
+	  "prefix": ".math cos ",
+	  "body": ["Math.cos($1)"],
+	  "description": "Calculer le cosinus d'un angle (en radians)"
+	},
+	"tangente": {
+	  "prefix": ".math tan ",
+	  "body": ["Math.tan($1)"],
+	  "description": "Calculer la tangente d'un angle (en radians)"
+	},
+	"radians": {
+	  "prefix": ".math radians ",
+	  "body": ["Math.radians($1)"],
+	  "description": "Convertir un angle en degrés en radians"
+	},
+	"degres": {
+	  "prefix": ".math degrees ",
+	  "body": ["Math.degrees($1)"],
+	  "description": "Convertir un angle en radians en degrés"
+	},
+	"logarithme": {
+	  "prefix": ".math log ",
+	  "body": ["Math.log($1, $2)"],
+	  "description": "Calculer le logarithme d'un nombre"
+	},
+  
+  
+  
+  
+  
+  
+  
+	"fetch_get": {
+	  "prefix": ".fetch get ",
+	  "body": [
+		"fetch('$1')",
+		"  .then(response => response.json())",
+		"  .then(data => console.log(data))",
+		"  .catch(error => console.error('Error:', error));"
+	  ],
+	  "description": "Effectuer une requête GET avec fetch"
+	},
+  
+	"fetch_post": {
+	  "prefix": ".fetch post ",
+	  "body": [
+		"fetch('$1', {",
+		"  method: 'POST',",
+		"  headers: {",
+		"    'Content-Type': 'application/json'",
+		"  },",
+		"  body: JSON.stringify($2)",
+		"})",
+		"  .then(response => response.json())",
+		"  .then(data => console.log(data))",
+		"  .catch(error => console.error('Error:', error));"
+	  ],
+	  "description": "Effectuer une requête POST avec fetch"
+	},
+  
+	"fetch_put": {
+	  "prefix": ".fetch put ",
+	  "body": [
+		"fetch('$1', {",
+		"  method: 'PUT',",
+		"  headers: {",
+		"    'Content-Type': 'application/json'",
+		"  },",
+		"  body: JSON.stringify($2)",
+		"})",
+		"  .then(response => response.json())",
+		"  .then(data => console.log(data))",
+		"  .catch(error => console.error('Error:', error));"
+	  ],
+	  "description": "Effectuer une requête PUT avec fetch"
+	},
+  
+	"fetch_delete": {
+	  "prefix": ".fetch delete ",
+	  "body": [
+		"fetch('$1', {",
+		"  method: 'DELETE'",
+		"})",
+		"  .then(response => response.json())",
+		"  .then(data => console.log(data))",
+		"  .catch(error => console.error('Error:', error));"
+	  ],
+	  "description": "Effectuer une requête DELETE avec fetch"
+	},
+  
+	"axios_get": {
+	  "prefix": ".axios get ",
+	  "body": [
+		"axios.get('$1')",
+		"  .then(response => console.log(response.data))",
+		"  .catch(error => console.error('Error:', error));"
+	  ],
+	  "description": "Effectuer une requête GET avec axios"
+	},
+  
+	"axios_post": {
+	  "prefix": ".axios post ",
+	  "body": [
+		"axios.post('$1', $2)",
+		"  .then(response => console.log(response.data))",
+		"  .catch(error => console.error('Error:', error));"
+	  ],
+	  "description": "Effectuer une requête POST avec axios"
+	},
+  
+	"axios_put": {
+	  "prefix": ".axios put ",
+	  "body": [
+		"axios.put('$1', $2)",
+		"  .then(response => console.log(response.data))",
+		"  .catch(error => console.error('Error:', error));"
+	  ],
+	  "description": "Effectuer une requête PUT avec axios"
+	},
+  
+	"axios_delete": {
+	  "prefix": ".axios delete ",
+	  "body": [
+		"axios.delete('$1')",
+		"  .then(response => console.log(response.data))",
+		"  .catch(error => console.error('Error:', error));"
+	  ],
+	  "description": "Effectuer une requête DELETE avec axios"
+	}
+  ,
+	"json_parse": {
+	  "prefix": ".json parse ",
+	  "body": ["JSON.parse($1);"],
+	  "description": "Convertir une chaîne JSON en objet"
+	},
+  
+	"json_stringify": {
+	  "prefix": ".json stringify ",
+	  "body": ["JSON.stringify($1, null, 2);"],
+	  "description": "Convertir un objet en chaîne JSON"
+	},
+  
+	"json_stringify_compact": {
+	  "prefix": ".json stringifyCompact ",
+	  "body": ["JSON.stringify($1);"],
+	  "description": "Convertir un objet en chaîne JSON compacte"
+	},
+  
+	"json_access_property": {
+	  "prefix": ".json access ",
+	  "body": ["$1.$2;"],
+	  "description": "Accéder à une propriété d'un objet JSON"
+	},
+  
+	"json_set_property": {
+	  "prefix": ".json set ",
+	  "body": ["$1.$2 = $3;"],
+	  "description": "Définir une propriété d'un objet JSON"
+	},
+  
+	"json_delete_property": {
+	  "prefix": ".json delete ",
+	  "body": ["delete $1.$2;"],
+	  "description": "Supprimer une propriété d'un objet JSON"
+	},
+  
+  
+  
+  
+  
+  
+	"date_aujourdhui": {
+	  "prefix": ".date today ",
+	  "body": ["new Date();"],
+	  "description": "Obtenir la date et l'heure actuelles"
+	},
+  
+	"date_format_iso": {
+	  "prefix": ".date toISOString ",
+	  "body": ["$1.toISOString();"],
+	  "description": "Convertir une date en chaîne ISO"
+	},
+  
+	"date_format_locale": {
+	  "prefix": ".date toLocaleString ",
+	  "body": ["$1.toLocaleString();"],
+	  "description": "Convertir une date en chaîne locale"
+	},
+  
+	"date_ajouter_jours": {
+	  "prefix": ".date addDays ",
+	  "body": [
+		"let date = new Date($1);",
+		"date.setDate(date.getDate() + $2);",
+		"date;"
+	  ],
+	  "description": "Ajouter des jours à une date"
+	},
+  
+	"date_difference_jours": {
+	  "prefix": ".date diffDays ",
+	  "body": [
+		"let date1 = new Date($1);",
+		"let date2 = new Date($2);",
+		"Math.floor((date2 - date1) / (1000 * 60 * 60 * 24));"
+	  ],
+	  "description": "Calculer la différence en jours entre deux dates"
+	},
+  
+	"date_get_year": {
+	  "prefix": ".date getFullYear ",
+	  "body": ["$1.getFullYear();"],
+	  "description": "Obtenir l'année d'une date"
+	},
+  
+	"date_get_month": {
+	  "prefix": ".date getMonth ",
+	  "body": ["$1.getMonth();"],
+	  "description": "Obtenir le mois d'une date"
+	},
+  
+	"date_get_date": {
+	  "prefix": ".date getDate ",
+	  "body": ["$1.getDate();"],
+	  "description": "Obtenir le jour d'une date"
+	},
+  
+	"date_get_day": {
+	  "prefix": ".date getDay ",
+	  "body": ["$1.getDay();"],
+	  "description": "Obtenir le jour de la semaine d'une date"
+	},
+  
+	"date_get_hours": {
+	  "prefix": ".date getHours ",
+	  "body": ["$1.getHours();"],
+	  "description": "Obtenir l'heure d'une date"
+	},
+  
+	"date_get_minutes": {
+	  "prefix": ".date getMinutes ",
+	  "body": ["$1.getMinutes();"],
+	  "description": "Obtenir les minutes d'une date"
+	},
+  
+	"date_get_seconds": {
+	  "prefix": ".date getSeconds ",
+	  "body": ["$1.getSeconds();"],
+	  "description": "Obtenir les secondes d'une date"
+	},
+  
+	"date_get_milliseconds": {
+	  "prefix": ".date getMilliseconds ",
+	  "body": ["$1.getMilliseconds();"],
+	  "description": "Obtenir les millisecondes d'une date"
+	},
+  
+	"date_get_time": {
+	  "prefix": ".date getTime ",
+	  "body": ["$1.getTime();"],
+	  "description": "Obtenir le timestamp d'une date"
+	},
+  
+	"date_set_date": {
+	  "prefix": ".date setDate ",
+	  "body": ["$1.setDate($2);"],
+	  "description": "Définir le jour d'une date"
+	},
+  
+	"date_set_full_year": {
+	  "prefix": ".date setFullYear ",
+	  "body": ["$1.setFullYear($2);"],
+	  "description": "Définir l'année d'une date"
+	},
+  
+	"date_set_hours": {
+	  "prefix": ".date setHours ",
+	  "body": ["$1.setHours($2);"],
+	  "description": "Définir l'heure d'une date"
+	},
+  
+	"date_set_milliseconds": {
+	  "prefix": ".date setMilliseconds ",
+	  "body": ["$1.setMilliseconds($2);"],
+	  "description": "Définir les millisecondes d'une date"
+	},
+  
+	"date_set_minutes": {
+	  "prefix": ".date setMinutes ",
+	  "body": ["$1.setMinutes($2);"],
+	  "description": "Définir les minutes d'une date"
+	},
+  
+	"date_set_month": {
+	  "prefix": ".date setMonth ",
+	  "body": ["$1.setMonth($2);"],
+	  "description": "Définir le mois d'une date"
+	},
+  
+	"date_set_seconds": {
+	  "prefix": ".date setSeconds ",
+	  "body": ["$1.setSeconds($2);"],
+	  "description": "Définir les secondes d'une date"
+	},
+  
+	"date_set_time": {
+	  "prefix": ".date setTime ",
+	  "body": ["$1.setTime($2);"],
+	  "description": "Définir le timestamp d'une date"
+	},
+  
+  
+  
+	"map_creer": {
+	  "prefix": ".map new ",
+	  "body": ["new Map();"],
+	  "description": "Créer un nouvel objet Map"
+	},
+	"map_clear": {
+	  "prefix": ".map clear ",
+	  "body": ["$1.clear();"],
+	  "description": "Supprimer tous les éléments d'une Map"
+	},
+	"map_delete": {
+	  "prefix": ".map delete ",
+	  "body": ["$1.delete($2);"],
+	  "description": "Supprimer un élément d'une Map spécifié par une clé"
+	},
+	"map_entries": {
+	  "prefix": ".map entries ",
+	  "body": ["$1.entries();"],
+	  "description": "Retourner un objet itérateur avec les paires [clé, valeur] d'une Map"
+	},
+	"map_forEach": {
+	  "prefix": ".map forEach ",
+	  "body": ["$1.forEach(($2, $3) => { $4 });"],
+	  "description": "Invoquer un callback pour chaque paire clé/valeur d'une Map"
+	},
+	"map_get": {
+	  "prefix": ".map get ",
+	  "body": ["$1.get($2);"],
+	  "description": "Obtenir la valeur pour une clé dans une Map"
+	},
+	"map_groupBy": {
+	  "prefix": ".map groupBy ",
+	  "body": ["$1.reduce((acc, obj) => { const key = $2(obj); if (!acc[key]) { acc[key] = []; } acc[key].push(obj); return acc; }, {});"],
+	  "description": "Grouper les éléments d'un objet selon les valeurs retournées par un callback"
+	},
+	"map_has": {
+	  "prefix": ".map has ",
+	  "body": ["$1.has($2);"],
+	  "description": "Retourner true si une clé existe dans une Map"
+	},
+	"map_keys": {
+	  "prefix": ".map keys ",
+	  "body": ["$1.keys();"],
+	  "description": "Retourner un objet itérateur avec les clés d'une Map"
+	},
+	"map_set": {
+	  "prefix": ".map set ",
+	  "body": ["$1.set($2, $3);"],
+	  "description": "Définir la valeur pour une clé dans une Map"
+	},
+	"map_size": {
+	  "prefix": ".map size ",
+	  "body": ["$1.size;"],
+	  "description": "Retourner le nombre d'éléments d'une Map"
+	},
+	"map_values": {
+	  "prefix": ".map values ",
+	  "body": ["$1.values();"],
+	  "description": "Retourner un objet itérateur avec les valeurs d'une Map"
+	}
+  
+  ,
+  
+  
+  
+  "add_token": {
+	"prefix": ".dom add ",
+	"body": ["$1.add('$2');"],
+	"description": "Ajouter un ou plusieurs tokens à la liste"
+  },
+  "contains_token": {
+	"prefix": ".dom contains ",
+	"body": ["$1.contains('$2');"],
+	"description": "Retourner true si la liste contient un token"
+  },
+  "entries_token": {
+	"prefix": ".dom entries ",
+	"body": ["$1.entries();"],
+	"description": "Retourner un itérateur avec les paires clé/valeur de la liste"
+  },
+  "forEach_token": {
+	"prefix": ".dom forEach ",
+	"body": ["$1.forEach(($2) => { $3 });"],
+	"description": "Exécuter une fonction de rappel pour chaque token dans la liste"
+  },
+  "item_token": {
+	"prefix": ".dom item ",
+	"body": ["$1.item($2);"],
+	"description": "Retourner le token à un index spécifié"
+  },
+  "keys_token": {
+	"prefix": ".dom keys ",
+	"body": ["$1.keys();"],
+	"description": "Retourner un itérateur avec les clés de la liste"
+  },
+  "length_token": {
+	"prefix": ".dom length ",
+	"body": ["$1.length;"],
+	"description": "Retourner le nombre de tokens dans la liste"
+  },
+  "remove_token": {
+	"prefix": ".dom remove ",
+	"body": ["$1.remove('$2');"],
+	"description": "Supprimer un ou plusieurs tokens de la liste"
+  },
+  "replace_token": {
+	"prefix": ".dom replace ",
+	"body": ["$1.replace('$2', '$3');"],
+	"description": "Remplacer un token dans la liste"
+  },
+  "supports_token": {
+	"prefix": ".dom supports ",
+	"body": ["$1.supports('$2');"],
+	"description": "Retourner true si un token est supporté par un attribut"
+  },
+  "toggle_token": {
+	"prefix": ".dom toggle ",
+	"body": ["$1.toggle('$2');"],
+	"description": "Basculer entre les tokens dans la liste"
+  },
+  "value_token": {
+	"prefix": ".dom value ",
+	"body": ["$1.value;"],
+	"description": "Retourner la liste des tokens sous forme de chaîne"
+  },
+  "values_token": {
+	"prefix": ".dom values ",
+	"body": ["$1.values();"],
+	"description": "Retourner un itérateur avec les valeurs de la liste"
+  }
+  
+  ,
+  
+  
+  "mysql_connect": {
+	"prefix": ".mysql connect ",
+	"body": [
+	  
+	  "const connection = mysql.createConnection({",
+	  "  host: '$1',",
+	  "  user: '$2',",
+	  "  password: '$3',",
+	  "  database: '$4'",
+	  "});",
+	  "connection.connect((err) => {",
+	  "  if (err) throw err;",
+	  "  console.log('Connected!');",
+	  "});"
+	],
+	"description": "Se connecter à une base de données MySQL"
+  },
+  
+  "mysql_create_database": {
+	"prefix": ".mysql createDB ",
+	"body": [
+	  "connection.connect((err) => {",
+	  "  if (err) throw err;",
+	  "  console.log('Connected!');",
+	  "  connection.query('CREATE DATABASE $4', (err, result) => {",
+	  "    if (err) throw err;",
+	  "    console.log('Database created');",
+	  "  });",
+	  "});"
+	],
+	"description": "Créer une base de données MySQL"
+  },
+  
+  "mysql_create_table": {
+	"prefix": ".mysql createTable ",
+	"body": [
+  
+	  "connection.connect((err) => {",
+	  "  if (err) throw err;",
+	  "  console.log('Connected!');",
+	  "  const sql = 'CREATE TABLE $5 ($6)';",
+	  "  connection.query(sql, (err, result) => {",
+	  "    if (err) throw err;",
+	  "    console.log('Table created');",
+	  "  });",
+	  "});"
+	],
+	"description": "Créer une table dans une base de données MySQL"
+  },
+  
+  "mysql_insert_into": {
+	"prefix": ".mysql insert ",
+	"body": [
+	  
+	  "connection.connect((err) => {",
+	  "  if (err) throw err;",
+	  "  console.log('Connected!');",
+	  "  const sql = 'INSERT INTO $5 ($6) VALUES ($7)';",
+	  "  connection.query(sql, (err, result) => {",
+	  "    if (err) throw err;",
+	  "    console.log('Record inserted');",
+	  "  });",
+	  "});"
+	],
+	"description": "Insérer des données dans une table MySQL"
+  },
+  
+  "mysql_select_from": {
+	"prefix": ".mysql select ",
+	"body": [
+	  
+	  "connection.connect((err) => {",
+	  "  if (err) throw err;",
+	  "  console.log('Connected!');",
+	  "  const sql = 'SELECT $5 FROM $6';",
+	  "  connection.query(sql, (err, result) => {",
+	  "    if (err) throw err;",
+	  "    console.log(result);",
+	  "  });",
+	  "});"
+	],
+	"description": "Sélectionner des données d'une table MySQL"
+  },
+  
+  "mysql_where": {
+	"prefix": ".mysql where ",
+	"body": [
+	  
+  
+	  "connection.connect((err) => {",
+	  "  if (err) throw err;",
+	  "  console.log('Connected!');",
+	  "  const sql = 'SELECT $5 FROM $6 WHERE $7';",
+	  "  connection.query(sql, (err, result) => {",
+	  "    if (err) throw err;",
+	  "    console.log(result);",
+	  "  });",
+	  "});"
+	],
+	"description": "Sélectionner des données avec une condition WHERE dans MySQL"
+  },
+  
+  "mysql_order_by": {
+	"prefix": ".mysql orderBy ",
+	"body": [
+	  
+  
+	  "connection.connect((err) => {",
+	  "  if (err) throw err;",
+	  "  console.log('Connected!');",
+	  "  const sql = 'SELECT $5 FROM $6 ORDER BY $7';",
+	  "  connection.query(sql, (err, result) => {",
+	  "    if (err) throw err;",
+	  "    console.log(result);",
+	  "  });",
+	  "});"
+	],
+	"description": "Sélectionner des données avec un ORDER BY dans MySQL"
+  },
+  
+  "mysql_delete": {
+	"prefix": ".mysql delete ",
+	"body": [
+  
+	  "connection.connect((err) => {",
+	  "  if (err) throw err;",
+	  "  console.log('Connected!');",
+	  "  const sql = 'DELETE FROM $5 WHERE $6';",
+	  "  connection.query(sql, (err, result) => {",
+	  "    if (err) throw err;",
+	  "    console.log('Record deleted');",
+	  "  });",
+	  "});"
+	],
+	"description": "Supprimer des données d'une table MySQL"
+  },
+  
+  "mysql_drop_table": {
+	"prefix": ".mysql dropTable ",
+	"body": [
+  
+	  "connection.connect((err) => {",
+	  "  if (err) throw err;",
+	  "  console.log('Connected!');",
+	  "  const sql = 'DROP TABLE $5';",
+	  "  connection.query(sql, (err, result) => {",
+	  "    if (err) throw err;",
+	  "    console.log('Table dropped');",
+	  "  });",
+	  "});"
+	],
+	"description": "Supprimer une table MySQL"
+  },
+  
+  "mysql_update": {
+	"prefix": ".mysql update ",
+	"body": [
+	  
+  
+	  "connection.connect((err) => {",
+	  "  if (err) throw err;",
+	  "  console.log('Connected!');",
+	  "  const sql = 'UPDATE $5 SET $6 WHERE $7';",
+	  "  connection.query(sql, (err, result) => {",
+	  "    if (err) throw err;",
+	  "    console.log('Record updated');",
+	  "  });",
+	  "});"
+	],
+	"description": "Mettre à jour des données dans une table MySQL"
+  },
+  
+  "mysql_limit": {
+	"prefix": ".mysql limit ",
+	"body": [
+	  
+  
+	  "connection.connect((err) => {",
+	  "  if (err) throw err;",
+	  "  console.log('Connected!');",
+	  "  const sql = 'SELECT $5 FROM $6 LIMIT $7';",
+	  "  connection.query(sql, (err, result) => {",
+	  "    if (err) throw err;",
+	  "    console.log(result);",
+	  "  });",
+	  "});"
+	],
+	"description": "Sélectionner des données avec une limite dans MySQL"
+  },
+  
+  "mysql_join": {
+	"prefix": ".mysql join ",
+	"body": [
+	  
+	
+	  "connection.connect((err) => {",
+	  "  if (err) throw err;",
+	  "  console.log('Connected!');",
+	  "  const sql = 'SELECT $5 FROM $6 JOIN $7 ON $8';",
+	  "  connection.query(sql, (err, result) => {",
+	  "    if (err) throw err;",
+	  "    console.log(result);",
+	  "  });",
+	  "});"
+	],
+	"description": "Joindre des tables dans MySQL"
+  },
+  
+  
+  
+  
+  
+  "express_setup": {
+	"prefix": ".express setup ",
+	"body": [
+	  "const express = require('express');",
+	  "const cors = require('cors');",
+	  "const app = express();",
+	  "const port = $1;",
+	  "",
+	  "app.use(cors());",
+	  "app.use(express.json());",
+	  "",
+	  "app.listen(port, () => {",
+	  "  console.log(`Server is running on port ${port}`);",
+	  "});"
+	],
+	"description": "Configurer un serveur Express de base avec CORS"
+  },
+  "express_route_post_submit": {
+	"prefix": ".express post submit ",
+	"body": [
+	  "app.post('/api/submit', (req, res) => {",
+	  "  const { name, email, message } = req.body;",
+	  "  res.send(` ${name} ,${email} , ${message}`);",
+	  "});"
+	],
+	"description": "Définir une route POST /submit dans Express"
+  },
+  "express_route_get": {
+	"prefix": ".express get ",
+	"body": [
+	  "app.get('$1', (req, res) => {",
+	  "  res.send('$2');",
+	  "});"
+	],
+	"description": "Définir une route GET dans Express"
+  },
+  
+  "express_route_post": {
+	"prefix": ".express post ",
+	"body": [
+	  "app.post('$1', (req, res) => {",
+	  "  res.send('$2');",
+	  "});"
+	],
+	"description": "Définir une route POST dans Express"
+  },
+  
+  "express_route_put": {
+	"prefix": ".express put ",
+	"body": [
+	  "app.put('$1', (req, res) => {",
+	  "  res.send('$2');",
+	  "});"
+	],
+	"description": "Définir une route PUT dans Express"
+  },
+  
+  "express_route_delete": {
+	"prefix": ".express delete ",
+	"body": [
+	  "app.delete('$1', (req, res) => {",
+	  "  res.send('$2');",
+	  "});"
+	],
+	"description": "Définir une route DELETE dans Express"
+  },
+  
+  "express_middleware": {
+	"prefix": ".express middleware ",
+	"body": [
+	  "app.use((req, res, next) => {",
+	  "  console.log('$1');",
+	  "  next();",
+	  "});"
+	],
+	"description": "Définir un middleware dans Express"
+  }
+  
+  
+  
+  ,
+  "fs_readFile": {
+	"prefix": ".fs readFile ",
+	"body": [
+	  "const fs = require('fs');",
+	  "fs.readFile('$1', 'utf8', (err, data) => {",
+	  "  if (err) throw err;",
+	  "  console.log(data);",
+	  "});"
+	],
+	"description": "Lire un fichier avec fs"
+  },
+  
+  "fs_writeFile": {
+	"prefix": ".fs writeFile ",
+	"body": [
+	  "const fs = require('fs');",
+	  "fs.writeFile('$1', '$2', 'utf8', (err) => {",
+	  "  if (err) throw err;",
+	  "  console.log('File has been saved!');",
+	  "});"
+	],
+	"description": "Écrire dans un fichier avec fs"
+  },
+  
+  "fs_appendFile": {
+	"prefix": ".fs appendFile ",
+	"body": [
+	  "const fs = require('fs');",
+	  "fs.appendFile('$1', '$2', 'utf8', (err) => {",
+	  "  if (err) throw err;",
+	  "  console.log('Data has been appended!');",
+	  "});"
+	],
+	"description": "Ajouter des données à un fichier avec fs"
+  },
+  
+  "fs_unlink": {
+	"prefix": ".fs unlink ",
+	"body": [
+	  "const fs = require('fs');",
+	  "fs.unlink('$1', (err) => {",
+	  "  if (err) throw err;",
+	  "  console.log('File has been deleted!');",
+	  "});"
+	],
+	"description": "Supprimer un fichier avec fs"
+  },
+  
+  
+  
+  
+  "http_createServer": {
+	"prefix": ".http createServer ",
+	"body": [
+	  "const http = require('http');",
+	  "const server = http.createServer((req, res) => {",
+	  "  res.statusCode = 200;",
+	  "  res.setHeader('Content-Type', 'text/plain');",
+	  "  res.end('Hello World\\n');",
+	  "});",
+	  "server.listen($1, () => {",
+	  "  console.log(`Server running at port $1`);",
+	  "});"
+	],
+	"description": "Créer un serveur HTTP avec http"
+  },
+  
+  "http_get": {
+	"prefix": ".http get ",
+	"body": [
+	  "const http = require('http');",
+	  "http.get('$1', (res) => {",
+	  "  let data = '';",
+	  "  res.on('data', (chunk) => {",
+	  "    data += chunk;",
+	  "  });",
+	  "  res.on('end', () => {",
+	  "    console.log(data);",
+	  "  });",
+	  "}).on('error', (err) => {",
+	  "  console.error('Error:', err);",
+	  "});"
+	],
+	"description": "Effectuer une requête GET avec http"
+  },
+  
+  "path_basename": {
+	"prefix": ".path basename ",
+	"body": [
+	  "const path = require('path');",
+	  "const basename = path.basename('$1');",
+	  "console.log(basename);"
+	],
+	"description": "Obtenir le nom de fichier avec path"
+  },
+  
+  "path_dirname": {
+	"prefix": ".path dirname ",
+	"body": [
+	  "const path = require('path');",
+	  "const dirname = path.dirname('$1');",
+	  "console.log(dirname);"
+	],
+	"description": "Obtenir le répertoire d'un chemin avec path"
+  },
+  
+  "path_extname": {
+	"prefix": ".path extname ",
+	"body": [
+	  "const path = require('path');",
+	  "const extname = path.extname('$1');",
+	  "console.log(extname);"
+	],
+	"description": "Obtenir l'extension de fichier avec path"
+  },
+  
+  
+  
+  
+  "os_platform": {
+	"prefix": ".os platform ",
+	"body": [
+	  "const os = require('os');",
+	  "const platform = os.platform();",
+	  "console.log(platform);"
+	],
+	"description": "Obtenir la plateforme du système d'exploitation avec os"
+  },
+  
+  "os_homedir": {
+	"prefix": ".os homedir ",
+	"body": [
+	  "const os = require('os');",
+	  "const homedir = os.homedir();",
+	  "console.log(homedir);"
+	],
+	"description": "Obtenir le répertoire personnel de l'utilisateur avec os"
+  },
+  
+  "os_uptime": {
+	"prefix": ".os uptime ",
+	"body": [
+	  "const os = require('os');",
+	  "const uptime = os.uptime();",
+	  "console.log(uptime);"
+	],
+	"description": "Obtenir le temps de fonctionnement du système avec os"
+  }
+  ,
+  
+  
+  "class_declaration": {
+	"prefix": ".class declare ",
+	"body": [
+	  "class $1 {",
+	  "  constructor($2) {",
+	  "    $3",
+	  "  }",
+	  "  $4",
+	  "}"
+	],
+	"description": "Déclarer une classe"
+  },
+  
+  "class_method": {
+	"prefix": ".class method ",
+	"body": [
+	  "$1($2) {",
+	  "  $3",
+	  "}"
+	],
+	"description": "Définir une méthode de classe"
+  },
+  
+  "class_inheritance": {
+	"prefix": ".class extends ",
+	"body": [
+	  "class $1 extends $2 {",
+	  "  constructor($3) {",
+	  "    super($4);",
+	  "    $5",
+	  "  }",
+	  "  $6",
+	  "}"
+	],
+	"description": "Déclarer une classe avec héritage"
+  },
+  
+  "create_instance": {
+	"prefix": ".class instance ",
+	"body": [
+	  "const $1 = new $2($3);"
+	],
+	"description": "Créer une instance d'une classe"
+  },
+  
+  "getter_method": {
+	"prefix": ".class getter ",
+	"body": [
+	  "get $1() {",
+	  "  return $2;",
+	  "}"
+	],
+	"description": "Définir une méthode getter"
+  },
+  
+  "setter_method": {
+	"prefix": ".class setter ",
+	"body": [
+	  "set $1($2) {",
+	  "  this.$3 = $2;",
+	  "}"
+	],
+	"description": "Définir une méthode setter"
+  }
+  
+  
+  
+  
+  
+  ,
+	"Readline - Entrée Unique": {
+	  "prefix": ".input.single",
+	  "body": [
+		"const readline = require('readline');",
+		"const rl = readline.createInterface({",
+		"    input: process.stdin,",
+		"    output: process.stdout",
+		"});",
+		"",
+		"rl.question('Entrez une valeur : ', (input) => {",
+		"    console.log(`Vous avez entré : ${input}`);",
+		"    rl.close();",
+		"});"
+	  ],
+	  "description": "Lire une seule entrée utilisateur avec readline"
+	},
+  
+	"Readline - Plusieurs Entrées (Callback)": {
+	  "prefix": ".input.multi",
+	  "body": [
+		"const readline = require('readline');",
+		"const rl = readline.createInterface({",
+		"    input: process.stdin,",
+		"    output: process.stdout",
+		"});",
+		"",
+		"rl.question('Quel est ton prénom ? ', (firstName) => {",
+		"    rl.question('Quel est ton âge ? ', (age) => {",
+		"        console.log(`Bonjour ${firstName}, tu as ${age} ans.`);",
+		"        rl.close();",
+		"    });",
+		"});"
+	  ],
+	  "description": "Lire plusieurs entrées utilisateur avec des callbacks"
+	},
+  
+	"Readline - Plusieurs Entrées (Async/Await)": {
+	  "prefix": ".input.async",
+	  "body": [
+		"const readline = require('readline');",
+		"const rl = readline.createInterface({",
+		"    input: process.stdin,",
+		"    output: process.stdout",
+		"});",
+		"",
+		"const askQuestion = (question) => {",
+		"    return new Promise((resolve) => {",
+		"        rl.question(question, (answer) => {",
+		"            resolve(answer);",
+		"        });",
+		"    });",
+		"};",
+		"",
+		"(async () => {",
+		"    const name = await askQuestion('Quel est ton nom ? ');",
+		"    const city = await askQuestion('Où habites-tu ? ');",
+		"    console.log(`Salut ${name}, tu habites à ${city}.`);",
+		"    rl.close();",
+		"})();"
+	  ],
+	  "description": "Lire plusieurs entrées utilisateur avec async/await"
+	},
+	"Readline - Lecture Ligne par Ligne": {
+	  "prefix": ".input.line",
+	  "body": [
+		"const readline = require('readline');",
+		"const rl = readline.createInterface({",
+		"    input: process.stdin,",
+		"    output: process.stdout",
+		"});",
+		"",
+		"rl.on('line', (input) => {",
+		"    console.log(`Vous avez saisi : ${input}`);",
+		"});"
+	  ],
+	  "description": "Lire une entrée utilisateur ligne par ligne"
+	},
+	"Readline - Gestion Fermeture": {
+	  "prefix": ".input.close",
+	  "body": [
+		"const readline = require('readline');",
+		"const rl = readline.createInterface({",
+		"    input: process.stdin,",
+		"    output: process.stdout",
+		"});",
+		"",
+		"rl.on('close', () => {",
+		"    console.log('Merci');",
+		"    process.exit(0);",
+		"});"
+	  ],
+	  "description": "Gérer la fermeture propre de readline"
+	},
+  
+	"Readline - Capture Ctrl+C (SIGINT)": {
+	  "prefix": ".input.sigint",
+	  "body": [
+		"const readline = require('readline');",
+		"const rl = readline.createInterface({",
+		"    input: process.stdin,",
+		"    output: process.stdout",
+		"});",
+		"",
+		"rl.on('SIGINT', () => {",
+		"    console.log('\\nInterruption détectée (Ctrl + C), fermeture...');",
+		"    rl.close();",
+		"});"
+	  ],
+	  "description": "Capturer l'interruption avec Ctrl + C"
+	},
+	"Readline - Calculatrice Simple": {
+	  "prefix": ".input.calc",
+	  "body": [
+		"const readline = require('readline');",
+		"const rl = readline.createInterface({",
+		"    input: process.stdin,",
+		"    output: process.stdout",
+		"});",
+		"",
+		"const askQuestion = (question) => {",
+		"    return new Promise((resolve) => {",
+		"        rl.question(question, (answer) => {",
+		"            resolve(answer);",
+		"        });",
+		"    });",
+		"};",
+		"",
+		"(async () => {",
+		"    const num1 = await askQuestion('Entrez le premier nombre : ');",
+		"    const num2 = await askQuestion('Entrez le deuxième nombre : ');",
+		"    console.log(`Résultat : ${parseFloat(num1) + parseFloat(num2)}`);",
+		"    rl.close();",
+		"})();"
+	  ],
+	  "description": "Créer une calculatrice simple avec readline"
+	}
+  
+  
+  ,
+	"Récupérer des données depuis une page": {
+		  "prefix": ".scrap balise",
+		  "body": [
+			  "const title = await page.evaluate(() => ",
+			  "document.querySelector(`$0`).innerText);",
+		"console.log(title);"
+		  ],
+		  "description": "Récupérer des données depuis une page"
+	  },
+  
+  "scrap_init": {
+	  "prefix": ".scrap init",
+	  "body": [
+		"const puppeteer = require('puppeteer');",
+		"(async () => {",
+		"  const browser = await puppeteer.launch({ headless: false });",
+		"  const page = await browser.newPage();",
+		"  await page.goto('$1');",
+		"  console.log('Navigation terminée');",
+		"  await browser.close();",
+		"})();"
+	  ],
+	  "description": "Initialiser Puppeteer et ouvrir une page"
+	},
+	"scrap_open_browser": {
+	  "prefix": ".scrap open",
+	  "body": [
+		"const browser = await puppeteer.launch({ headless: false });",
+		"const page = await browser.newPage();",
+		"console.log('Navigateur ouvert');"
+	  ],
+	  "description": "Ouvrir le navigateur avec Puppeteer"
+	},
+	"scrap_close_browser": {
+	  "prefix": ".scrap close",
+	  "body": [
+		"await browser.close();",
+		"console.log('Navigateur fermé');"
+	  ],
+	  "description": "Fermer le navigateur"
+	},
+	"scrap_get_by_css": {
+	  "prefix": ".scrap getcss",
+	  "body": [
+		"const element = await page.$('$1');",
+		"console.log('Élément récupéré:', element);"
+	  ],
+	  "description": "Récupérer un élément par son sélecteur CSS"
+	},
+	"scrap_get_by_id": {
+	  "prefix": ".scrap getid",
+	  "body": [
+		"const element = await page.$('#$1');",
+		"console.log('Élément récupéré:', element);"
+	  ],
+	  "description": "Récupérer un élément par son ID"
+	},
+	"scrap_screenshot": {
+	  "prefix": ".scrap screenshot",
+	  "body": [
+		"await page.screenshot({ path: '$1.png', fullPage: true });",
+		"console.log('Capture d’écran enregistrée');"
+	  ],
+	  "description": "Prendre une capture d’écran de la page"
+	},
+	"scrap_pdf": {
+	  "prefix": ".scrap pdf",
+	  "body": [
+		"await page.pdf({ path: '$1.pdf', format: 'A4' });",
+		"console.log('PDF enregistré');"
+	  ],
+	  "description": "Exporter une page en PDF"
+	},
+	"scrap_get_text": {
+	  "prefix": ".scrap gettext",
+	  "body": [
+		"const text = await page.$eval('$1', el => el.innerText);",
+		"console.log('Texte extrait:', text);"
+	  ],
+	  "description": "Extraire du texte d'un élément"
+	},
+	"scrap_get_html": {
+	  "prefix": ".scrap gethtml",
+	  "body": [
+		"const html = await page.$eval('$1', el => el.innerHTML);",
+		"console.log('HTML extrait:', html);"
+	  ],
+	  "description": "Récupérer le code HTML d’un élément"
+	},
+	"scrap_get_attr": {
+	  "prefix": ".scrap getattr",
+	  "body": [
+		"const attr = await page.$eval('$1', el => el.getAttribute('$2'));",
+		"console.log('Attribut extrait:', attr);"
+	  ],
+	  "description": "Récupérer un attribut d'un élément"
+	},
+	"scrap_click": {
+	  "prefix": ".scrap click",
+	  "body": [
+		"await page.click('$1');",
+		"console.log('Élément cliqué');"
+	  ],
+	  "description": "Cliquer sur un élément"
+	},
+	"scrap_type": {
+	  "prefix": ".scrap type",
+	  "body": [
+		"await page.type('$1', '$2', { delay: 100 });",
+		"console.log('Texte saisi');"
+	  ],
+	  "description": "Remplir un champ de texte"
+	},
+	"scrap_wait": {
+	  "prefix": ".scrap wait",
+	  "body": [
+		"await page.waitForSelector('$1');",
+		"console.log('Élément détecté');"
+	  ],
+	  "description": "Attendre qu’un élément apparaisse"
+	},
+	"scrap_scroll": {
+	  "prefix": ".scrap scroll",
+	  "body": [
+		"await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));",
+		"console.log('Défilement en bas de page');"
+	  ],
+	  "description": "Faire défiler la page"
+	},
+	"scrap_extract_links": {
+	  "prefix": ".scrap links",
+	  "body": [
+		"const links = await page.$$eval('a', anchors => anchors.map(a => a.href));",
+		"console.log('Liens extraits:', links);"
+	  ],
+	  "description": "Extraire tous les liens de la page"
+	}
+  ,
+  "selection_element": {
+	  "prefix": ".jq select",
+	  "body": ["$('${1:selector}')"],
+	  "description": "Sélectionner un élément avec jQuery"
+	},
+	"modification_contenu": {
+	  "prefix": ".jq text",
+	  "body": ["$('${1:selector}').text('${2:contenu}')"],
+	  "description": "Modifier le texte d'un élément"
+	},
+	"modification_html": {
+	  "prefix": ".jq html",
+	  "body": ["$('${1:selector}').html('${2:html}')"],
+	  "description": "Modifier le HTML d'un élément"
+	},
+	"modification_valeur": {
+	  "prefix": ".jq val",
+	  "body": ["$('${1:selector}').val('${2:valeur}')"],
+	  "description": "Modifier la valeur d'un champ"
+	},
+	"ajout_classe": {
+	  "prefix": ".jq addClass",
+	  "body": ["$('${1:selector}').addClass('${2:classe}')"],
+	  "description": "Ajouter une classe à un élément"
+	},
+	"suppression_classe": {
+	  "prefix": ".jq removeClass",
+	  "body": ["$('${1:selector}').removeClass('${2:classe}')"],
+	  "description": "Supprimer une classe d'un élément"
+	},
+	"toggle_classe": {
+	  "prefix": ".jq toggleClass",
+	  "body": ["$('${1:selector}').toggleClass('${2:classe}')"],
+	  "description": "Basculer une classe sur un élément"
+	},
+	"ajout_element": {
+	  "prefix": ".jq append",
+	  "body": ["$('${1:selector}').append('${2:html}')"],
+	  "description": "Ajouter un élément à la fin d'un autre"
+	},
+	"suppression_element": {
+	  "prefix": ".jq remove",
+	  "body": ["$('${1:selector}').remove()"],
+	  "description": "Supprimer un élément du DOM"
+	},
+	"evenement_click": {
+	  "prefix": ".jq click",
+	  "body": ["$('${1:selector}').click(function() {", "  ${2:// action}", "})"],
+	  "description": "Gérer un événement de clic"
+	},
+	"evenement_mouseover": {
+	  "prefix": ".jq hover",
+	  "body": ["$('${1:selector}').hover(function() {", "  ${2:// action au survol}", "})"],
+	  "description": "Gérer un événement de survol"
+	},
+	"requete_ajax": {
+	  "prefix": ".jq ajax",
+	  "body": ["$.ajax({", "  url: '${1:url}',", "  method: '${2:GET}',", "  success: function(data) {", "    ${3:// traiter la réponse}", "  }", "})"],
+	  "description": "Effectuer une requête AJAX"
+	},
+	"chargement_contenu": {
+	  "prefix": ".jq load",
+	  "body": ["$('${1:selector}').load('${2:url}')"],
+	  "description": "Charger du contenu dans un élément"
+	}
+  
+
+	,
+	"bcrypt_hash": {
+	  "prefix": ".bcrypt hash",
+	  "body": [
+		"const bcrypt = require('bcryptjs');",
+		"const saltRounds = 10;",
+		"bcrypt.hash('$1', saltRounds, (err, hash) => {",
+		"  if (err) throw err;",
+		"  console.log('Hashed password:', hash);",
+		"});"
+	  ],
+	  "description": "Générer un hash avec bcryptjs"
+	},
+	"bcrypt_compare": {
+	  "prefix": ".bcrypt compare",
+	  "body": [
+		"const bcrypt = require('bcryptjs');",
+		"bcrypt.compare('$1', '$2', (err, result) => {",
+		"  if (err) throw err;",
+		"  console.log('Password match:', result);",
+		"});"
+	  ],
+	  "description": "Comparer un mot de passe avec un hash avec bcryptjs"
+	},
+	"dotenv_config": {
+		"prefix": ".env config",
+		"body": [
+			"require('dotenv').config();",
+			"console.log(process.env.$1);"
+		],
+		"description": "Configurer dotenv pour charger les variables d'environnement"
+	},
+	"multer_setup": {
+		"prefix": ".multer setup",
+		"body": [
+			"const multer = require('multer');",
+			"const storage = multer.diskStorage({",
+			"  destination: function (req, file, cb) {",
+			"    cb(null, '$1');",
+			"  },",
+			"  filename: function (req, file, cb) {",
+			"    cb(null, Date.now() + '-' + file.originalname);",
+			"  }",
+			"});",
+			"const upload = multer({ storage: storage });",
+			"module.exports = upload;"
+		],
+		"description": "Configurer multer pour le téléchargement de fichiers"
+	},
+	"multer_single_upload": {
+		"prefix": ".multer single",
+		"body": [
+			"app.post('$1', upload.single('$2'), (req, res) => {",
+			"  console.log(req.file);",
+			"  res.send('Fichier téléchargé avec succès');",
+			"});"
+		],
+		"description": "Télécharger un seul fichier avec multer"
+	},
+	"multer_multiple_upload": {
+		"prefix": ".multer multiple",
+		"body": [
+			"app.post('$1', upload.array('$2', $3), (req, res) => {",
+			"  console.log(req.files);",
+			"  res.send('Fichiers téléchargés avec succès');",
+			"});"
+		],
+		"description": "Télécharger plusieurs fichiers avec multer"
+	},
+	"socket_io_setup": {
+		"prefix": ".socket setup",
+		"body": [
+			"const io = require('socket.io')(server);",
+			"",
+			"io.on('connection', (socket) => {",
+			"  console.log('A user connected');",
+			"",
+			"  socket.on('disconnect', () => {",
+			"    console.log('A user disconnected');",
+			"  });",
+			"});"
+		],
+		"description": "Configurer Socket.IO pour un serveur"
+	},
+	"socket_emit": {
+		"prefix": ".socket emit",
+		"body": [
+			"socket.emit('$1', $2);"
+		],
+		"description": "Émettre un événement avec Socket.IO"
+	},
+	"socket_on": {
+		"prefix": ".socket on",
+		"body": [
+			"socket.on('$1', (data) => {",
+			"  console.log('Received:', data);",
+			"});"
+		],
+		"description": "Écouter un événement avec Socket.IO"
+	},
+	"socket_broadcast": {
+		"prefix": ".socket broadcast",
+		"body": [
+			"socket.broadcast.emit('$1', $2);"
+		],
+		"description": "Émettre un événement à tous les clients sauf l'émetteur"
+	},
+	"socket_join_room": {
+		"prefix": ".socket join",
+		"body": [
+			"socket.join('$1');",
+			"console.log('Joined room:', '$1');"
+		],
+		"description": "Rejoindre une salle avec Socket.IO"
+	},
+	"socket_leave_room": {
+		"prefix": ".socket leave",
+		"body": [
+			"socket.leave('$1');",
+			"console.log('Left room:', '$1');"
+		],
+		"description": "Quitter une salle avec Socket.IO"
+	},
+	"socket_to_room": {
+		"prefix": ".socket to",
+		"body": [
+			"io.to('$1').emit('$2', $3);"
+		],
+		"description": "Émettre un événement à une salle spécifique"
+	},
+	"binary_search": {
+		"prefix": ".dsa binarySearch",
+		"body": [
+			"function binarySearch(arr, target) {",
+			"  let left = 0;",
+			"  let right = arr.length - 1;",
+			"  while (left <= right) {",
+			"    const mid = Math.floor((left + right) / 2);",
+			"    if (arr[mid] === target) {",
+			"      return mid;",
+			"    } else if (arr[mid] < target) {",
+			"      left = mid + 1;",
+			"    } else {",
+			"      right = mid - 1;",
+			"    }",
+			"  }",
+			"  return -1;",
+			"}"
+		],
+		"description": "Implémentation de la recherche binaire"
+	},
+	"bubble_sort": {
+		"prefix": ".dsa bubbleSort",
+		"body": [
+			"function bubbleSort(arr) {",
+			"  for (let i = 0; i < arr.length; i++) {",
+			"    for (let j = 0; j < arr.length - i - 1; j++) {",
+			"      if (arr[j] > arr[j + 1]) {",
+			"        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];",
+			"      }",
+			"    }",
+			"  }",
+			"  return arr;",
+			"}"
+		],
+		"description": "Implémentation du tri à bulles"
+	},
+	"merge_sort": {
+		"prefix": ".dsa mergeSort",
+		"body": [
+			"function mergeSort(arr) {",
+			"  if (arr.length <= 1) {",
+			"    return arr;",
+			"  }",
+			"  const mid = Math.floor(arr.length / 2);",
+			"  const left = mergeSort(arr.slice(0, mid));",
+			"  const right = mergeSort(arr.slice(mid));",
+			"  return merge(left, right);",
+			"}",
+			"",
+			"function merge(left, right) {",
+			"  const result = [];",
+			"  let i = 0, j = 0;",
+			"  while (i < left.length && j < right.length) {",
+			"    if (left[i] < right[j]) {",
+			"      result.push(left[i++]);",
+			"    } else {",
+			"      result.push(right[j++]);",
+			"    }",
+			"  }",
+			"  return result.concat(left.slice(i)).concat(right.slice(j));",
+			"}"
+		],
+		"description": "Implémentation du tri par fusion"
+	},
+	"quick_sort": {
+		"prefix": ".dsa quickSort",
+		"body": [
+			"function quickSort(arr) {",
+			"  if (arr.length <= 1) {",
+			"    return arr;",
+			"  }",
+			"  const pivot = arr[arr.length - 1];",
+			"  const left = arr.filter((el, i) => el <= pivot && i !== arr.length - 1);",
+			"  const right = arr.filter(el => el > pivot);",
+			"  return [...quickSort(left), pivot, ...quickSort(right)];",
+			"}"
+		],
+		"description": "Implémentation du tri rapide"
+	},
+	"fibonacci_recursive": {
+		"prefix": ".dsa fibonacciRecursive",
+		"body": [
+			"function fibonacci(n) {",
+			"  if (n <= 1) return n;",
+			"  return fibonacci(n - 1) + fibonacci(n - 2);",
+			"}"
+		],
+		"description": "Calculer la suite de Fibonacci de manière récursive"
+	},
+	"fibonacci_iterative": {
+		"prefix": ".dsa fibonacciIterative",
+		"body": [
+			"function fibonacci(n) {",
+			"  const fib = [0, 1];",
+			"  for (let i = 2; i <= n; i++) {",
+			"    fib[i] = fib[i - 1] + fib[i - 2];",
+			"  }",
+			"  return fib[n];",
+			"}"
+		],
+		"description": "Calculer la suite de Fibonacci de manière itérative"
+	},
+	"window_alert": {
+		"prefix": ".window alert",
+		"body": ["window.alert('$1');"],
+		"description": "Afficher une alerte popup"
+	},
+	"window_confirm": {
+		"prefix": ".window confirm",
+		"body": ["const result = window.confirm('$1');", "console.log(result);"],
+		"description": "Afficher une boîte de confirmation"
+	},
+	"window_prompt": {
+		"prefix": ".window prompt",
+		"body": ["const input = window.prompt('$1', '$2');", "console.log(input);"],
+		"description": "Afficher une boîte de saisie utilisateur"
+	},
+	"screen_width_height": {
+		"prefix": ".screen size",
+		"body": ["console.log(`Width: ${screen.width}, Height: ${screen.height}`);"],
+		"description": "Afficher la largeur et la hauteur de l'écran"
+	},
+	"location_href": {
+		"prefix": ".location href",
+		"body": ["console.log(window.location.href);"],
+		"description": "Afficher l'URL actuelle"
+	},
+	"location_redirect": {
+		"prefix": ".location redirect",
+		"body": ["window.location.href = '$1';"],
+		"description": "Rediriger vers une autre URL"
+	},
+	"history_back": {
+		"prefix": ".history back",
+		"body": ["window.history.back();"],
+		"description": "Revenir à la page précédente"
+	},
+	"history_forward": {
+		"prefix": ".history forward",
+		"body": ["window.history.forward();"],
+		"description": "Aller à la page suivante"
+	},
+	"navigator_userAgent": {
+		"prefix": ".navigator userAgent",
+		"body": ["console.log(navigator.userAgent);"],
+		"description": "Afficher l'agent utilisateur du navigateur"
+	},
+	"navigator_online": {
+		"prefix": ".navigator online",
+		"body": ["console.log(navigator.onLine);"],
+		"description": "Vérifier si le navigateur est en ligne"
+	},
+	"set_timeout": {
+		"prefix": ".timing timeout",
+		"body": ["setTimeout(() => {", "  $1", "}, $2);"],
+		"description": "Exécuter une fonction après un délai"
+	},
+	"set_interval": {
+		"prefix": ".timing interval",
+		"body": ["setInterval(() => {", "  $1", "}, $2);"],
+		"description": "Exécuter une fonction à intervalles réguliers"
+	},
+	"cookie_set": {
+		"prefix": ".cookie set",
+		"body": ["document.cookie = '$1=$2; expires=$3; path=/';"],
+		"description": "Définir un cookie"
+	},
+	"cookie_get": {
+		"prefix": ".cookie get",
+		"body": ["console.log(document.cookie);"],
+		"description": "Afficher les cookies"
+	}
+,
+	"tailwind_config": {
+		"prefix": ".tailwind config",
+		"body": [
+			"/** @type {import('tailwindcss').Config} */",
+			"export default {",
+			"  content: [",
+			"    \"./index.html\",",
+			"    \"./src/**/*.{js,ts,jsx,tsx}\",",
+			"  ],",
+			"  theme: {",
+			"    extend: {},",
+			"  },",
+			"  plugins: [],",
+			"}"
+		],
+		"description": "Configuration de base pour Tailwind CSS"
+	}
+  }
+  

@@ -1,0 +1,87 @@
+{	"TypeScript Config": {
+		"prefix": "tsconfig",
+		"body": [
+			"{",
+			"  \"compilerOptions\": {",
+			"    \"target\": \"es6\",",
+			"    \"module\": \"commonjs\",",
+			"    \"strict\": true,",
+			"    \"esModuleInterop\": true,",
+			"    \"skipLibCheck\": true,",
+			"    \"forceConsistentCasingInFileNames\": true",
+			"  },",
+			"  \"include\": [\"src/**/*\"],",
+			"  \"exclude\": [\"node_modules\", \"dist\"]",
+			"}"
+		],
+		"description": "Basic TypeScript configuration file"
+	},
+	"JSON Placeholder": {
+		"prefix": "jsonplaceholder",
+		"body": [
+			"{",
+			"  \"$1\": \"$2\"",
+			"}"
+		],
+		"description": "Basic JSON placeholder"
+	},
+	"Package JSON": {
+		"prefix": "packagejson",
+		"body": [
+			"{",
+			"  \"name\": \"${1:project-name}\",",
+			"  \"version\": \"${2:1.0.0}\",",
+			"  \"description\": \"${3:description}\",",
+			"  \"main\": \"${4:index.js}\",",
+			"  \"scripts\": {",
+			"    \"start\": \"${5:node index.js}\"",
+			"  },",
+			"  \"author\": \"${6:author}\",",
+			"  \"license\": \"${7:ISC}\"",
+			"}"
+		],
+		"description": "Basic package.json template"
+	},
+	"ESLint Config": {
+		"prefix": "eslintconfig",
+		"body": [
+			"{",
+			"  \"env\": {",
+			"    \"browser\": true,",
+			"    \"es2021\": true",
+			"  },",
+			"  \"extends\": [\"eslint:recommended\"],",
+			"  \"parserOptions\": {",
+			"    \"ecmaVersion\": 12,",
+			"    \"sourceType\": \"module\"",
+			"  },",
+			"  \"rules\": {",
+			"    \"$1\": \"$2\"",
+			"  }",
+			"}"
+		],
+		"description": "Basic ESLint configuration file"
+	},
+	"Prettier Config": {
+		"prefix": "prettierconfig",
+		"body": [
+			"{",
+			"  \"semi\": ${1:true},",
+			"  \"singleQuote\": ${2:true},",
+			"  \"tabWidth\": ${3:2},",
+			"  \"useTabs\": ${4:false}",
+			"}"
+		],
+		"description": "Basic Prettier configuration file"
+	},
+	"Babel Config": {
+		"prefix": "babelconfig",
+		"body": [
+			"{",
+			"  \"presets\": [\"${1:@babel/preset-env}\"]",
+			"}"
+		],
+		"description": "Basic Babel configuration file"
+	}
+	
+}

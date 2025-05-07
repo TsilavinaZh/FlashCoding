@@ -3982,5 +3982,148 @@
       "        return max_flow"
     ],
     "description": "Calculer le flux maximum avec l'algorithme d'Edmonds-Karp."
-  }  
+  }  ,
+  "mysql_connect": {
+    "prefix": ".mysql connect",
+    "body": [
+      "import mysql.connector",
+      "",
+      "connection = mysql.connector.connect(",
+      "    host='$1',",
+      "    user='$2',",
+      "    password='$3',",
+      "    database='$4'",
+      ")",
+      "cursor = connection.cursor()"
+    ],
+    "description": "Se connecter à une base de données MySQL"
+  },
+  "mysql_create_database": {
+    "prefix": ".mysql create database",
+    "body": [
+      "cursor.execute('''",
+      "CREATE DATABASE $1",
+      "''')"
+    ],
+    "description": "Créer une base de données MySQL"
+  },
+  "mysql_create_table": {
+    "prefix": ".mysql create table",
+    "body": [
+      "cursor.execute('''",
+      "CREATE TABLE $1 (",
+      "    $2 $3,",
+      "    $4 $5",
+      ")",
+      "''')"
+    ],
+    "description": "Créer une table dans MySQL"
+  },
+  "mysql_insert": {
+    "prefix": ".mysql insert",
+    "body": [
+      "cursor.execute('''",
+      "INSERT INTO $1 ($2) VALUES ($3)",
+      "''')",
+      "connection.commit()"
+    ],
+    "description": "Insérer des données dans une table MySQL"
+  },
+  "mysql_select": {
+    "prefix": ".mysql select",
+    "body": [
+      "cursor.execute('''",
+      "SELECT $1 FROM $2 WHERE $3",
+      "''')",
+      "result = cursor.fetchall()",
+      "for row in result:",
+      "    print(row)"
+    ],
+    "description": "Sélectionner des données dans une table MySQL"
+  },
+  "mysql_where": {
+    "prefix": ".mysql where",
+    "body": [
+      "cursor.execute('''",
+      "SELECT $1 FROM $2 WHERE $3",
+      "''')",
+      "result = cursor.fetchall()",
+      "for row in result:",
+      "    print(row)"
+    ],
+    "description": "Utiliser une clause WHERE dans une requête MySQL"
+  },
+  "mysql_order_by": {
+    "prefix": ".mysql order by",
+    "body": [
+      "cursor.execute('''",
+      "SELECT $1 FROM $2 ORDER BY $3 $4",
+      "''')",
+      "result = cursor.fetchall()",
+      "for row in result:",
+      "    print(row)"
+    ],
+    "description": "Utiliser une clause ORDER BY dans une requête MySQL"
+  },
+  "mysql_delete": {
+    "prefix": ".mysql delete",
+    "body": [
+      "cursor.execute('''",
+      "DELETE FROM $1 WHERE $2",
+      "''')",
+      "connection.commit()"
+    ],
+    "description": "Supprimer des données dans une table MySQL"
+  },
+  "mysql_drop_table": {
+    "prefix": ".mysql drop table",
+    "body": [
+      "cursor.execute('''",
+      "DROP TABLE $1",
+      "''')"
+    ],
+    "description": "Supprimer une table dans MySQL"
+  },
+  "mysql_update": {
+    "prefix": ".mysql update",
+    "body": [
+      "cursor.execute('''",
+      "UPDATE $1 SET $2 = $3 WHERE $4",
+      "''')",
+      "connection.commit()"
+    ],
+    "description": "Mettre à jour des données dans une table MySQL"
+  },
+  "mysql_limit": {
+    "prefix": ".mysql limit",
+    "body": [
+      "cursor.execute('''",
+      "SELECT $1 FROM $2 LIMIT $3",
+      "''')",
+      "result = cursor.fetchall()",
+      "for row in result:",
+      "    print(row)"
+    ],
+    "description": "Limiter le nombre de résultats dans une requête MySQL"
+  },
+  "mysql_join": {
+    "prefix": ".mysql join",
+    "body": [
+      "cursor.execute('''",
+      "SELECT $1 FROM $2 INNER JOIN $3 ON $2.$4 = $3.$5",
+      "''')",
+      "result = cursor.fetchall()",
+      "for row in result:",
+      "    print(row)"
+    ],
+    "description": "Effectuer une jointure entre deux tables dans MySQL"
+  },
+  "mysql_close": {
+    "prefix": ".mysql close",
+    "body": [
+      "cursor.close()",
+      "connection.close()"
+    ],
+    "description": "Fermer la connexion à la base de données MySQL"
+  }
 }

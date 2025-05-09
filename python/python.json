@@ -4298,6 +4298,150 @@
       "    print(result)"
     ],
     "description": "Effectuer une agrégation dans une collection MongoDB"
+  },
+  "BeautifulSoup_import": {
+    "prefix": ".BeautifulSoup import",
+    "body": [
+      "from bs4 import BeautifulSoup",
+      "import requests"
+    ],
+    "description": "Importer BeautifulSoup et requests"
+  },
+  "BeautifulSoup_load_html": {
+    "prefix": ".BeautifulSoup load html",
+    "body": [
+      "# Charger une page HTML (locale ou via requests)",
+      "url = \"$1\"",
+      "response = requests.get(url)",
+      "html_content = response.text",
+      "soup = BeautifulSoup(html_content, 'html.parser')"
+    ],
+    "description": "Charger une page HTML avec BeautifulSoup"
+  },
+  "BeautifulSoup_find": {
+    "prefix": ".BeautifulSoup find",
+    "body": [
+      "# Utiliser .find() et .find_all()",
+      "element = soup.find('$1')",
+      "elements = soup.find_all('$2')"
+    ],
+    "description": "Trouver des éléments HTML avec BeautifulSoup"
+  },
+  "BeautifulSoup_extract_text": {
+    "prefix": ".BeautifulSoup extract text",
+    "body": [
+      "# Extraire le texte avec .text",
+      "text = element.text.strip()"
+    ],
+    "description": "Extraire le texte d'un élément HTML"
+  },
+  "BeautifulSoup_access_attributes": {
+    "prefix": ".BeautifulSoup access attributes",
+    "body": [
+      "# Accéder aux attributs avec .attrs",
+      "attributes = element.attrs"
+    ],
+    "description": "Accéder aux attributs d'un élément HTML"
+  },
+  "BeautifulSoup_select": {
+    "prefix": ".BeautifulSoup select",
+    "body": [
+      "# Utiliser .select() avec des sélecteurs CSS",
+      "selected_elements = soup.select('$1')"
+    ],
+    "description": "Sélectionner des éléments avec des sélecteurs CSS"
+  },
+  "BeautifulSoup_dom_navigation": {
+    "prefix": ".BeautifulSoup dom navigation",
+    "body": [
+      "# Naviguer dans le DOM (.parent, .children, .next_sibling)",
+      "parent = element.parent",
+      "children = list(element.children)",
+      "next_sibling = element.next_sibling"
+    ],
+    "description": "Naviguer dans le DOM avec BeautifulSoup"
+  },
+  "BeautifulSoup_clean_data": {
+    "prefix": ".BeautifulSoup clean data",
+    "body": [
+      "# Nettoyer les données (.strip(), etc.)",
+      "cleaned_text = text.strip()"
+    ],
+    "description": "Nettoyer les données extraites"
+  },
+  "BeautifulSoup_extract_table": {
+    "prefix": ".BeautifulSoup extract table",
+    "body": [
+      "# Extraire des tableaux HTML",
+      "table = soup.find('table')",
+      "rows = table.find_all('tr')"
+    ],
+    "description": "Extraire des tableaux HTML avec BeautifulSoup"
+  },
+  "BeautifulSoup_regex": {
+    "prefix": ".BeautifulSoup regex",
+    "body": [
+      "# Utiliser re pour affiner les sélections",
+      "import re",
+      "pattern = re.compile('$1')",
+      "filtered_elements = soup.find_all(string=pattern)"
+    ],
+    "description": "Utiliser des expressions régulières avec BeautifulSoup"
+  },
+  "BeautifulSoup_requests_session": {
+    "prefix": ".BeautifulSoup requests session",
+    "body": [
+      "# Gérer les cookies et sessions (requests.Session)",
+      "session = requests.Session()",
+      "session.get(url)"
+    ],
+    "description": "Gérer les sessions avec requests"
+  },
+  "BeautifulSoup_custom_headers": {
+    "prefix": ".BeautifulSoup custom headers",
+    "body": [
+      "# Utiliser des headers personnalisés (User-Agent)",
+      "headers = {'User-Agent': 'Mozilla/5.0'}",
+      "response = requests.get(url, headers=headers)"
+    ],
+    "description": "Utiliser des headers personnalisés avec requests"
+  },
+  "BeautifulSoup_error_handling": {
+    "prefix": ".BeautifulSoup error handling",
+    "body": [
+      "# Gérer les erreurs et timeouts",
+      "try:",
+      "    response = requests.get(url, timeout=10)",
+      "    response.raise_for_status()",
+      "except requests.exceptions.RequestException as e:",
+      "    print(f\"Error: {e}\")"
+    ],
+    "description": "Gérer les erreurs et timeouts avec requests"
+  },
+  "BeautifulSoup_with_selenium": {
+    "prefix": ".BeautifulSoup with selenium",
+    "body": [
+      "# Utiliser BeautifulSoup avec du JavaScript (via Selenium ou Playwright)",
+      "# from selenium import webdriver",
+      "# driver = webdriver.Chrome()",
+      "# driver.get(url)",
+      "# html_content = driver.page_source",
+      "# soup = BeautifulSoup(html_content, 'html.parser')"
+    ],
+    "description": "Utiliser BeautifulSoup avec Selenium"
+  },
+  "BeautifulSoup_export_csv": {
+    "prefix": ".BeautifulSoup export csv",
+    "body": [
+      "# Exporter vers CSV",
+      "import csv",
+      "with open('output.csv', 'w', newline='') as csvfile:",
+      "    writer = csv.writer(csvfile)",
+      "    writer.writerow(['Column1', 'Column2'])",
+      "    for row in rows:",
+      "        writer.writerow([cell.text.strip() for cell in row.find_all('td')])"
+    ],
+    "description": "Exporter des données vers un fichier CSV"
   }
   
 }

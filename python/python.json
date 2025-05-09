@@ -4125,5 +4125,179 @@
       "connection.close()"
     ],
     "description": "Fermer la connexion à la base de données MySQL"
+  },
+  "json_load": {
+    "prefix": ".json load",
+    "body": [
+      "import json",
+      "with open('$1', 'r') as file:",
+      "    data = json.load(file)"
+    ],
+    "description": "Charger un fichier JSON"
+  },
+  "json_dump": {
+    "prefix": ".json dump",
+    "body": [
+      "import json",
+      "with open('$1', 'w') as file:",
+      "    json.dump($2, file, indent=4)"
+    ],
+    "description": "Écrire des données dans un fichier JSON"
+  },
+  "json_loads": {
+    "prefix": ".json loads",
+    "body": [
+      "import json",
+      "data = json.loads('$1')"
+    ],
+    "description": "Convertir une chaîne JSON en objet Python"
+  },
+  "json_dumps": {
+    "prefix": ".json dumps",
+    "body": [
+      "import json",
+      "json_string = json.dumps($1, indent=4)"
+    ],
+    "description": "Convertir un objet Python en chaîne JSON"
+  },
+  "json_update": {
+    "prefix": ".json update",
+    "body": [
+      "data['$1'] = $2"
+    ],
+    "description": "Mettre à jour une clé dans un objet JSON"
+  },
+  "json_delete_key": {
+    "prefix": ".json delete key",
+    "body": [
+      "del data['$1']"
+    ],
+    "description": "Supprimer une clé d'un objet JSON"
+  },
+  "json_get_value": {
+    "prefix": ".json get value",
+    "body": [
+      "value = data.get('$1', '$2')"
+    ],
+    "description": "Obtenir une valeur d'un objet JSON avec une valeur par défaut"
+  },
+  "json_iterate": {
+    "prefix": ".json iterate",
+    "body": [
+      "for key, value in data.items():",
+      "    print(key, value)"
+    ],
+    "description": "Parcourir les clés et valeurs d'un objet JSON"
+  },
+  "json_check_key": {
+    "prefix": ".json check key",
+    "body": [
+      "if '$1' in data:",
+      "    print('Key exists')"
+    ],
+    "description": "Vérifier si une clé existe dans un objet JSON"
+  },
+  "json_merge": {
+    "prefix": ".json merge",
+    "body": [
+      "data.update($1)"
+    ],
+    "description": "Fusionner deux objets JSON"
+  },
+  "mongodb_connect": {
+    "prefix": ".mongodb connect",
+    "body": [
+      "from pymongo import MongoClient",
+      "",
+      "client = MongoClient('$1')",
+      "db = client['$2']"
+    ],
+    "description": "Se connecter à une base de données MongoDB"
+  },
+  "mongodb_insert_one": {
+    "prefix": ".mongodb insert one",
+    "body": [
+      "db['$1'].insert_one({",
+      "    '$2': '$3',",
+      "    '$4': '$5'",
+      "})"
+    ],
+    "description": "Insérer un document dans une collection MongoDB"
+  },
+  "mongodb_insert_many": {
+    "prefix": ".mongodb insert many",
+    "body": [
+      "db['$1'].insert_many([",
+      "    { '$2': '$3', '$4': '$5' },",
+      "    { '$6': '$7', '$8': '$9' }",
+      "])"
+    ],
+    "description": "Insérer plusieurs documents dans une collection MongoDB"
+  },
+  "mongodb_find_one": {
+    "prefix": ".mongodb find one",
+    "body": [
+      "result = db['$1'].find_one({ '$2': '$3' })",
+      "print(result)"
+    ],
+    "description": "Trouver un document dans une collection MongoDB"
+  },
+  "mongodb_find_many": {
+    "prefix": ".mongodb find many",
+    "body": [
+      "results = db['$1'].find({ '$2': '$3' })",
+      "for document in results:",
+      "    print(document)"
+    ],
+    "description": "Trouver plusieurs documents dans une collection MongoDB"
+  },
+  "mongodb_update_one": {
+    "prefix": ".mongodb update one",
+    "body": [
+      "db['$1'].update_one({ '$2': '$3' }, { '$4': { '$5': '$6' } })"
+    ],
+    "description": "Mettre à jour un document dans une collection MongoDB"
+  },
+  "mongodb_update_many": {
+    "prefix": ".mongodb update many",
+    "body": [
+      "db['$1'].update_many({ '$2': '$3' }, { '$4': { '$5': '$6' } })"
+    ],
+    "description": "Mettre à jour plusieurs documents dans une collection MongoDB"
+  },
+  "mongodb_delete_one": {
+    "prefix": ".mongodb delete one",
+    "body": [
+      "db['$1'].delete_one({ '$2': '$3' })"
+    ],
+    "description": "Supprimer un document dans une collection MongoDB"
+  },
+  "mongodb_delete_many": {
+    "prefix": ".mongodb delete many",
+    "body": [
+      "db['$1'].delete_many({ '$2': '$3' })"
+    ],
+    "description": "Supprimer plusieurs documents dans une collection MongoDB"
+  },
+  "mongodb_create_index": {
+    "prefix": ".mongodb create index",
+    "body": [
+      "db['$1'].create_index('$2')"
+    ],
+    "description": "Créer un index dans une collection MongoDB"
+  },
+  "mongodb_aggregate": {
+    "prefix": ".mongodb aggregate",
+    "body": [
+      "pipeline = [",
+      "    { '$match': { '$1': '$2' } },",
+      "    { '$group': { '_id': '$3', 'total': { '$sum': '$4' } } }",
+      "]",
+      "results = db['$5'].aggregate(pipeline)",
+      "for result in results:",
+      "    print(result)"
+    ],
+    "description": "Effectuer une agrégation dans une collection MongoDB"
   }
+  
 }

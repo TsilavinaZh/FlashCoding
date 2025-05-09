@@ -737,7 +737,8 @@
       "submenu.add_command(label='$2', command=$3)"
     ],
     "description": "Créer un menu Tkinter"
-  }, "tkinter_scrollbar": {
+  },
+  "tkinter_scrollbar": {
     "prefix": ".tk scrollbar",
     "body": [
       "scrollbar = tk.Scrollbar(root)",
@@ -747,7 +748,10 @@
   },
   "tkinter_text": {
     "prefix": ".tk text",
-    "body": ["text = tk.Text(root)", "text.pack()"],
+    "body": [
+      "text = tk.Text(root)",
+      "text.pack()"
+    ],
     "description": "Créer un widget de texte Tkinter"
   },
   "tkinter_combobox": {
@@ -906,8 +910,6 @@
     ],
     "description": "Lier un événement à une fonction Tkinter"
   },
-
-
   "flet_setup": {
     "prefix": ".flet setup",
     "body": [
@@ -1271,7 +1273,6 @@
     ],
     "description": "Créer une barre de navigation Flet"
   },
-  
   "numpy_import": {
     "prefix": ".numpy import",
     "body": [
@@ -3982,7 +3983,7 @@
       "        return max_flow"
     ],
     "description": "Calculer le flux maximum avec l'algorithme d'Edmonds-Karp."
-  }  ,
+  },
   "mysql_connect": {
     "prefix": ".mysql connect",
     "body": [
@@ -4442,6 +4443,690 @@
       "        writer.writerow([cell.text.strip() for cell in row.find_all('td')])"
     ],
     "description": "Exporter des données vers un fichier CSV"
+  },
+  "pdf_import": {
+    "prefix": ".pdf import",
+    "body": [
+      "import fitz  # PyMuPDF"
+    ],
+    "description": "Importer la bibliothèque PyMuPDF"
+  },
+  "pdf_open": {
+    "prefix": ".pdf open",
+    "body": [
+      "doc = fitz.open('$1')"
+    ],
+    "description": "Ouvrir un fichier PDF avec PyMuPDF"
+  },
+  "pdf_page_count": {
+    "prefix": ".pdf page count",
+    "body": [
+      "page_count = doc.page_count"
+    ],
+    "description": "Obtenir le nombre de pages dans un PDF"
+  },
+  "pdf_get_page": {
+    "prefix": ".pdf get page",
+    "body": [
+      "page = doc[$1]"
+    ],
+    "description": "Obtenir une page spécifique d'un PDF"
+  },
+  "pdf_extract_text": {
+    "prefix": ".pdf extract text",
+    "body": [
+      "text = page.get_text()"
+    ],
+    "description": "Extraire le texte d'une page PDF"
+  },
+  "pdf_extract_images": {
+    "prefix": ".pdf extract images",
+    "body": [
+      "images = page.get_images(full=True)"
+    ],
+    "description": "Extraire les images d'une page PDF"
+  },
+  "pdf_save_image": {
+    "prefix": ".pdf save image",
+    "body": [
+      "pix = fitz.Pixmap(doc, $1)",
+      "pix.save('$2')"
+    ],
+    "description": "Enregistrer une image extraite d'un PDF"
+  },
+  "pdf_search_text": {
+    "prefix": ".pdf search text",
+    "body": [
+      "instances = page.search_for('$1')"
+    ],
+    "description": "Rechercher du texte dans une page PDF"
+  },
+  "pdf_highlight_text": {
+    "prefix": ".pdf highlight text",
+    "body": [
+      "for inst in instances:",
+      "    highlight = page.add_highlight_annot(inst)"
+    ],
+    "description": "Mettre en surbrillance du texte dans un PDF"
+  },
+  "pdf_add_text": {
+    "prefix": ".pdf add text",
+    "body": [
+      "page.insert_text(($1, $2), '$3', fontsize=$4, color=($5, $6, $7))"
+    ],
+    "description": "Ajouter du texte à une page PDF"
+  },
+  "pdf_save": {
+    "prefix": ".pdf save",
+    "body": [
+      "doc.save('$1')"
+    ],
+    "description": "Enregistrer les modifications apportées à un PDF"
+  },
+  "pdf_close": {
+    "prefix": ".pdf close",
+    "body": [
+      "doc.close()"
+    ],
+    "description": "Fermer un fichier PDF"
+  },
+  "pdf_merge": {
+    "prefix": ".pdf merge",
+    "body": [
+      "output = fitz.open()",
+      "for pdf in ['$1', '$2']:",
+      "    input_pdf = fitz.open(pdf)",
+      "    for page in input_pdf:",
+      "        output.insert_pdf(input_pdf)",
+      "output.save('$3')"
+    ],
+    "description": "Fusionner plusieurs fichiers PDF"
+  },
+  "pdf_split": {
+    "prefix": ".pdf split",
+    "body": [
+      "for page_num in range(doc.page_count):",
+      "    new_doc = fitz.open()",
+      "    new_doc.insert_pdf(doc, from_page=page_num, to_page=page_num)",
+      "    new_doc.save(f'$1_page_{page_num + 1}.pdf')"
+    ],
+    "description": "Diviser un fichier PDF en plusieurs fichiers"
+  },
+  "pdf_rotate_page": {
+    "prefix": ".pdf rotate page",
+    "body": [
+      "page.set_rotation($1)"
+    ],
+    "description": "Faire pivoter une page PDF"
+  },
+  "pdf_encrypt": {
+    "prefix": ".pdf encrypt",
+    "body": [
+      "doc.save('$1', encryption=fitz.PDF_ENCRYPT_AES_256, owner_pw='$2', user_pw='$3')"
+    ],
+    "description": "Crypter un fichier PDF avec un mot de passe"
+  },
+  "pdf_decrypt": {
+    "prefix": ".pdf decrypt",
+    "body": [
+      "doc.authenticate('$1')"
+    ],
+    "description": "Décrypter un fichier PDF avec un mot de passe"
+  },
+  "pdf_metadata": {
+    "prefix": ".pdf metadata",
+    "body": [
+      "metadata = doc.metadata",
+      "print(metadata)"
+    ],
+    "description": "Afficher les métadonnées d'un fichier PDF"
+  },
+  "pdf_add_image": {
+    "prefix": ".pdf add image",
+    "body": [
+      "rect = fitz.Rect($1, $2, $3, $4)",
+      "page.insert_image(rect, filename='$5')"
+    ],
+    "description": "Ajouter une image à une page PDF"
+  },
+  "pdf_extract_annotations": {
+    "prefix": ".pdf extract annotations",
+    "body": [
+      "annotations = []",
+      "for annot in page.annots():",
+      "    annotations.append(annot.info)",
+      "print(annotations)"
+    ],
+    "description": "Extraire les annotations d'une page PDF"
+  },
+  "pdf_redact": {
+    "prefix": ".pdf redact",
+    "body": [
+      "areas = page.search_for('$1')",
+      "for area in areas:",
+      "    page.add_redact_annot(area, text='$2', fill=(0, 0, 0))",
+      "page.apply_redactions()"
+    ],
+    "description": "Rédiger du texte dans un PDF"
+  },
+  "pdf_add_link": {
+    "prefix": ".pdf add link",
+    "body": [
+      "page.insert_link({'kind': fitz.LINK_URI, 'from': ($1, $2, $3, $4), 'uri': '$5'})"
+    ],
+    "description": "Ajouter un lien hypertexte à une page PDF"
+  },
+  "pdf_add_bookmark": {
+    "prefix": ".pdf add bookmark",
+    "body": [
+      "doc[0].add_bookmark($1, $2)"
+    ],
+    "description": "Ajouter un signet à un PDF"
+  },
+  "pdf_remove_bookmark": {
+    "prefix": ".pdf remove bookmark",
+    "body": [
+      "doc[0].delete_bookmark($1)"
+    ],
+    "description": "Supprimer un signet d'un PDF"
+  },
+  "pdf_add_watermark": {
+    "prefix": ".pdf add watermark",
+    "body": [
+      "page.insert_text(($1, $2), '$3', fontsize=$4, color=($5, $6, $7), rotate=$8)"
+    ],
+    "description": "Ajouter un filigrane à une page PDF"
+  },
+  "pdf_add_signature": {
+    "prefix": ".pdf add signature",
+    "body": [
+      "page.insert_image(($1, $2), filename='$3')"
+    ],
+    "description": "Ajouter une signature à une page PDF"
+  },
+  "pdf_add_background": {
+    "prefix": ".pdf add background",
+    "body": [
+      "page.insert_image(($1, $2), filename='$3', overlay=True)"
+    ],
+    "description": "Ajouter un arrière-plan à une page PDF"
+  },
+  "io_read_file": {
+    "prefix": ".io read file",
+    "body": [
+      "with open('$1', 'r') as file:",
+      "    content = file.read()",
+      "    print(content)"
+    ],
+    "description": "Lire le contenu d'un fichier"
+  },
+  "io_write_file": {
+    "prefix": ".io write file",
+    "body": [
+      "with open('$1', 'w') as file:",
+      "    file.write('$2')"
+    ],
+    "description": "Écrire dans un fichier"
+  },
+  "io_append_file": {
+    "prefix": ".io append file",
+    "body": [
+      "with open('$1', 'a') as file:",
+      "    file.write('$2')"
+    ],
+    "description": "Ajouter du contenu à un fichier"
+  },
+  "io_read_lines": {
+    "prefix": ".io read lines",
+    "body": [
+      "with open('$1', 'r') as file:",
+      "    lines = file.readlines()",
+      "    for line in lines:",
+      "        print(line.strip())"
+    ],
+    "description": "Lire un fichier ligne par ligne"
+  },
+  "io_write_lines": {
+    "prefix": ".io write lines",
+    "body": [
+      "with open('$1', 'w') as file:",
+      "    file.writelines($2)"
+    ],
+    "description": "Écrire plusieurs lignes dans un fichier"
+  },
+  "io_check_file_exists": {
+    "prefix": ".io check file exists",
+    "body": [
+      "import os",
+      "if os.path.exists('$1'):",
+      "    print('Le fichier existe')",
+      "else:",
+      "    print('Le fichier n'existe pas')"
+    ],
+    "description": "Vérifier si un fichier existe"
+  },
+  "io_delete_file": {
+    "prefix": ".io delete file",
+    "body": [
+      "import os",
+      "if os.path.exists('$1'):",
+      "    os.remove('$1')",
+      "else:",
+      "    print('Le fichier n'existe pas')"
+    ],
+    "description": "Supprimer un fichier"
+  },
+  "io_create_directory": {
+    "prefix": ".io create directory",
+    "body": [
+      "import os",
+      "os.makedirs('$1', exist_ok=True)"
+    ],
+    "description": "Créer un répertoire"
+  },
+  "io_list_directory": {
+    "prefix": ".io list directory",
+    "body": [
+      "import os",
+      "files = os.listdir('$1')",
+      "for file in files:",
+      "    print(file)"
+    ],
+    "description": "Lister les fichiers dans un répertoire"
+  },
+  "io_copy_file": {
+    "prefix": ".io copy file",
+    "body": [
+      "import shutil",
+      "shutil.copy('$1', '$2')"
+    ],
+    "description": "Copier un fichier"
+  },
+  "io_move_file": {
+    "prefix": ".io move file",
+    "body": [
+      "import shutil",
+      "shutil.move('$1', '$2')"
+    ],
+    "description": "Déplacer un fichier"
+  },
+  "io_rename_file": {
+    "prefix": ".io rename file",
+    "body": [
+      "import os",
+      "os.rename('$1', '$2')"
+    ],
+    "description": "Renommer un fichier"
+  },
+  "io_get_file_size": {
+    "prefix": ".io get file size",
+    "body": [
+      "import os",
+      "size = os.path.getsize('$1')",
+      "print(f'Taille du fichier : {size} octets')"
+    ],
+    "description": "Obtenir la taille d'un fichier"
+  },
+  "io_read_binary": {
+    "prefix": ".io read binary",
+    "body": [
+      "with open('$1', 'rb') as file:",
+      "    content = file.read()",
+      "    print(content)"
+    ],
+    "description": "Lire un fichier en mode binaire"
+  },
+  "io_write_binary": {
+    "prefix": ".io write binary",
+    "body": [
+      "with open('$1', 'wb') as file:",
+      "    file.write($2)"
+    ],
+    "description": "Écrire dans un fichier en mode binaire"
+  },
+  "sys_import": {
+    "prefix": ".sys import",
+    "body": [
+      "import sys"
+    ],
+    "description": "Importer le module sys"
+  },
+  "sys_exit": {
+    "prefix": ".sys exit",
+    "body": [
+      "sys.exit($1)"
+    ],
+    "description": "Quitter le programme avec sys.exit()"
+  },
+  "sys_argv": {
+    "prefix": ".sys argv",
+    "body": [
+      "args = sys.argv",
+      "print('Arguments:', args)"
+    ],
+    "description": "Accéder aux arguments de la ligne de commande"
+  },
+  "sys_path": {
+    "prefix": ".sys path",
+    "body": [
+      "sys.path.append('$1')",
+      "print('Chemins:', sys.path)"
+    ],
+    "description": "Ajouter un chemin au module sys.path"
+  },
+  "sys_stdin": {
+    "prefix": ".sys stdin",
+    "body": [
+      "for line in sys.stdin:",
+      "    print(line.strip())"
+    ],
+    "description": "Lire l'entrée standard avec sys.stdin"
+  },
+  "sys_stdout": {
+    "prefix": ".sys stdout",
+    "body": [
+      "sys.stdout.write('$1\\n')"
+    ],
+    "description": "Écrire dans la sortie standard avec sys.stdout"
+  },
+  "sys_stderr": {
+    "prefix": ".sys stderr",
+    "body": [
+      "sys.stderr.write('$1\\n')"
+    ],
+    "description": "Écrire dans la sortie d'erreur standard avec sys.stderr"
+  },
+  "sys_version": {
+    "prefix": ".sys version",
+    "body": [
+      "print('Version de Python:', sys.version)"
+    ],
+    "description": "Afficher la version de Python"
+  },
+  "sys_platform": {
+    "prefix": ".sys platform",
+    "body": [
+      "print('Plateforme:', sys.platform)"
+    ],
+    "description": "Afficher la plateforme actuelle"
+  },
+  "sys_getsizeof": {
+    "prefix": ".sys getsizeof",
+    "body": [
+      "size = sys.getsizeof($1)",
+      "print('Taille en octets:', size)"
+    ],
+    "description": "Obtenir la taille d'un objet en octets"
+  },
+  "sys_excepthook": {
+    "prefix": ".sys excepthook",
+    "body": [
+      "def custom_excepthook(exc_type, exc_value, exc_traceback):",
+      "    print('Erreur:', exc_value)",
+      "",
+      "sys.excepthook = custom_excepthook"
+    ],
+    "description": "Personnaliser le gestionnaire d'exceptions"
+  },
+  "sys_setrecursionlimit": {
+    "prefix": ".sys setrecursionlimit",
+    "body": [
+      "sys.setrecursionlimit($1)"
+    ],
+    "description": "Définir la limite de récursion"
+  },
+  "sys_getrecursionlimit": {
+    "prefix": ".sys getrecursionlimit",
+    "body": [
+      "limit = sys.getrecursionlimit()",
+      "print('Limite de récursion:', limit)"
+    ],
+    "description": "Obtenir la limite de récursion"
+  },
+  "sys_getfilesystemencoding": {
+    "prefix": ".sys getfilesystemencoding",
+    "body": [
+      "encoding = sys.getfilesystemencoding()",
+      "print('Encodage du système de fichiers:', encoding)"
+    ],
+    "description": "Obtenir l'encodage du système de fichiers"
+  },
+  "sys_getdefaultencoding": {
+    "prefix": ".sys getdefaultencoding",
+    "body": [
+      "encoding = sys.getdefaultencoding()",
+      "print('Encodage par défaut:', encoding)"
+    ],
+    "description": "Obtenir l'encodage par défaut"
+  },
+  "sys_getrefcount": {
+    "prefix": ".sys getrefcount",
+    "body": [
+      "count = sys.getrefcount($1)",
+      "print('Nombre de références:', count)"
+    ],
+    "description": "Obtenir le nombre de références d'un objet"
+  },
+  "webbrowser_open": {
+    "prefix": ".webbrowser open",
+    "body": [
+      "import webbrowser",
+      "webbrowser.open('$1')"
+    ],
+    "description": "Ouvrir une URL dans le navigateur par défaut"
+  },
+  "webbrowser_open_new": {
+    "prefix": ".webbrowser open new",
+    "body": [
+      "import webbrowser",
+      "webbrowser.open_new('$1')"
+    ],
+    "description": "Ouvrir une nouvelle fenêtre du navigateur avec une URL"
+  },
+  "webbrowser_open_new_tab": {
+    "prefix": ".webbrowser open new tab",
+    "body": [
+      "import webbrowser",
+      "webbrowser.open_new_tab('$1')"
+    ],
+    "description": "Ouvrir une nouvelle tabulation du navigateur avec une URL"
+  },
+  "webbrowser_get": {
+    "prefix": ".webbrowser get",
+    "body": [
+      "import webbrowser",
+      "browser = webbrowser.get('$1')",
+      "browser.open('$2')"
+    ],
+    "description": "Obtenir un contrôleur de navigateur spécifique"
+  },
+  "webbrowser_register": {
+    "prefix": ".webbrowser register",
+    "body": [
+      "import webbrowser",
+      "webbrowser.register('$1', None, webbrowser.BackgroundBrowser('$2'))"
+    ],
+    "description": "Enregistrer un nouveau contrôleur de navigateur"
+  },
+  "webbrowser_open_with_browser": {
+    "prefix": ".webbrowser open with browser",
+    "body": [
+      "import webbrowser",
+      "webbrowser.get('$1').open('$2')"
+    ],
+    "description": "Ouvrir une URL avec un navigateur spécifique"
+  },
+  "webbrowser_open_with_new": {
+    "prefix": ".webbrowser open with new",
+    "body": [
+      "import webbrowser",
+      "webbrowser.get('$1').open_new('$2')"
+    ],
+    "description": "Ouvrir une nouvelle fenêtre avec un navigateur spécifique"
+  },
+  "webbrowser_open_with_new_tab": {
+    "prefix": ".webbrowser open with new tab",
+    "body": [
+      "import webbrowser",
+      "webbrowser.get('$1').open_new_tab('$2')"
+    ],
+    "description": "Ouvrir une nouvelle tabulation avec un navigateur spécifique"
+  },
+
+  "subprocess_run": {
+    "prefix": ".subprocess run",
+    "body": [
+      "import subprocess",
+      "result = subprocess.run(['$1'], capture_output=True, text=True)",
+      "print(result.stdout)"
+    ],
+    "description": "Exécuter une commande avec subprocess.run"
+  },
+  "subprocess_popen": {
+    "prefix": ".subprocess popen",
+    "body": [
+      "import subprocess",
+      "process = subprocess.Popen(['$1'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)",
+      "stdout, stderr = process.communicate()",
+      "print(stdout.decode())"
+    ],
+    "description": "Exécuter une commande avec subprocess.Popen"
+  },
+  "subprocess_check_output": {
+    "prefix": ".subprocess check output",
+    "body": [
+      "import subprocess",
+      "output = subprocess.check_output(['$1'], text=True)",
+      "print(output)"
+    ],
+    "description": "Exécuter une commande et capturer la sortie avec subprocess.check_output"
+  },
+  "subprocess_call": {
+    "prefix": ".subprocess call",
+    "body": [
+      "import subprocess",
+      "return_code = subprocess.call(['$1'])",
+      "print('Return code:', return_code)"
+    ],
+    "description": "Exécuter une commande avec subprocess.call"
+  },
+  "subprocess_run_with_env": {
+    "prefix": ".subprocess run env",
+    "body": [
+      "import subprocess",
+      "import os",
+      "env = os.environ.copy()",
+      "env['$1'] = '$2'",
+      "result = subprocess.run(['$3'], env=env, capture_output=True, text=True)",
+      "print(result.stdout)"
+    ],
+    "description": "Exécuter une commande avec des variables d'environnement personnalisées"
+  },
+  "subprocess_run_with_input": {
+    "prefix": ".subprocess run input",
+    "body": [
+      "import subprocess",
+      "result = subprocess.run(['$1'], input='$2', text=True, capture_output=True)",
+      "print(result.stdout)"
+    ],
+    "description": "Exécuter une commande avec une entrée standard"
+  },
+  "subprocess_run_with_timeout": {
+    "prefix": ".subprocess run timeout",
+    "body": [
+      "import subprocess",
+      "try:",
+      "    result = subprocess.run(['$1'], timeout=$2, capture_output=True, text=True)",
+      "    print(result.stdout)",
+      "except subprocess.TimeoutExpired:",
+      "    print('La commande a expiré')"
+    ],
+    "description": "Exécuter une commande avec un délai d'attente"
+  },
+  "subprocess_run_with_shell": {
+    "prefix": ".subprocess run shell",
+    "body": [
+      "import subprocess",
+      "result = subprocess.run('$1', shell=True, capture_output=True, text=True)",
+      "print(result.stdout)"
+    ],
+    "description": "Exécuter une commande dans un shell"
+  },
+  "subprocess_run_with_redirect": {
+    "prefix": ".subprocess run redirect",
+    "body": [
+      "import subprocess",
+      "with open('$1', 'w') as outfile:",
+      "    subprocess.run(['$2'], stdout=outfile)"
+    ],
+    "description": "Rediriger la sortie d'une commande vers un fichier"
+  },
+  "hashlib_import": {
+    "prefix": ".hashlib import",
+    "body": [
+      "import hashlib"
+    ],
+    "description": "Importer la bibliothèque hashlib"
+  },
+  "hashlib_md5": {
+    "prefix": ".hashlib md5",
+    "body": [
+      "import hashlib",
+      "hash_object = hashlib.md5('$1'.encode())",
+      "print(hash_object.hexdigest())"
+    ],
+    "description": "Générer un hash MD5"
+  },
+  "hashlib_sha1": {
+    "prefix": ".hashlib sha1",
+    "body": [
+      "import hashlib",
+      "hash_object = hashlib.sha1('$1'.encode())",
+      "print(hash_object.hexdigest())"
+    ],
+    "description": "Générer un hash SHA-1"
+  },
+  "hashlib_sha256": {
+    "prefix": ".hashlib sha256",
+    "body": [
+      "import hashlib",
+      "hash_object = hashlib.sha256('$1'.encode())",
+      "print(hash_object.hexdigest())"
+    ],
+    "description": "Générer un hash SHA-256"
+  },
+  "hashlib_sha512": {
+    "prefix": ".hashlib sha512",
+    "body": [
+      "import hashlib",
+      "hash_object = hashlib.sha512('$1'.encode())",
+      "print(hash_object.hexdigest())"
+    ],
+    "description": "Générer un hash SHA-512"
+  },
+  "hashlib_file_hash": {
+    "prefix": ".hashlib file hash",
+    "body": [
+      "import hashlib",
+      "with open('$1', 'rb') as file:",
+      "    hash_object = hashlib.$2()",
+      "    while chunk := file.read(8192):",
+      "        hash_object.update(chunk)",
+      "    print(hash_object.hexdigest())"
+    ],
+    "description": "Générer un hash pour un fichier"
+  },
+  "hashlib_compare_hash": {
+    "prefix": ".hashlib compare hash",
+    "body": [
+      "import hashlib",
+      "hash_object1 = hashlib.$1('$2'.encode())",
+      "hash_object2 = hashlib.$3('$4'.encode())",
+      "if hash_object1.hexdigest() == hash_object2.hexdigest():",
+      "    print('Les hashes sont identiques')",
+      "else:",
+      "    print('Les hashes sont différents')"
+    ],
+    "description": "Comparer deux hashes"
   }
-  
 }

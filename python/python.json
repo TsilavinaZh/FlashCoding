@@ -5128,5 +5128,201 @@
       "    print('Les hashes sont différents')"
     ],
     "description": "Comparer deux hashes"
+  },
+  "virtualenv_create": {
+    "prefix": ".env create",
+    "body": [
+      "python -m venv $1"
+    ],
+    "description": "Créer un environnement virtuel"
+  },
+  "virtualenv_activate": {
+    "prefix": ".env activate",
+    "body": [
+      "source $1/bin/activate"
+    ],
+    "description": "Activer un environnement virtuel (Linux/Mac)"
+  },
+  "virtualenv_activate_windows": {
+    "prefix": ".env activate windows",
+    "body": [
+      "$1\\Scripts\\activate"
+    ],
+    "description": "Activer un environnement virtuel (Windows)"
+  },
+  "virtualenv_deactivate": {
+    "prefix": ".env deactivate",
+    "body": [
+      "deactivate"
+    ],
+    "description": "Désactiver un environnement virtuel"
+  },
+  "virtualenv_install_requirements": {
+    "prefix": ".env install requirements",
+    "body": [
+      "pip install -r requirements.txt"
+    ],
+    "description": "Installer les dépendances depuis un fichier requirements.txt"
+  },
+  "virtualenv_freeze_requirements": {
+    "prefix": ".env freeze requirements",
+    "body": [
+      "pip freeze > requirements.txt"
+    ],
+    "description": "Générer un fichier requirements.txt"
+  },
+  "virtualenv_remove": {
+    "prefix": ".env remove",
+    "body": [
+      "rm -rf $1"
+    ],
+    "description": "Supprimer un environnement virtuel (Linux/Mac)"
+  },
+  "virtualenv_remove_windows": {
+    "prefix": ".env remove windows",
+    "body": [
+      "rmdir /s /q $1"
+    ],
+    "description": "Supprimer un environnement virtuel (Windows)"
+  },
+  "sqlite_connect": {
+    "prefix": ".sqlite connect",
+    "body": [
+      "import sqlite3",
+      "connection = sqlite3.connect('$1.db')",
+      "cursor = connection.cursor()"
+    ],
+    "description": "Se connecter à une base de données SQLite"
+  },
+  "sqlite_create_table": {
+    "prefix": ".sqlite create table",
+    "body": [
+      "cursor.execute('''",
+      "CREATE TABLE $1 (",
+      "    $2 $3,",
+      "    $4 $5",
+      ")",
+      "''')",
+      "connection.commit()"
+    ],
+    "description": "Créer une table dans SQLite"
+  },
+  "sqlite_insert": {
+    "prefix": ".sqlite insert",
+    "body": [
+      "cursor.execute('''",
+      "INSERT INTO $1 ($2) VALUES ($3)",
+      "''')",
+      "connection.commit()"
+    ],
+    "description": "Insérer des données dans une table SQLite"
+  },
+  "sqlite_select": {
+    "prefix": ".sqlite select",
+    "body": [
+      "cursor.execute('''",
+      "SELECT $1 FROM $2 WHERE $3",
+      "''')",
+      "result = cursor.fetchall()",
+      "for row in result:",
+      "    print(row)"
+    ],
+    "description": "Sélectionner des données dans une table SQLite"
+  },
+  "sqlite_update": {
+    "prefix": ".sqlite update",
+    "body": [
+      "cursor.execute('''",
+      "UPDATE $1 SET $2 = $3 WHERE $4",
+      "''')",
+      "connection.commit()"
+    ],
+    "description": "Mettre à jour des données dans une table SQLite"
+  },
+  "sqlite_delete": {
+    "prefix": ".sqlite delete",
+    "body": [
+      "cursor.execute('''",
+      "DELETE FROM $1 WHERE $2",
+      "''')",
+      "connection.commit()"
+    ],
+    "description": "Supprimer des données dans une table SQLite"
+  },
+  "sqlite_drop_table": {
+    "prefix": ".sqlite drop table",
+    "body": [
+      "cursor.execute('''",
+      "DROP TABLE IF EXISTS $1",
+      "''')",
+      "connection.commit()"
+    ],
+    "description": "Supprimer une table dans SQLite"
+  },
+  "sqlite_close": {
+    "prefix": ".sqlite close",
+    "body": [
+      "cursor.close()",
+      "connection.close()"
+    ],
+    "description": "Fermer la connexion à la base de données SQLite"
+  },
+  "sqlite_backup": {
+    "prefix": ".sqlite backup",
+    "body": [
+      "import shutil",
+      "shutil.copy('$1.db', '$2.db')"
+    ],
+    "description": "Sauvegarder une base de données SQLite"
+  },
+  "sqlite_restore": {
+    "prefix": ".sqlite restore",
+    "body": [
+      "import shutil",
+      "shutil.copy('$1.db', '$2.db')"
+    ],
+    "description": "Restaurer une base de données SQLite"
+  },
+  "sqlite_execute_script": {
+    "prefix": ".sqlite execute script",
+    "body": [
+      "with open('$1.sql', 'r') as file:",
+      "    script = file.read()",
+      "cursor.executescript(script)"
+    ],
+    "description": "Exécuter un script SQL dans SQLite"
+  },
+  "sqlite_transaction": {
+    "prefix": ".sqlite transaction",
+    "body": [
+      "try:",
+      "    connection.execute('BEGIN')",
+      "    cursor.execute('''",
+      "    INSERT INTO $1 ($2) VALUES ($3)",
+      "    ''')",
+      "    connection.commit()",
+      "except Exception as e:",
+      "    connection.rollback()",
+      "    print('Erreur:', e)"
+    ],
+    "description": "Gérer une transaction dans SQLite"
+  },
+  "sqlite_pragma": {
+    "prefix": ".sqlite pragma",
+    "body": [
+      "cursor.execute('''",
+      "PRAGMA $1 = $2",
+      "''')"
+    ],
+    "description": "Exécuter une commande PRAGMA dans SQLite"
+  },
+  "sqlite_foreign_key": {
+    "prefix": ".sqlite foreign key",
+    "body": [
+      "cursor.execute('''",
+      "PRAGMA foreign_keys = ON",
+      "''')"
+    ],
+    "description": "Activer les clés étrangères dans SQLite"
   }
 }

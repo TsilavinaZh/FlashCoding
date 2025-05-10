@@ -1,0 +1,161 @@
+{
+  "API gemini": {
+    "prefix": ".api gemini chat",
+    "body": [
+      "from google import genai",
+      "",
+      "client = genai.Client(api_key=\"YOUR_API_KEY\")",
+      "",
+      "response = client.models.generate_content(",
+      "    model=\"gemini-2.0-flash\",",
+      "    contents=\"Explain how AI works in a few words\",",
+      ")",
+      "",
+      "print(response.text)"
+    ],
+    "description": "Generate content using the Gemini API"
+  },
+  "API openai": {
+    "prefix": ".api openai chat",
+    "body": [
+      "import openai",
+      "",
+      "openai.api_key = \"YOUR_API_KEY\"",
+      "",
+      "response = openai.ChatCompletion.create(",
+      "    model=\"gemini-2.0-flash\",",
+      "    messages=[",
+      "        {\"role\": \"user\", \"content\": \"Explain how AI works in a few words\"}",
+      "    ]",
+      ")",
+      "",
+      "print(response.choices[0].message.content)"
+    ],
+    "description": "Generate content using the OpenAI API"
+  },
+  "Image Generator": {
+    "prefix": ".api openai image",
+    "body": [
+      "import openai",
+      "",
+      "openai.api_key = \"YOUR_API_KEY\"",
+      "",
+      "response = openai.Image.create(",
+      "    prompt=\"A futuristic cityscape with flying cars\",",
+      "    n=1,",
+      "    size=\"1024x1024\"",
+      ")",
+      "",
+      "image_url = response['data'][0]['url']",
+      "print(image_url)"
+    ],
+    "description": "Generate an image using the OpenAI API"
+  },
+  "API gemini image generation": {
+    "prefix": ".api gemini image",
+    "body": [
+      "from google import genai",
+      "from google.genai import types",
+      "from PIL import Image",
+      "from io import BytesIO",
+      "import base64",
+      "",
+      "client = genai.Client()",
+      "",
+      "contents = ('Hi, can you create a 3d rendered image of a pig '",
+      "            'with wings and a top hat flying over a happy '",
+      "            'futuristic scifi city with lots of greenery?')",
+      "",
+      "response = client.models.generate_content(",
+      "    model=\"gemini-2.0-flash-preview-image-generation\",",
+      "    contents=contents,",
+      "    config=types.GenerateContentConfig(",
+      "      response_modalities=['TEXT', 'IMAGE']",
+      "    )",
+      ")",
+      "",
+      "for part in response.candidates[0].content.parts:",
+      "  if part.text is not None:",
+      "    print(part.text)",
+      "  elif part.inline_data is not None:",
+      "    image = Image.open(BytesIO((part.inline_data.data)))",
+      "    image.save('gemini-native-image.png')",
+      "    image.show()"
+    ],
+    "description": "Generate a 3D rendered image using the Gemini API"
+  },
+  "API openai image generation": {
+    "prefix": ".api openai image",
+    "body": [
+      "import openai",
+      "",
+      "openai.api_key = \"YOUR_API_KEY\"",
+      "",
+      "response = openai.Image.create(",
+      "    prompt=\"A futuristic cityscape with flying cars\",",
+      "    n=1,",
+      "    size=\"1024x1024\"",
+      ")",
+      "",
+      "image_url = response['data'][0]['url']",
+      "print(image_url)"
+    ],
+    "description": "Generate an image using the OpenAI API"
+  },
+  "API gemini text to speech": {
+    "prefix": ".api gemini tts",
+    "body": [
+      "from google import genai",
+      "from google.genai import types",
+      "import base64",
+      "from pydub import AudioSegment",
+      "from pydub.playback import play",
+      "",
+      "client = genai.Client()",
+      "",
+      "text = \"Hello, this is a text-to-speech test using Gemini API.\"",
+      "",
+      "response = client.models.generate_content(",
+      "    model=\"gemini-2.0-flash-preview-tts\",",
+      "    contents=text,",
+      "    config=types.GenerateContentConfig(",
+      "      response_modalities=['AUDIO']",
+      "    )",
+      ")",
+      "",
+      "audio_data = base64.b64decode(response.candidates[0].content.parts[0].inline_data.data)",
+      "with open('gemini-tts-output.mp3', 'wb') as audio_file:",
+      "    audio_file.write(audio_data)",
+      "",
+      "audio = AudioSegment.from_file('gemini-tts-output.mp3')",
+      "play(audio)"
+    ],
+    "description": "Convert text to speech using the Gemini API"
+  },
+  "API openai text to speech": {
+    "prefix": ".api openai tts",
+    "body": [
+      "import openai",
+      "import base64",
+      "from pydub import AudioSegment",
+      "from pydub.playback import play",
+      "",
+      "openai.api_key = \"YOUR_API_KEY\"",
+      "",
+      "text = \"Hello, this is a text-to-speech test using OpenAI API.\"",
+      "",
+      "response = openai.Audio.create(",
+      "    model=\"whisper-tts\",",
+      "    text=text",
+      ")",
+      "",
+      "audio_data = base64.b64decode(response['audio'])",
+      "with open('openai-tts-output.mp3', 'wb') as audio_file:",
+      "    audio_file.write(audio_data)",
+      "",
+      "audio = AudioSegment.from_file('openai-tts-output.mp3')",
+      "play(audio)"
+    ],
+    "description": "Convert text to speech using the OpenAI API"
+  }
+}

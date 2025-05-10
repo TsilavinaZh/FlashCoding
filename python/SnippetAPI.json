@@ -157,5 +157,135 @@
       "play(audio)"
     ],
     "description": "Convert text to speech using the OpenAI API"
+  },
+  "API gemini text to image": {
+    "prefix": ".api gemini text to image",
+    "body": [
+      "from google import genai",
+      "from google.genai import types",
+      "",
+      "client = genai.Client()",
+      "",
+      "text = \"A futuristic cityscape with flying cars\"",
+      "",
+      "response = client.models.generate_content(",
+      "    model=\"gemini-2.0-flash-preview-image-generation\",",
+      "    contents=text,",
+      ")",
+      "",
+      "for part in response.candidates[0].content.parts:",
+      "  if part.text is not None:",
+      "    print(part.text)",
+      "  elif part.inline_data is not None:",
+      "    with open('gemini-text-to-image.png', 'wb') as image_file:",
+      "        image_file.write(part.inline_data.data)"
+    ],
+    "description": "Generate an image from text using the Gemini API"
+  },
+
+  "API openai text to image": {
+    "prefix": ".api openai text to image",
+    "body": [
+      "import openai",
+      "",
+      "openai.api_key = \"YOUR_API_KEY\"",
+      "",
+      "response = openai.Image.create(",
+      "    prompt=\"A futuristic cityscape with flying cars\",",
+      "    n=1,",
+      "    size=\"1024x1024\"",
+      ")",
+      "",
+      "image_url = response['data'][0]['url']",
+      "print(image_url)"
+    ],
+    "description": "Generate an image from text using the OpenAI API"
+  },
+  "API gemini text to audio": {
+    "prefix": ".api gemini text to audio",
+    "body": [
+      "from google import genai",
+      "from google.genai import types",
+      "",
+      "client = genai.Client()",
+      "",
+      "text = \"Hello, this is a text-to-audio test using Gemini API.\"",
+      "",
+      "response = client.models.generate_content(",
+      "    model=\"gemini-2.0-flash-preview-tts\",",
+      "    contents=text,",
+      ")",
+      "",
+      "for part in response.candidates[0].content.parts:",
+      "  if part.text is not None:",
+      "    print(part.text)",
+      "  elif part.inline_data is not None:",
+      "    with open('gemini-text-to-audio.mp3', 'wb') as audio_file:",
+      "        audio_file.write(part.inline_data.data)"
+    ],
+    "description": "Convert text to audio using the Gemini API"
+  },
+  "API openai text to audio": {
+    "prefix": ".api openai text to audio",
+    "body": [
+      "import openai",
+      "",
+      "openai.api_key = \"YOUR_API_KEY\"",
+      "",
+      "response = openai.Audio.create(",
+      "    model=\"whisper-tts\",",
+      "    text=\"Hello, this is a text-to-audio test using OpenAI API.\"",
+      ")",
+      "",
+      "audio_data = base64.b64decode(response['audio'])",
+      "with open('openai-tts-output.mp3', 'wb') as audio_file:",
+      "    audio_file.write(audio_data)",
+      "",
+      "audio = AudioSegment.from_file('openai-tts-output.mp3')",
+      "play(audio)"
+    ],
+    "description": "Convert text to audio using the OpenAI API",
+    "API gemini text to video": {
+      "prefix": ".api gemini text to video",
+      "body": [
+        "from google import genai",
+        "from google.genai import types",
+        "",
+        "client = genai.Client()",
+        "",
+        "text = \"A futuristic cityscape with flying cars\"",
+        "",
+        "response = client.models.generate_content(",
+        "    model=\"gemini-2.0-flash-preview-video-generation\",",
+        "    contents=text,",
+        ")",
+        "",
+        "for part in response.candidates[0].content.parts:",
+        "  if part.text is not None:",
+        "    print(part.text)",
+        "  elif part.inline_data is not None:",
+        "    with open('gemini-text-to-video.mp4', 'wb') as video_file:",
+        "        video_file.write(part.inline_data.data)"
+      ],
+      "description": "Generate a video from text using the Gemini API"
+    }
+  },
+  "API openai text to video": {
+    "prefix": ".api openai text to video",
+    "body": [
+      "import openai",
+      "",
+      "openai.api_key = \"YOUR_API_KEY\"",
+      "",
+      "response = openai.Video.create(",
+      "    prompt=\"A futuristic cityscape with flying cars\",",
+      "    n=1,",
+      "    size=\"1024x1024\"",
+      ")",
+      "",
+      "video_url = response['data'][0]['url']",
+      "print(video_url)"
+    ],
+    "description": "Generate a video from text using the OpenAI API"
   }
 }

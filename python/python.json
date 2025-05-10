@@ -4127,6 +4127,196 @@
     ],
     "description": "Fermer la connexion à la base de données MySQL"
   },
+
+  "mysql_create_user": {
+    "prefix": ".mysql create user",
+    "body": [
+      "cursor.execute('''",
+      "CREATE USER '$1'@'$2' IDENTIFIED BY '$3'",
+      "''')",
+      "connection.commit()"
+    ],
+    "description": "Créer un utilisateur MySQL"
+  },
+  "mysql_grant_privileges": {
+    "prefix": ".mysql grant privileges",
+    "body": [
+      "cursor.execute('''",
+      "GRANT $1 ON $2 TO '$3'@'$4'",
+      "''')",
+      "connection.commit()"
+    ],
+    "description": "Accorder des privilèges à un utilisateur MySQL"
+  },
+  "mysql_revoke_privileges": {
+    "prefix": ".mysql revoke privileges",
+    "body": [
+      "cursor.execute('''",
+      "REVOKE $1 ON $2 FROM '$3'@'$4'",
+      "''')",
+      "connection.commit()"
+    ],
+    "description": "Révoquer des privilèges d'un utilisateur MySQL"
+  },
+  "mysql_show_databases": {
+    "prefix": ".mysql show databases",
+    "body": [
+      "cursor.execute('''",
+      "SHOW DATABASES",
+      "''')",
+      "databases = cursor.fetchall()",
+      "for db in databases:",
+      "    print(db)"
+    ],
+    "description": "Afficher toutes les bases de données MySQL"
+  },
+  "mysql_show_tables": {
+    "prefix": ".mysql show tables",
+    "body": [
+      "cursor.execute('''",
+      "SHOW TABLES",
+      "''')",
+      "tables = cursor.fetchall()",
+      "for table in tables:",
+      "    print(table)"
+    ],
+    "description": "Afficher toutes les tables dans une base de données MySQL"
+  },
+  "mysql_describe_table": {
+    "prefix": ".mysql describe table",
+    "body": [
+      "cursor.execute('''",
+      "DESCRIBE $1",
+      "''')",
+      "columns = cursor.fetchall()",
+      "for column in columns:",
+      "    print(column)"
+    ],
+    "description": "Afficher la structure d'une table MySQL"
+  },
+  "mysql_alter_table_add_column": {
+    "prefix": ".mysql alter table add column",
+    "body": [
+      "cursor.execute('''",
+      "ALTER TABLE $1 ADD COLUMN $2 $3",
+      "''')",
+      "connection.commit()"
+    ],
+    "description": "Ajouter une colonne à une table MySQL"
+  },
+  "mysql_alter_table_drop_column": {
+    "prefix": ".mysql alter table drop column",
+    "body": [
+      "cursor.execute('''",
+      "ALTER TABLE $1 DROP COLUMN $2",
+      "''')",
+      "connection.commit()"
+    ],
+    "description": "Supprimer une colonne d'une table MySQL"
+  },
+  "mysql_alter_table_modify_column": {
+    "prefix": ".mysql alter table modify column",
+    "body": [
+      "cursor.execute('''",
+      "ALTER TABLE $1 MODIFY COLUMN $2 $3",
+      "''')",
+      "connection.commit()"
+    ],
+    "description": "Modifier une colonne dans une table MySQL"
+  },
+  "mysql_create_index": {
+    "prefix": ".mysql create index",
+    "body": [
+      "cursor.execute('''",
+      "CREATE INDEX $1 ON $2 ($3)",
+      "''')",
+      "connection.commit()"
+    ],
+    "description": "Créer un index dans une table MySQL"
+  },
+  "mysql_drop_index": {
+    "prefix": ".mysql drop index",
+    "body": [
+      "cursor.execute('''",
+      "DROP INDEX $1 ON $2",
+      "''')",
+      "connection.commit()"
+    ],
+    "description": "Supprimer un index dans une table MySQL"
+  },
+  "mysql_show_indexes": {
+    "prefix": ".mysql show indexes",
+    "body": [
+      "cursor.execute('''",
+      "SHOW INDEX FROM $1",
+      "''')",
+      "indexes = cursor.fetchall()",
+      "for index in indexes:",
+      "    print(index)"
+    ],
+    "description": "Afficher les index d'une table MySQL"
+  },
+  "mysql_create_procedure": {
+    "prefix": ".mysql create procedure",
+    "body": [
+      "cursor.execute('''",
+      "DELIMITER $$",
+      "CREATE PROCEDURE $1()",
+      "BEGIN",
+      "    $2",
+      "END $$",
+      "DELIMITER ;",
+      "''')",
+      "connection.commit()"
+    ],
+    "description": "Créer une procédure stockée dans MySQL"
+  },
+  "mysql_call_procedure": {
+    "prefix": ".mysql call procedure",
+    "body": [
+      "cursor.execute('''",
+      "CALL $1()",
+      "''')",
+      "result = cursor.fetchall()",
+      "for row in result:",
+      "    print(row)"
+    ],
+    "description": "Appeler une procédure stockée dans MySQL"
+  },
+  "mysql_create_trigger": {
+    "prefix": ".mysql create trigger",
+    "body": [
+      "cursor.execute('''",
+      "CREATE TRIGGER $1 $2 $3 ON $4",
+      "FOR EACH ROW",
+      "BEGIN",
+      "    $5",
+      "END",
+      "''')",
+      "connection.commit()"
+    ],
+    "description": "Créer un déclencheur dans MySQL"
+  },
+  "mysql_drop_trigger": {
+    "prefix": ".mysql drop trigger",
+    "body": [
+      "cursor.execute('''",
+      "DROP TRIGGER IF EXISTS $1",
+      "''')",
+      "connection.commit()"
+    ],
+    "description": "Supprimer un déclencheur dans MySQL"
+  }
+
+,
+
+  "json_import": {
+    "prefix": ".json import",
+    "body": [
+      "import json"
+    ],
+    "description": "Importer le module JSON"
+  },
   "json_load": {
     "prefix": ".json load",
     "body": [
@@ -5324,5 +5514,77 @@
       "''')"
     ],
     "description": "Activer les clés étrangères dans SQLite"
-  }  
+  },
+  "sqlite_index": {
+    "prefix": ".sqlite index",
+    "body": [
+      "cursor.execute('''",
+      "CREATE INDEX $1 ON $2 ($3)",
+      "''')",
+      "connection.commit()"
+    ],
+    "description": "Créer un index dans SQLite"
+  },
+  "sqlite_transaction_savepoint": {
+    "prefix": ".sqlite transaction savepoint",
+    "body": [
+      "try:",
+      "    cursor.execute('''",
+      "    SAVEPOINT $1",
+      "    ''')",
+      "    cursor.execute('''",
+      "    INSERT INTO $2 ($3) VALUES ($4)",
+      "    ''')",
+      "    connection.commit()",
+      "except Exception as e:",
+      "    cursor.execute('''",
+      "    ROLLBACK TO SAVEPOINT $1",
+      "    ''')",
+      "    print('Erreur:', e)"
+    ],
+    "description": "Gérer un point de sauvegarde dans une transaction SQLite"
+  },
+  "sqlite_create_view": {
+    "prefix": ".sqlite create view",
+    "body": [
+      "cursor.execute('''",
+      "CREATE VIEW $1 AS SELECT $2 FROM $3 WHERE $4",
+      "''')",
+      "connection.commit()"
+    ],
+    "description": "Créer une vue dans SQLite"
+  },
+  "sqlite_drop_view": {
+    "prefix": ".sqlite drop view",
+    "body": [
+      "cursor.execute('''",
+      "DROP VIEW IF EXISTS $1",
+      "''')",
+      "connection.commit()"
+    ],
+    "description": "Supprimer une vue dans SQLite"
+  },
+  "sqlite_create_trigger": {
+    "prefix": ".sqlite create trigger",
+    "body": [
+      "cursor.execute('''",
+      "CREATE TRIGGER $1 AFTER INSERT ON $2",
+      "BEGIN",
+      "    INSERT INTO $3 ($4) VALUES ($5);",
+      "END",
+      "''')",
+      "connection.commit()"
+    ],
+    "description": "Créer un déclencheur dans SQLite"
+  },
+  "sqlite_drop_trigger": {
+    "prefix": ".sqlite drop trigger",
+    "body": [
+      "cursor.execute('''",
+      "DROP TRIGGER IF EXISTS $1",
+      "''')",
+      "connection.commit()"
+    ],
+    "description": "Supprimer un déclencheur dans SQLite"
+  }
 }

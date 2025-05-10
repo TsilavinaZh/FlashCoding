@@ -40,3 +40,4 @@
 |`.env`|env|
 |`.requests`|requests|
 |`.sqlite`|sqlite3|
+|`.turtle`|turtle|

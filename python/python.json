@@ -1895,6 +1895,112 @@
     ],
     "description": "Gérer les événements tactiles"
   },
+  "pygame_sdl2": {
+    "prefix": ".pg sdl2",
+    "body": [
+      "import pygame_sdl2",
+      "pygame_sdl2.init()"
+    ],
+    "description": "Initialiser Pygame SDL2"
+  },
+  "pygame_sdl2_image": {
+    "prefix": ".pg sdl2 image",
+    "body": [
+      "import pygame_sdl2.image",
+      "image = pygame_sdl2.image.load('$1')"
+    ],
+    "description": "Charger une image avec Pygame SDL2"
+  },
+  "pygame_sdl2_mixer": {
+    "prefix": ".pg sdl2 mixer",
+    "body": [
+      "import pygame_sdl2.mixer",
+      "pygame_sdl2.mixer.init()",
+      "sound = pygame_sdl2.mixer.Sound('$1.wav')"
+    ],
+    "description": "Jouer un son avec Pygame SDL2"
+  },
+  "pygame_sdl2_ttf": {
+    "prefix": ".pg sdl2 ttf",
+    "body": [
+      "import pygame_sdl2.ttf",
+      "pygame_sdl2.ttf.init()",
+      "font = pygame_sdl2.ttf.Font('$1.ttf', $2)"
+    ],
+    "description": "Utiliser une police avec Pygame SDL2"
+  },
+
+  "pygame_sdl2_mixer_music": {
+    "prefix": ".pg sdl2 mixer music",
+    "body": [
+      "import pygame_sdl2.mixer.music",
+      "pygame_sdl2.mixer.music.load('$1.mp3')",
+      "pygame_sdl2.mixer.music.play(-1)"
+    ],
+    "description": "Jouer de la musique avec Pygame SDL2"
+  },
+  "pygame_sdl2_mixer_sound": {
+    "prefix": ".pg sdl2 mixer sound",
+    "body": [
+      "import pygame_sdl2.mixer.Sound",
+      "sound = pygame_sdl2.mixer.Sound('$1.wav')",
+      "sound.play()"
+    ],
+    "description": "Jouer un son avec Pygame SDL2"
+  },
+
+  "pygame_sdl2_mixer_music_stop": {
+    "prefix": ".pg sdl2 mixer music stop",
+    "body": [
+      "pygame_sdl2.mixer.music.stop()"
+    ],
+    "description": "Arrêter la musique avec Pygame SDL2"
+  },
+
+  "pygame_sdl2_mixer_sound_stop": {
+    "prefix": ".pg sdl2 mixer sound stop",
+    "body": [
+      "sound.stop()"
+    ],
+    "description": "Arrêter le son avec Pygame SDL2"
+  },
+  "pygame_sdl2_mixer_music_pause": {
+    "prefix": ".pg sdl2 mixer music pause",
+    "body": [
+      "pygame_sdl2.mixer.music.pause()"
+    ],
+    "description": "Mettre en pause la musique avec Pygame SDL2"
+  },
+  "pygame_sdl2_mixer_sound_pause": {
+    "prefix": ".pg sdl2 mixer sound pause",
+    "body": [
+      "sound.pause()"
+    ],
+    "description": "Mettre en pause le son avec Pygame SDL2"
+  },
+  "pygame_sdl2_mixer_music_unpause": {
+    "prefix": ".pg sdl2 mixer music unpause",
+    "body": [
+      "pygame_sdl2.mixer.music.unpause()"
+    ],
+    "description": "Reprendre la musique avec Pygame SDL2"
+  },
+  "pygame_sdl2_mixer_sound_unpause": {
+    "prefix": ".pg sdl2 mixer sound unpause",
+    "body": [
+      "sound.unpause()"
+    ],
+    "description": "Reprendre le son avec Pygame SDL2"
+  },
+  "pygame_sdl2_mixer_music_volume": {
+    "prefix": ".pg sdl2 mixer music volume",
+    "body": [
+      "pygame_sdl2.mixer.music.set_volume($1)"
+    ],
+    "description": "Régler le volume de la musique avec Pygame SDL2"
+  },
+
+  
   "mtlib_pyplot": {
     "prefix": ".mtlib Pyplot",
     "body": [
@@ -1983,6 +2089,107 @@
     ],
     "description": "Créer un graphique en secteurs (camembert)"
   },
+  "mtlib_text": {
+    "prefix": ".mtlib Text",
+    "body": [
+      "plt.text($1, $2, '$3')",
+      "plt.show()"
+    ],
+    "description": "Ajouter du texte à un graphique"
+  },
+  "mtlib_legend": {
+    "prefix": ".mtlib Legend",
+    "body": [
+      "plt.legend(['$1'])"
+    ],
+    "description": "Ajouter une légende"
+  },
+  "mtlib_savefig": {
+    "prefix": ".mtlib Savefig",
+    "body": [
+      "plt.savefig('$1')"
+    ],
+    "description": "Enregistrer un graphique"
+  },
+  "mtlib_show": {
+    "prefix": ".mtlib Show",
+    "body": [
+      "plt.show()"
+    ],
+    "description": "Afficher le graphique"
+  },
+  "mtlib_style": {
+    "prefix": ".mtlib Style",
+    "body": [
+      "plt.style.use('$1')"
+    ],
+    "description": "Changer le style du graphique"
+  },
+
+  "mtlib_3d": {
+    "prefix": ".mtlib 3D",
+    "body": [
+      "from mpl_toolkits.mplot3d import Axes3D",
+      "fig = plt.figure()",
+      "ax = fig.add_subplot(111, projection='3d')",
+      "ax.plot($1, $2, $3)"
+    ],
+    "description": "Créer un graphique 3D"
+  },
+
+  "mtlib_3d_scatter": {
+    "prefix": ".mtlib 3D Scatter",
+    "body": [
+      "from mpl_toolkits.mplot3d import Axes3D",
+      "fig = plt.figure()",
+      "ax = fig.add_subplot(111, projection='3d')",
+      "ax.scatter($1, $2, $3)"
+    ],
+    "description": "Créer un graphique de dispersion 3D"
+  },
+
+  "mtlib_3d_surface": {
+    "prefix": ".mtlib 3D Surface",
+    "body": [
+      "from mpl_toolkits.mplot3d import Axes3D",
+      "fig = plt.figure()",
+      "ax = fig.add_subplot(111, projection='3d')",
+      "ax.plot_surface($1, $2, $3)"
+    ],
+    "description": "Créer une surface 3D"
+  },
+
+  "mtlib_3d_contour": {
+    "prefix": ".mtlib 3D Contour",
+    "body": [
+      "from mpl_toolkits.mplot3d import Axes3D",
+      "fig = plt.figure()",
+      "ax = fig.add_subplot(111, projection='3d')",
+      "ax.contour($1, $2, $3)"
+    ],
+    "description": "Créer un contour 3D"
+  },
+  "mtlib_3d_wireframe": {
+    "prefix": ".mtlib 3D Wireframe",
+    "body": [
+      "from mpl_toolkits.mplot3d import Axes3D",
+      "fig = plt.figure()",
+      "ax = fig.add_subplot(111, projection='3d')",
+      "ax.plot_wireframe($1, $2, $3)"
+    ],
+    "description": "Créer un filaire 3D"
+  },
+  "mtlib_3d_bar": {
+    "prefix": ".mtlib 3D Bar",
+    "body": [
+      "from mpl_toolkits.mplot3d import Axes3D",
+      "fig = plt.figure()",
+      "ax = fig.add_subplot(111, projection='3d')",
+      "ax.bar3d($1, $2, $3, $4, $5, $6)"
+    ],
+    "description": "Créer un graphique à barres 3D"
+  },
+
   "files_read": {
     "prefix": ".files read",
     "body": [
@@ -5586,5 +5793,238 @@
       "connection.commit()"
     ],
     "description": "Supprimer un déclencheur dans SQLite"
+  },
+  "sqlite_create_temp_table": {
+    "prefix": ".sqlite create temp table",
+    "body": [
+      "cursor.execute('''",
+      "CREATE TEMP TABLE $1 (",
+      "    $2 $3,",
+      "    $4 $5",
+      ")",
+      "''')",
+      "connection.commit()"
+    ],
+    "description": "Créer une table temporaire dans SQLite"
+  },
+  "sqlite_drop_temp_table": {
+    "prefix": ".sqlite drop temp table",
+    "body": [
+      "cursor.execute('''",
+      "DROP TEMP TABLE IF EXISTS $1",
+      "''')",
+      "connection.commit()"
+    ],
+    "description": "Supprimer une table temporaire dans SQLite"
+  },
+  "turtle_import": {
+    "prefix": ".turtle import",
+    "body": [
+      "import turtle"
+    ],
+    "description": "Importer le module Turtle"
+  },
+  "turtle_setup": {
+    "prefix": ".turtle setup",
+    "body": [
+      "import turtle",
+      "screen = turtle.Screen()",
+      "screen.title('$1')",
+      "screen.bgcolor('$2')"
+    ],
+    "description": "Configurer l'écran Turtle"
+  },
+  "turtle_draw_circle": {
+    "prefix": ".turtle circle",
+    "body": [
+      "turtle.circle($1)"
+    ],
+    "description": "Dessiner un cercle avec Turtle"
+  },
+  "turtle_draw_square": {
+    "prefix": ".turtle square",
+    "body": [
+      "for _ in range(4):",
+      "    turtle.forward($1)",
+      "    turtle.right(90)"
+    ],
+    "description": "Dessiner un carré avec Turtle"
+  },
+  "turtle_draw_triangle": {
+    "prefix": ".turtle triangle",
+    "body": [
+      "for _ in range(3):",
+      "    turtle.forward($1)",
+      "    turtle.left(120)"
+    ],
+    "description": "Dessiner un triangle avec Turtle"
+  },
+  "turtle_pen_color": {
+    "prefix": ".turtle pen color",
+    "body": [
+      "turtle.pencolor('$1')"
+    ],
+    "description": "Changer la couleur du stylo Turtle"
+  },
+  "turtle_fill_color": {
+    "prefix": ".turtle fill color",
+    "body": [
+      "turtle.fillcolor('$1')"
+    ],
+    "description": "Changer la couleur de remplissage Turtle"
+  },
+  "turtle_begin_fill": {
+    "prefix": ".turtle begin fill",
+    "body": [
+      "turtle.begin_fill()"
+    ],
+    "description": "Commencer le remplissage avec Turtle"
+  },
+  "turtle_end_fill": {
+    "prefix": ".turtle end fill",
+    "body": [
+      "turtle.end_fill()"
+    ],
+    "description": "Terminer le remplissage avec Turtle"
+  },
+  "turtle_move_forward": {
+    "prefix": ".turtle forward",
+    "body": [
+      "turtle.forward($1)"
+    ],
+    "description": "Déplacer la tortue vers l'avant"
+  },
+  "turtle_move_backward": {
+    "prefix": ".turtle backward",
+    "body": [
+      "turtle.backward($1)"
+    ],
+    "description": "Déplacer la tortue vers l'arrière"
+  },
+  "turtle_turn_left": {
+    "prefix": ".turtle left",
+    "body": [
+      "turtle.left($1)"
+    ],
+    "description": "Tourner la tortue vers la gauche"
+  },
+  "turtle_turn_right": {
+    "prefix": ".turtle right",
+    "body": [
+      "turtle.right($1)"
+    ],
+    "description": "Tourner la tortue vers la droite"
+  },
+  "turtle_pen_up": {
+    "prefix": ".turtle pen up",
+    "body": [
+      "turtle.penup()"
+    ],
+    "description": "Lever le stylo Turtle"
+  },
+  "turtle_pen_down": {
+    "prefix": ".turtle pen down",
+    "body": [
+      "turtle.pendown()"
+    ],
+    "description": "Abaisser le stylo Turtle"
+  },
+  "turtle_reset": {
+    "prefix": ".turtle reset",
+    "body": [
+      "turtle.reset()"
+    ],
+    "description": "Réinitialiser la tortue"
+  },
+  "turtle_clear": {
+    "prefix": ".turtle clear",
+    "body": [
+      "turtle.clear()"
+    ],
+    "description": "Effacer le dessin Turtle"
+  },
+  "turtle_exit": {
+    "prefix": ".turtle exit",
+    "body": [
+      "turtle.done()"
+    ],
+    "description": "Terminer le programme Turtle"
+  },
+  "turtle_hide": {
+    "prefix": ".turtle hide",
+    "body": [
+      "turtle.hideturtle()"
+    ],
+    "description": "Cacher la tortue"
+  },
+  "turtle_show": {
+    "prefix": ".turtle show",
+    "body": [
+      "turtle.showturtle()"
+    ],
+    "description": "Afficher la tortue"
+  },
+  "turtle_set_speed": {
+    "prefix": ".turtle speed",
+    "body": [
+      "turtle.speed($1)"
+    ],
+    "description": "Définir la vitesse de la tortue"
+  },
+  "turtle_set_position": {
+    "prefix": ".turtle position",
+    "body": [
+      "turtle.setposition($1, $2)"
+    ],
+    "description": "Définir la position de la tortue"
+  },
+  "turtle_set_heading": {
+    "prefix": ".turtle heading",
+    "body": [
+      "turtle.setheading($1)"
+    ],
+    "description": "Définir l'orientation de la tortue"
+  },
+  "turtle_set_x": {
+    "prefix": ".turtle set x",
+    "body": [
+      "turtle.setx($1)"
+    ],
+    "description": "Définir la coordonnée x de la tortue"
+  },
+  "turtle_set_y": {
+    "prefix": ".turtle set y",
+    "body": [
+      "turtle.sety($1)"
+    ],
+    "description": "Définir la coordonnée y de la tortue"
+  },
+  "turtle_set_color": {
+    "prefix": ".turtle set color",
+    "body": [
+      "turtle.color('$1')"
+    ],
+    "description": "Définir la couleur de la tortue"
+  },
+  "turtle_set_shape": {
+    "prefix": ".turtle set shape",
+    "body": [
+      "turtle.shape('$1')"
+    ],
+    "description": "Définir la forme de la tortue"
+  },
+  "turtle_set_background": {
+    "prefix": ".turtle set background",
+    "body": [
+      "screen.bgcolor('$1')"
+    ],
+    "description": "Définir la couleur de fond de l'écran Turtle"
+  },
+  "turtle_set_title": {
+    "prefix": ".turtle set title",
+    "body": [
+      "screen.title('$1')"
+    ],
+    "description": "Définir le titre de l'écran Turtle"
   }
 }

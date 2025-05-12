@@ -1,151 +1,211 @@
 {
-	
-	"First code C": {
-		"prefix": "include",
-		"body": [
-			"#include <stdio.h>",
-			"",
-			"int main() {",
-			"$2",
-			"return 0;",
-			"}"
-		],
-		"description": "Affiche un message dans la console"
-	},
-	"Print to console": {
-		"prefix": "print",
-		"body": [
-			"printf(\"$1\\n\");",
-			"$2"
-		],
-		"description": "Affiche un message dans la console"
-	},
-	"Variable declaration": {
-		"prefix": "var",
-		"body": [
-			"$1 $2 = $3;"
-		],
-		"description": "Déclare une variable en C"
-	},
-	"If condition": {
-		"prefix": "if",
-		"body": [
-			"if ($1) {",
-			"    $2",
-			"}"
-		],
-		"description": "Structure conditionnelle if"
-	},
-	"Switch case": {
-		"prefix": "switch",
-		"body": [
-			"switch ($1) {",
-			"    case $2:",
-			"        $3",
-			"        break;",
-			"    default:",
-			"        $4",
-			"}"
-		],
-		"description": "Structure conditionnelle switch"
-	},
-	"While loop": {
-		"prefix": "while",
-		"body": [
-			"while ($1) {",
-			"    $2",
-			"}"
-		],
-		"description": "Boucle while"
-	},
-	"For loop": {
-		"prefix": "for",
-		"body": [
-			"for ($1; $2; $3) {",
-			"    $4",
-			"}"
-		],
-		"description": "Boucle for"
-	},
-	"User input": {
-		"prefix": "input",
-		"body": [
-			"scanf(\"$1\", &$2);"
-		],
-		"description": "Lecture d'une entrée utilisateur"
-	},
-	"Function": {
-		"prefix": "function",
-		"body": [
-			"$1 $2($3) {",
-			"    $4",
-			"}"
-		],
-		"description": "Définition d'une fonction"
-	},
-	"Struct": {
-		"prefix": "struct",
-		"body": [
-			"struct $1 {",
-			"    $2 $3;",
-			"    $4 $5;",
-			"};"
-		],
-		"description": "Définition d'une structure"
-	},
-	"Array declaration": {
-		"prefix": "array",
-		"body": [
-			"$1 $2[$3];"
-		],
-		"description": "Déclare un tableau en C"
-	},
-	"Pointer declaration": {
-		"prefix": "pointer",
-		"body": [
-			"$1 *$2;"
-		],
-		"description": "Déclare un pointeur en C"
-	},
-	"Comment": {
-		"prefix": "comment",
-		"body": [
-			"// $1"
-		],
-		"description": "Ajoute un commentaire"
-	},
-	"Multiline comment": {
-		"prefix": "multicomment",
-		"body": [
-			"/*",
-			" * $1",
-			" */"
-		],
-		"description": "Ajoute un commentaire multi-lignes"
-	},
-	"Define constant": {
-		"prefix": "define",
-		"body": [
-			"#define $1 $2"
-		],
-		"description": "Définit une constante en C"
-	},
-	"Include header": {
-		"prefix": "header",
-		"body": [
-			"#include <$1>"
-		],
-		"description": "Inclut un fichier d'en-tête"
-	},
-	"Do-while loop": {
-		"prefix": "dowhile",
-		"body": [
-			"do {",
-			"    $1",
-			"} while ($2);"
-		],
-		"description": "Boucle do-while"
-	}
+    "First code C": {
+        "prefix": "include",
+        "body": [
+            "#include <stdio.h>",
+            "",
+            "int main() {",
+            "\t$2",
+            "return 0;",
+            "}"
+        ],
+        "description": "Point d'entrée du programme"
+    },
+    "Print to console": {
+        "prefix": ".io print",
+        "body": [
+            "printf(\"$1\\n\");",
+            "$2"
+        ],
+        "description": "Affiche un message dans la console"
+    },
+    "User input": {
+        "prefix": ".io input",
+        "body": [
+            "scanf(\"$1\", &$2);"
+        ],
+        "description": "Lecture d'une entrée utilisateur"
+    },
+    "Variable declaration": {
+        "prefix": ".var",
+        "body": [
+            "$1 $2 = $3;"
+        ],
+        "description": "Déclare une variable en C"
+    },
+    "If condition": {
+        "prefix": ".cond if",
+        "body": [
+            "if ($1) {",
+            "    $2",
+            "}"
+        ],
+        "description": "Structure conditionnelle if"
+    },
+    "Switch case": {
+        "prefix": ".cond switch",
+        "body": [
+            "switch ($1) {",
+            "    case $2:",
+            "        $3",
+            "        break;",
+            "    default:",
+            "        $4",
+            "}"
+        ],
+        "description": "Structure conditionnelle switch"
+    },
+    "While loop": {
+        "prefix": ".loop while",
+        "body": [
+            "while ($1) {",
+            "    $2",
+            "}"
+        ],
+        "description": "Boucle while"
+    },
+    "For loop": {
+        "prefix": ".loop for",
+        "body": [
+            "for ($1; $2; $3) {",
+            "    $4",
+            "}"
+        ],
+        "description": "Boucle for"
+    },
+    "Function": {
+        "prefix": "function",
+        "body": [
+            "$1 $2($3) {",
+            "    $4",
+            "}"
+        ],
+        "description": "Définition d'une fonction"
+    },
+    "Struct": {
+        "prefix": "struct",
+        "body": [
+            "struct $1 {",
+            "    $2 $3;",
+            "    $4 $5;",
+            "};"
+        ],
+        "description": "Définition d'une structure"
+    },
+    "Array declaration": {
+        "prefix": ".var array",
+        "body": [
+            "$1 $2[$3];"
+        ],
+        "description": "Déclare un tableau en C"
+    },
+    "Pointer declaration": {
+        "prefix": ".var pointer",
+        "body": [
+            "$1 *$2;"
+        ],
+        "description": "Déclare un pointeur en C"
+    },
+    "Comment": {
+        "prefix": ".comment",
+        "body": [
+            "// $1"
+        ],
+        "description": "Ajoute un commentaire"
+    },
+    "Multiline comment": {
+        "prefix": ".comment multi",
+        "body": [
+            "/*",
+            " * $1",
+            " */"
+        ],
+        "description": "Ajoute un commentaire multi-lignes"
+    },
+    "Define constant": {
+        "prefix": ".var const",
+        "body": [
+            "#define $1 $2"
+        ],
+        "description": "Définit une constante en C"
+    },
+    "Include header": {
+        "prefix": "header",
+        "body": [
+            "#include <$1>"
+        ],
+        "description": "Inclut un fichier d'en-tête"
+    },
+    "Do-while loop": {
+        "prefix": ".loop do",
+        "body": [
+            "do {",
+            "    $1",
+            "} while ($2);"
+        ],
+        "description": "Boucle do-while"
+    },
+    "verifier_chiffre": {
+        "prefix": ".char isDigit",
+        "body": [
+            "('0' < $1 && $1 < '9')"
+        ],
+        "description": "Vérifier si le caractère est un chiffre"
+    },
+    "verifier_alpha": {
+        "prefix": ".char isAlpha",
+        "body": [
+            "('a' < $1 && $1 < 'z') || ('A' < $1 && $1 < 'Z')"
+        ]
+        "description": "Vérifier si le caractère est un caractère alphabétique"
+    },
+    "verifier_espace": {
+        "prefix": ".char isSpace ",
+        "body": [
+            "($1 == ' ' || $1 == '\t')"
+        ],
+        "description": "Vérifier si le caractère est un espace"
+    },
+    "verifier_chaine_chiffre": {
+        "prefix": ".str isDigit",
+        "body": [
+            "int isStrDigit = false",
+            "for (int i = 0; i < strlen($1); i++) {",
+            "\tisStrDigidt &= ('0' < $1[i] && $1[i] < '9');",
+            "}"
+        ],
+        "description": "Vérifier si la chaine ne contient que des chiffres"
+    },
+    "verifier_chaine_alpha": {
+        "prefix": ".str isAlpha",
+        "body": [
+            "int isStrAlpha = false",
+            "for (int i = 0; i < strlen($1); i++) {",
+            "\tisStrAlpha a= ('a' < $1 && $1 < 'z') || ('A' < $1 && $1 < 'Z');",
+            "}",
+        ],
+        "description": "Vérifier si la chaine ne contient que des caractère alphabétique"
+    },
+    "verifier_chaine_alpha_num": {
+        "prefix": ".str isAlphaNum",
+        "body": [
+            "int isStrAlphaNum = false",
+            "for (int i = 0; i < strlen($1); i++) {",
+            "\tisStrAlphaNum &= ('a' < $1 && $1 < 'z') || ('A' < $1 && $1 < 'Z') || ('0' < $1[i] && $1[i] < '9');",
+            "}",
+        ],
+        "description": "Vérifier si la chaine ne contient que des caractère alphabétique"
+    },
+    "verifier_chaine_espace": {
+        "prefix": ".str isSpace ",
+        "body": [
+            "int isStrSpace = false",
+            "for (int i = 0; i < strlen($1); i++) {",
+            "\tisStrSpace &= ($1 == ' ' || $1 == '\t');",
+            "}",
+        ],
+        "description": "Vérifier si la chaîne ne contient que des espaces"
+    },
 }
 
 

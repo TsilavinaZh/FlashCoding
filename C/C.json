@@ -1,211 +1,272 @@
 {
-    "First code C": {
-        "prefix": "include",
-        "body": [
-            "#include <stdio.h>",
-            "",
-            "int main() {",
-            "\t$2",
-            "return 0;",
-            "}"
-        ],
-        "description": "Point d'entrée du programme"
+  "First code C": {
+    "prefix": "include",
+    "body": [
+      "#include <stdio.h>",
+      "",
+      "int main() {",
+      "\t$2",
+      "return 0;",
+      "}"
+    ],
+    "description": "Point d'entrée du programme"
+  },
+  "Print to console": {
+    "prefix": ".io print",
+    "body": ["printf(\"$1\\n\");", "$2"],
+    "description": "Affiche un message dans la console"
+  },
+  "User input": {
+    "prefix": ".io input",
+    "body": ["scanf(\"$1\", &$2);"],
+    "description": "Lecture d'une entrée utilisateur"
+  },
+  "Variable declaration": {
+    "prefix": ".var",
+    "body": ["$1 $2 = $3;"],
+    "description": "Déclare une variable en C"
+  },
+  "If condition": {
+    "prefix": ".cond if",
+    "body": ["if ($1) {", "    $2", "}"],
+    "description": "Structure conditionnelle if"
+  },
+  "Switch case": {
+    "prefix": ".cond switch",
+    "body": [
+      "switch ($1) {",
+      "    case $2:",
+      "        $3",
+      "        break;",
+      "    default:",
+      "        $4",
+      "}"
+    ],
+    "description": "Structure conditionnelle switch"
+  },
+  "While loop": {
+    "prefix": ".loop while",
+    "body": ["while ($1) {", "    $2", "}"],
+    "description": "Boucle while"
+  },
+  "For loop": {
+    "prefix": ".loop for",
+    "body": ["for ($1; $2; $3) {", "    $4", "}"],
+    "description": "Boucle for"
+  },
+  "Function": {
+    "prefix": "function",
+    "body": ["$1 $2($3) {", "    $4", "}"],
+    "description": "Définition d'une fonction"
+  },
+  "Struct": {
+    "prefix": "struct",
+    "body": ["struct $1 {", "    $2 $3;", "    $4 $5;", "};"],
+    "description": "Définition d'une structure"
+  },
+  "Array declaration": {
+    "prefix": ".var array",
+    "body": ["$1 $2[$3];"],
+    "description": "Déclare un tableau en C"
+  },
+  "Pointer declaration": {
+    "prefix": ".var pointer",
+    "body": ["$1 *$2;"],
+    "description": "Déclare un pointeur en C"
+  },
+  "Comment": {
+    "prefix": ".comment",
+    "body": ["// $1"],
+    "description": "Ajoute un commentaire"
+  },
+  "Multiline comment": {
+    "prefix": ".comment multi",
+    "body": ["/*", " * $1", " */"],
+    "description": "Ajoute un commentaire multi-lignes"
+  },
+  "Define constant": {
+    "prefix": ".var const",
+    "body": ["#define $1 $2"],
+    "description": "Définit une constante en C"
+  },
+  "Include header": {
+    "prefix": "header",
+    "body": ["#include <$1>"],
+    "description": "Inclut un fichier d'en-tête"
+  },
+  "Do-while loop": {
+    "prefix": ".loop do",
+    "body": ["do {", "    $1", "} while ($2);"],
+    "description": "Boucle do-while"
+  },
+  "verifier_chiffre": {
+    "prefix": ".char isDigit",
+    "body": ["('0' < $1 && $1 < '9')"],
+    "description": "Vérifier si le caractère est un chiffre"
+  },
+  "verifier_alpha": {
+    "prefix": ".char isAlpha",
+    "body": ["('a' < $1 && $1 < 'z') || ('A' < $1 && $1 < 'Z')"],
+    "description": "Vérifier si le caractère est un caractère alphabétique"
+  },
+  "verifier_espace": {
+    "prefix": ".char isSpace ",
+    "body": ["($1 == ' ' || $1 == '\t')"],
+    "description": "Vérifier si le caractère est un espace"
+  },
+  "verifier_chaine_chiffre": {
+    "prefix": ".str isDigit",
+    "body": [
+      "int isStrDigit = false",
+      "for (int i = 0; i < strlen($1); i++) {",
+      "\tisStrDigidt &= ('0' < $1[i] && $1[i] < '9');",
+      "}"
+    ],
+    "description": "Vérifier si la chaine ne contient que des chiffres"
+  },
+  "verifier_chaine_alpha": {
+    "prefix": ".str isAlpha",
+    "body": [
+      "int isStrAlpha = false",
+      "for (int i = 0; i < strlen($1); i++) {",
+      "\tisStrAlpha &= ('a' < $1[i] && $1[i] < 'z') || ('A' < $1[i] && $1[i] < 'Z');",
+      "}"
+    ],
+    "description": "Vérifier si la chaine ne contient que des caractère alphabétique"
+  },
+  "verifier_chaine_alpha_num": {
+    "prefix": ".str isAlphaNum",
+    "body": [
+      "int isStrAlphaNum = false",
+      "for (int i = 0; i < strlen($1); i++) {",
+      "\tisStrAlphaNum &= ('a' < $1 && $1 < 'z') || ('A' < $1 && $1 < 'Z') || ('0' < $1[i] && $1[i] < '9');",
+      "}"
+    ],
+    "description": "Vérifier si la chaine ne contient que des caractère alphabétique et numérique"
+  },
+  "verifier_chaine_espace": {
+    "prefix": ".str isSpace ",
+    "body": [
+      "int isStrSpace = false",
+      "for (int i = 0; i < strlen($1); i++) {",
+      "\tisStrSpace &= ($1 == ' ' || $1 == '\t');",
+      "}"
+    ],
+    "description": "Vérifier si la chaîne ne contient que des espaces"
+  },
+  "verifier_chaine_vide": {
+    "prefix": ".str isEmpty",
+    "body": [
+      "int isStrEmpty = false",
+      "for (int i = 0; i < strlen($1); i++) {",
+      "\tisStrEmpty &= ($1 == '');",
+      "}"
+    ],
+    "description": "Vérifier si la chaîne est vide"
+  },
+  "verifier_chaine_longueur": {
+    "prefix": ".str length",
+    "body": ["int length = strlen($1);"],
+    "description": "Vérifier la longueur de la chaîne"
+  },
+  "verifier_chaine_contenu": {
+    "prefix": ".str contains",
+    "body": [
+      "int contains = false",
+      "for (int i = 0; i < strlen($1); i++) {",
+      "\tcontains |= ($1[i] == $2);",
+      "}"
+    ],
+    "description": "Vérifier si la chaîne contient un caractère"
+  },
+  "verifier_chaine_debut": {
+    "prefix": ".str startsWith",
+    "body": [
+      "int startsWith = false",
+      "for (int i = 0; i < strlen($1); i++) {",
+      "\tstartsWith |= ($1[i] == $2);",
+      "}"
+    ],
+    "description": "Vérifier si la chaîne commence par un caractère"
+  },
+  "verifier_chaine_fin": {
+    "prefix": ".str endsWith",
+    "body": [
+      "int endsWith = false",
+      "for (int i = 0; i < strlen($1); i++) {",
+      "\tendsWith |= ($1[i] == $2);",
+      "}"
+    ],
+    "description": "Vérifier si la chaîne se termine par un caractère"
+  },
+  "verifier_chaine_egalite": {
+    "prefix": ".str equals",
+    "body": [
+      "int equals = false",
+      "for (int i = 0; i < strlen($1); i++) {",
+      "\tequals |= ($1[i] == $2);",
+      "}"
+    ],
+    "description": "Vérifier si la chaîne est égale à une autre"
+  },
+  "addition": {
+    "prefix": ".math add",
+    "body": ["$1 + $2"],
+    "description": "Additionne deux nombres"
+  },
+  "soustraction": {
+    "prefix": ".math sub",
+    "body": ["$1 - $2"],
+    "description": "Soustrait deux nombres"
+  },
+  "multiplication": {
+    "prefix": ".math mul",
+    "body": ["$1 * $2"],
+    "description": "Multiplie deux nombres"
+  },
+  "division": {
+    "prefix": ".math div",
+    "body": ["$1 / $2"],
+    "description": "Divise deux nombres"
+  },
+  "modulo": {
+    "prefix": ".math mod",
+    "body": ["$1 % $2"],
+    "description": "Calcule le reste de la division de deux nombres"
+  },
+  "puissance": {
+    "prefix": ".math pow",
+    "body": ["pow($1, $2)"],
+    "description": "Calcule la puissance d'un nombre"
+  },
+    "racine": {
+        "prefix": ".math sqrt",
+        "body": ["sqrt($1)"],
+        "description": "Calcule la racine carrée d'un nombre"
     },
-    "Print to console": {
-        "prefix": ".io print",
-        "body": [
-            "printf(\"$1\\n\");",
-            "$2"
-        ],
-        "description": "Affiche un message dans la console"
+    "factorielle": {
+        "prefix": ".math fact",
+        "body": ["factorial($1)"],
+        "description": "Calcule la factorielle d'un nombre"
     },
-    "User input": {
-        "prefix": ".io input",
-        "body": [
-            "scanf(\"$1\", &$2);"
-        ],
-        "description": "Lecture d'une entrée utilisateur"
+    "sinus": {
+        "prefix": ".math sin",
+        "body": ["sin($1)"],
+        "description": "Calcule le sinus d'un angle"
     },
-    "Variable declaration": {
-        "prefix": ".var",
-        "body": [
-            "$1 $2 = $3;"
-        ],
-        "description": "Déclare une variable en C"
+    "cosinus": {
+        "prefix": ".math cos",
+        "body": ["cos($1)"],
+        "description": "Calcule le cosinus d'un angle"
     },
-    "If condition": {
-        "prefix": ".cond if",
-        "body": [
-            "if ($1) {",
-            "    $2",
-            "}"
-        ],
-        "description": "Structure conditionnelle if"
+    "tangente": {
+        "prefix": ".math tan",
+        "body": ["tan($1)"],
+        "description": "Calcule la tangente d'un angle"
     },
-    "Switch case": {
-        "prefix": ".cond switch",
-        "body": [
-            "switch ($1) {",
-            "    case $2:",
-            "        $3",
-            "        break;",
-            "    default:",
-            "        $4",
-            "}"
-        ],
-        "description": "Structure conditionnelle switch"
-    },
-    "While loop": {
-        "prefix": ".loop while",
-        "body": [
-            "while ($1) {",
-            "    $2",
-            "}"
-        ],
-        "description": "Boucle while"
-    },
-    "For loop": {
-        "prefix": ".loop for",
-        "body": [
-            "for ($1; $2; $3) {",
-            "    $4",
-            "}"
-        ],
-        "description": "Boucle for"
-    },
-    "Function": {
-        "prefix": "function",
-        "body": [
-            "$1 $2($3) {",
-            "    $4",
-            "}"
-        ],
-        "description": "Définition d'une fonction"
-    },
-    "Struct": {
-        "prefix": "struct",
-        "body": [
-            "struct $1 {",
-            "    $2 $3;",
-            "    $4 $5;",
-            "};"
-        ],
-        "description": "Définition d'une structure"
-    },
-    "Array declaration": {
-        "prefix": ".var array",
-        "body": [
-            "$1 $2[$3];"
-        ],
-        "description": "Déclare un tableau en C"
-    },
-    "Pointer declaration": {
-        "prefix": ".var pointer",
-        "body": [
-            "$1 *$2;"
-        ],
-        "description": "Déclare un pointeur en C"
-    },
-    "Comment": {
-        "prefix": ".comment",
-        "body": [
-            "// $1"
-        ],
-        "description": "Ajoute un commentaire"
-    },
-    "Multiline comment": {
-        "prefix": ".comment multi",
-        "body": [
-            "/*",
-            " * $1",
-            " */"
-        ],
-        "description": "Ajoute un commentaire multi-lignes"
-    },
-    "Define constant": {
-        "prefix": ".var const",
-        "body": [
-            "#define $1 $2"
-        ],
-        "description": "Définit une constante en C"
-    },
-    "Include header": {
-        "prefix": "header",
-        "body": [
-            "#include <$1>"
-        ],
-        "description": "Inclut un fichier d'en-tête"
-    },
-    "Do-while loop": {
-        "prefix": ".loop do",
-        "body": [
-            "do {",
-            "    $1",
-            "} while ($2);"
-        ],
-        "description": "Boucle do-while"
-    },
-    "verifier_chiffre": {
-        "prefix": ".char isDigit",
-        "body": [
-            "('0' < $1 && $1 < '9')"
-        ],
-        "description": "Vérifier si le caractère est un chiffre"
-    },
-    "verifier_alpha": {
-        "prefix": ".char isAlpha",
-        "body": [
-            "('a' < $1 && $1 < 'z') || ('A' < $1 && $1 < 'Z')"
-        ],
-        "description": "Vérifier si le caractère est un caractère alphabétique"
-    },
-    "verifier_espace": {
-        "prefix": ".char isSpace ",
-        "body": [
-            "($1 == ' ' || $1 == '\t')"
-        ],
-        "description": "Vérifier si le caractère est un espace"
-    },
-    "verifier_chaine_chiffre": {
-        "prefix": ".str isDigit",
-        "body": [
-            "int isStrDigit = false",
-            "for (int i = 0; i < strlen($1); i++) {",
-            "\tisStrDigidt &= ('0' < $1[i] && $1[i] < '9');",
-            "}"
-        ],
-        "description": "Vérifier si la chaine ne contient que des chiffres"
-    },
-    "verifier_chaine_alpha": {
-        "prefix": ".str isAlpha",
-        "body": [
-            "int isStrAlpha = false",
-            "for (int i = 0; i < strlen($1); i++) {",
-            "\tisStrAlpha &= ('a' < $1[i] && $1[i] < 'z') || ('A' < $1[i] && $1[i] < 'Z');",
-            "}"
-        ],
-        "description": "Vérifier si la chaine ne contient que des caractère alphabétique"
-    },
-    "verifier_chaine_alpha_num": {
-        "prefix": ".str isAlphaNum",
-        "body": [
-            "int isStrAlphaNum = false",
-            "for (int i = 0; i < strlen($1); i++) {",
-            "\tisStrAlphaNum &= ('a' < $1 && $1 < 'z') || ('A' < $1 && $1 < 'Z') || ('0' < $1[i] && $1[i] < '9');",
-            "}"
-        ],
-        "description": "Vérifier si la chaine ne contient que des caractère alphabétique et numérique"
-    },
-    "verifier_chaine_espace": {
-        "prefix": ".str isSpace ",
-        "body": [
-            "int isStrSpace = false",
-            "for (int i = 0; i < strlen($1); i++) {",
-            "\tisStrSpace &= ($1 == ' ' || $1 == '\t');",
-            "}"
-        ],
-        "description": "Vérifier si la chaîne ne contient que des espaces"
+    "logarithme": {
+        "prefix": ".math log",
+        "body": ["log($1)"],
+        "description": "Calcule le logarithme d'un nombre"
     }
 }
-
-

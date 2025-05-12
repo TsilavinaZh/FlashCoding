@@ -287,5 +287,138 @@
       "print(video_url)"
     ],
     "description": "Generate a video from text using the OpenAI API"
+  },
+
+  "API google finance": {
+    "prefix": ".api google finance",
+    "body": [
+      "import requests",
+      "",
+      "def get_stock_price(symbol):",
+      "    url = f\"https://www.google.com/finance/quote/{symbol}:NASDAQ\"",
+      "    response = requests.get(url)",
+      "    if response.status_code == 200:",
+      "        return response.text",
+      "    else:",
+      "        return None",
+      "",
+      "stock_symbol = \"AAPL\"",
+      "price = get_stock_price(stock_symbol)",
+      "if price:",
+      "    print(f\"The current price of {stock_symbol} is: {price}\")",
+      "else:",
+      "    print(\"Failed to retrieve stock price.\")"
+    ],
+    "description": "Fetch stock price using Google Finance API"
+  },
+  "API google weather": {
+    "prefix": ".api google weather",
+    "body": [
+      "import requests",
+      "",
+      "def get_weather(city):",
+      "    api_key = \"YOUR_API_KEY\"",
+      "    url = f\"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}\"",
+      "    response = requests.get(url)",
+      "    if response.status_code == 200:",
+      "        return response.json()",
+      "    else:",
+      "        return None",
+      "",
+      "city = \"London\"",
+      "weather = get_weather(city)",
+      "if weather:",
+      "    print(f\"The current weather in {city} is: {weather}\")",
+      "else:",
+      "    print(\"Failed to retrieve weather data.\")"
+    ],
+    "description": "Fetch weather data using Google Weather API"
+  },
+  "API google news": {
+    "prefix": ".api google news",
+    "body": [
+      "import requests",
+      "",
+      "def get_news(query):",
+      "    api_key = \"YOUR_API_KEY\"",
+      "    url = f\"https://newsapi.org/v2/everything?q={query}&apiKey={api_key}\"",
+      "    response = requests.get(url)",
+      "    if response.status_code == 200:",
+      "        return response.json()",
+      "    else:",
+      "        return None",
+      "",
+      "query = \"Tesla\"",
+      "news = get_news(query)",
+      "if news:",
+      "    for article in news[\"articles\"]:",
+      "        print(f\"Title: {article[\"title\"]}, Source: {article[\"source\"][\"name\"]}\")",
+      "else:",
+      "    print(\"Failed to retrieve news data.\")"
+    ],
+    "description": "Fetch news articles using Google News API"
+  },
+  "API google translate": {
+    "prefix": ".api google translate",
+    "body": [
+      "from googletrans import Translator",
+      "",
+      "translator = Translator()",
+      "",
+      "text = \"Hello, how are you?\"",
+      "translated = translator.translate(text, dest='es')",
+      "",
+      "print(f\"Original: {text}\")",
+      "print(f\"Translated: {translated.text}\")"
+    ],
+    "description": "Translate text using Google Translate API"
+  },
+  "API google maps": {
+    "prefix": ".api google maps",
+    "body": [
+      "import requests",
+      "",
+      "def get_directions(origin, destination):",
+      "    api_key = \"YOUR_API_KEY\"",
+      "    url = f\"https://maps.googleapis.com/maps/api/directions/json?origin={origin}&destination={destination}&key={api_key}\"",
+      "    response = requests.get(url)",
+      "    if response.status_code == 200:",
+      "        return response.json()",
+      "    else:",
+      "        return None",
+      "",
+      "origin = \"New York, NY\"",
+      "destination = \"Los Angeles, CA\"",
+      "directions = get_directions(origin, destination)",
+      "if directions:",
+      "    print(f\"Directions from {origin} to {destination}: {directions}\")",
+      "else:",
+      "    print(\"Failed to retrieve directions.\")"
+    ],
+    "description": "Fetch directions using Google Maps API"
+  },
+  "API google sports": {
+    "prefix": ".api google sports",
+    "body": [
+      "import requests",
+      "",
+      "def get_sports_data(sport):",
+      "    api_key = \"YOUR_API_KEY\"",
+      "    url = f\"https://api.sportsdata.io/v4/{sport}/scores/json/Games?key={api_key}\"",
+      "    response = requests.get(url)",
+      "    if response.status_code == 200:",
+      "        return response.json()",
+      "    else:",
+      "        return None",
+      "",
+      "sport = \"basketball\"",
+      "data = get_sports_data(sport)",
+      "if data:",
+      "    for game in data:",
+      "        print(f\"Game: {game['id']}, Score: {game['score']}\")",
+      "else:",
+      "    print(\"Failed to retrieve sports data.\")"
+    ],
+    "description": "Fetch sports data using SportsData API"
   }
 }

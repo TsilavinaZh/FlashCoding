@@ -420,5 +420,176 @@
       "    print(\"Failed to retrieve sports data.\")"
     ],
     "description": "Fetch sports data using SportsData API"
+  },
+
+  "API google shopping": {
+    "prefix": ".api google shopping",
+    "body": [
+      "import requests",
+      "",
+      "def get_shopping_data(query):",
+      "    api_key = \"YOUR_API_KEY\"",
+      "    url = f\"https://api.google.com/shopping/search?query={query}&key={api_key}\"",
+      "    response = requests.get(url)",
+      "    if response.status_code == 200:",
+      "        return response.json()",
+      "    else:",
+      "        return None",
+      "",
+      "query = \"laptop\"",
+      "data = get_shopping_data(query)",
+      "if data:",
+      "    for item in data['items']:",
+      "        print(f\"Item: {item['title']}, Price: {item['price']}\")",
+      "else:",
+      "    print(\"Failed to retrieve shopping data.\")"
+    ],
+    "description": "Fetch shopping data using Google Shopping API"
+  },
+  "API google videos": {
+    "prefix": ".api google videos",
+    "body": [
+      "import requests",
+      "",
+      "def get_video_data(query):",
+      "    api_key = \"YOUR_API_KEY\"",
+      "    url = f\"https://www.googleapis.com/youtube/v3/search?part=snippet&q={query}&key={api_key}\"",
+      "    response = requests.get(url)",
+      "    if response.status_code == 200:",
+      "        return response.json()",
+      "    else:",
+      "        return None",
+      "",
+      "query = \"Python programming\"",
+      "data = get_video_data(query)",
+      "if data:",
+      "    for item in data['items']:",
+      "        print(f\"Video: {item['snippet']['title']}, Channel: {item['snippet']['channelTitle']}\")",
+      "else:",
+      "    print(\"Failed to retrieve video data.\")"
+    ],
+    "description": "Fetch video data using Google Videos API"
+  },
+  "API google images": {
+    "prefix": ".api google images",
+    "body": [
+      "import requests",
+      "",
+      "def get_image_data(query):",
+      "    api_key = \"YOUR_API_KEY\"",
+      "    url = f\"https://www.googleapis.com/customsearch/v1?q={query}&cx=YOUR_CX&key={api_key}\"",
+      "    response = requests.get(url)",
+      "    if response.status_code == 200:",
+      "        return response.json()",
+      "    else:",
+      "        return None",
+      "",
+      "query = \"beautiful landscapes\"",
+      "data = get_image_data(query)",
+      "if data:",
+      "    for item in data['items']:",
+      "        print(f\"Image: {item['link']}, Title: {item['title']}\")",
+      "else:",
+      "    print(\"Failed to retrieve image data.\")"
+    ],
+    "description": "Fetch image data using Google Images API"
+  },
+  "API google lens": {
+    "prefix": ".api google lens",
+    "body": [
+      "import requests",
+      "",
+      "def get_lens_data(image_path):",
+      "    api_key = \"YOUR_API_KEY\"",
+      "    url = f\"https://vision.googleapis.com/v1/images:annotate?key={api_key}\"",
+      "    headers = {\"Content-Type\": \"application/json\"}",
+      "    data = {\"requests\": [{\"image\": {\"source\": {\"imageUri\": image_path}}, \"features\": [{\"type\": \"LABEL_DETECTION\"}]}]}",
+      "    response = requests.post(url, headers=headers, json=data)",
+      "    if response.status_code == 200:",
+      "        return response.json()",
+      "    else:",
+      "        return None",
+      "",
+      "image_path = \"https://example.com/image.jpg\"",
+      "data = get_lens_data(image_path)",
+      "if data:",
+      "    for label in data['responses'][0]['labelAnnotations']:",
+      "        print(f\"Label: {label['description']}, Score: {label['score']}\")",
+      "else:",
+      "    print(\"Failed to retrieve lens data.\")"
+    ],
+    "description": "Fetch lens data using Google Lens API"
+  },
+  "API google jobs": {
+    "prefix": ".api google jobs",
+    "body": [
+      "import requests",
+      "",
+      "def get_job_data(query):",
+      "    api_key = \"YOUR_API_KEY\"",
+      "    url = f\"https://jobs.googleapis.com/v1/jobs?query={query}&key={api_key}\"",
+      "    response = requests.get(url)",
+      "    if response.status_code == 200:",
+      "        return response.json()",
+      "    else:",
+      "        return None",
+      "",
+
+      "query = \"software engineer\"",
+      "data = get_job_data(query)",
+      "if data:",
+      "    for item in data['jobs']:",
+      "        print(f\"Job Title: {item['title']}, Company: {item['company']}, Location: {item['location']}\")",
+      "else:",
+      "    print(\"Failed to retrieve job data.\")"
+    ],
+    "description": "Fetch job data using Google Jobs API"
+  },
+  "API google play store": {
+    "prefix": ".api google play store",
+    "body": [
+      "import requests",
+      "",
+      "def get_play_store_data(app_id):",
+      "    url = f\"https://play.google.com/store/apps/details?id={app_id}&hl=en&gl=US\"",
+      "    response = requests.get(url)",
+      "    if response.status_code == 200:",
+      "        return response.text",
+      "    else:",
+      "        return None",
+      "",
+      "app_id = \"com.example.app\"",
+      "data = get_play_store_data(app_id)",
+      "if data:",
+      "    print(f\"App Data: {data}\")",
+      "else:",
+      "    print(\"Failed to retrieve app data.\")"
+    ],
+    "description": "Fetch app data using Google Play Store API"
+  },
+  "API youtube": {
+    "prefix": ".api youtube",
+    "body": [
+      "import requests",
+      "",
+      "def get_youtube_data(query):",
+      "    api_key = \"YOUR_API_KEY\"",
+      "    url = f\"https://www.googleapis.com/youtube/v3/search?q={query}&key={api_key}\"",
+      "    response = requests.get(url)",
+      "    if response.status_code == 200:",
+      "        return response.json()",
+      "    else:",
+      "        return None",
+      "",
+      "query = \"Python programming\"",
+      "data = get_youtube_data(query)",
+      "if data:",
+      "    for item in data['items']:",
+      "        print(f\"Video: {item['snippet']['title']}, Channel: {item['snippet']['channelTitle']}\")",
+      "else:",
+      "    print(\"Failed to retrieve YouTube data.\")"
+    ],
+    "description": "Fetch YouTube data using YouTube API"
   }
-}
+ }
+

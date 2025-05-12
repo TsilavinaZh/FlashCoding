@@ -2906,7 +2906,158 @@
     ],
     "description": "Capture vidéo avec webcam"
   },
-  
+  "cv_face_detection": {
+    "prefix": ".cv face",
+    "body": [
+      "face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')",
+      "gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)",
+      "faces = face_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5)",
+      "for (x, y, w, h) in faces:",
+      "    cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0), 2)"
+    ],
+    "description": "Détection de visages"
+  },
+  "cv_hough_lines": {
+    "prefix": ".cv hough",
+    "body": [
+      "lines = cv2.HoughLines(img, $1, $2, $3)",
+      "for rho, theta in lines[:, 0]:",
+      "    a = np.cos(theta)",
+      "    b = np.sin(theta)",
+      "    x0 = a * rho",
+      "    y0 = b * rho",
+      "    x1 = int(x0 + 1000 * (-b))",
+      "    y1 = int(y0 + 1000 * (a))",
+      "    x2 = int(x0 - 1000 * (-b))",
+      "    y2 = int(y0 - 1000 * (a))",
+      "    cv2.line(img, (x1, y1), (x2, y2), ($4, $5, $6), 2)"
+    ],
+    "description": "Détection de lignes avec Hough"
+  },
+
+  "cv_hough_circles": {
+    "prefix": ".cv hough circles",
+    "body": [
+      "circles = cv2.HoughCircles(img, cv2.HOUGH_GRADIENT, $1, $2, param1=$3, param2=$4, minRadius=$5, maxRadius=$6)",
+      "if circles is not None:",
+      "    circles = np.uint16(np.around(circles))",
+      "    for i in circles[0, :]:",
+      "        cv2.circle(img, (i[0], i[1]), i[2], ($7, $8, $9), 2)"
+    ],
+    "description": "Détection de cercles avec Hough"
+  },
+
+  "cv_histogram": {
+    "prefix": ".cv histogram",
+    "body": [
+      "hist = cv2.calcHist([img], [$1], None, [$2], [$3, $4])",
+      "plt.plot(hist)"
+    ],
+    "description": "Calculer l'histogramme"
+  },
+
+  "cv_threshold": {
+    "prefix": ".cv threshold",
+    "body": [
+      "ret, thresh = cv2.threshold(img, $1, $2, cv2.THRESH_BINARY)"
+    ],
+    "description": "Appliquer un seuillage"
+  },
+
+  "cv_morphology": {
+    "prefix": ".cv morphology",
+    "body": [
+      "kernel = np.ones(($1, $2), np.uint8)",
+      "morphed = cv2.morphologyEx(img, cv2.MORPH_$3, kernel)"
+    ],
+    "description": "Appliquer une opération morphologique"
+  },
+
+  "cv_contours": {
+    "prefix": ".cv contours",
+    "body": [
+      "contours, _ = cv2.findContours(img, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)",
+      "for cnt in contours:",
+      "    cv2.drawContours(img, [cnt], 0, ($1, $2, $3), 2)"
+    ],
+    "description": "Détection de contours"
+  },
+
+  "cv_optical_flow": {
+    "prefix": ".cv optical flow",
+    "body": [
+      "prev_gray = cv2.cvtColor(prev_frame, cv2.COLOR_BGR2GRAY)",
+      "next_gray = cv2.cvtColor(next_frame, cv2.COLOR_BGR2GRAY)",
+      "flow = cv2.calcOpticalFlowFarneback(prev_gray, next_gray, None, $1, $2, $3, $4, $5, $6)"
+    ],
+    "description": "Calculer le flux optique"
+  },
+
+  "cv_template_matching": {
+    "prefix": ".cv template matching",
+    "body": [
+      "result = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)",
+      "threshold = $1",
+      "yloc, xloc = np.where(result >= threshold)",
+      "for (x, y) in zip(xloc, yloc):",
+      "    cv2.rectangle(img, (x, y), (x + template.shape[1], y + template.shape[0]), ($2, $3, $4), 2)"
+    ],
+    "description": "Correspondance de modèle"
+  },
+
+  "cv_optical_flow_lk": {
+    "prefix": ".cv optical flow lk",
+    "body": [
+      "prev_gray = cv2.cvtColor(prev_frame, cv2.COLOR_BGR2GRAY)",
+      "next_gray = cv2.cvtColor(next_frame, cv2.COLOR_BGR2GRAY)",
+      "p0 = cv2.goodFeaturesToTrack(prev_gray, mask=None, **$1)",
+      "p1, st, err = cv2.calcOpticalFlowPyrLK(prev_gray, next_gray, p0, None, **$2)"
+    ],
+    "description": "Calculer le flux optique avec Lucas-Kanade"
+  },
+
+  "cv_optical_flow_dense": {
+    "prefix": ".cv optical flow dense",
+    "body": [
+      "prev_gray = cv2.cvtColor(prev_frame, cv2.COLOR_BGR2GRAY)",
+      "next_gray = cv2.cvtColor(next_frame, cv2.COLOR_BGR2GRAY)",
+      "flow = cv2.calcOpticalFlowFarneback(prev_gray, next_gray, None, $1, $2, $3, $4, $5, $6)"
+    ],
+    "description": "Calculer le flux optique dense"
+  },
+
+  "cv_optical_flow_sparse": {
+    "prefix": ".cv optical flow sparse",
+    "body": [
+      "prev_gray = cv2.cvtColor(prev_frame, cv2.COLOR_BGR2GRAY)",
+      "next_gray = cv2.cvtColor(next_frame, cv2.COLOR_BGR2GRAY)",
+      "p0 = cv2.goodFeaturesToTrack(prev_gray, mask=None, **$1)",
+      "p1, st, err = cv2.calcOpticalFlowPyrLK(prev_gray, next_gray, p0, None, **$2)"
+    ],
+    "description": "Calculer le flux optique sparse"
+  },
+
+  "cv_optical_flow_dense_lk": {
+    "prefix": ".cv optical flow dense lk",
+    "body": [
+      "prev_gray = cv2.cvtColor(prev_frame, cv2.COLOR_BGR2GRAY)",
+      "next_gray = cv2.cvtColor(next_frame, cv2.COLOR_BGR2GRAY)",
+      "flow = cv2.calcOpticalFlowFarneback(prev_gray, next_gray, None, $1, $2, $3, $4, $5, $6)"
+    ],
+    "description": "Calculer le flux optique dense avec Lucas-Kanade"
+  },
+
+  "cv_optical_flow_sparse_lk": {
+    "prefix": ".cv optical flow sparse lk",
+    "body": [
+      "prev_gray = cv2.cvtColor(prev_frame, cv2.COLOR_BGR2GRAY)",
+      "next_gray = cv2.cvtColor(next_frame, cv2.COLOR_BGR2GRAY)",
+      "p0 = cv2.goodFeaturesToTrack(prev_gray, mask=None, **$1)",
+      "p1, st, err = cv2.calcOpticalFlowPyrLK(prev_gray, next_gray, p0, None, **$2)"
+    ],
+    "description": "Calculer le flux optique sparse avec Lucas-Kanade"
+  },
+
 
   "tsf_import": {
     "prefix": ".tsf import",
@@ -3012,6 +3163,28 @@
     ],
     "description": "Redimensionner un tenseur"
   },
+  "tsf_add_layer": {
+    "prefix": ".tsf add layer",
+    "body": [
+      "model.add(tf.keras.layers.Dense($1, activation='$2'))"
+    ],
+    "description": "Ajouter une couche au modèle"
+  },
+
+
+  "tsf_dropout": {
+    "prefix": ".tsf dropout",
+    "body": [
+      "model.add(tf.keras.layers.Dropout($1))"
+    ],
+    "description": "Ajouter une couche de Dropout"
+  },
+
+  
+
+
+
+
   "nltk_import": {
     "prefix": ".nltk import",
     "body": [

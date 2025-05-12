@@ -156,7 +156,7 @@
         "prefix": ".char isAlpha",
         "body": [
             "('a' < $1 && $1 < 'z') || ('A' < $1 && $1 < 'Z')"
-        ]
+        ],
         "description": "Vérifier si le caractère est un caractère alphabétique"
     },
     "verifier_espace": {
@@ -181,8 +181,8 @@
         "body": [
             "int isStrAlpha = false",
             "for (int i = 0; i < strlen($1); i++) {",
-            "\tisStrAlpha a= ('a' < $1 && $1 < 'z') || ('A' < $1 && $1 < 'Z');",
-            "}",
+            "\tisStrAlpha &= ('a' < $1[i] && $1[i] < 'z') || ('A' < $1[i] && $1[i] < 'Z');",
+            "}"
         ],
         "description": "Vérifier si la chaine ne contient que des caractère alphabétique"
     },
@@ -192,9 +192,9 @@
             "int isStrAlphaNum = false",
             "for (int i = 0; i < strlen($1); i++) {",
             "\tisStrAlphaNum &= ('a' < $1 && $1 < 'z') || ('A' < $1 && $1 < 'Z') || ('0' < $1[i] && $1[i] < '9');",
-            "}",
+            "}"
         ],
-        "description": "Vérifier si la chaine ne contient que des caractère alphabétique"
+        "description": "Vérifier si la chaine ne contient que des caractère alphabétique et numérique"
     },
     "verifier_chaine_espace": {
         "prefix": ".str isSpace ",
@@ -202,10 +202,10 @@
             "int isStrSpace = false",
             "for (int i = 0; i < strlen($1); i++) {",
             "\tisStrSpace &= ($1 == ' ' || $1 == '\t');",
-            "}",
+            "}"
         ],
         "description": "Vérifier si la chaîne ne contient que des espaces"
-    },
+    }
 }
 
 

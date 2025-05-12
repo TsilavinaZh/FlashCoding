@@ -268,5 +268,26 @@
         "prefix": ".math log",
         "body": ["log($1)"],
         "description": "Calcule le logarithme d'un nombre"
+    },
+
+    "file_open": {
+        "prefix": ".file open",
+        "body": ["FILE *$1 = fopen(\"$2\", \"$3\");"],
+        "description": "Ouvre un fichier"
+    },
+    "file_close": {
+        "prefix": ".file close",
+        "body": ["fclose($1);"],
+        "description": "Ferme un fichier"
+    },
+    "file_read": {
+        "prefix": ".file read",
+        "body": ["fscanf($1, \"$2\", &$3);"],
+        "description": "Lit un fichier"
+    },
+    "file_write": {
+        "prefix": ".file write",
+        "body": ["fprintf($1, \"$2\", $3);"],
+        "description": "Écrit dans un fichier"
     }
 }

@@ -2085,7 +2085,424 @@
     "description": "Régler le volume de la musique avec Pygame SDL2"
   },
 
+
+
+
   
+  "spaCy_import": {
+    "prefix": ".spaCy import",
+    "body": [
+      "import spacy"
+    ],
+    "description": "Importer la bibliothèque spaCy"
+  },
+
+  "spaCy_load_model": {
+    "prefix": ".spaCy load",
+    "body": [
+      "nlp = spacy.load('$1')"
+    ],
+    "description": "Charger un modèle spaCy (ex: en_core_web_sm)"
+  },
+
+  "spaCy_process_text": {
+    "prefix": ".spaCy doc",
+    "body": [
+      "doc = nlp(\"$1\")"
+    ],
+    "description": "Traiter du texte avec le modèle NLP"
+  },
+
+  "spaCy_tokens_loop": {
+    "prefix": ".spaCy tokens",
+    "body": [
+      "for token in doc:",
+      "    print(token.text, token.pos_, token.dep_)"
+    ],
+    "description": "Boucle sur les tokens avec leurs attributs"
+  },
+
+  "spaCy_named_entities": {
+    "prefix": ".spaCy ents",
+    "body": [
+      "for ent in doc.ents:",
+      "    print(ent.text, ent.label_)"
+    ],
+    "description": "Afficher les entités nommées détectées"
+  },
+
+  "spaCy_noun_chunks": {
+    "prefix": ".spaCy noun chunks",
+    "body": [
+      "for chunk in doc.noun_chunks:",
+      "    print(chunk.text)"
+    ],
+    "description": "Afficher les groupes nominaux"
+  },
+
+  "spaCy_custom_pipeline": {
+    "prefix": ".spaCy pipe",
+    "body": [
+      "def custom_component(doc):",
+      "    # traitement personnalisé",
+      "    return doc",
+      "",
+      "nlp.add_pipe(custom_component, last=True)"
+    ],
+    "description": "Ajouter un composant personnalisé au pipeline"
+  },
+
+  "spaCy_visualize_dep": {
+    "prefix": ".spaCy displacy dep",
+    "body": [
+      "from spacy import displacy",
+      "displacy.serve(doc, style=\"dep\")"
+    ],
+    "description": "Visualiser les dépendances syntaxiques"
+  },
+
+  "spaCy_visualize_ents": {
+    "prefix": ".spaCy displacy ents",
+    "body": [
+      "from spacy import displacy",
+      "displacy.serve(doc, style=\"ent\")"
+    ],
+    "description": "Visualiser les entités nommées"
+  },
+
+  "spaCy_save_model": {
+    "prefix": ".spaCy save",
+    "body": [
+      "nlp.to_disk(\"$1\")"
+    ],
+    "description": "Sauvegarder un modèle spaCy entraîné"
+  },
+
+  "spaCy_load_model_from_disk": {
+    "prefix": ".spaCy load local",
+    "body": [
+      "nlp = spacy.load(\"$1\")"
+    ],
+    "description": "Charger un modèle spaCy depuis le disque"
+  }
+,
+  "spaCy_create_example": {
+    "prefix": ".spaCy Example",
+    "body": [
+      "from spacy.training.example import Example",
+      "example = Example.from_dict(nlp.make_doc(\"$1\"), {\"entities\": $2})"
+    ],
+    "description": "Créer un objet Example pour l'entraînement"
+  },
+
+  "spaCy_train_model": {
+    "prefix": ".spaCy Train",
+    "body": [
+      "import random",
+      "from spacy.training.example import Example",
+      "",
+      "optimizer = nlp.initialize()",
+      "for i in range($1):",
+      "    random.shuffle(TRAIN_DATA)",
+      "    losses = {}",
+      "    for text, annotations in TRAIN_DATA:",
+      "        example = Example.from_dict(nlp.make_doc(text), annotations)",
+      "        nlp.update([example], drop=0.5, losses=losses)",
+      "    print(losses)"
+    ],
+    "description": "Entraîner un modèle spaCy avec TRAIN_DATA"
+  },
+
+  "spaCy_add_label": {
+    "prefix": ".spaCy Add Label",
+    "body": [
+      "ner = nlp.get_pipe(\"ner\")",
+      "ner.add_label(\"$1\")"
+    ],
+    "description": "Ajouter un label personnalisé au pipeline NER"
+  },
+
+  "spaCy_disable_components": {
+    "prefix": ".spaCy Disable",
+    "body": [
+      "with nlp.disable_pipes(\"$1\"):",
+      "    # traitement ici",
+      "    doc = nlp(\"$2\")"
+    ],
+    "description": "Désactiver temporairement des composants"
+  },
+
+  "spaCy_doc_to_dict": {
+    "prefix": ".spaCy DocDict",
+    "body": [
+      "data = {",
+      "  \"tokens\": [token.text for token in doc],",
+      "  \"pos\": [token.pos_ for token in doc],",
+      "  \"entities\": [(ent.text, ent.label_) for ent in doc.ents]",
+      "}"
+    ],
+    "description": "Convertir un document en dictionnaire"
+  },
+
+  "spaCy_with_pandas": {
+    "prefix": ".spaCy Pandas",
+    "body": [
+      "import pandas as pd",
+      "df = pd.DataFrame([{",
+      "    \"text\": token.text,",
+      "    \"lemma\": token.lemma_,",
+      "    \"pos\": token.pos_,",
+      "    \"dep\": token.dep_,",
+      "    \"ent\": token.ent_type_",
+      "} for token in doc])"
+    ],
+    "description": "Transformer un doc spaCy en DataFrame Pandas"
+  },
+
+  "spaCy_token_filter": {
+    "prefix": ".spaCy Filter",
+    "body": [
+      "filtered_tokens = [token.text for token in doc if not token.is_stop and not token.is_punct]"
+    ],
+    "description": "Filtrer les mots vides et ponctuations"
+  },
+
+  "spaCy_lemmatization": {
+    "prefix": ".spaCy Lemma",
+    "body": [
+      "lemmas = [token.lemma_ for token in doc]"
+    ],
+    "description": "Extraire les lemmes d’un texte"
+  },
+
+  "spaCy_sentiment": {
+    "prefix": ".spaCy Sentiment",
+    "body": [
+      "print(doc._.polarity, doc._.subjectivity)"
+    ],
+    "description": "Afficher polarité et subjectivité (via TextBlob ou extension custom)"
+  },
+
+  "spaCy_custom_attr": {
+    "prefix": ".spaCy CustomAttr",
+    "body": [
+      "from spacy.tokens import Token",
+      "Token.set_extension(\"is_color\", default=False, force=True)"
+    ],
+    "description": "Définir un attribut personnalisé sur les tokens"
+  },
+
+
+  "spaCy_doc_extension": {
+    "prefix": ".spaCy Doc Extension",
+    "body": [
+      "from spacy.tokens import Doc",
+      "Doc.set_extension(\"$1\", getter=lambda doc: $2, force=True)"
+    ],
+    "description": "Ajouter une extension personnalisée au Doc"
+  },
+
+  "spaCy_token_extension": {
+    "prefix": ".spaCy Token Extension",
+    "body": [
+      "from spacy.tokens import Token",
+      "Token.set_extension(\"$1\", default=False, force=True)"
+    ],
+    "description": "Ajouter une extension personnalisée au Token"
+  },
+
+  "spaCy_span_extension": {
+    "prefix": ".spaCy Span Extension",
+    "body": [
+      "from spacy.tokens import Span",
+      "Span.set_extension(\"$1\", getter=lambda span: $2, force=True)"
+    ],
+    "description": "Ajouter une extension personnalisée au Span"
+  },
+
+  "spaCy_displacy_render": {
+    "prefix": ".spaCy Displacy Render",
+    "body": [
+      "from spacy import displacy",
+      "displacy.render(doc, style=\"$1\")"
+    ],
+    "description": "Visualiser un document avec displaCy"
+  },
+
+  "spaCy_displacy_serve": {
+    "prefix": ".spaCy Displacy Serve",
+    "body": [
+      "from spacy import displacy",
+      "displacy.serve(doc, style=\"$1\")"
+    ],
+    "description": "Lancer un serveur local pour visualisation displaCy"
+  },
+
+  "spaCy_test_model": {
+    "prefix": ".spaCy Test Model",
+    "body": [
+      "test_text = \"$1\"",
+      "doc = nlp(test_text)",
+      "for ent in doc.ents:",
+      "    print(ent.text, ent.label_)"
+    ],
+    "description": "Tester un modèle NER spaCy"
+  },
+
+  "spaCy_compare_models": {
+    "prefix": ".spaCy Compare Models",
+    "body": [
+      "import spacy",
+      "nlp1 = spacy.load(\"$1\")",
+      "nlp2 = spacy.load(\"$2\")",
+      "text = \"$3\"",
+      "doc1 = nlp1(text)",
+      "doc2 = nlp2(text)",
+      "for ent1, ent2 in zip(doc1.ents, doc2.ents):",
+      "    print(ent1.text, ent1.label_, '|', ent2.text, ent2.label_)"
+    ],
+    "description": "Comparer les entités de deux modèles"
+  }
+
+,
+
+  "spaCy_text_cleaning": {
+    "prefix": ".spaCy Text Cleaning",
+    "body": [
+      "import spacy",
+      "from spacy.lang.$1 import $1",
+      "nlp = $1()",
+      "doc = nlp(\"$2\")",
+      "doc = [token.text.lower() for token in doc if not token.is_stop and not token.is_punct]",
+      "clean_text = \" \".join(doc)"
+    ],
+    "description": "Prétraiter le texte : conversion en minuscules, suppression des arrêts et de la ponctuation"
+  },
+
+ 
+
+  "spaCy_pos_tagging": {
+    "prefix": ".spaCy POS Tagging",
+    "body": [
+      "doc = nlp(\"$1\")",
+      "pos_tags = [(token.text, token.pos_) for token in doc]",
+      "print(pos_tags)"
+    ],
+    "description": "Faire du POS tagging (étiquetage de parties du discours)"
+  },
+
+  "spaCy_named_entity_recognition": {
+    "prefix": ".spaCy NER",
+    "body": [
+      "doc = nlp(\"$1\")",
+      "for ent in doc.ents:",
+      "    print(ent.text, ent.label_)"
+    ],
+    "description": "Reconnaître les entités nommées dans un texte"
+  },
+
+  "spaCy_dependency_parsing": {
+    "prefix": ".spaCy Dependency Parsing",
+    "body": [
+      "doc = nlp(\"$1\")",
+      "for token in doc:",
+      "    print(token.text, token.dep_, token.head.text)"
+    ],
+    "description": "Effectuer un parsing de dépendance pour analyser les relations entre les mots"
+  },
+
+  "spaCy_relation_extraction": {
+    "prefix": ".spaCy Relation Extraction",
+    "body": [
+      "doc = nlp(\"$1\")",
+      "relations = []",
+      "for ent1 in doc.ents:",
+      "    for ent2 in doc.ents:",
+      "        if ent1 != ent2:",
+      "            relations.append((ent1.text, ent2.text))",
+      "print(relations)"
+    ],
+    "description": "Extraire les relations entre les entités d'un texte"
+  },
+
+  "spaCy_entity_linking": {
+    "prefix": ".spaCy Entity Linking",
+    "body": [
+      "doc = nlp(\"$1\")",
+      "for ent in doc.ents:",
+      "    if ent.kb_id_:",
+      "        print(f'Entity: {ent.text}, Link: {ent.kb_id_}')"
+    ],
+    "description": "Relier les entités aux bases de connaissances"
+  },
+
+  "spaCy_text_classification": {
+    "prefix": ".spaCy Text Classification",
+    "body": [
+      "from spacy.pipeline.textcat import Config, ConfigurableTextCat",
+      "text_cat = nlp.create_pipe('textcat', config={'architecture': 'simple_cnn'})",
+      "text_cat.add_label('$1')",
+      "nlp.add_pipe(text_cat, last=True)",
+      "doc = nlp(\"$2\")",
+      "print(doc.cats)"
+    ],
+    "description": "Effectuer une classification de texte avec spaCy"
+  },
+
+  "spaCy_similarity": {
+    "prefix": ".spaCy Similarity",
+    "body": [
+      "doc1 = nlp(\"$1\")",
+      "doc2 = nlp(\"$2\")",
+      "similarity_score = doc1.similarity(doc2)",
+      "print(similarity_score)"
+    ],
+    "description": "Calculer la similarité entre deux textes"
+  },
+
+  "spaCy_custom_ner_model": {
+    "prefix": ".spaCy Custom NER",
+    "body": [
+      "import spacy",
+      "from spacy.training.example import Example",
+      "nlp = spacy.load('$1')",
+      "TRAIN_DATA = [($2)]",
+      "for text, annotations in TRAIN_DATA:",
+      "    doc = nlp.make_doc(text)",
+      "    example = Example.from_dict(doc, annotations)",
+      "    nlp.update([example])"
+    ],
+    "description": "Entraîner un modèle NER personnalisé sur des données annotées"
+  },
+
+  "spaCy_tokenize_text": {
+    "prefix": ".spaCy Tokenize",
+    "body": [
+      "doc = nlp(\"$1\")",
+      "tokens = [token.text for token in doc]",
+      "print(tokens)"
+    ],
+    "description": "Tokeniser un texte"
+  },
+
+  "spaCy_advanced_visualization": {
+    "prefix": ".spaCy Advanced Visualization",
+    "body": [
+      "import spacy",
+      "from spacy import displacy",
+      "doc = nlp(\"$1\")",
+      "displacy.render(doc, style=\"$2\", page=True)"
+    ],
+    "description": "Visualiser un texte avec displaCy (styles de visualisation avancés)"
+  }
+
+,
+
+
+
+
+
+
   "mtlib_pyplot": {
     "prefix": ".mtlib Pyplot",
     "body": [

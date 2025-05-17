@@ -6767,4 +6767,143 @@
     ],
     "description": "Écouter les événements du clavier"
   }
+  ,
+  "fastapi_import": {
+    "prefix": ".fastapi import",
+    "body": [
+      "from fastapi import FastAPI"
+    ],
+    "description": "Importer FastAPI"
+  },
+  "fastapi_app": {
+    "prefix": ".fastapi app",
+    "body": [
+      "app = FastAPI()"
+    ],
+    "description": "Créer une instance de FastAPI"
+  },
+  "fastapi_get": {
+    "prefix": ".fastapi get",
+    "body": [
+      "@app.get('/$1')",
+      "async def $2():",
+      "    return {'message': '$3'}"
+    ],
+    "description": "Définir une route GET"
+  },
+  "fastapi_post": {
+    "prefix": ".fastapi post",
+    "body": [
+      "from pydantic import BaseModel",
+      "",
+      "class $1(BaseModel):",
+      "    $2: str",
+      "    $3: int",
+      "",
+      "@app.post('/$4')",
+      "async def $5(item: $1):",
+      "    return item"
+    ],
+    "description": "Définir une route POST avec Pydantic"
+  },
+  "fastapi_put": {
+    "prefix": ".fastapi put",
+    "body": [
+      "from pydantic import BaseModel",
+      "",
+      "class $1(BaseModel):",
+      "    $2: str",
+      "    $3: int",
+      "",
+      "@app.put('/$4/{item_id}')",
+      "async def $5(item_id: int, item: $1):",
+      "    return {'item_id': item_id, **item.dict()}"
+    ],
+    "description": "Définir une route PUT avec Pydantic"
+  }
+  ,
+  "fastapi_delete": {
+    "prefix": ".fastapi delete",
+    "body": [
+      "@app.delete('/$1/{item_id}')",
+      "async def $2(item_id: int):",
+      "    return {'message': f'Item {item_id} deleted'}"
+    ],
+    "description": "Définir une route DELETE"
+  },
+  "fastapi_path_params": {
+    "prefix": ".fastapi path params",
+    "body": [
+      "@app.get('/$1/{$2}')",
+      "async def $3($2: str):",
+      "    return {'message': f'Hello {$2}'}"
+    ],
+    "description": "Utiliser des paramètres de chemin"
+  },
+  "fastapi_query_params": {
+    "prefix": ".fastapi query params",
+    "body": [
+      "@app.get('/$1')",
+      "async def $2($3: str = None):",
+      "    if $3:",
+      "        return {'message': f'Query: {$3}'}",
+      "    return {'message': 'No query'}"
+    ],
+    "description": "Utiliser des paramètres de requête"
+  },
+  "fastapi_request_body": {
+    "prefix": ".fastapi request body",
+    "body": [
+      "from pydantic import BaseModel",
+      "",
+      "class $1(BaseModel):",
+      "    $2: str",
+      "    $3: int",
+      "",
+      "@app.post('/$4')",
+      "async def $5(item: $1):",
+      "    return item.dict()"
+    ],
+    "description": "Utiliser un corps de requête avec Pydantic"
+  },
+  "fastapi_response_status": {
+    "prefix": ".fastapi response status",
+    "body": [
+      "from fastapi import status",
+      "",
+      "@app.post('/$1', status_code=status.HTTP_201_CREATED)",
+      "async def $2():",
+      "    return {'message': 'Created'}"
+    ],
+    "description": "Définir le code de statut de la réponse"
+  },
+  "fastapi_response_model": {
+    "prefix": ".fastapi response model",
+    "body": [
+      "from pydantic import BaseModel",
+      "",
+      "class $1(BaseModel):",
+      "    $2: str",
+      "    $3: int",
+      "",
+      "@app.get('/$4', response_model=$1)",
+      "async def $5():",
+      "    return {$2: '$6', $3: $7}"
+    ],
+    "description": "Définir le modèle de réponse avec Pydantic"
+  },
+  "fastapi_dependencies": {
+    "prefix": ".fastapi dependencies",
+    "body": [
+      "from fastapi import Depends",
+      "",
+      "async def $1():",
+      "    return {'message': '$2'}",
+      "",
+      "@app.get('/$3', dependencies=[Depends($1)])",
+      "async def $4():",
+      "    return {'message': 'With dependency'}"
+    ],
+    "description": "Utiliser des dépendances"
+  }
 }

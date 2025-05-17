@@ -6703,5 +6703,68 @@
       "screen.title('$1')"
     ],
     "description": "Définir le titre de l'écran Turtle"
+  },
+  "turtle_set_size": {
+    "prefix": ".turtle set size",
+    "body": [
+      "turtle.shapesize($1, $2, $3)"
+    ],
+    "description": "Définir la taille de la tortue"
+  },
+  "turtle_stamp": {
+    "prefix": ".turtle stamp",
+    "body": [
+      "turtle.stamp()"
+    ],
+    "description": "Estamper la forme de la tortue"
+  },
+  "turtle_clear_stamp": {
+    "prefix": ".turtle clear stamp",
+    "body": [
+      "turtle.clearstamp($1)"
+    ],
+    "description": "Effacer une estampe spécifique"
+  },
+  "turtle_clear_stamps": {
+    "prefix": ".turtle clear stamps",
+    "body": [
+      "turtle.clearstamps($1)"
+    ],
+    "description": "Effacer plusieurs estampes"
+  },
+  "turtle_undo": {
+    "prefix": ".turtle undo",
+    "body": [
+      "turtle.undo()"
+    ],
+    "description": "Annuler la dernière action de la tortue"
+  },
+  "turtle_tracer": {
+    "prefix": ".turtle tracer",
+    "body": [
+      "screen.tracer($1)"
+    ],
+    "description": "Activer/désactiver l'animation de la tortue"
+  },
+  "turtle_update": {
+    "prefix": ".turtle update",
+    "body": [
+      "screen.update()"
+    ],
+    "description": "Mettre à jour l'écran Turtle"
+  },
+  "turtle_delay": {
+    "prefix": ".turtle delay",
+    "body": [
+      "screen.delay($1)"
+    ],
+    "description": "Définir le délai d'animation de la tortue"
+  },
+  "turtle_listen": {
+    "prefix": ".turtle listen",
+    "body": [
+      "screen.listen()"
+    ],
+    "description": "Écouter les événements du clavier"
   }
 }

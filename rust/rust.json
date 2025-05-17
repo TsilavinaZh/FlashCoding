@@ -1,0 +1,49 @@
+{
+  "Print to console": {
+    "prefix": ".print",
+    "body": ["println!(\"$1\");", "$2"],
+    "description": "Prints a message to the console"
+  },
+  "User input": {
+    "prefix": ".input",
+    "body": ["let mut $1 = String::new();", "io::stdin().read_line(&mut $1).expect(\"Failed to read line\");", "let $2: i32 = $1.trim().parse().expect(\"Please type a number!\");"],
+    "description": "Reads user input"
+  },
+  "Variable declaration": {
+    "prefix": ".var",
+    "body": ["let $1: $2 = $3;"],
+    "description": "Declares a variable in Rust"
+  },
+  "If condition": {
+    "prefix": ".cond if",
+    "body": ["if $1 {", "    $2", "}"],
+    "description": "If conditional structure"
+  },
+  "Match case": {
+    "prefix": ".cond match",
+    "body": ["match $1 {", "    $2 => $3,", "    _ => $4", "}"],
+    "description": "Match conditional structure"
+  },
+  "Loop": {
+    "prefix": ".loop for",
+    "body": ["for $1 in $2 {", "    $3", "}"],
+    "description": "For loop structure"
+  },
+  "While loop": {
+    "prefix": ".loop while",
+    "body": ["while $1 {", "    $2", "}"],
+    "description": "While loop structure"
+  },
+
+  "Function": {
+    "prefix": ".function",
+    "body": ["fn $1($2: $3) -> $4 {", "    $5", "}"],
+    "description": "Function definition"
+  },
+  "Struct": {
+    "prefix": ".struct",
+    "body": ["struct $1 {", "    $2: $3,", "}"],
+    "description": "Struct definition"
+  }
+
+}

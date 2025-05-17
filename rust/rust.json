@@ -6,7 +6,11 @@
   },
   "User input": {
     "prefix": ".input",
-    "body": ["let mut $1 = String::new();", "io::stdin().read_line(&mut $1).expect(\"Failed to read line\");", "let $2: i32 = $1.trim().parse().expect(\"Please type a number!\");"],
+    "body": [
+      "let mut $1 = String::new();",
+      "io::stdin().read_line(&mut $1).expect(\"Failed to read line\");",
+      "let $2: i32 = $1.trim().parse().expect(\"Please type a number!\");"
+    ],
     "description": "Reads user input"
   },
   "Variable declaration": {
@@ -44,6 +48,109 @@
     "prefix": ".struct",
     "body": ["struct $1 {", "    $2: $3,", "}"],
     "description": "Struct definition"
-  }
+  },
+  "Array": {
+    "prefix": ".array",
+    "body": ["let $1: [$2; $3] = [$4; $3];"],
+    "description": "Array definition"
+  },
+  "Vector (Vec)": {
+    "prefix": ".Vector",
+    "body": ["let $1: Vec<$2> = vec![$3];"],
+    "description": "Vector definition"
+  },
+  "Tuple": {
+    "prefix": ".tuple",
+    "body": ["let $1: ($2, $3) = ($4, $5);"],
+    "description": "Tuple definition"
+  },
+  "HashMap": {
+    "prefix": ".hashmap",
+    "body": [
+      "use std::collections::HashMap;",
+      "let mut $1 = HashMap::new();",
+      "$1.insert($2, $3);"
+    ],
+    "description": "HashMap definition and initialization"
+  },
+  "Enums": {
+    "prefix": ".enums",
+    "body": ["enum $1 {", "    $2,", "    $3", "}"],
+    "description": "Enums definition"
+  },
+  "File creation": {
+    "prefix": ".files create",
+    "body": [
+      "use std::fs::File;",
+      "use std::io::prelude::*;",
+      "use std::path::Path;",
+      "let path = Path::new(\"$1\");",
+      "let display = path.display();",
+      "let mut file = match File::create(&path) {",
+      "    Err(why) => panic!(\"couldn't create {}: {}\", display, why),",
+      "    Ok(file) => file,",
+      "};",
+      "match file.write_all($2.as_bytes()) {",
+      "    Err(why) => panic!(\"couldn't write to {}: {}\", display, why),",
+      "    Ok(_) => println!(\"successfully wrote to {}\", display),",
+      "}"
+    ],
+    "description": "File creation and writing"
+  },
+  "File reading": {
+    "prefix": ".files read",
+    "body": [
+      "use std::fs::File;",
+      "use std::io::prelude::*;",
+      "use std::path::Path;",
+      "let path = Path::new(\"$1\");",
+      "let display = path.display();",
+      "let mut file = match File::open(&path) {",
+      "    Err(why) => panic!(\"couldn't open {}: {}\", display, why),",
+      "    Ok(file) => file,",
+      "};",
+      "let mut s = String::new();",
+      "match file.read_to_string(&mut s) {",
+      "    Err(why) => panic!(\"couldn't read {}: {}\", display, why),",
+      "    Ok(_) => print!(\"{} contains:\\n{}\", display, s),",
+      "}"
+    ],
+    "description": "File reading"
+  },
+  "File appending": {
+    "prefix": ".files append",
+    "body": [
+      "use std::fs::OpenOptions;",
+      "use std::io::prelude::*;",
+      "      use std::path::Path;",
+      "let path = Path::new(\"$1\");",
+      "let display = path.display();",
+      "let mut file = match OpenOptions::new().append(true).open(&path) {",
+      "    Err(why) => panic!(\"couldn't open {}: {}\", display, why),",
+      "    Ok(file) => file,",
+      "};",
+      "match file.write_all($2.as_bytes()) {",
+      "    Err(why) => panic!(\"couldn't write to {}: {}\", display, why),",
+      "    Ok(_) => println!(\"successfully wrote to {}\", display),",
+      "}"
+    ],
+    "description": "File appending"}
+    ,
+    
+  "File deleting": {
+      "prefix": ".files delete",
+      "body": [
+        "use std::fs;",
+        "use std::path::Path;",
+        "let path = Path::new(\"$1\");",
+        "let display = path.display();",
+        "match fs::remove_file(&path) {",
+        "    Err(why) => panic!(\"couldn't delete {}: {}\", display, why),",
+        "    Ok(_) => println!(\"successfully deleted {}\", display),",
+        "}"
+      ],
+      "description": "File deleting"
+    }
+
 
 }
